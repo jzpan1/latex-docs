@@ -1,0 +1,149 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set 2: §12.4 – 13.1}
+\author{Zhengyu James Pan}
+\def\email{jzpan@umich.edu}
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 215}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\begin{center}
+	\bf MATH 215 FALL 2023\\
+	\bf \hwName \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+%1
+\question 
+	\begin{parts}
+		\part Find the equations of all planes parallel to the plane $y = 2$ 
+			and 4 units away from it.
+			\begin{solution}
+				The plane $y = 2$ has a normal of $\langle 0,1,0\rangle$, and 
+				aaaaaaaaaaaaaaaaaaaaaaaaa
+				so will parallel planes.
+				\qed
+			\end{solution}
+		\part Find the equations of all planes parallel to the plane 
+			$2x - y + z = 0$ and 3 units away from it. Hint:
+			Think about what it means for two planes to be parallel, 
+			and how to find the distance between two planes.
+	\end{parts}
+\clearpage
+%2
+\question Last week you found the surface equidistant between two points and 
+	arrived at an equation for a plane. This week, find an equation for the 
+	surface consisting of all points equidistant from the point (5, 0, 0) 
+	and the plane y = 2. Identify what type of surface this is and sketch 
+	it (do not use a plotting tool to generate the surface – I want to see 
+	that you can sketch a surface from an equation. This might be a good
+	skill to practice for a test, \textit{hint hint}.).
+\clearpage
+%3
+\question Find parametric equations which describe the curve defined 
+	by intersecting the cylinder $x^2 + y^2 = 64$ with the paraboloid of 
+	revolution $x^2 + y^2 + 18z = 0$.
+\clearpage
+%4
+\question Find the equation of the line consisting of the points equidistant 
+	from the three points $(2, 1, 1)$, $(-1, -1, 10)$, and $(1, 3, -4)$.
+\clearpage
+%5
+\question 
+	\begin{parts} 
+		%a
+		\part Describe and sketch the part of the first octant where 
+		$x + 2y + 3z \leq 4$. (The first octant is the	region where $x, y, z \geq 0$).
+		\part Describe and sketch the region give\textbf{n} by 
+		$|x| + 2, |y| + 3, |z| \leq 4$. 
+		It may help to look at the equation in each of the eight octants separately.
+	\end{parts}
+\clearpage
+%6
+\question Do Exercises 23-30 of section 12.6 of Stewart’s \textit{Multivariable Calculus}.
+	\\\\\textbf{Solutions:}
+	\begin{questions}
+		\setcounter{question}{22}
+		\question 
+	\end{questions}
+\clearpage
+\setcounter{question}{6}
+%7
+\question
+	\begin{parts}
+		\part Sketch the curve defined by 
+			$r(t) = \langle 5t \sin(3t), 6t \cos(3t), t^2\rangle$. 
+			Find a quadratic surface on which this curve lives.
+
+		\part Sketch the curve defined by 
+			$r(t) = \langle 3 + 5 \sin(t^4), 2 - 6 \sin(t^4), 3 + 7 \sin(t^4) \rangle$. 
+			Find a two-dimensional surface on which this curve lives 
+			(there are an infinite number).
+	\end{parts}
+\clearpage
+%8
+\question A cooling tower for a power plant is to be constructed in the shape
+	 of a hyperboloid of one sheet, with equation given by 
+	 $x^2/a^2 + y^2/b^2 - z^2/c^2 = 1$. The diameter of the circular base of the 
+	tower is 80m, and the minimum diameter is is 40m, located 30m above the ground.
+	\begin{parts}
+		\part Sketch the tower. Make sure to label your sketch with relevant 
+		diameters, heights, and the location of the origin.
+
+		\part Find an equation of the tower, i.e., find $a, b$, and $c$.
+	\end{parts}
+\clearpage
+
+%9
+\question Two jets travel simultaneously according to the vector equations
+	$$\bold{r_1}(t) = \langle 2, -1, 3 \rangle + t \langle 4, 2, 8 \rangle 
+	\text{ and }
+	\bold{r_2}(t) = \langle -1, -3, 1\rangle + t \langle 1, 4, -2\rangle$$
+	Let time $t$ be measured in seconds and positions measured in kilometers.
+	\begin{parts}
+		\part Find the shortest distance between the jets, and the time at 
+			which this occurs.
+		\part Find the shortest distance between the trajectories of the jets.
+	\end{parts}
+\clearpage
+%10
+\question Two people are located in space at the points $(0, -2, 1)$ and 
+	$(1, 0, 2)$, respectively.
+	\begin{parts}
+		\part Find a parametric equation for the line of sight between the 
+			two people.
+		\part Between the two people is a hot air balloon in the shape of a 
+			sphere, centered at $(0, -1, 1)$ and with radius 2. Can the two
+			people see each other, or is the line of sight blocked by the 
+			sphere? If the line of sight is blocked, find the points on the
+			sphere that each person sees.
+	\end{parts}
+
+\end{questions}
+
+\end{document}
