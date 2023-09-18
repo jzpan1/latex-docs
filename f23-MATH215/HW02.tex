@@ -64,11 +64,24 @@
 	it (do not use a plotting tool to generate the surface – I want to see 
 	that you can sketch a surface from an equation. This might be a good
 	skill to practice for a test, \textit{hint hint}.).
+	\begin{solution}
+		Similar to how the points equidistant from a line and a point in $\mathbb{R}^2$ is a parabola, points equidistant from a point and a plane will form a paraboloid in $\mathbb{R}^3$.
+		\begin{align*}
+			\{ \langle x,y,z \rangle : &y-2 = \pm \sqrt{(x - 5)^2 + y^2 + z^2} \} \\
+			\{ \langle x,y,z \rangle : &y^2 - 4y + 4 = (x - 5)^2 + y^2 + z^2 \} \\
+			&\boxed{\frac{(x - 5)^2}{4} + y + \frac{z^2}{4} = 1 } \tag*{\qed}
+		\end{align*}
+	\end{solution}
 \clearpage
 %3
 \question Find parametric equations which describe the curve defined 
 	by intersecting the cylinder $x^2 + y^2 = 64$ with the paraboloid of 
 	revolution $x^2 + y^2 + 18z = 0$.
+	\begin{solution}
+		The cylinder can be parameterized as $(8\sin(t), 8\cos(t), z)$. Since the intersection must satisfy $x^2 + y^2 = 64$, then $64 + 18z = 0 \Rightarrow z= -\frac{9}{32}$. \\
+		Thus the equation of the intersection is 
+		\[\boxed{(8\sin(t), 8\cos(t), -\frac{9}{32})} \tag*{\qed}\]
+	\end{solution}
 \clearpage
 %4
 \question Find the equation of the line consisting of the points equidistant 
