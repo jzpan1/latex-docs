@@ -100,9 +100,15 @@
 		%a
 		\part Describe and sketch the part of the first octant where 
 		$x + 2y + 3z \leq 4$. (The first octant is the	region where $x, y, z \geq 0$).
+			\begin{solution}
+				This region will be the area under a plane, or alternatively a section of a rectangular prism "sliced" by the plane. This plane will have intercepts $(4, 0, 0)$, $(0, 2, 0)$, and $(0, 0, \frac{4}{3})$.
+				\\\\\\\\\\\\\\\\\\\\\\\\\\ %sketch space
+			\end{solution}
 		\part Describe and sketch the region give\textbf{n} by 
-		$|x| + 2, |y| + 3, |z| \leq 4$. 
-		It may help to look at the equation in each of the eight octants separately.
+		$|x| + 2|y| + 3|z| \leq 4$. It may help to look at the equation in each of the eight octants separately.
+			\begin{solution}
+				This will result in the figure from the previous problem in all 8 octants, rotated accordingly. This is because when crossing an octant, one of $x,y,z$ changes signs. However, due to the absolute value, the term that variable belonged to acts exactly like it did in the first octant, with all terms positive.
+			\end{solution}
 	\end{parts}
 \clearpage
 %6
@@ -110,7 +116,14 @@
 	\\\\\textbf{Solutions:}
 	\begin{questions}
 		\setcounter{question}{22}
-		\question 
+		\question \boxed{VII} -- scaled by $\frac{1}{3}$ in $z$ direction and $\frac{1}{2}$ in $y$.
+		\question \boxed{IV} -- same as problem 23 but switch $z$ and $x$.
+		\question \boxed{II} -- can be rearranged to $y^2+1=x^2+z^2 \Rightarrow$ circles around y-axis which increase radius starting from 1 at the origin. Approaches a linear increase in radius, but not quite because of the $+1$ term. Symmetrical across $xz$ plane because $y$ is squared.
+		\question \boxed{III} -- Same as 25, except the $-1$ causes no solutions until $y=1$. 
+		\question \boxed{VI} -- A paraboloid shrunk by 2 in the $x$-direction.
+		\question \boxed{I} -- A cone shrunk by 2 in the $x$-direction.
+		\question \boxed{VIII} -- An ellipsoidal cylinder shrunk by 2 in the $x$-direction.
+		\question \boxed{V} -- $x$ and $z$ have opposite signs, so hyperbolic paraboloid.
 	\end{questions}
 \clearpage
 \setcounter{question}{6}
@@ -120,11 +133,21 @@
 		\part Sketch the curve defined by 
 			$r(t) = \langle 5t \sin(3t), 6t \cos(3t), t^2\rangle$. 
 			Find a quadratic surface on which this curve lives.
-
+			\begin{solution}
+				Let $t = \sqrt{z}$. Then all points on r(t) satisfy the equation
+				$$\boxed{z^2 = \frac{x^2}{25} + \frac{y^2}{36}}$$
+				\\\\\\\\\\\\\\\\\\\\\\\\\\ %sketch space
+			\end{solution}
+			
 		\part Sketch the curve defined by 
 			$r(t) = \langle 3 + 5 \sin(t^4), 2 - 6 \sin(t^4), 3 + 7 \sin(t^4) \rangle$. 
 			Find a two-dimensional surface on which this curve lives 
 			(there are an infinite number).
+			\begin{solution}
+				% TODO
+				parametric equation of a line!!!
+				\\\\\\\\\\\\\\\\\\\\\\\\\\ %sketch space
+			\end{solution}
 	\end{parts}
 \clearpage
 %8
