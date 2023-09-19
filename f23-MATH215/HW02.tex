@@ -118,8 +118,8 @@
 		\setcounter{question}{22}
 		\question \boxed{VII} -- scaled by $\frac{1}{3}$ in $z$ direction and $\frac{1}{2}$ in $y$.
 		\question \boxed{IV} -- same as problem 23 but switch $z$ and $x$.
-		\question \boxed{II} -- can be rearranged to $y^2+1=x^2+z^2 \Rightarrow$ circles around y-axis which increase radius starting from 1 at the origin. Approaches a linear increase in radius, but not quite because of the $+1$ term. Symmetrical across $xz$ plane because $y$ is squared.
-		\question \boxed{III} -- Same as 25, except the $-1$ causes no solutions until $y=1$. 
+		\question \boxed{II} -- can be rearranged to $y^2+1=x^2+z^2 \Rightarrow$ circles around y-axis which increase radius starting from 1 at the origin. Approaches a linear increase in radius, but not quite because of the $+1$ term. Symmetrical across $xz$ plane because $y$ is squared. Hyperboloid of one sheet
+		\question \boxed{III} -- Same as 25, except the $-1$ causes no solutions until $y=1$. Thus hyperboloid of two sheets.
 		\question \boxed{VI} -- A paraboloid shrunk by 2 in the $x$-direction.
 		\question \boxed{I} -- A cone shrunk by 2 in the $x$-direction.
 		\question \boxed{VIII} -- An ellipsoidal cylinder shrunk by 2 in the $x$-direction.
@@ -145,8 +145,8 @@
 			(there are an infinite number).
 			\begin{solution}
 				% TODO
-				parametric equation of a line!!!
-				\\\\\\\\\\\\\\\\\\\\\\\\\\ %sketch space
+				Since $\sin(t^4)$ is present in all three coordinates, we can reparameterize with $s = \sin(t^4)$, which simply gives us the parametric equation of a line, $\langle 3+5s, 2-6s, 3+7s \langle$. The plane then can be constructed using any orthogonal vector as the normal. Crossing $\langle 1,0,0 \rangle$ with $\langle 5,-6,7 \rangle$ grants $\langle 0, -7, -6 \rangle$, and using the point at $s = 0$ as a reference, we find the plane 
+				\[ \boxed{\langle 0, -7, -6 \rangle \cdot (x - 3, y - 2, z - 3) = 0} \tag*{\qed} \]
 			\end{solution}
 	\end{parts}
 \clearpage
@@ -158,8 +158,20 @@
 	\begin{parts}
 		\part Sketch the tower. Make sure to label your sketch with relevant 
 		diameters, heights, and the location of the origin.
+		\begin{solution}
+			\\\\\\\\\\\\\\\\\\\\\\\\\\ %sketch space
+		\end{solution}
 
 		\part Find an equation of the tower, i.e., find $a, b$, and $c$.
+		\begin{solution}
+			When $z = 0$, $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$. We also know that the base is a circle, so $a$ and $b$ must be the same and be equal to the radius. Hence, $a, b = 40$. \\
+			Additionally, at $z=30$, the radius is 20. Considering the point $(20, 0, 30)$, 
+			\begin{align*}
+				\frac{20^2}{40^2} - \frac{30^2}{c^2} &= 1 \\
+				\frac{c^2}{4} - 30^2 &= c^2
+				% TODO this isnt right
+			\end{align*}
+		\end{solution}
 	\end{parts}
 \clearpage
 
