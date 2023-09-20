@@ -164,27 +164,56 @@
 
 		\part Find an equation of the tower, i.e., find $a, b$, and $c$.
 		\begin{solution}
-			When $z = 0$, $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$. We also know that the base is a circle, so $a$ and $b$ must be the same and be equal to the radius. Hence, $a, b = 40$. \\
-			Additionally, at $z=30$, the radius is 20. Considering the point $(20, 0, 30)$, 
+			Letting ground level be $z=0$, the $z$ term must have $(z-30)^2$ instead of $z^2$ since a hyperboloid reaches its thinnest point when the $z$ term is 0. Since the tower is circular and not elliptical, a and b are the same. Considering the point $(20, 0, 30)$:
 			\begin{align*}
-				\frac{20^2}{40^2} - \frac{30^2}{c^2} &= 1 \\
-				\frac{c^2}{4} - 30^2 &= c^2
-				% TODO this isnt right
+				\frac{20^2}{a^2} + \frac{0}{b^2} - \frac{0}{c^2} &= 1 \\
+				\frac{20^2}{a^2} &= 1 \\
+				a^2 &= 20^2 \\
+				a,b &= 20
+			\end{align*}\\
+			
+			When $z = 0$, . 
+			\begin{align*}
+				\frac{40^2}{20^2} + \frac{40^2}{20^2} - 1 &= \frac{30^2}{c^2} \\
+				3 &= \frac{30^2}{c^2} \\
+				c^2 &= 30 \cdot 10 \\
+				c &= \sqrt{300} \tag*{\qed}
 			\end{align*}
+			
 		\end{solution}
 	\end{parts}
 \clearpage
 
 %9
 \question Two jets travel simultaneously according to the vector equations
-	$$\bold{r_1}(t) = \langle 2, -1, 3 \rangle + t \langle 4, 2, 8 \rangle 
+	$$\mathbf{r_1}(t) = \langle 2, -1, 3 \rangle + t \langle 4, 2, 8 \rangle 
 	\text{ and }
-	\bold{r_2}(t) = \langle -1, -3, 1\rangle + t \langle 1, 4, -2\rangle$$
+	\mathbf{r_2}(t) = \langle -1, -3, 1\rangle + t \langle 1, 4, -2\rangle$$
 	Let time $t$ be measured in seconds and positions measured in kilometers.
 	\begin{parts}
 		\part Find the shortest distance between the jets, and the time at 
 			which this occurs.
+
+		\begin{solution}
+			The distance between the jets is given by 
+			\begin{align*}
+				d &= \sqrt{(t(1-4)-1-2)^2 + (t(4-2)-3+1)^2 + (t(-2 - 8) + 1 - 3)^2} \\
+				&= \sqrt{(-3t-3)^2 + (2t - 2)^2 + (-10t - 2)^2} \\
+				&= \sqrt{9t^2+18t+9 + 4t^2 - 4t + 4 + 100t^2 + 20t + 4} \\
+				&= \sqrt{113t^2 + 50t + 17}
+			\end{align*}
+			Taking the derivative of distance with respect to $t$ grants the critical point $\boxed{t=-\frac{113}{25}}$. This must be the minimum, since the derivative is linear. The distance is $\boxed{45.82177648 \text{ km}}$. \qed
+		\end{solution}
 		\part Find the shortest distance between the trajectories of the jets.
+		\begin{solution}
+			To find the shortest distance, we can find two parallel planes which pass through each line, and find the distance between them. This can be done by finding an orthogonal vector through the cross product, and using the given points from the parametric equations.
+			\begin{align*}
+				\mathbf{n} = \mathbf{r}_1 \times \mathbf{r}_2 &= \langle -36, 16, 14 \rangle \\
+				P_1 &= \langle -36, 16, 14 \rangle \cdot \langle x-2, y+1, z-3 \rangle \\
+				|\mathbf{r}_2(0) \text{ to } P_1| &= \frac{|-36(-1 - 2) + 16(-3 + 1) + 14(1 - 3)|}{\sqrt{36^2+16^2+14^2}} \\
+				&= \boxed{ 1.14807569576 \text{km} \tag*{\qed}}
+			\end{align*}
+		\end{solution}
 	\end{parts}
 \clearpage
 %10
@@ -193,11 +222,29 @@
 	\begin{parts}
 		\part Find a parametric equation for the line of sight between the 
 			two people.
+			\begin{solution}
+				\[ \mathbf{r}(t) = \langle 1, 0, 2 \rangle + t \langle 1, 2, 1 \rangle\tag*{\qed} \]
+			\end{solution}
 		\part Between the two people is a hot air balloon in the shape of a 
-			sphere, centered at $(0, -1, 1)$ and with radius 2. Can the two
+			sphere, centered at $(0, -1, 1)$ and with radius 2/3. Can the two
 			people see each other, or is the line of sight blocked by the 
 			sphere? If the line of sight is blocked, find the points on the
 			sphere that each person sees.
+			\begin{solution}
+				The equation of the sphere is $x^2+(y+1)^2+(z-1)^2 = \frac{4}{9}$. Using the parametric equation for the line, we get the system
+				\[ \begin{cases}
+					x^2+(y+1)^2+(z-1)^2 = \frac{4}{9}\\
+					y=2x-2 \\
+					z = x + 1
+				\end{cases} \]
+				After solving this system, we find the intersections 
+				\begin{align*}
+					\boxed{\left( \frac{1}{18} (6 + \sqrt{6}), \frac{1}{9} (\sqrt{6} - 12), \frac{1}{18} (24 + \sqrt{6}) \right) }\\
+					&\text{and} \\
+					\boxed{\left( \frac{1}{18} (6 - \sqrt{6}), \frac{1}{9} (-12 - \sqrt{6}), \frac{1}{18} (24 - \sqrt{6}\right)}
+				\end{align*}
+				Since there are intersections, their line of sight is blocked by the sphere. \qed
+			\end{solution}
 	\end{parts}
 
 \end{questions}
