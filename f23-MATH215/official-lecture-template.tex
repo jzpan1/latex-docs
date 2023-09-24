@@ -1,0 +1,298 @@
+%April 26, 2011
+
+% why did prof vig send me the lecture template i asked for the homework...
+\documentclass[11pt]{article}
+\usepackage[letterpaper,hmargin=0.5in,vmargin=.5in]{geometry}
+
+
+\usepackage{amsmath,amsthm,amssymb,graphics,color}
+\usepackage{hyperref} 
+\usepackage{xcolor}
+\usepackage[english]{babel}
+\usepackage{tikz}
+\usepackage[]{geometry}
+\usetikzlibrary{quotes,angles}
+\usepackage{graphicx}
+%\usepackage[skip=2pt,font=scriptsize]{caption}
+%\usepackage[colorlinks=true,
+%inkcolor=blue]{hyperref}
+%\usepackage{phaistos}
+
+
+%\usepackage[latin9]{inputenc}
+
+
+
+\usepackage{subcaption}
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{esvect}
+\usepackage{float}
+\usepackage{array}
+\usepackage{esvect}
+\usepackage{float}
+\usepackage{array}
+\usepackage{tensor}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{bbm}
+\usepackage{dsfont}
+
+
+
+\newcommand*{\vertbar}{\rule[1ex]{0.5pt}{2.5ex}}
+\newcommand*{\horzbar}{\rule[0.5ex]{2.5ex}{0.5pt}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\ka}{\kappa}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\cn}{\text{cn}}
+\newcommand{\sn}{\text{sn}}
+\newcommand{\am}{\text{am}}
+\newcommand{\res}{\text{res}}
+\newcommand{\Id}{\text{Id}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\Ext}{\text{Ext}}
+\newcommand{\Tor}{\text{Tor}}
+\newcommand{\rk}{\text{rk}}
+\newcommand{\Span}{\text{Span}}
+\newcommand{\op}{\text{Op}}
+\newcommand{\supp}{\text{supp}}
+\newcommand{\dist}{\text{dist}}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\1}{\mathds{1}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\cov}{\text{Cov}}
+
+\newtheorem{theo}{Theorem}[section]
+\newtheorem{prop}[theo]{Proposition}
+\newtheorem{coro}[theo]{Corollary}
+\newtheorem{lemm}[theo]{Lemma}
+\newtheorem{conj}[theo]{Conjecture}
+\newtheorem*{ques}{Question}
+\newtheorem*{comm}{Comment}
+\newtheorem*{resp}{Response}
+\theoremstyle{definition}
+\newtheorem{def1}[theo]{Definition}
+\theoremstyle{remark}
+\newtheorem{rema}[theo]{Remark}
+
+
+
+\newcommand{\Op}{\operatorname{Op}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\nwc}{\newcommand}
+\nwc{\Oph}{\operatorname{Op}_\hbar}
+\nwc{\la}{\langle}
+\nwc{\ra}{\rangle}
+
+\nwc{\mf}{\mathbf} %Latex (as in \bf not tilted math letters)
+\nwc{\blds}{\boldsymbol} %Latex 
+\nwc{\ml}{\mathcal} %Latex
+
+
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Re}}
+
+
+\newcommand{\rr}{r}
+\newcommand{\inv}{^{-1}}
+\newcommand{\szego}{Szeg\"o\ }
+\newcommand{\sm}{\setminus}
+\newcommand{\kahler}{K\"ahler\ }
+\newcommand{\sqrtn}{\sqrt{N}}
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\dd}{\\ \\ \\ \noindent}
+\newcommand{\dds}{\\ \\ \\ \\ \\ \\ \noindent}
+\newcommand{\al}{\noindent}
+\newcommand{\ex}{\al \textbf{Example:} }
+
+\renewcommand{\d}{\partial}
+\newcommand{\dbar}{\bar\partial}
+\newcommand{\ddbar}{\partial\dbar}
+\newcommand{\sech}{\mbox{sech}}
+
+
+\newcommand{\half}{{\frac{1}{2}}}
+\newcommand{\vol}{{\operatorname{Vol}}}
+\newcommand{\codim}{{\operatorname{codim\,}}}
+\newcommand{\SU}{{\operatorname{SU}}}
+\newcommand{\FS}{{{\operatorname{FS}}}}
+\newcommand{\corr}{{\operatorname{Corr}}}
+
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\eqd}{\buildrel {\operatorname{def}}\over =}
+\newcommand{\nhat}{\raisebox{2pt}{$\wh{\ }$}}
+
+
+\newcommand{\go}{\mathfrak}
+
+
+
+\newtheorem{maintheo}{{\sc Theorem}}
+\newtheorem{mainprop}{{\sc Proposition}}
+\newtheorem{mainlem}{{\sc Lemma}}
+\newtheorem{maincor}{{\sc Corollary}}
+\newtheorem{maindefin}{{\sc Definition}}
+%\newtheorem{theo}{{\sc Theorem}}
+\newtheorem{cor}[theo]{{\sc Corollary}}
+\newtheorem{lem}[theo]{{\sc Lemma}}
+%\newtheorem{prop}[theo]{{\sc Proposition}}
+\newenvironment{example}{\medskip\noindent{\it Example:\/} }{\medskip}
+\newenvironment{rem}{\medskip\noindent{\it Remark:\/} }{\medskip}
+\newenvironment{defn}{\medskip\noindent{\it Definition:\/} }{\medskip}
+\newenvironment{claim}{\medskip\noindent{\it Claim:\/} }{\medskip}
+\addtolength{\baselineskip}{1pt}
+
+
+
+\newcommand{\pink}[1]{{\color{pink}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\brown}[1]{{\color{brown}{#1}}}
+\newcommand{\black}[1]{\color{black}}
+
+\newcommand{\vs}{\vspace{0.2in}}
+\linespread{1.25}
+
+
+\newcommand{\np}{\newpage \al}
+
+%\title{Math 425 Notes}
+%\date{}
+
+
+%\author{}
+%\address{Department of Mathematics, University of Michigan, Ann Arbor, MI 48109, USA} \email{vig@umich.edu}
+
+
+
+\begin{document}
+	%\maketitle
+	\pagenumbering{gobble}
+	
+	\al \large \textbf{{Week 4, Lectures 9,10,11}}
+	\\
+	\\
+	\textbf{Game plan for this week:} Functions of multiple variables!
+	\\
+	\\
+	\textbf{Review:}
+	\\
+	\\
+	\textbf{Velocity, speed and acceleration:}
+	% \begin{figure}[h!]
+	% 	\includegraphics[scale = 0.6]{accel1}
+	% 	\includegraphics[scale = 0.6]{accel2}
+	% \end{figure}\\
+	\textbf{Centripetal Force:}
+	% \begin{figure}[h!]
+	% 	\includegraphics[scale = 0.7]{cptl}
+	% \end{figure}\\
+	\textbf{Ballistic motion:}
+	% \begin{figure}[h!]
+	% 	\includegraphics[scale = 0.7]{ballistic}
+	% \end{figure}\\
+	\textbf{Normal and tangential acceleration:}\\
+	% \begin{figure}[h!]
+	% 	\includegraphics[scale = 0.7]{nta}
+	% \end{figure}
+	\newpage
+	\al \textbf{Functions:}\\
+	% \begin{figure}[h!]
+	% 	% \includegraphics[scale = 0.75]{functions}
+	% \end{figure}\\
+	\textbf{Domain and range:}
+	\dds
+	\textbf{Independent and dependent variables:}
+	\dds
+	\ex My dialing in recipe for espresso:\\
+	\dd
+	\ex What are the domain and range of $f(x) = \sqrt{9 - x^2 - y^2}$?\\
+	\np
+	\textbf{Graphs:}\\
+	% 	\begin{figure}[h!]
+	% 	\includegraphics[scale = 0.75]{graph}
+	% \end{figure}\\
+	\textbf{Level sets:} also called countour lines\\
+	% \begin{figure}[h!]
+	% 	\includegraphics[scale = 0.55]{ct3}
+	% 	\includegraphics[scale = 0.5]{level}
+	% \end{figure}\\
+	\textbf{Functions of $3$ variables:}
+	\dds
+	\textbf{Notation:} In general, it is cumbersome to write $(x,y,z)$ or $(x_1, x_2, \cdots, x_n)$.
+	\np
+	\textbf{A collage of beautiful contour lines:}
+	% \begin{figure}[h!]
+	% 	\includegraphics[scale = 0.25]{ct1}
+	% 	\includegraphics[scale = 0.25]{ct2}\\
+	% 	\includegraphics[scale = 0.45]{ct4}
+	% 		\includegraphics[scale = 0.25]{ct6}\\
+	% 		\includegraphics[scale = 0.45]{ct5}
+	% \end{figure}
+	\np
+	\textbf{Limits:} (briefly)
+	% 	\begin{figure}[h!]
+	% 	\includegraphics[scale = 0.75]{continuity}
+	% \end{figure}\\
+	\textbf{Continuity:}
+	\dd
+	\textbf{Partial derivatives:}
+	% 	\begin{figure}[h!]
+	% 	\includegraphics[scale = 0.45]{partials}\\
+	% 	\includegraphics[scale = 0.75]{partialgraph}
+	% \end{figure}\\
+\np
+	\ex What are the partial derivatives of $\sin x \cos y$?
+	\dds
+	\ex If we have an implicitly defined function for $z = f(x,y)$ according to the equation $x^3 + y^3 + z^3 + 6xyz = 1$, find the partials of $f$.
+	\dds
+	\textbf{Higher order partials:}
+	\dds
+	\textbf{Clairaut's theorem:}
+	\dds
+	\textbf{A glance at PDE:}
+	\np
+	\textbf{Nodal sets:} (for fun)
+	% \begin{figure}[h!]
+	% 	\includegraphics[scale = 0.25]{nodal1}
+	% 	\includegraphics[scale = 0.25]{nodal2}
+	% 			\includegraphics[scale = 0.5]{nodal3}
+	% 	\includegraphics[scale = 0.4]{nodal4}
+	% 			\includegraphics[scale = 0.4]{nodal5}
+	% 			\includegraphics[scale = 0.4]{nodal6}
+	% 			\includegraphics[scale = 1.5]{steve}
+	% \end{figure}
+\np
+	\textbf{Tangent planes:}
+	% 		\begin{figure}[h!]
+	% 	\includegraphics[scale = 0.75]{tangent}\\
+	% 	\includegraphics[scale = 0.45]{tangent2}
+	% \end{figure}\\
+	\textbf{Equation of the tangent plane:}
+	% \begin{figure}[h!]
+	% 	\includegraphics[scale = 0.45]{tangenteq}
+	% \end{figure}\\
+	\textbf{Linearization:} (really affine)
+	\\ \dd
+	\textbf{Continuity:} If derivatives exist and are continuous near a point, then the function is differentiable there.
+	\np
+	\textbf{Total differential:}\dds\\\\
+	% \includegraphics[scale = 0.5]{dz}
+	\\
+	\\
+	\ex If $f(x,y) = 3x^2 + 2xy + y^4$, find the differential $df$.
+	
+	%	\includegraphics[scale = 0.7]{lln}
+\end{document}
