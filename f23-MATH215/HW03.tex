@@ -14,7 +14,7 @@
 % 	Define vars here 	%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\hwName{Homework Set 3: §13.1 – 13.4}
+\def\hwName{Homework Set 3: §13.1 - 13.4}
 \author{Zhengyu James Pan} %use like \@author
 \def\email{jzpan@umich.edu}
 \makeatletter
@@ -154,13 +154,40 @@ spiral. Show that the angle $\varphi$ between the position vector $\mathbf{r}(t)
 	\begin{parts} 
 		\part What is the length of the unwound thread (that is, the purple line segment) as a function of $\theta$?
 			\begin{solution}
-				Since the thread is taut around the circumference of the circle, it the length unraveled is equal to the arclength which $\theta$ has already passed through. This is equal to $\boxed{\theta \cdot 2\pi R}$.
+				Since the thread is taut around the circumference of the circle, it the length unraveled is equal to the arclength which $\theta$ has already passed through. This is equal to $\boxed{R\theta }$.
 			\end{solution}
 		\part What is $\mathbf{r}(\theta)$? Hint: It may help to first find the vector that moves from the origin to the edge ofthe circle (the green line in the diagram) and then find the vector that moves from the edge of the circle to the involute (the purple line in the diagram).
 			\begin{solution}
-				We need a vector with direction perpendicular to the radius and a magnitude equal to the length of the string. The direction can be given by $\langle -\cos(\theta), \sin(\theta) \rangle$. Multiplying by the magnitude, we get $\boxed{\mathbf{r}(\theta) = \langle -2\pi R\theta\cos(\theta), \sin-2\pi R\theta(\theta) \rangle}$
+				The green vector can simply use the parametric equation of a circle with radius $R$:  $\langle R\cos(\theta), R\sin(\theta) \rangle$. \\
+				The purple vector is a vector with direction perpendicular to the radius and a magnitude equal to the length of the string. The direction can be given by $\langle \sin(\theta), -\cos(\theta) \rangle$. Multiplying by the magnitude, we get $\langle R\theta\sin(\theta), -R\theta\cos(\theta) \rangle$. Adding the two together, we find $\boxed{\mathbf{r}(\theta) = \langle R\cos(\theta) + R\theta\sin (\theta), R\sin(\theta) - R\theta\cos(\theta) \rangle}$. \qed
 			\end{solution}
-		\part 
+		\part What is the length of the curve from $\theta = 0$ to $\theta = b$?
+			\begin{solution}
+				Using the arclength formula:
+				
+				\begin{align*}
+					\int_{0}^{b} \sqrt{(\frac{dx}{d\theta})^2+ (\frac{dx}{d\theta})^2} &= \int_{0}^{b} R\sqrt{(\theta \cos(\theta) + \sin(\theta) - \sin(\theta))^2 + (\theta \sin(\theta) + \cos(\theta) - \cos(\theta))^2} d\theta \\
+					&= \int_{0}^{b} R\sqrt{(\theta \cos(\theta) )^2 + (\theta \sin(\theta))^2} d\theta \\
+					&= \int_{0}^{b} R\sqrt{\theta^2} d\theta \\
+					&= \int_{0}^{b} R\theta d\theta \\
+					&= \boxed{\frac{Rb^2}{2}} \tag*{\qed}
+				\end{align*}
+			\end{solution}
+		\part Parametrize the circle involute in terms of arc length.
+			\begin{solution}
+				We found the arclength $s=\frac{R\theta^2}{2}$. The parametrization in terms of $s$ is thus
+				\[ \boxed{\mathbf{r}(s) = \langle R\cos\left(\sqrt{\frac{2s}{R}}\right) + R\sqrt{\frac{2s}{R}}\sin \left(\sqrt{\frac{2s}{R}}\right), R\sin\left(\sqrt{\frac{2s}{R}}\right) - R\sqrt{\frac{2s}{R}}\cos\left(\sqrt{\frac{2s}{R}}\right) \rangle} \]
+			\end{solution}
+		\part Compute the curvature of the circle involute. \textit{Hint:} The book contains several different ways to compute the curvature $\kappa$. Some may be easier than others. 
+			\begin{solution}
+				We can compute the curvature by calculating the magnitude of the derivative of the unit tangent vector $\bm{T'}(\theta)$ and dividing by the magnitude of the tangent vector $\mathbf{r'}(\theta)$. 
+				The tangent vector is 
+				\begin{align*}
+					\mathbf{r'}(\theta) &= \langle -R\sin(\theta) + R\sin (\theta) + R\theta\cos(\theta), R\cos(\theta) - R\cos(\theta) + R\theta\sin(\theta)\rangle \\
+					&= \langle R\theta\cos(\theta), R\theta\sin(\theta) \rangle
+				\end{align*}
+				Of course, the unit tangent vector is then just the parametric equation of a circle. The derivative of the unit tangent vector is still a parametric circle, so it has magnitude 1. The tangent vector has magnitude $R\theta$, so the curvature of the involute is \[\boxed{\frac{1}{R\theta}} \tag*{\qed}\]
+			\end{solution}
 	\end{parts}
 \end{questions}
 
