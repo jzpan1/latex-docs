@@ -46,10 +46,10 @@
 		\setcounter{question}{24}
 		\question \boxed{II} -- since $\sin(t)$ and $]cos(t)$ are multiplied by $t$, there is a spiral as circular arcs with increasing radius. y increases linearly.
 		\question \boxed{VI} -- circles with a sudden jump in z, corresponding to the asymptote in $\frac{1}{1+t^2}$
-		\question \boxed{V} -- 
-		\question \boxed{I} 
-		\question \boxed{IV}
-		\question \boxed{III}
+		\question \boxed{V} -- Starts with a y-value of 1, which decreases to ~0 at larger values of t. Is a parabola when projected to x-z plane.
+		\question \boxed{I} -- A circle viewed in x-y plane, z goes through two oscillations around the circle
+		\question \boxed{IV} -- Circles with constant radius, increasing z according to the exponential.
+		\question \boxed{III} -- Simple oscillations with linearly increasing z.
 	\end{questions}
 \clearpage
 \setcounter{question}{1}
@@ -97,11 +97,16 @@
 			\[ \boxed{\langle 1 - \frac{4}{\sqrt{6}}\cos(t), 2 + \sqrt{2}\sin(t) + \frac{2}{\sqrt{6}}\cos(t), 0 - \sqrt{2}\sin(t) + \frac{2}{\sqrt{6}}\cos(t) \rangle} \tag*{\qed} \]
 			
 		\end{solution}
+	\end{parts}
 		\clearpage
-		\thequestion \part Find parametric equations for two circles $C_1$ and $C_2$ in space such that \begin{itemize}
-			\item $C_1$ and $C_2$ have the same radius
-			\item $C_1$ and $C_2$ intersect at the points (0, 1, 0) and (0, 0, 1) and nowhere else.
-		\end{itemize}
+		\setcounter{question}{2}
+		\question \begin{parts} 
+			\setcounter{partno}{1}
+			\part Find parametric equations for two circles $C_1$ and $C_2$ in space such that 
+			\begin{itemize}
+				\item $C_1$ and $C_2$ have the same radius
+				\item $C_1$ and $C_2$ intersect at the points (0, 1, 0) and (0, 0, 1) and nowhere else.
+			\end{itemize}
 			\begin{solution}
 				We can create circles centered at (0, 0, 0) and (0, 1, 1) with radius 1. The equations for these would be 
 				\begin{center}
@@ -110,7 +115,7 @@
 					\[\boxed{C_2 = \langle 0, 1 + \sin(t), 1 + \cos(t)} \tag*{\qed} \]
 				\end{center}
 			\end{solution}
-	\end{parts}
+		\end{parts}
 \clearpage
 %4 
 \question Consider the curves C1 and C2 with parametrizations given by TODO
@@ -129,6 +134,7 @@ spiral. Show that the angle $\varphi$ between the position vector $\mathbf{r}(t)
 		The norms of $\mathbf{r}$ and $\mathbf{r'}$ respectively are $e^t$ and $\sqrt{5}e^t$, so the cos of the angle is thus a constant $\frac{1}{\sqrt{5}}$. Then 
 		\[ \arccos (\frac{1}{\sqrt{5}}) = \boxed{\varphi = 1.107148718} \tag*{\qed} \]
 	\end{solution}
+\clearpage
 %6
 \question A wheel of radius R traces out a cycloid.
 	\begin{parts}
@@ -161,6 +167,12 @@ spiral. Show that the angle $\varphi$ between the position vector $\mathbf{r}(t)
 				The green vector can simply use the parametric equation of a circle with radius $R$:  $\langle R\cos(\theta), R\sin(\theta) \rangle$. \\
 				The purple vector is a vector with direction perpendicular to the radius and a magnitude equal to the length of the string. The direction can be given by $\langle \sin(\theta), -\cos(\theta) \rangle$. Multiplying by the magnitude, we get $\langle R\theta\sin(\theta), -R\theta\cos(\theta) \rangle$. Adding the two together, we find $\boxed{\mathbf{r}(\theta) = \langle R\cos(\theta) + R\theta\sin (\theta), R\sin(\theta) - R\theta\cos(\theta) \rangle}$. \qed
 			\end{solution}
+		\clearpage
+		\end{parts}
+\setcounter{question}{6}
+\question 
+	\begin{parts}
+		\setcounter{partno}{2}
 		\part What is the length of the curve from $\theta = 0$ to $\theta = b$?
 			\begin{solution}
 				Using the arclength formula:
@@ -189,6 +201,32 @@ spiral. Show that the angle $\varphi$ between the position vector $\mathbf{r}(t)
 				Of course, the unit tangent vector is then just the parametric equation of a circle. The derivative of the unit tangent vector is still a parametric circle, so it has magnitude 1. The tangent vector has magnitude $R\theta$, so the curvature of the involute is \[\boxed{\frac{1}{R\theta}} \tag*{\qed}\]
 			\end{solution}
 	\end{parts}
+\clearpage
+%8
+\question A quarterback intends to throw a pass to score a touchdown. Suppose the quarterback is 20 yards from
+	the endzone, and the receiver is standing $\ln (21 + \sqrt{440})$ yards to the left of the quarterback. (The
+	receiver is very good at calculus, and so knows the correct position to stand at to make this work -- it is
+	approximately 3.737 yards, or just over 11 feet.) The receiver will always run directly at the location of
+	the ball (this is not the most efficient path to catching the ball, but it does allow for flexibility if plans
+	change, i.e. a member of the opposing team intercepts the ball). Because the ball is moving, this means
+	that the receiver will trace out a special curve called a catenary. For simplicity, suppose the receiver
+	is placed at the origin, and the quarterback is at the point $(\ln (21 + \sqrt{440}) , 0, 0)$. To make the play
+	as efficiently as possible, the quarterback wants the receiver to catch the ball as soon as they hit the
+	end zone, i.e. at the point $(\ln (21 + \sqrt{440}) , 20, 0)$. In this coordinate system, the path of the receiver is given by
+	\[ \mathbf{r}(x) = \langle x, \cosh(x) - 1, 0 \rangle \],
+	where we recall the definitions of the hyperbolic sine and cosine functions as given by
+	\[\sinh(x) = \frac{e^x-e^{-x}}{2} \text{ and } \cosh(x) = \frac{e^x + e^{-x}}{2}\]
+	\begin{parts}
+		\part If the quarterback can throw the ball with a speed of 50 feet per second, at what angle above the
+		ground should the quarterback throw the ball? Remember that the motion of the football is in the
+		$yz$-plane in this coordinate system, and the acceleration due to gravity is given by $\langle 0, 0, -g\rangle$, with
+		$g = 32 $ ft/s$^2$.
+		\part How fast does the receiver need to run in order to catch the ball?
+	\end{parts}
+\clearpage
+%9
+\question The Fresnel cosine integral, C, and the Fresnel sine integral, S are defined by
+	\[C(x) = \int_{0}^{x}\cos(u^2)du\text{ and } S(x) = \int_{0}^{x}\sin(u^2)du \]
 \end{questions}
 
 \end{document}
