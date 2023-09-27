@@ -118,7 +118,38 @@
 		\end{parts}
 \clearpage
 %4 
-\question Consider the curves C1 and C2 with parametrizations given by TODO
+\question Consider the curves $C_1$ and $C_2$ with parametrizations given by
+	\[ \mathbf{r_1}(t) = \left\langle t, 2t^2, - \frac{1}{t} \right\rangle \text{ and } \mathbf{r_2}(t)= \langle 1 - t, 2 \cos t, \sin t - 1 \rangle \]
+	\begin{parts}
+		\part Show that these two curves intersect, and find the point(s) of intersection.
+		\begin{solution}
+			For the curves to intersect, all three of $x$, $y$, and $z$ must be equal between both curves. Then 
+			\begin{align*}
+				\begin{cases}
+					t_1 + t_2 = 1 \\
+					2t_1^2 = 2\cos(t_2) \\
+					-\frac{1} {t_1} = \sin(t_2)-1
+				\end{cases}
+			\end{align*}
+			We prefer $t_1$ since it is equal to $x$.
+			\begin{align*}
+				\begin{cases}
+					t_1^2=\cos(1 - t_1) \\
+					-\frac{1} {t_1} + 1= \sin(1-t_1)
+				\end{cases}
+			\end{align*}
+			Unfortunately, I don't know how to solve this by hand, although $t_1 = 1$ can be found easily by guess and check. This corresponds to $\boxed{(1, 0, -1)}$.\qed
+		\end{solution}
+		\part Find the angle of intersection between the two curves at any points of intersection (i.e. the angle between the tangent vectors).
+			\begin{solution}
+				This is given by the dot product of unit tangent vectors. For $C_1$:
+				\[ \langle 1, 4t, \frac{1}{t^2} \rangle \div \sqrt{1+16t^2 + \frac{1}{t^4}}\]
+				For $C_2$: 
+				\[ \langle -1, -2\sin(t), \cos(t) \rangle \div \sqrt{1+4\sin^2(t)+\cos^2(t)} \]
+				At $x=1$, this dot product is equal to 
+				\[ \frac{-1 * 1 + 4 * 0 + 1 * 1 }{... \neq 0} = \frac{1 - 1}{...} = \boxed{0} \tag*{\qed}\]
+			\end{solution}
+	\end{parts}
 \clearpage
 %5
 \question The plane curve with parametrization $r(t) = \langle e^t \cos 2t, e^t \sin 2t\rangle, t \in \mathbb{R}$, is an example of a Bernoulli
