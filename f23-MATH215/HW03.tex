@@ -118,7 +118,38 @@
 		\end{parts}
 \clearpage
 %4 
-\question Consider the curves C1 and C2 with parametrizations given by TODO
+\question Consider the curves $C_1$ and $C_2$ with parametrizations given by
+	\[ \mathbf{r_1}(t) = \left\langle t, 2t^2, - \frac{1}{t} \right\rangle \text{ and } \mathbf{r_2}(t)= \langle 1 - t, 2 \cos t, \sin t - 1 \rangle \]
+	\begin{parts}
+		\part Show that these two curves intersect, and find the point(s) of intersection.
+		\begin{solution}
+			For the curves to intersect, all three of $x$, $y$, and $z$ must be equal between both curves. Then 
+			\begin{align*}
+				\begin{cases}
+					t_1 + t_2 = 1 \\
+					2t_1^2 = 2\cos(t_2) \\
+					-\frac{1} {t_1} = \sin(t_2)-1
+				\end{cases}
+			\end{align*}
+			We prefer $t_1$ since it is equal to $x$.
+			\begin{align*}
+				\begin{cases}
+					t_1^2=\cos(1 - t_1) \\
+					-\frac{1} {t_1} + 1= \sin(1-t_1)
+				\end{cases}
+			\end{align*}
+			Unfortunately, I don't know how to solve this by hand, although $t_1 = 1$ can be found easily by guess and check. This corresponds to $\boxed{(1, 0, -1)}$.\qed
+		\end{solution}
+		\part Find the angle of intersection between the two curves at any points of intersection (i.e. the angle between the tangent vectors).
+			\begin{solution}
+				This is given by the dot product of unit tangent vectors. For $C_1$:
+				\[ \langle 1, 4t, \frac{1}{t^2} \rangle \div \sqrt{1+16t^2 + \frac{1}{t^4}}\]
+				For $C_2$: 
+				\[ \langle -1, -2\sin(t), \cos(t) \rangle \div \sqrt{1+4\sin^2(t)+\cos^2(t)} \]
+				At $x=1$, this dot product is equal to 
+				\[ \frac{-1 * 1 + 4 * 0 + 1 * 1 }{... \neq 0} = \frac{1 - 1}{...} = \boxed{0} \tag*{\qed}\]
+			\end{solution}
+	\end{parts}
 \clearpage
 %5
 \question The plane curve with parametrization $r(t) = \langle e^t \cos 2t, e^t \sin 2t\rangle, t \in \mathbb{R}$, is an example of a Bernoulli
@@ -213,21 +244,84 @@ spiral. Show that the angle $\varphi$ between the position vector $\mathbf{r}(t)
 	is placed at the origin, and the quarterback is at the point $(\ln (21 + \sqrt{440}) , 0, 0)$. To make the play
 	as efficiently as possible, the quarterback wants the receiver to catch the ball as soon as they hit the
 	end zone, i.e. at the point $(\ln (21 + \sqrt{440}) , 20, 0)$. In this coordinate system, the path of the receiver is given by
-	\[ \mathbf{r}(x) = \langle x, \cosh(x) - 1, 0 \rangle \],
+	\[ \mathbf{r}(x) = \langle x, \cosh(x) - 1, 0 \rangle, \]
 	where we recall the definitions of the hyperbolic sine and cosine functions as given by
 	\[\sinh(x) = \frac{e^x-e^{-x}}{2} \text{ and } \cosh(x) = \frac{e^x + e^{-x}}{2}\]
 	\begin{parts}
-		\part If the quarterback can throw the ball with a speed of 50 feet per second, at what angle above the ground should the quarterback throw the ball? Remember that the motion of the football is in the $yz$-plane in this coordinate system, and the acceleration due to gravity is given by $\langle 0, 0, -g\rangle$, with
+		\part If the quarterback can throw the ball with a speed of 50 feet per second, at what angle above the
+		ground should the quarterback throw the ball? Remember that the motion of the football is in the
+		$yz$-plane in this coordinate system, and the acceleration due to gravity is given by $\langle 0, 0, -g\rangle$, with
 		$g = 32 $ ft/s$^2$.
+			\begin{solution}
+				Let $\theta$ be the angle at which the quarterback throws the ball. Then the ball's path by time can be parameterized as 
+				\[ \left\langle \ln (21 + \sqrt{440}) , 50\cos(\theta)t, -\frac{g}{2}t^2+50\sin(\theta)t \right\rangle.\]
+				We know that at time $t_f$ when the ball lands/is caught, the z-coordinate is 0. So, $t_f=\frac{100\sin(\theta)}{g}$. Utilizing the additional fact that the y-coordinate will be 20 at $t_f$, we find that 
+				\begin{align*}
+					\frac{5000\sin\cos(\theta)}{g} &= 20 \\
+					\frac{2500\sin(2\theta)}{g} &= 20 \\
+					\theta &= \frac{\arcsin\left(\frac{20g}{2500}\right)}{2} \\
+					\theta &= \boxed{0.1294410168 \text{ rad} = 7.41642396^\circ} \tag*{\qed}
+				\end{align*}
+			\end{solution}
+		\clearpage
+		\end{parts}
+\setcounter{question}{7}
+\question 
+	\begin{parts}
+		\setcounter{partno}{1}
 		\part How fast does the receiver need to run in order to catch the ball?
+			\begin{solution}
+				Taking derivatives with respect to $x$, the total arclength of the receiver's path is 
+				\begin{align*}
+					\int_{0}^{\ln (21 + \sqrt{440})} \sqrt{1 + (-\sinh(x))^2}dx &= \int_{0}^{\ln (21 + \sqrt{440})} \sqrt{1+\frac{(e^x-e^{-x})^2}{4}}dx \\
+					&= \int_{0}^{\ln (21 + \sqrt{440})} \sqrt{1+\frac{e^2x+2+e^{-2x}}{4}}dx \\
+					&= \int_{0}^{\ln (21 + \sqrt{440})} \sqrt{\cosh^2(x)}dx \\
+					&= \int_{0}^{\ln (21 + \sqrt{440})} \cosh(x)dx \\
+					&= \sinh(\ln (21 + \sqrt{440})) - 0 \\\\
+					&= \frac{21+\sqrt{440} - \frac{1}{21+\sqrt{440}}}{2} \\
+					&= 2\sqrt{110}
+				\end{align*}
+				This is the distance the receiver needs to run within time $t_f$. Thus the speed he needs to run is $\frac{2\sqrt{110}}{0.40337455} = \boxed{52.00173626 \text{ft/s}}$. \qed
+			\end{solution}
 	\end{parts}
 \clearpage
 %9
 \question The Fresnel cosine integral, C, and the Fresnel sine integral, S are defined by
-	\[C(x) = \int_{0}^{x}\cos(u^2)du\text{ and } S(x) = \int_{0}^{x}\sin(u^2)du \]
+	\[C(x) = \int_{0}^{x}\cos(u^2)du\text{ and } S(x) = \int_{0}^{x}\sin(u^2)du. \]
+	The Cornu spiral is the space curve parametrized by the vector valued function $\mathbf{r}(t) = \langle S(t), C(t)\rangle$ for $t\in \mathbb{R}$.
 	\begin{parts}
 		\part Show that $\mathbf{r}(t)$ parametrizes the Cornu spiral by arc length.
+		\begin{solution}
+			The arclength of the Cornu spiral from $t=0$ to $t=s$ using this parameterization is 
+			\begin{align*}
+				\int_{0}^{s} \sqrt{\left(\frac{dx}{d\theta}\right)^2+ \left(\frac{dx}{d\theta}\right)^2} &= \int_{0}^{s} \sqrt{\cos^2(t^2)+\sin^2(t^2)}dt \\
+				&= \int_{0}^{s} \sqrt{1}dt \\
+				&= \int_{0}^{s} 1 dt \\
+				&= s
+			\end{align*}
+			Therefore the arclength from $\mathbf{r}(0)$ to $\mathbf{r}(t)$ is simply $t$. \qed
+		\end{solution}
 		\part Show that, for $t \geq 0$, the curvature of a Cornu spiral is a linear function of arc length. Hint: The book contains several different ways to compute the curvature $\kappa$. Some may be easier than others.
+		\begin{solution}
+			The curvature is equal to $\left|\frac{dT}{ds}\right|$, equivalently $\left|\frac{\frac{dT}{dt}}{\frac{ds}{dt}}\right|$. Since we established that $s=t$, it follows that $\frac{ds}{dt} = 1$.
+			So, we simply find derivative of the tangential vector.
+			\begin{align*}
+				T &= \frac{\mathbf{r}'(t)}{ \left|\mathbf{r}'(t)\right| } \\
+				&= \langle \cos(t^2), \sin(t^2) \rangle \div \sqrt{\cos^2(t^2)+\sin^2(t^2)}\\
+				&= \langle \cos(t^2), \sin(t^2) \rangle \div 1 \\
+				&= \langle \cos(t^2), \sin(t^2) \rangle \\
+				T' &= \langle - 2t\sin(t^2), 2t\cos(t^2) \rangle
+			\end{align*}
+			Then, the norm of $T'$ is 
+			\begin{align*}
+				\sqrt{4t^2\sin^2(t^2) + 4t^2\cos^2(t^2)} &= \sqrt{4t^2} \\
+				&= \boxed{2t} \tag*{\qed}
+			\end{align*}
+		\end{solution}
+		\part Cornu spirals are used when designing highway exit ramps. Offer an explanation for why they might be used in such a way. 
+		\begin{solution}
+			Since Cornu spirals have linearly increasing curvature, it provides a very even transition for cars driving along the ramp, without any sudden changes in curvature which could cause dangerous bumps. \qed
+		\end{solution}
 	\end{parts}
 \end{questions}
 
