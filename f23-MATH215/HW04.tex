@@ -78,6 +78,58 @@
 	\begin{parts}
 		\part 
 	\end{parts}
+
+%8
+\question 
+%9
+\question Consider the function 
+	\begin{equation*}
+		f(x,y) = 
+		\begin{cases}
+			\frac{x^3y-xy^3}{x^2+y^2} & \text{ if } (x,y) \neq (0, 0) \\
+			0 &\text{ if } (x,y) \neq (0, 0)
+		\end{cases}
+	\end{equation*}
+	\begin{parts}
+		\part Based on the plot of the level curves above, does it appear that $f$ is continuous at (0, 0)? Explain.
+			\begin{solution}
+				No, it does not appear to be continuous because the contour lines are not continued at (0, 0). Thus, it looks like an open point or sudden jump in the function.
+			\end{solution}
+		\part Find $f_x(x, y)$ and $f_y (x, y)$ when $(x, y) \neq (0, 0)$.
+			\begin{solution}
+				\begin{align*}
+					f_x(x,y) &= \frac{(x^2+y^2)(3x^2y-y^3)-(x^3y-xy^3)(2x)}{(x^2+y^2)^2} \\
+					&= \frac{3 x^4 y - x^2 y^3 + 3 x^2 y^3 - y^5 - 2 x^4 y + 2x^2 y^3}{(x^2 + y^2)} \\
+					&= \boxed{\frac{x^4y + 4x^2y^3 - y^5}{(x^2+y^2)^2}} \\\\
+					f_y(x, y) &= \frac{(x^2+y^2)(x^3-3xy^2)-(x^3y-xy^3)(2y)}{(x^2+y^2)^2} \\
+					&= \frac{x^5 - 3 x^3 y^2 + x^3 y^2 - 3 x y^4 - 2 x^3 y^2 + 2 x y^4}{(x^2+y^2)^2} \\
+					&= \boxed{\frac{x^5 - 4 x^3 y^2 - x y^4}{(x^2+y^2)^2}}
+					\tag*{\qed}
+				\end{align*}
+			\end{solution}
+		\part Can you use your answers from the previous part to find $f_x(0, 0)$ and $f_y (0, 0)$? Explain.
+			\begin{solution}
+				Yes, since the piecewise $f(0, 0) = 0$ patches the hole in $f$, so we can take the derivative at (0, 0).
+			\end{solution}
+		\part Using the definition of the partial derivative, find $f_x(0, 0)\text{ and }f_y (0, 0)$.
+			\begin{solution}
+				\begin{align*}
+					f_x (0, 0) &= \displaystyle\lim_{h\rightarrow0} \frac{f(0+h, 0) - f(0,0)}{h} \\
+					&= \displaystyle\lim_{h\rightarrow0} \frac{\frac{(x+h)^3y-(x+h)y^3}{(x+h)^2+y^2} - f(0,0)}{h} \\
+					&= \displaystyle\lim_{h\rightarrow0} \frac{\frac{0-0}{x^2+2hx+h^2} - 0}{h} \\
+					&= \displaystyle\lim_{h\rightarrow0} \frac{\frac{0}{h^2}}{h} \\
+					&= \boxed{0}\\\\
+					f_y (0, 0) &= \displaystyle\lim_{h\rightarrow0} \frac{f(0,0+h) - f(0,0)}{h} \\
+					&= \displaystyle\lim_{h\rightarrow0} \frac{\frac{x^3(y+h)-x(y+h)^3}{x^2+(y+h)^2} - 0}{h} \\
+					&= \displaystyle\lim_{h\rightarrow0} \frac{\frac{0}{h^2} - 0}{h}\\ 
+					&= \boxed{0}
+				\end{align*}
+			\end{solution}
+		\part Using the definition of the partial derivative, show $f_{xy} (0, 0) = -1\text{ and }f_{yx}(0, 0) = 1$.
+		\part Does the result from the previous part contradiction Clairaut's Theorem? Justify you reasoning.
+		Hint: Contour plots, possible generated using something similar to how we plotted a contour from
+		MatLab above, might be a way to help bolster your explanation.
+	\end{parts}
 \end{questions}
 
 \end{document}
