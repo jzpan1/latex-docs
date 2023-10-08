@@ -1,0 +1,78 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set}
+\author{Zhengyu James Pan} %use like \@author
+\def\email{jzpan@umich.edu}
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 215}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\begin{center}
+	\bf MATH 215 FALL 2023\\
+	\bf \hwName \\ 
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+\question
+\question
+\question
+\question
+\question
+\question
+\question
+%8
+\question The picture below shows the atmospheric pressure in hPa in Europe and the North Atlantic on October 11, 2022. You may find an atlas (or Google maps) helpful for this problem. Do not forget units.
+\begin{center}
+    \includegraphics*[scale=0.3]{images/05-map.png}
+\end{center}
+	\begin{parts}
+		\part What is the atmospheric pressure in Dublin?
+		\begin{solution}
+			About 1024 hPa.
+		\end{solution}
+		\part Standing in Dublin, in what direction is the atmospheric pressure increasing the fastest? What is
+		the rate of increase in this direction?
+			\begin{solution}
+				Atmospheric pressure is increasing the fastest in the direction slightly south of west, toward London (around the point labeled H, 1027). The distance to London is about 289 miles, or 465.1 km. Meanwhile, the distance to the 1020 contour is about 120 miles, or 193 km. Thus, we can estimate the rate of change as 
+				\begin{align*}
+					\frac{\frac{3}{465} + \frac{4}{193}}{2} = \boxed{0.01358850075\ \frac{\text{hPa}}{\text{km}}} \tag*{\qed}
+				\end{align*}
+			\end{solution}
+		\part Walking due south from the center of Dublin at a speed of 2 m/s, at what rate is the atmospheric pressure changing along the route?
+			\begin{solution}
+				In the direction of due south, the rate of change is about 0.01242741612 hPa per km, estimated from the distance from the 1020 contour to the 1024 contour in the due south direction. Multiplying this by 0.120 km (equivalent to 2 m per second) grants \boxed{0.00149128993\text{ hPa per second.}} \qed
+			\end{solution}
+		\part What are the lowest and highest air pressures indicated on the map, and where are they located, roughly? Can you locate any saddle points?
+			\begin{solution}
+				The lowest pressure points are 982 hPa, near Norway; 989 hPa, near Greenland; and 992 hPa, on the east coast of Greenland. The highest pressure points are 1030 hPa, at the very bottom of the map; and 1027 hPa, near London.
+			\end{solution}
+	\end{parts}
+\end{questions}
+
+\end{document}
