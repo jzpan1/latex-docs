@@ -60,9 +60,9 @@
 				\includegraphics*[scale=0.5]{images/05-contour-labeledpoints.png}\\ 
 				{\color{blue}Blue: minima;} {\color{red}Red: maxima;} {\color{black}Black: saddle points.}
 			\end{center}
-			
 		\end{solution}
 	\end{parts}
+\clearpage
 %2
 \question One side of a triangle is increasing at a rate of 3 cm/s and a second side is decreasing at a rate of 2 cm/s. If the area of the triangle remains constant, at what rate does the angle between the sides change when the first side is 20 cm long, the second side is 30 cm, and the angle is $\pi/6$? $Hint$: This may not be a right triangle.
 	\begin{solution}
@@ -71,9 +71,10 @@
 			5.483037238 = ab\sin(C) \\
 			0 = (\frac{\delta a}{\delta t}b + \frac{\delta b}{\delta t}a)\sin(C)+ab\cos(C)\frac{\delta C}{\delta t}\\
 			\frac{\delta C}{\delta t} = \frac{(\frac{\delta a}{\delta t}b + \frac{\delta b}{\delta t}a)\sin(C)}{ab\cos(C)} \\
-			\boxed{\frac{\delta C}{\delta t} = 0.04811252243}
+			\boxed{\frac{\delta C}{\delta t} = 0.04811252243} \tag*{\qed}
 		\end{gather*}
 	\end{solution}
+\clearpage
 %3
 \question If $x, y$, and $z$ are related by the equation $xz + y \ln(x - 1) + e^z = 1$, find $z, \delta z/\delta x,$ and $\delta z/\delta y$ when $(x, y) = (2, 1)$.
 	\begin{solution}
@@ -88,6 +89,7 @@
 			\boxed{ \frac{\delta z}{\delta y} = 0} \tag*{\qed}
 		\end{gather*}
 	\end{solution}
+\clearpage
 %4
 \question Newton's law of universal gravitation states that the (magnitude of the) gravitational force F between two objects is given by
 \[ F = G\frac{m_1m_2}{r^2}, \]
@@ -98,25 +100,108 @@ relative error (in percent) when the force F is calculated from these measuremen
 		\begin{gather*}
 			dF = \frac{\delta F}{m_1}\Delta m_1 + \frac{\delta F}{m_2}\Delta m_2 + \frac{\delta F}{r}\Delta r\\
 			dF = G\frac{m_2}{r^2}\Delta m_1 + G\frac{m_1}{r^2}\Delta m_2 + -2G\frac{m_1m_2}{r^3}\Delta r\\
-			\boxed{\frac{dF(0.002, 0.003, 0.007)}{F} = 0.009 = 9\%} \tag*{\qed}
+			\boxed{\frac{dF(0.002, 0.003, 0.007)}{F} = 0.009 = 0.9\%} \tag*{\qed}
 		\end{gather*}
 	\end{solution}
+\clearpage
 %5
 \question For the function $f(x, y) = x^2y^2 - y^3$, the point $P = (3, -1)$, and the point $Q = (-3, 5)$, find the
 directional derivative of $f$ at $P$ in the direction of the vector $\overrightarrow{PQ}$ using
 	\begin{parts}
 		\part the definition of the directional derivative
+			\begin{solution}
+				
+				\begin{gather*}
+					e_{\overrightarrow{PQ}} = \langle -\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \rangle \\
+					{D_{\overrightarrow{PQ}}}f\left( {x,y} \right) = \mathop {\lim }\limits_{h \to 0} \frac{{f\left( x -\frac{1}{\sqrt{2}}h, y + \frac{1}{\sqrt{2}}h \right) - f\left( {x,y} \right)}}{h} \\
+					D_{\overrightarrow{PQ}}f\left( x,y \right) = \mathop {\lim }\limits_{h \to 0} \frac{{\left( \left(x-\frac{1}{\sqrt{2}}h\right)^{2}\left(y+\frac{1}{\sqrt{2}}h\right)^{2}-\left(y+\frac{1}{\sqrt{2}}h\right)^{3} \right) - \left(x^2y^2 - y^3 \right)}}{h} \\
+					D_{\overrightarrow{PQ}}f\left( x,y \right) = \mathop {\lim }\limits_{h \to 0} \frac{\left( \left(3-\frac{1}{\sqrt{2}}h\right)^{2}\left(-1+\frac{1}{\sqrt{2}}h\right)^{2}-\left(-1+\frac{1}{\sqrt{2}}h\right)^{3} \right) - 10}{h} \\
+					D_{\overrightarrow{PQ}}f(x,y) = \mathop {\lim }\limits_{h \to 0} \frac{ \frac{h^4+44h^2-48\sqrt{2}h-8\sqrt{2}h^3+36 + 4 - 6\sqrt{2}h + 6h^2 - \sqrt{2}h^3}{4} - 10}{h} \\
+					D_{\overrightarrow{PQ}}f(x,y) = \mathop {\lim }\limits_{h \to 0} \frac{h^3+44h-48\sqrt{2}-8\sqrt{2}h^2 - 6\sqrt{2} + 6h - \sqrt{2}h^2}{4} \\
+					D_{\overrightarrow{PQ}}f(x,y) = \frac{-54\sqrt{2}}{4} = \boxed{ -\frac{27\sqrt{2}}{2} } \tag*{\qed}
+				\end{gather*}
+			\end{solution}
 		\part a shortcut relying on the fact that f is differentiable
+			\begin{solution}
+				We dot the gradient with the direction.
+				\begin{gather*}
+					\nabla f = \langle 2xy^2, 2x^2y - 3y^2 \rangle \\
+					e_{\overrightarrow{PQ}} \cdot \nabla f(3, -1) = -\frac{2xy^{2}}{\sqrt{2}}\ +\ \frac{\left(2x^{2}y-3y^{2}\right)}{\sqrt{2}} \\
+					\boxed{D_{\overrightarrow{PQ}}=-\frac{27\sqrt{2}}{2}} \tag*{\qed}
+				\end{gather*}
+			\end{solution}
 	\end{parts}
+\clearpage
 %6
 \question Find and classify all critical points of the function $f (s, t) = 8s^4 + t^2 + st - 2s^2 - s^3$.
 	\begin{solution}
 		\begin{gather*}
 			\nabla f = \langle 32s^3 + t - 4s - 3s^2, 2t + s \rangle \\
+			\begin{cases}
+				t = -\frac{s}{2}\\
+				32s^3 + t - 4s - 3s^2 = 0
+			\end{cases} \\
+			32s^3 - \frac{9s}{2} - 3s^2 = 0 \\
+			s(32s^2 - \frac{9}{2} - 3s) = 0 \\
+			s = 0, \frac{3\pm \sqrt{9+576}}{64}
 		\end{gather*}
+		\begin{align*}
+			(s, t) =    &\\
+			(0, 0)&: \text{saddle}, \\
+			\left(\frac{3 + \sqrt{585}}{64}, -\frac{3 + \sqrt{585}}{128}\right)&: \text{minimum,} \\ 
+			\left(\frac{3 - \sqrt{585}}{64}, -\frac{3 - \sqrt{585}}{128}\right)&: \text{minimum}
+			\tag*{\qed}
+		\end{align*}
 	\end{solution}
+\clearpage
 %7
 \question Find the absolute maximum and minimum values of the function $f (x, y) = x^3 - 12y - y^3 + 3x$ on the triangle with vertices (2, 3), (2, -2), and (-2, 2).
+	\begin{solution}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw [thin, gray, -stealth] (-4,0) -- (4,0);% x-axis
+				\draw [thin, gray, -stealth] (0,-4) -- (0,4);% y-axis
+				\draw[black, thick] (2,3) -- (2,-2);
+				\draw[black, thick] (2,3) -- (-2,2);
+				\draw[black, thick] (-2,2) -- (2,-2);
+			\end{tikzpicture}
+		\end{center}
+		We first look for critical points within the triangle, then check the boundaries for maximums.
+		\begin{gather*}
+			\begin{cases}
+				3x^2 + 3 = 0 \\
+				3y^2 - 12 = 0 \\
+			\end{cases} \\
+			3x^2 = -3 \\
+			x^2 = -1
+		\end{gather*}
+		Since $x$ would need to be imaginary, no general critical points exist. Thus, we look for extrema along the boundary lines $x=2$, $y=-x$, and $y=\frac{x}{4}$. 
+		\begin{gather*}
+			x=2: \\
+			3y^2 - 12 = 0 \\
+			y=\pm 2 \\
+			f(2, 2) = -18 \\
+			f(2, -2) = 46 \\
+			\\
+			y=-x: \\
+			f(x) = 2x^3+15x \\
+			\frac{df}{dx} = 6x^2+12+3=0 \\
+			\text{No critical points, check bounding points:}\\
+			f(-2) = -46 \\
+			f(2) = 46 \\
+			\\
+			y=\frac{x}{4}: \\
+			f(x) = \frac{65}{64}x^3=0 \\
+			x=0 \\
+			f(0) = 0 \\
+			\text{check bounds:} \\
+			f(2) = \frac{65}{8} \\
+			f(-2) = -\frac{65}{8}
+		\end{gather*}
+		Thus, the absolute maximum is $\boxed{f(2, -2 = 46)}$ and the absolute minimum is
+		\\ $\boxed{f(-2, 2) = 46}$. \qed
+	\end{solution}
+\clearpage
 %8
 \question The picture below shows the atmospheric pressure in hPa in Europe and the North Atlantic on October 11, 2022. You may find an atlas (or Google maps) helpful for this problem. Do not forget units.
 \begin{center}
@@ -144,6 +229,7 @@ directional derivative of $f$ at $P$ in the direction of the vector $\overrighta
 				The lowest pressure points are 982 hPa, near Norway; 989 hPa, near Greenland; and 992 hPa, on the east coast of Greenland. The highest pressure points are 1030 hPa, at the very bottom of the map; and 1027 hPa, near London.
 			\end{solution}
 	\end{parts}
+\clearpage
 \end{questions}
 
 \end{document}
