@@ -14,7 +14,7 @@
 % 	Define vars here 	%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\hwName{Homework Set}
+\def\hwName{Homework Set 5: §14.5 – 14.7}
 \author{Zhengyu James Pan} %use like \@author
 \def\email{jzpan@umich.edu}
 \makeatletter
@@ -39,13 +39,84 @@
 }
 
 \begin{questions}
-\question
-\question
-\question
-\question
-\question
-\question
-\question
+%1
+\question Below is a contour map for a function f:
+\begin{center}
+	\includegraphics*[scale=0.4]{images/05-contour.png}
+\end{center}
+	
+	\begin{parts}
+		\part  Suppose the function $f$ describes the topography of a park and you want to hike from around (-.7, .3) to around (.7, .2). Indicate a path that appears to minimize the cumulative elevation gain, defined as the sum of every gain in elevation throughout the hike.
+			\begin{solution}
+				\begin{center}
+					\includegraphics*[scale=0.3]{images/05-contour-path.png}
+				\end{center}
+			\end{solution}
+		\part Identify the locations of any maxima on the plot.
+		\part Identify the locations of any minima on the plot.
+		\part Identify the locations of any saddle points on the plot.
+		\begin{solution}
+			\begin{center}
+				\includegraphics*[scale=0.5]{images/05-contour-labeledpoints.png}\\ 
+				{\color{blue}Blue: minima;} {\color{red}Red: maxima;} {\color{black}Black: saddle points.}
+			\end{center}
+			
+		\end{solution}
+	\end{parts}
+%2
+\question One side of a triangle is increasing at a rate of 3 cm/s and a second side is decreasing at a rate of 2 cm/s. If the area of the triangle remains constant, at what rate does the angle between the sides change when the first side is 20 cm long, the second side is 30 cm, and the angle is $\pi/6$? $Hint$: This may not be a right triangle.
+	\begin{solution}
+		Let $a=20$ cm, $b = 30$ cm, and $\angle C=\frac{\pi}{6}$. We will use the $ab\sin(C)$ formula for the area of a triangle.
+		\begin{gather*}
+			5.483037238 = ab\sin(C) \\
+			0 = (\frac{\delta a}{\delta t}b + \frac{\delta b}{\delta t}a)\sin(C)+ab\cos(C)\frac{\delta C}{\delta t}\\
+			\frac{\delta C}{\delta t} = \frac{(\frac{\delta a}{\delta t}b + \frac{\delta b}{\delta t}a)\sin(C)}{ab\cos(C)} \\
+			\boxed{\frac{\delta C}{\delta t} = 0.04811252243}
+		\end{gather*}
+	\end{solution}
+%3
+\question If $x, y$, and $z$ are related by the equation $xz + y \ln(x - 1) + e^z = 1$, find $z, \delta z/\delta x,$ and $\delta z/\delta y$ when $(x, y) = (2, 1)$.
+	\begin{solution}
+		\begin{gather*}
+			2z + 0 + e^z = 1\\
+			\boxed{z=0} \\\\
+			x\frac{\delta z}{\delta x} + z + \frac{y}{x - 1} + e^z\frac{\delta z}{\delta x} = 0 \\
+			\frac{\delta z}{\delta x} = -\frac{\frac{y}{x - 1}}{x+e^z} \\
+			\boxed{\frac{\delta z}{\delta x} = -\frac{1}{3}}\\\\
+			xz\frac{\delta z}{\delta y} + \ln(x - 1) + e^z\frac{\delta z}{\delta y} = 0 \\
+			\frac{\delta z}{\delta y} = \frac{\ln(x - 1)}{e^z + xz} \\
+			\boxed{ \frac{\delta z}{\delta y} = 0} \tag*{\qed}
+		\end{gather*}
+	\end{solution}
+%4
+\question Newton's law of universal gravitation states that the (magnitude of the) gravitational force F between two objects is given by
+\[ F = G\frac{m_1m_2}{r^2}, \]
+where $G$ is the gravitational constant, $m_1$ and $m_2$ are the masses of the two objects, and $r$ is the distance between the two objects. Here $G = 6.674 \times 10^{- 11}$ m$^3$kg$^{-1}$s$^{-2}$. A team of amateur astronomers have
+estimated that $m_1 = 7 \times 10^{24}$ kg, $m_2 = 3 \times 10^{23}$ kg, and $r = 2 \times 10^9$ m, with a maximum relative error of 0.2\%, 0.3\%, and 0.7\%, respectively, in the measurements. Use differentials to estimate the maximum
+relative error (in percent) when the force F is calculated from these measurements.
+	\begin{solution}
+		\begin{gather*}
+			dF = \frac{\delta F}{m_1}\Delta m_1 + \frac{\delta F}{m_2}\Delta m_2 + \frac{\delta F}{r}\Delta r\\
+			dF = G\frac{m_2}{r^2}\Delta m_1 + G\frac{m_1}{r^2}\Delta m_2 + -2G\frac{m_1m_2}{r^3}\Delta r\\
+			\boxed{\frac{dF(0.002, 0.003, 0.007)}{F} = 0.009 = 9\%} \tag*{\qed}
+		\end{gather*}
+	\end{solution}
+%5
+\question For the function $f(x, y) = x^2y^2 - y^3$, the point $P = (3, -1)$, and the point $Q = (-3, 5)$, find the
+directional derivative of $f$ at $P$ in the direction of the vector $\overrightarrow{PQ}$ using
+	\begin{parts}
+		\part the definition of the directional derivative
+		\part a shortcut relying on the fact that f is differentiable
+	\end{parts}
+%6
+\question Find and classify all critical points of the function $f (s, t) = 8s^4 + t^2 + st - 2s^2 - s^3$.
+	\begin{solution}
+		\begin{gather*}
+			\nabla f = \langle 32s^3 + t - 4s - 3s^2, 2t + s \rangle \\
+		\end{gather*}
+	\end{solution}
+%7
+\question Find the absolute maximum and minimum values of the function $f (x, y) = x^3 - 12y - y^3 + 3x$ on the triangle with vertices (2, 3), (2, -2), and (-2, 2).
 %8
 \question The picture below shows the atmospheric pressure in hPa in Europe and the North Atlantic on October 11, 2022. You may find an atlas (or Google maps) helpful for this problem. Do not forget units.
 \begin{center}
