@@ -9,15 +9,17 @@
 
 \usepackage{bm} %bold symbols
 \usepackage{hyperref} %add links
+\usepackage{multicol} %multiple columns
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % 	Define vars here 	%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\hwName{Homework Set}
+\def\hwName{Homework Set 6: §14.8 – 15.2}
 \author{Zhengyu James Pan} %use like \@author
 \def\email{jzpan@umich.edu}
 \makeatletter
+\setlength{\columnseprule}{1pt}
 
 \begin{document}
 %Header
@@ -41,6 +43,28 @@
 \begin{questions}
 %1
 \question The surface S defined by $x^2 + 2xy - y^2 - zy - z^2 - 3xz = 100$ is a hyperboloid of two sheets. Find the point on $S$ with smallest positive x-coordinate.
+    \begin{solution}
+        We are minimizing the function $f(x, y, z) = x$ with gradient $\langle 1, 0, 0 \rangle$ with respect to the constraint imposed by this hyperboloid. The gradient of the hyperboloid is $\langle 2x + 2y - 3z, 2x - 2y - z, -y - 2z - 3x \rangle$. We use these gradients to create a system with Lagrange multipliers.
+        \begin{gather*}
+            \begin{cases*}
+                1 = \lambda (2x + 2y - 3) \\
+                0 = 2x - 2y - z \\
+                0 = -y - 2z - 3x \\
+                x^2 + 2xy - y^2 - zy - z^2 - 3xz = 100
+            \end{cases*} \\
+            y = -2z -3x \\
+            z = 2x + 4z + 6x \\
+            -3z = 8x \\
+            z = -\frac{8}{3}x \\
+            y = \frac{7}{3}x \\
+            x^2 + \frac{14}{3}x^2 - (\frac{7}{3}x)^2 - (\frac{7}{3} \cdot -\frac{8}{3}x)^2 - (-\frac{8}{3}x)^2 - -\frac{24}{3}x^2 = 100 \\
+            \frac{22}{3}x = 100 \\
+            \boxed{x = 10\sqrt{\frac{3}{22}}} \\
+            \boxed{y = \frac{70}{\sqrt{66}}} \\
+            \boxed{z = -\frac{80}{\sqrt{66}}} \tag*{\qed}
+        \end{gather*}
+    \end{solution}
+    \clearpage
 %2
 \question In this question we will look at a function with multiple constraints and see that sometimes the constraints
 are more restrictive than we think. Let $f (x, y) = x^2 + y^2 - 2x - 4y$, and let A be the region defined by
@@ -48,13 +72,23 @@ $x \geq 0$, $0 \leq y \leq 5$, and $y \geq x$.
     \begin{parts}
         \part Find the absolute maximum and minimum values of $f$ on the region $A$. It is a good idea to draw $A$ for this problem.
             \begin{solution}
-                The gradient of f is $\nabla f(x, y) = \langle 2x - 2, 2y - 4 \rangle$ 
+                The gradient of f is $\nabla f(x, y) = \langle 2x - 2, 2y - 4 \rangle$. We find critical points within the region. Note that this function is a paraboloid.
+                \begin{gather*}
+                    \begin{cases*}
+                        2x - 2 = 0
+                        2y - 4 = 0
+                    \end{cases*} \\
+                    (x, y) = (1, 2)\\
+                    \boxed{f(1, 2) = -5} \tag*{\qed}
+                \end{gather*}
+                This point is a minimum since the $x^2$ and $y^2$ terms are positive. This is a paraboloid centered at (1, 2), so the points with the furthest $x$-$y$ distance from the center will have the largest value. This leads us to the corners of the region: (0, 0), (5, 0), and (5, 5). Of these points, (5, 5) has the largest distance from the center, so it will have the absolute maximum within the region, with a value of $\boxed{20}$.
             \end{solution}
         \part Now add a second restriction. Let $C$ be the circle of radius 4 centered at the origin, and find the extremal values of $f$ restricted to the set of points that lie in both $A$ and $C$. Note that the region $A$ contains the interior of the triangle, while $C$ is only the boundary of the circle. It is definitely a good idea to draw both $A$ and $C$ for this part.
             \begin{solution}This region is equivalent to the arc of the circle where $0 \leq x \leq y$.\\
-                \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+                \begin{center}
+                    \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
 
-                \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-3,xscale=3]
+                \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-2.5,xscale=2.5]
                 %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
                 
                 %Shape: Axis 2D [id:dp8217938239242988] 
@@ -73,126 +107,222 @@ $x \geq 0$, $0 \leq y \leq 5$, and $y \geq x$.
                 % Text Node
                 \draw (340,200) node [anchor=north west][inner sep=0.75pt]  [xscale=1,yscale=1] [align=left] {\textcolor[rgb]{0.73,0,0}{A}};
                 
-                \end{tikzpicture}\\
+                \end{tikzpicture}
+                \end{center}
                 
                 This circle is defined by $x^2 + y^2 = 16$. The gradient of this equation is $\langle 2x, 2y \rangle$. So, we create a system using Lagrange multipliers.
-                \begin{gather*}
-                    \begin{cases*}
-                        2x - 2 = \lambda 2x \\
-                        2y - 4 = \lambda 2y \\
-                        x^2 + y^2 = 16 \\
-                        x \geq 0 \\
-                        y \geq x
-                    \end{cases*} \\
-                    y = \sqrt{16 - x^2} \\\\
-                    2\sqrt{16 - x^2} - 4 = 2\lambda \sqrt{16 - x^2} \\
-                    \lambda = 1 - \frac{2}{\sqrt{16 - x^2}} \\
-                    2x - 2 = 2\left(1 - \frac{2}{\sqrt{16 - x^2}}\right)x \\\\
-                    1 - \frac{1}{x} = 1 - \frac{2}{\sqrt{16 - x^2}} \\
-                    \frac{1}{x} = \frac{2}{\sqrt{16 - x^2}} \\
-                    x^2 = 4 - \frac{x^2}{4} \\
-                    \frac{5x^2}{4} = 4 \\
-                    x = \frac{4}{\sqrt{5}} \\
-                    y = \frac{8}{\sqrt{5}}
-                \end{gather*}
-                Since $x$ and $y$ must both be positive, this is the only critical point in this region. Thus, we check this point and the boundary points for extremal values.
-                \begin{gather*}
-                    \boxed{f(\frac{4}{\sqrt{5}}, \frac{8}{\sqrt{5}}) = 16 - \frac{40}{\sqrt{5}} \approx -1.88854382} \\
-                    \boxed{f(0, 4) = 0} \\
-                    f(2\sqrt{2}, 2\sqrt{2}) = 16 - 12\sqrt{2} \approx -0.9705627485 \tag*{\qed}
-                \end{gather*}
+                \begin{multicols*}{2}
+                    \begin{gather*}
+                        \begin{cases*}
+                            2x - 2 = \lambda 2x \\
+                            2y - 4 = \lambda 2y \\
+                            x^2 + y^2 = 16 \\
+                            x \geq 0 \\
+                            y \geq x
+                        \end{cases*} 
+                    \end{gather*}
+                    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\columnbreak
+                    \begin{gather*}
+                        y = \sqrt{16 - x^2} \\\\
+                        2\sqrt{16 - x^2} - 4 = 2\lambda \sqrt{16 - x^2} \\
+                        \lambda = 1 - \frac{2}{\sqrt{16 - x^2}} \\
+                        2x - 2 = 2\left(1 - \frac{2}{\sqrt{16 - x^2}}\right)x \\\\
+                        1 - \frac{1}{x} = 1 - \frac{2}{\sqrt{16 - x^2}} \\
+                        \frac{1}{x} = \frac{2}{\sqrt{16 - x^2}} \\
+                        x^2 = 4 - \frac{x^2}{4} \\
+                        \frac{5x^2}{4} = 4 \\
+                        x = \frac{4}{\sqrt{5}} \\
+                        y = \frac{8}{\sqrt{5}}
+                    \end{gather*}
+                \end{multicols*}
+                
+                Since $x$ and $y$ must both be positive, this is the only critical point in this region. Thus, we check this point and the boundary points, which are (0, 4) and $(2\sqrt{2}, 2\sqrt{2})$, for extremal values.
+                \begin{align*}
+                    \text{Min: } &\boxed{f(\frac{4}{\sqrt{5}}, \frac{8}{\sqrt{5}}) = 16 - \frac{40}{\sqrt{5}} \approx -1.88854382} \\
+                    \text{Max: } &\boxed{f(0, 4) = 0} \\
+                    &f(2\sqrt{2}, 2\sqrt{2}) = 16 - 12\sqrt{2} \approx -0.9705627485 \tag*{\qed}
+                \end{align*}
             \end{solution}
         \part Repeat the previous part of the problem, except let the radius of $C$ be $\sqrt{50}$.
             \begin{solution}
                 We can repeat the same process as the last problem.
-                \begin{gather*}
-                    \begin{cases*}
-                        2x - 2 = \lambda 2x \\
-                        2y - 4 = \lambda 2y \\
-                        x^2 + y^2 = 50 \\
-                        x \geq 0 \\
-                        y \geq x
-                    \end{cases*} \\
-                    y = \sqrt{50 - x^2} \\\\
-                    2\sqrt{50 - x^2} - 4 = 2\lambda \sqrt{50 - x^2} \\
-                    \lambda = 1 - \frac{2}{\sqrt{50 - x^2}} \\
-                    2x - 2 = 2\left(1 - \frac{2}{\sqrt{50 - x^2}}\right)x \\\\
-                    1 - \frac{1}{x} = 1 - \frac{2}{\sqrt{50 - x^2}} \\
-                    \frac{1}{x} = \frac{2}{\sqrt{50 - x^2}} \\
-                    x^2 = \frac{50}{4} - \frac{x^2}{4} \\
-                    5x^2 = 50 \\
-                    x = \sqrt{10} \\
-                    y = 2\sqrt{10}
-                \end{gather*}
+                \begin{multicols*}{2}
+                    \begin{gather*}
+                        \begin{cases*}
+                            2x - 2 = \lambda 2x \\
+                            2y - 4 = \lambda 2y \\
+                            x^2 + y^2 = 50 \\
+                            x \geq 0 \\
+                            y \geq x
+                        \end{cases*}
+                    \end{gather*}
+                    \\\\\\\\\\\\\\\\\\\\\\\columnbreak
+                    \begin{gather*}
+                        y = \sqrt{50 - x^2} \\\\
+                        2\sqrt{50 - x^2} - 4 = 2\lambda \sqrt{50 - x^2} \\
+                        \lambda = 1 - \frac{2}{\sqrt{50 - x^2}} \\
+                        2x - 2 = 2\left(1 - \frac{2}{\sqrt{50 - x^2}}\right)x \\\\
+                        1 - \frac{1}{x} = 1 - \frac{2}{\sqrt{50 - x^2}} \\
+                        \frac{1}{x} = \frac{2}{\sqrt{50 - x^2}} \\
+                        x^2 = \frac{50}{4} - \frac{x^2}{4} \\
+                        5x^2 = 50 \\
+                        x = \sqrt{10} \\
+                        y = 2\sqrt{10}
+                    \end{gather*}
+                \end{multicols*}
+                
                 Since $x$ and $y$ must both be positive, this is the only critical point in this region. Thus, we check this point and the boundary points for extremal values.
                 \begin{gather*}
-                    \boxed{f(\sqrt{10}, 2\sqrt{10}) = 50 - 10\sqrt{10} \approx 18.3772234} \\
-                    \boxed{f(0, \sqrt{50}) = 50 - 8\sqrt{10} \approx{21.71572875}} \\
+                    \text{Min: }\boxed{f(\sqrt{10}, 2\sqrt{10}) = 50 - 10\sqrt{10} \approx 18.3772234} \\
+                    \text{Max: }\boxed{f(0, \sqrt{50}) = 50 - 8\sqrt{10} \approx{21.71572875}} \\
                     f(5, 5) = 20 \tag*{\qed}
                 \end{gather*}
             \end{solution}
     \end{parts}
+    \clearpage
 %3
 \question In this question we will look at a function with multiple constraints and see that sometimes the constraints are secretly not as bad as we thought. Find the extreme values for the function $zx + 2xy$ subject to the two constraints $y + z = 1$ and $x^2 + y^2 = 1$. This problem may be easier than it appears, and it is worth some time to think hard about it before you start computing.
     \begin{solution}
         %We begin by finding the intersection of the constraints. The first constraint is a plane not parallel to the $xy$ plane, and the first constraint is cylinder based on a circle within the $xy$ plane. 
         The gradient of the function is $\nabla f(x, y, z) = \langle z + 2y, 2x, x \rangle$. The gradients of the constraints are $\langle 0, 1, 1 \rangle$ and $\langle 2x, 2y, 0 \rangle$ respectively.
         We find a system from Lagrange multipliers with these constraints.
-        \begin{gather*}
-            \begin{cases*}
-                z + 2y = \lambda_2 2x \\
-                2x = \lambda_1 + \lambda_2 2y \\
-                x = \lambda_1 \\
-                y + z = 1 \\
-                x^2 + y^2 = 1
-            \end{cases*}\\
-            \begin{cases*}
-                z + 2y = \lambda_2 2x \\
-                x = \lambda_2 2y \\
-                y + z = 1 \\
-                x^2 + y^2 = 1
-            \end{cases*} \\
-            z + 2y = \lambda_2^2 4y \\
-            1 + y = \lambda_2^2 4y \\
-            \pm \sqrt{\frac{1 + y}{4y}} = \lambda_2 \\
-            (\lambda_2 2y)^2 + y^2 = 1 \\
-            \frac{1 + y}{4y}4y^2 + y^2 = 1 \\
-            y + y^2 + y^2 = 1\\
-            (2y-1)(y+1) = 0 \\
-            y = -1, \frac{1}{2} \\
-            x = 0, \pm \frac{\sqrt{3}}{2} \\
-            z = 2, \frac{1}{2}\\
-            \\
-            \boxed {f(-1, 0, 2) = -2} \\
-            f(-\frac{\sqrt{3}}{2}, \frac{1}{2}, \frac{1}{2}) = -\frac{3\sqrt{3}}{4} \approx -1.299038106 \\
-            \boxed {\frac{\sqrt{3}}{2}, f(\frac{1}{2}, \frac{1}{2}) = \frac{3\sqrt{3}}{4} \approx 1.299038106}
-        \end{gather*}
+        
+        \begin{multicols*}{2}
+            \begin{gather*}
+                \begin{cases*}
+                    z + 2y = \lambda_2 2x \\
+                    2x = \lambda_1 + \lambda_2 2y \\
+                    x = \lambda_1 \\
+                    y + z = 1 \\
+                    x^2 + y^2 = 1
+                \end{cases*}\\
+                =\begin{cases*}
+                    z + 2y = \lambda_2 2x \\
+                    x = \lambda_2 2y \\
+                    y + z = 1 \\
+                    x^2 + y^2 = 1
+                \end{cases*} \\
+            \end{gather*}
+            \\\\\\\\\\\\\\\\\\\\\\\columnbreak
+            \begin{gather*}
+                z + 2y = \lambda_2^2 4y \\
+                1 + y = \lambda_2^2 4y \\
+                \pm \sqrt{\frac{1 + y}{4y}} = \lambda_2 \\
+                (\lambda_2 2y)^2 + y^2 = 1 \\
+                \frac{1 + y}{4y}4y^2 + y^2 = 1 \\
+                y + y^2 + y^2 = 1\\
+                (2y-1)(y+1) = 0 \\
+                y = -1, \frac{1}{2} \\
+                x = 0, \pm \frac{\sqrt{3}}{2} \\
+                z = 2, \frac{1}{2}\\
+                \\
+                \boxed {f(-1, 0, 2) = -2} \\
+                f(-\frac{\sqrt{3}}{2}, \frac{1}{2}, \frac{1}{2}) = -\frac{3\sqrt{3}}{4} \approx -1.299038106 \\
+                \boxed {\frac{\sqrt{3}}{2}, f(\frac{1}{2}, \frac{1}{2}) = \frac{3\sqrt{3}}{4} \approx 1.299038106} \tag*{\qed}
+            \end{gather*}
+        \end{multicols*}
+        
     \end{solution}
+    \clearpage
 %4
 \question In this question we will look at a function with multiple constraints and see that the worst part is the
 algebra. Find the extreme values of $f (x, y, z) = x^2 + y^2 + z^2$ subject to the constraints $x - y = 1$ and $y^2 - z^2 = 1$.
+    \begin{solution}
+        \begin{gather*}
+            \nabla f = \langle 2x, 2y, 2z \rangle \\
+            \nabla (x - y = 1) = \langle 1, -1, 0 \rangle \\
+            \nabla (y^2 - z^2 = 1) = \langle 0, 2y, -2z \rangle \\
+            \begin{cases*}
+                2x = \lambda_1 \\
+                2y = -\lambda_1 + \lambda_2 2y \\
+                2z = \lambda_2 (-2z) \\
+                x - y = 1 \\
+                y^2 - z^2 = 1
+            \end{cases*}\\
+            \lambda_2 = -1 \ (\text{assumes } z \neq 0)\\
+            4y = -\lambda_1 \\
+            4y = -2x \\
+            x = -2y \\
+            -3y = 1 \\
+            y = \frac{1}{3} \\
+            \frac{1}{9} - z^2 = 1 \Rightarrow\text{No solution when } z\neq 0 \\\\
+            z = 0 \\
+            y = 1 \\
+            x = 2 \\
+            \boxed{f(2, 1, 0) = 5}
+        \end{gather*}
+        This value is the absolute minimum. There is no absolute maximum as points in the intersection of the constraints can always be found to make $f$ larger. \qed
+    \end{solution}
+\clearpage
 %5
 \question Calculate the following iterated integrals:
     \begin{parts}
         \part \[\int_{0}^{1}\int_{y}^{1}ye^{x^3}\, dx\, dy\]
+            \begin{solution}
+                The region integrated is a triangle with vertices (0, 0), (1, 1), and (0, 1). We will reverse the order of integration.
+                \begin{align*}
+                    \int_{0}^{1}\int_{y}^{1}ye^{x^3}\, dx\, dy &= \int_{0}^{1}\int_{0}^{x} ye^{x^3} \, dy\, dx \\
+                    &= \int_{0}^{1} \frac{y^2}{2} e^{x^3} |^{y=x}_{y=0}\, dx \\
+                    &= \int_{0}^{1} \frac{x^2}{2} e^{x^3} \, dx \\ 
+                    u &= x^3 \\
+                    du &= 3x^2\, dx \\
+                    \int_{0}^{1} \frac{x^2}{2} e^{x^3} \, dx &= \frac{1}{6}\int_{0}^{1} e^u \, du \\
+                    &= \boxed{\frac{e-1}{6}} \tag*{\qed}
+                \end{align*}
+            \end{solution}
         \part \[\int_{0}^{2}\int_{y/2}^{1}y\cos(x^3 - 1)\, dx\, dy\]
+            \begin{solution}
+                Reversing the order of integration, we find:
+                \begin{align*}
+                    \int_{0}^{2}\int_{y/2}^{1}y\cos(x^3 - 1)\, dx\, dy &= \int_{0}^{1}\int_{0}^{2x} y\cos(x^3 - 1) \, dy\, dx \\
+                    &= \int_{0}^{1} \frac{y^2}{2} \cos(x^3 - 1) |^{y=2x}_{y=0}\, dx \\
+                    &= \int_{0}^{1} 2x^2 \cos(x^3 - 1) \, dx \\ 
+                    u &= x^3 - 1 \\
+                    du &= 3x^2\, dx \\
+                    \int_{0}^{1} 2x^2 \cos(x^3 - 1) \, dx &= \frac{2}{3}\int_{0}^{1} cos(u) \, du \\
+                    &= \boxed{\frac{2\sin(-1)}3 \approx -0.5609806565} \tag*{\qed}
+                \end{align*}
+            \end{solution}
     \end{parts}
+\clearpage
 %6
 \question In evaluating a double integral over a region $D$, a sum of iterated integrals was obtained as follows:
-\[ \int_{D}f(x, y)\,dA=\int_{-9}^{0}\int_{-2}^{1-\sqrt{-y}}f(x, y)\, dx\, dy\]
+\[ \int_{D}f(x, y)\,dA=\int_{-9}^{0}\int_{-2}^{1-\sqrt{-y}}f(x, y)\, dx\, dy + \int_{0}^{2}\int_{-2}^{2-2^y}f(x, y)\, dx\, dy\]
 Sketch the region $D$ and express the double integral as an iterated integral with reversed order of
 integration.
+    \begin{solution}
+        \begin{center}
+            \includegraphics*[scale=0.5]{images/06-sketch.png}
+        \end{center}
+        From the sketch, we see that x ranges from -2 to 1 for both portions of the region, and y ranges from -9 to 0 for the first portion and 0 to 2 for the second. We can solve for y in terms of x from the bounds given.
+        \begin{align*}
+            x &= 2 - 2^y \\
+            2 - x &= 2 ^ y \\
+            \log_2(2 - x) &= y \\\\
+            x &= 1 - \sqrt{-y} \\
+            1 - x = \sqrt{-y} \\
+            y = -(x - 1)^2 
+        \end{align*}
+        The area should be considered positive. Hence, 
+        \begin{align*}
+            \int_{D}f(x, y)\,dA &= \int_{-9}^{0}\int_{-2}^{1-\sqrt{-y}}f(x, y)\, dx\, dy + \int_{0}^{2}\int_{-2}^{2-2^y}f(x, y)\, dx\, dy \\
+            &= \boxed{\int_{-2}^{1}\int_{-(x - 1)^2}^{0}f(x, y)\, dy\, dx + \int_{-2}^{1}\int_{0}^{\log_2(2 - x)}f(x, y)\, dy\, dx} \tag*{\qed}
+        \end{align*}
+    \end{solution}
+\clearpage
 %7
 \question Let $D = [-2, 2] \times [-1, 1]$. Show that
 \[ \frac{4}{3} \leq \int_{}^{} \int_{D}^{} \left(\frac{xe^{10y^2}}{1+ x^8 + y^2} + \frac{1}{1 + x^2 + y^4} \right)\, dA \leq 8\] 
 Hint: It is easier to estimate these two integrals separately. Also note that the bounds I have provided may not be the tightest possible bounds -- it is likely you can do better with a little thought.
     \begin{solution}
         Let $f(x, y) = \frac{xe^{10y^2}}{1+ x^8 + y^2}$ and $g(x, y) = \frac{1}{1 + x^2 + y^4}$. We will evaluate these functions separately.\\\\
-        We can observe that $z = f(x, y)$ is even when we fix $x$ and vary $y$, and odd when we fix $y$ and vary $x$. Thus, since the bounds of the integral are symmetrical accross $x$, the integral of the region with $x>0$ will be the negative of the integral of the region with $x<0$. (The value at 0 is 0.) Therefore, the total value of the integral of $f$ is 0.\\\\
-        Since the denominator of $g(x, y)$ can only increase, its maximum must be when the denominator is minimized, giving a maximum value of 1. It will have a minimum when the denominator is 0, which is $\frac{1}{6}$ in the integration bounds. Thus, the minimum value the integral can have is product of the area of the region of integration with the minimum, and similarly for the max. This grants a minimum of $\frac{4}{3}$ and a maximum of 8 for the integral of $g$.\\\\
-        Putting the bounds of these two integrals together, 
-        \[ \boxed{ \frac{4}{3} \leq \int_{}^{} \int_{D}^{} \frac{xe^{10y^2}}{1+ x^8 + y^2}\, dA + \int_{}^{} \int_{D}^{} \frac{1}{1 + x^2 + y^4}\, dA \leq 8 } \tag*{\qed}\] 
+        We can observe that $z = f(x, y)$ is even when we fix $x$ and vary $y$, and odd when we fix $y$ and vary $x$. Thus, since the bounds of the integral are symmetrical accross $x$, the integral of the region with $x>0$ will be the negative of the integral of the region with $x<0$. (The value at 0 is 0.) Therefore, the total value of the integral of $f$ is 0.\[ \int_{}^{} \int_{D}^{} \frac{xe^{10y^2}}{1+ x^8 + y^2}\, dA = 0\] \\
+        Since the denominator of $g(x, y)$ can only increase, its maximum must be when the denominator is minimized, giving a maximum value of 1. It will have a minimum when the denominator is 0, which is $\frac{1}{6}$ in the integration bounds. Thus, the minimum value the integral can have is product of the area of the region of integration with the minimum, and similarly for the max. This grants a minimum of $\frac{4}{3}$ and a maximum of 8 for the integral of $g$. Note that since $g$ has a distinct minimum and maximum, the bounds can be open, since at least those two points are different from the extrema. 
+        \[ \frac{4}{3} < \int_{}^{} \int_{D}^{} \frac{1}{1 + x^2 + y^4}\, dA < 8\] \\
+        Adding the bounds of these two integrals together, 
+        \[ \boxed{ \frac{4}{3} < \int_{}^{} \int_{D}^{} \frac{xe^{10y^2}}{1+ x^8 + y^2}\, dA + \int_{}^{} \int_{D}^{} \frac{1}{1 + x^2 + y^4}\, dA < 8 } \tag*{\qed}\] 
     \end{solution}
+\clearpage
 %8
 \question  In this question we will approximate an integral through a Riemann sum. Specifically, we will adapt a two-dimensional version of the trapezoid rule. Suppose you have been tasked to estimate the volume of
 a swimming pool with square base (denoted by $R$) with side length 12 feet. The depth of the pool in feet is measured every 3 feet (i.e. once at position 0, once at position 3 feet, once at position 6 feet, so
@@ -201,7 +331,15 @@ with a different corner as a sample point. The data is given as:
 \begin{center}
     \includegraphics*[scale=0.7]{images/06-data.png}
 \end{center}
-
-
+    \begin{solution}
+        \begin{itemize}
+            \item Top-left corner: 9(4+6+7+8+4+7+8+10+6+8+10+12+4+5+6+8) = 1017
+            \item Top-right corner: 9(6+7+8+8+7+8+10+8+8+10+12+10+5+6+8+7) = 1152
+            \item Bottom-left corner: 9(4+7+8+10+6+8+10+12+4+5+6+8+2+2+3+4) = 891
+            \item Bottom-right corner: 9(7+8+10+8+8+10+12+10+5+6+8+7+2+3+4+4) = 1008
+        \end{itemize}
+        The average is 
+        \[\frac{1017 + 1152 + 891 + 1008}{4} = \boxed{1017} \tag*{\qed}\]
+    \end{solution}
 \end{questions}
 \end{document}
