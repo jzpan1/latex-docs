@@ -1,0 +1,86 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set 7: §15.3 – 15.6}
+\author{Zhengyu James Pan} %use like \@author
+\def\email{jzpan@umich.edu}
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 215}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\begin{center}
+	\bf MATH 215 FALL 2023\\
+	\bf \hwName \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+%1
+\question Let $E$ be the bounded region in the first octant bounded by the surface $z = 1 + 2(x - 3)^2 + y^2$ and the planes $y = 3$ and $y = x$. Sketch $E$ and compute its volume.
+%2
+\question Let $D$ be the region given in polar coordinates by $0 \leq r \leq \sqrt {\sin(2\theta)}, 0 \leq \theta \leq \frac{\pi}{2}$. Sketch $D$ and compute $\int \int_{D}x\sqrt{x^2 + y^2} \, dA$
+%3
+\question Use polar coordinates to evaluate the following integrals:
+    \begin{parts}
+        \part \[ \int_{0}^{4} \int_{-\sqrt{16 - y^2}}^{\sqrt{16 - y^2}}(y^3 + x^2 y) \, dx \, dy \]
+        \part \[ \int \int_{D} \frac{y}{x^2 + y^2} \, dA,\]
+        where $D$ is the region outside the circle of radius 1 centered at the origin and inside the circle of radius 1 centered at (0, 1).
+    \end{parts}
+
+%4
+\question  You are painting a room, and you need to transfer the paint from the can in which you bought it to tray that you are going to use for the brush. To do this transfer, you pour the paint through a funnel comprised of a cylindrical section of radius 1 inch and height 2 inches attached to a cone segment of smaller radius 1 inch, larger radius 5 inches, and height 5 inches. Because of the way you pour the paint, assume that the inside of the funnel is evenly coated with a thin layer of paint. How many square inches of paint have you wasted?
+
+%5
+\question Find the surface area of the part of the sphere $x^2+y^2+z^2 = 4z$ that lies above the paraboloid $3z = x^2+y^2$.
+
+%6
+\question  The small but edgy city of Dreieck is modeled by the region $D = {(x, y) : 5 |x| \leq y \leq 5}$, where x and y are measured in km. The population density in people per km$^2$ is given by $\rho(x, y) = 10^{3-y}$. Find the
+total population of the city. (This should preferably be an integer.)
+
+%7
+\question  Find the mass and center of mass of the tetrahedron bounded by the planes $x = 0, y = 0, z = 0,
+2x + 3y + z = 6$, if the density function is given by $\rho(x, y, z) = z$.
+
+%8
+\question  Sketch the region of integration for the integral
+    \[ \int_{0}^{3}\int_{9-x^2}^{9}\int_{0}^{9-y}f(x, y, z) \, dz\, dy\, dx \]
+    Rewrite this integral as an equivalent iterated integral in three of the five possible other orders.
+
+%9
+\question Find the region $E$ for which the triple integral
+    \[ \int\int\int_{E} (9 - 4x^2 - 4y^2 - 4z^2) dV \]
+    is a maximum, and compute this maximum value.
+
+\question A team of archeologists excavating the ancient settlement of Osmia has unearthed a previously unknown type of artifact. This can be modeled as the region $E$ that lies inside the cylinder $x^2 +y^2 = 3$, is bounded above by the plane $z = 0$, and is bounded below by the hyperboloid $x^2 + y^2 - z^2 = 1$.
+\begin{parts}
+    \part Sketch $E$.
+    \part Find the volume of $E$.
+    \part Assuming that its density is constant (equal to 22.59g/cm$^3$), ﬁnd the center of mass of $E$.
+\end{parts}
+\end{questions}
+
+\end{document}
