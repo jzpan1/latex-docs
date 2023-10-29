@@ -56,14 +56,37 @@
 
 %5
 \question Find the surface area of the part of the sphere $x^2+y^2+z^2 = 4z$ that lies above the paraboloid $3z = x^2+y^2$.
+    \begin{solution}
+        
+    \end{solution}
 
 %6
-\question  The small but edgy city of Dreieck is modeled by the region $D = {(x, y) : 5 |x| \leq y \leq 5}$, where x and y are measured in km. The population density in people per km$^2$ is given by $\rho(x, y) = 10^{3-y}$. Find the
-total population of the city. (This should preferably be an integer.)
+\question  The small but edgy city of Dreieck is modeled by the region $D = \{ (x, y) : 5 |x| \leq y \leq 5\}$, where $x$ and $y$ are measured in km. The population density in people per km$^2$ is given by $\rho(x, y) = 10^{3-y}$. Find the total population of the city. (This should preferably be an integer.)
 
 %7
 \question  Find the mass and center of mass of the tetrahedron bounded by the planes $x = 0, y = 0, z = 0,
 2x + 3y + z = 6$, if the density function is given by $\rho(x, y, z) = z$.
+    \begin{solution}
+        We begin by finding the total mass.
+        \begin{align*}
+            \int_{0}^{6}\int_{0}^{\frac{6 - z}{2}}\int_{0}^{\frac{6 - z - 2x}{3}} z\, dy\, dx\, dz &= \int_{0}^{6}z\int_{0}^{\frac{6 - z}{2}}\frac{6 - z - 2x}{3} \, dy\, dx\, dz\\
+            &= \int_{0}^{6}z\int_{0}^{\frac{6 - z}{2}} \frac{6 - z - 2x}{3}\, dy\, dx\, dz \\
+            &= \int_{0}^{6} z\left(\frac{6 - z}{2} \frac{6 - z}{3} - \frac{(6 - z)^2}{12}\right)\, dz \\
+            &= \int_{0}^{6}z \frac{(6 - z)^2}{12} \, dz \\
+            &= \frac{1}{12}\int_{0}^{6} 36z - 12z^2 + z^3 \, dz \\
+            &= \frac{1}{12} \cdot \left(\frac{z^4}{4} + 18z^2 - 4z^3  \right)|_{z=0}^{z=6} \\
+            &= \frac{1}{12}(324 + 648 - 864) \\
+            &= \boxed{9}
+        \end{align*}
+        Now, we perform a weighted sum of each the $x, y$, and $z$ coordinates, then divide by the total mass to find the respective value for the center of mass.
+        For $x$:
+        \begin{align*}
+            \int_{0}^{6}\int_{0}^{\frac{6 - z}{2}}\int_{0}^{\frac{6 - z - 2x}{3}} xz\, dy\, dx\, dz &= \int_{0}^{6}z\int_{0}^{\frac{6 - z}{2}}x\int_{0}^{\frac{6 - z - 2x}{3}} 1 \, dy\, dx\, dz \\ 
+            &= \int_{0}^{6}z\int_{0}^{\frac{6 - z}{2}}x\int_{0}^{\frac{6 - z - 2x}{3}} 1 \, dy \, dx\, dz \\
+            &= \int_{0}^{6}z \int_{0}^{\frac{6 - z}{2}}\frac{6x - zx - 2x^2}{3} \, dx\, dz \\
+            &= \int_{0}^{6}z \left(\frac{6x - zx - 2x^2}{3}\right)|_{x=0}^{x = \frac{6 - z}{2}} \, dz
+        \end{align*} 
+    \end{solution}
 
 %8
 \question  Sketch the region of integration for the integral
