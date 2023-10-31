@@ -56,8 +56,8 @@
 \question  You are painting a room, and you need to transfer the paint from the can in which you bought it to tray that you are going to use for the brush. To do this transfer, you pour the paint through a funnel comprised of a cylindrical section of radius 1 inch and height 2 inches attached to a cone segment of smaller radius 1 inch, larger radius 5 inches, and height 5 inches. Because of the way you pour the paint, assume that the inside of the funnel is evenly coated with a thin layer of paint. How many square inches of paint have you wasted?
     \begin{solution}
         Surface area of lateral surface of cylinder is $2\pi r h = 4 \pi$.
-        Surface area of lateral surface of truncated cone is $\frac{r_1 + r_2}{2} l = 3 \sqrt{41}$.
-        In total, the surface area is $\boxed{ 4 \pi + 3 \sqrt{41} }. $
+        Surface area of lateral surface of truncated cone is $2\pi\frac{r_1 + r_2}{2} l = 6\pi \sqrt{41}$.
+        In total, the surface area is $\boxed{ 4 \pi + 6\pi \sqrt{41} \approx 133.262419 }. $
     \end{solution}
 %5
 \question Find the surface area of the part of the sphere $x^2+y^2+z^2 = 4z$ that lies above the paraboloid $3z = x^2+y^2$.
@@ -129,17 +129,56 @@
 \question  Sketch the region of integration for the integral
     \[ \int_{0}^{3}\int_{9-x^2}^{9}\int_{0}^{9-y}f(x, y, z) \, dz\, dy\, dx \]
     Rewrite this integral as an equivalent iterated integral in three of the five possible other orders.
+    \begin{solution}
+        \center{
+            \includegraphics*[scale=0.4]{images/07-xy.png}
+            \includegraphics*[scale=0.48]{images/07-xz.png}
+            \includegraphics*[scale=0.4]{images/07-yz.png}
+            \includegraphics*[scale=0.5]{images/07-surface.png}
+        }
+        \begin{align}
+            &\int_{0}^{3}\int_{0}^{x^2}\int_{9-x^2}^{9-z} f(x, y, z) \, dy\, dz\, dx \\
+            &\int_{0}^{9}\int_{\sqrt{z}}^{3}\int_{9-z}^{9-x^2} f(x, y, z) \, dy\, dx\, dz \\
+            &\int_{0}^{9}\int_{\sqrt{9-y}}^{3}\int_{0}^{9-y} f(x, y, z) \, dz\, dx\, dy
+        \end{align}
+    \end{solution}
 
 %9
 \question Find the region $E$ for which the triple integral
     \[ \int\int\int_{E} (9 - 4x^2 - 4y^2 - 4z^2) dV \]
     is a maximum, and compute this maximum value.
 
+%10
 \question A team of archeologists excavating the ancient settlement of Osmia has unearthed a previously unknown type of artifact. This can be modeled as the region $E$ that lies inside the cylinder $x^2 +y^2 = 3$, is bounded above by the plane $z = 0$, and is bounded below by the hyperboloid $x^2 + y^2 - z^2 = 1$.
 \begin{parts}
     \part Sketch $E$.
+        \begin{solution}
+            \begin{center}
+                \includegraphics*[scale=0.4]{images/07-artifact.png}
+            \end{center}
+        \end{solution}
     \part Find the volume of $E$.
+        \begin{solution}
+            \begin{gather*}
+                \int_{-\sqrt{2}}^{0}\int_{0}^{2\pi}\int_{\sqrt{z^2+1}}^{\sqrt{3}} r\, dr\, d\theta \, dz \\
+                = \frac{1}{2} \int_{-\sqrt{2}}^{0}\int_{0}^{2\pi} 3 - z^2 - 1\, d\theta \, dz \\
+                = \pi \int_{-\sqrt{2}}^{0} 2 - z^2 \, dz \\
+                = 2\sqrt{2}\pi - \frac{2\sqrt{2}\pi}{3} \\
+                = \boxed{\frac{4\pi\sqrt{2}}{3}} \tag*{\qed}
+            \end{gather*}
+        \end{solution}
     \part Assuming that its density is constant (equal to 22.59g/cm$^3$), ﬁnd the center of mass of $E$.
+        \begin{solution}
+            Mass = $ \frac{4\pi\sqrt{2}}{3} \cdot 22.59 = 133.8196341$ \\
+            \begin{gather*}
+                \int_{-\sqrt{2}}^{0}\int_{0}^{2\pi}\int_{\sqrt{z^2+1}}^{\sqrt{3}} rz\, dr\, d\theta \, dz \\
+                = \frac{1}{2} \int_{-\sqrt{2}}^{0}z \int_{0}^{2\pi} 3 - z^2 - 1\, dr\, d\theta \, dz \\
+                = \pi \int_{-\sqrt{2}}^{0} 2z - z^3 \, dz \\
+                = 2\pi - \frac{4\pi}{4} \\
+                = \pi \\
+                \boxed{\overline{z} = \frac{\pi}{133.8196341} \approx 0.02347632076}
+            \end{gather*}
+        \end{solution}
 \end{parts}
 \end{questions}
 
