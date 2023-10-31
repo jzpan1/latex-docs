@@ -18,6 +18,7 @@
 \author{Zhengyu James Pan} %use like \@author
 \def\email{jzpan@umich.edu}
 \makeatletter
+\allowdisplaybreaks
 
 \begin{document}
 %Header
@@ -84,9 +85,41 @@
             \int_{0}^{6}\int_{0}^{\frac{6 - z}{2}}\int_{0}^{\frac{6 - z - 2x}{3}} xz\, dy\, dx\, dz &= \int_{0}^{6}z\int_{0}^{\frac{6 - z}{2}}x\int_{0}^{\frac{6 - z - 2x}{3}} 1 \, dy\, dx\, dz \\ 
             &= \int_{0}^{6}z\int_{0}^{\frac{6 - z}{2}}x\int_{0}^{\frac{6 - z - 2x}{3}} 1 \, dy \, dx\, dz \\
             &= \int_{0}^{6}z \int_{0}^{\frac{6 - z}{2}}\frac{6x - zx - 2x^2}{3} \, dx\, dz \\
-            &= \int_{0}^{6}z \left(\frac{6x - zx - 2x^2}{3}\right)|_{x=0}^{x = \frac{6 - z}{2}} \, dz
-        \end{align*} 
+            &= \int_{0}^{6}z \left(\frac{3x^2 - \frac{zx^2}{2} - \frac{2x^3}{3}}{3}\right)|_{x=0}^{x = \frac{6 - z}{2}} \, dz \\
+            &= \int_{0}^{6}z \left(\frac{3\left(\frac{6 - z}{2}\right)^2 - \frac{z\left(\frac{6 - z}{2}\right)^2}{2} - \frac{2\left(\frac{6 - z}{2}\right)^3}{3}}{3}\right)\, dz \\
+            &= \frac{1}{12}\int_{0}^{6}z \left(3\left(6 - z\right)^2 - \frac{z\left(6 - z\right)^2}{2} - \frac{2\left(6 - z\right)^3}{3}\right)\, dz \\
+            &= \frac{1}{12}\int_{0}^{6}z (6-z)^2\left(3 - \frac{z}{2} - \frac{2\left(6 - z\right)}{3}\right)\, dz \\
+            &= -\frac{1}{72}\int_{0}^{6}z (6-z)^3\, dz
+        \end{align*}
     \end{solution}
+    
+    \begin{align*}
+        &u = 6 - z \\
+        &= \frac{1}{72}\int_{0}^{6}(6-u)(u)^3 \, du \\
+        &= \frac{1}{72}\int_{0}^{6}6u^3-u^4 \, du \\
+        &= \frac{1}{72}\left( \frac{3u^4}{2}-\frac{u^5}{5} \right)|_{u=0}^{6} \\
+        &= \frac{1}{72}\left( \frac{3u^4}{2}-\frac{u^5}{5} \right)|_{u=0}^{6} \\
+         &= 5.4 \\
+         \overline{x} &= \frac{3}{5}
+    \end{align*}
+    For $y$:
+    \begin{align*}
+        \int_{0}^{6}z\int_{0}^{\frac{6 - z}{3}} y \int_{0}^{\frac{6 - z - 3y}{2}}  1 \, dx\, dy\, dz &= \int_{0}^{6}z\int_{0}^{\frac{6 - z}{3}} y \frac{6 - z - 3y}{2} \, dy\, dz \\
+        &= \int_{0}^{6}z\int_{0}^{\frac{6 - z}{3}} y \frac{6 - z - 3y}{2} \, dy\, dz \\
+        &= \int_{0}^{6}z \left( -\dfrac{2y^3+\left(z-6\right)y^2}{4} \right)|_{y = 0}^{\frac{6 - z}{3}} \, dz \\
+        &= \int_{0}^{6}z \left( -\dfrac{2\left(\frac{6 - z}{3}\right)^3+\left(z-6\right)\left(\frac{6 - z}{3}\right)^2}{4} \right) \, dz \\
+        &= \frac{18}{5} \\
+        \overline{y} &= \frac{2}{5}
+    \end{align*}
+    For $z$: 
+    \begin{align*}
+        \int_{0}^{6} z^2 \int_{0}^{\frac{6 - z}{3}} \int_{0}^{\frac{6 - z - 3y}{2}} 1 \, dx\, dy\, dz &= \int_{0}^{6} z^2 \int_{0}^{\frac{6 - z}{3}} \frac{6 - z - 3y}{2} \, dy\, dz \\
+        &= \int_{0}^{6}z^2 \int_{0}^{\frac{6 - z}{3}} \frac{6 - z - 3y}{2} \, dx\, dz \\
+        &= \int_{0}^{6} z^ \frac{6 - z - \frac{3\left(\frac{6 - z}{3}\right)^2}{2}}{2} \, dz \\
+        &= \frac{162}{5} \\
+        \overline{z} &= \frac{18}{5}
+    \end{align*}
+    Thus, the mass is $\boxed{9}$ and the center of mass is $(x, y, z) = \boxed{\left(\frac{3}{5}, \frac{2}{5}, \frac{18}{5} \right)}$. \qed
 
 %8
 \question  Sketch the region of integration for the integral
