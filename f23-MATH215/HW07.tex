@@ -42,32 +42,122 @@
 \begin{questions}
 %1
 \question Let $E$ be the bounded region in the first octant bounded by the surface $z = 1 + 2(x - 3)^2 + y^2$ and the planes $y = 3$ and $y = x$. Sketch $E$ and compute its volume.
+    \begin{solution}
+        \begin{gather*}
+            0 \leq y \leq 3 \\
+            0 \leq x \leq y \\
+            1 \leq z \leq 1 + 2(x-3)^2+y^2 \\
+            V = \int\int\int_D\,dV \\
+            \int_{0}^{3}\int_{0}^{y}\int_{1}^{1+2(x-3)^2+y^2}1 \, dz \, dx \, dy \\
+            \int_{0}^{3}\int_{0}^{y}(1+2(x-3)^2+y^2) - 1 \, dx \, dy \\
+            \int_{0}^{3}\left(\frac{2}{3}(x-3)^3+xy^2\right)|_{x=0}^y\, dy \\
+            \int_{0}^{3}\left(\frac{2}{3}(y-3)^3+y^3+18\right)\, dy \\
+            \left(\frac{1}{6}(y-3)^4 + \frac{y^4}{4} + 10y\right)|_{y=0}^3 \\
+            \left(\frac{3^4}{4}+10\cdot 3\right) - \left(\frac{3^4}{6}\right) = \boxed {\frac{243}{4}} \tag*{\qed}
+        \end{gather*}
+    \end{solution}
+\clearpage
 %2
 \question Let $D$ be the region given in polar coordinates by $0 \leq r \leq \sqrt {\sin(2\theta)}, 0 \leq \theta \leq \frac{\pi}{2}$. Sketch $D$ and compute $\int \int_{D}x\sqrt{x^2 + y^2} \, dA$
+    \begin{solution}
+        \begin{gather*}
+            r^2 = x^2 + y^2 \\
+            \int\int_D x\sqrt{x^2 + y^2} \, dA \\
+            = \int_{0}^{\frac{\pi}{2}}\int_{0}^{\sqrt{\sin(2\theta)}}r^3\cos(\theta)\, dr \, d\theta \\
+            = \int_{0}^{\frac{\pi}{2}}\left(\frac{r^4}{4}\cos(\theta)\right)|_{r = 0}^{\sqrt{\sin (2\theta)}}\, d\theta \\
+            = \frac{1}{4}\int_{0}^{\frac{\pi}{2}} \cos(\theta) \sin^2(2\theta)\, d\theta \\
+            = \int_{0}^{\frac{\pi}{2}} \sin^2(\theta)\cos^3(\theta)\, d\theta \\
+            = \int_{0}^{\frac{\pi}{2}} \sin^2(\theta)\cos^3(\theta)\, d\theta \\
+            = \int_{0}^{\frac{\pi}{2}} (1-\sin^2(\theta))\sin^2(\theta)\cos(\theta)\, d\theta \\
+            u = \sin(\theta); du = \cos(\theta) \\
+            = \int_{0}^{1} (1-u^2)u^2\, du \\
+            = \frac{1}{3} - \frac{1}{5} \\
+            = \boxed{ \frac{2}{15} }\tag*{\qed}
+        \end{gather*}
+    \end{solution}
+\clearpage
 %3
 \question Use polar coordinates to evaluate the following integrals:
     \begin{parts}
         \part \[ \int_{0}^{4} \int_{-\sqrt{16 - y^2}}^{\sqrt{16 - y^2}}(y^3 + x^2 y) \, dx \, dy \]
+            \begin{solution}
+                \begin{gather*}
+                    0 \leq \theta \leq \pi, 0 \leq r \leq 4 \\
+                    \int_{0}^{\pi}\int_{0}^{4} r^4 \sin(\theta) \, dr\, d\theta \\
+                    = \frac{1}{5} \int_{0}^{\pi} \left( r^5 \sin(\theta) \right)|_{r=0}^4 \, d\theta \\
+                    = \frac{4^5}{5} \int_{0}^{\pi} \sin(\theta) \, d\theta \\
+                    = \frac{4^5}{5} \left( \cos (\theta) \right)|_{\theta=0}^\pi \\
+                    = \boxed{ \frac{2048}{5}} \tag*{\qed}
+                \end{gather*}
+            \end{solution}
         \part \[ \int \int_{D} \frac{y}{x^2 + y^2} \, dA,\]
         where $D$ is the region outside the circle of radius 1 centered at the origin and inside the circle of radius 1 centered at (0, 1).
+            \begin{solution}
+                \begin{gather*}
+                    \frac{\pi}{6} \leq \theta \leq \frac{5\pi}{6}, 1 \leq r \leq 2 \sin(\theta) \\
+                    0 = x^2 + y^2 - 2y\\
+                    0 = r^2 - 2r\sin(\theta) \\
+                    r = 2\sin(\theta) \\
+                    \int_{\frac{\pi}{6}}^{\frac{5\pi}{6}}\int_{1}^{2\sin(\theta)}\frac{r\sin(\theta)}{r^2}r\, dr\, d\theta \\
+                    \int_{\frac{\pi}{6}}^{\frac{5\pi}{6}}\int_{1}^{2\sin(\theta)} \sin(\theta) \, dr\, d\theta \\
+                    \int_{\frac{\pi}{6}}^{\frac{5\pi}{6}} 2\sin^2(\theta) - \sin(\theta) \, d\theta \\
+                    \int_{\frac{\pi}{6}}^{\frac{5\pi}{6}} 1 - \cos(2\theta) - \sin(\theta) \, d\theta \\
+                    \left(\theta - \frac{1}{2}\sin(2\theta)+\cos(\theta)\right)|_{\frac{\pi}{6}}^{\frac{5\pi}{6}} \\
+                    = \boxed{\frac{2\pi}{3} - \frac{\sqrt{3}}{2}} \tag*{\qed}
+                \end{gather*}
+            \end{solution}
     \end{parts}
-
+    \clearpage
 %4
 \question  You are painting a room, and you need to transfer the paint from the can in which you bought it to tray that you are going to use for the brush. To do this transfer, you pour the paint through a funnel comprised of a cylindrical section of radius 1 inch and height 2 inches attached to a cone segment of smaller radius 1 inch, larger radius 5 inches, and height 5 inches. Because of the way you pour the paint, assume that the inside of the funnel is evenly coated with a thin layer of paint. How many square inches of paint have you wasted?
     \begin{solution}
         Surface area of lateral surface of cylinder is $2\pi r h = 4 \pi$.
         Surface area of lateral surface of truncated cone is $2\pi\frac{r_1 + r_2}{2} l = 6\pi \sqrt{41}$.
-        In total, the surface area is $\boxed{ 4 \pi + 6\pi \sqrt{41} \approx 133.262419 }. $
+        In total, the surface area is $\boxed{ 4 \pi + 6\pi \sqrt{41} \approx 133.262419 }$ square inches of paint. \qed
     \end{solution}
+    \clearpage
 %5
 \question Find the surface area of the part of the sphere $x^2+y^2+z^2 = 4z$ that lies above the paraboloid $3z = x^2+y^2$.
     \begin{solution}
-        
+        \begin{gather*}
+            3z = r^2 \\
+            r^2 + z^2 = 4z \\
+            3z + z^2 = 4z \\
+            z^2 - z = 0 \\
+            z = 0, 1 \\
+            r = \sqrt{3} \\
+            0 \leq \theta \leq 2\pi \\
+            (z-2)^2 = 4 - x^2 - y^2 \\
+            z = 2 + \sqrt{4 - x^2 - y^2} \\
+            S = \int\int_D \sqrt{1 + \left(\frac{\delta z}{\delta x}\right)^2 + \left(\frac{\delta z}{\delta y}\right)^2} \, dx \\
+            S_{upper}= \int\int_D \sqrt{1 + \left(-\frac{x}{\sqrt{4 - x^2 - y^2}}\right)^2 + \left(-\frac{x}{\sqrt{4 - x^2 - y^2}}\right)^2} \, dx \\
+            = \int\int_D \frac{2}{\sqrt{4 - r^2}}\, dx \\
+            \int_{0}^{2\pi} \int_{0}^{2} \frac{2}{\sqrt{4 - r^2}}r \, dr\, d\theta \\
+            2 \int_{0}^{2\pi} 2 \, d\theta \\
+            8\pi \\
+            S_{lower} = \int_{0}^{2\pi}\int_{0}^{\sqrt{3}}r\frac{2}{\sqrt{4-r^2}}\, dr\, d\theta \\
+            2 \int_{0}^{2\pi} 1 \, d\theta \\
+            = 4\pi \\
+            \boxed{S = 12\pi} \tag*{\qed}
+        \end{gather*}
     \end{solution}
+    \clearpage
 
 %6
 \question  The small but edgy city of Dreieck is modeled by the region $D = \{ (x, y) : 5 |x| \leq y \leq 5\}$, where $x$ and $y$ are measured in km. The population density in people per km$^2$ is given by $\rho(x, y) = 10^{3-y}$. Find the total population of the city. (This should preferably be an integer.)
-
+    \begin{solution}
+        \begin{gather*}
+            0 \leq y \leq 5, -\frac{y}{5} \leq x \leq \frac{y}{5} \\
+            \int\int_D \rho(x, y) dA = \int_{0}^{5} \int_{-\frac{y}{5}}^{\frac{y}{5}} 10^{3-y} \, dx \, dy \\
+            \int_{0}^{5}\left(10^{3-y}x\right)|_{x=-\frac{y}{5}}^{\frac{y}{5}}\, dy\\
+            \int_{0}^{5} 10^{3-y} \frac{2y}{5}\, dy \\
+            = \frac{2}{5} 10^3\int_{0}^{5} 10^{-y} y\, dy \\
+            = \frac{2}{5} 10^3 \left( -\frac{10^{-y}y}{\ln(10)} - \int_{0}^{5}-\frac{10^{-y}}{\ln(10)}\right) \\
+            = 400 \left(-\frac{y}{10^y \cdot \ln(10)} - \frac{1}{\ln^2 (10) \cdot 10^y}\right)|_{y=0}^5 \\
+            = 400 \cdot 0.1885880961705487 \approx \boxed{76 \text{ people} } \tag*{\qed}
+        \end{gather*}
+    \end{solution}
+    \clearpage
 %7
 \question  Find the mass and center of mass of the tetrahedron bounded by the planes $x = 0, y = 0, z = 0,
 2x + 3y + z = 6$, if the density function is given by $\rho(x, y, z) = z$.
@@ -81,7 +171,7 @@
             &= \frac{1}{12}\int_{0}^{6} 36z - 12z^2 + z^3 \, dz \\
             &= \frac{1}{12} \cdot \left(\frac{z^4}{4} + 18z^2 - 4z^3  \right)|_{z=0}^{z=6} \\
             &= \frac{1}{12}(324 + 648 - 864) \\
-            &= \boxed{9}
+            &= \boxed{9} 
         \end{align*}
         Now, we perform a weighted sum of each the $x, y$, and $z$ coordinates, then divide by the total mass to find the respective value for the center of mass.
         For $x$:
@@ -124,7 +214,7 @@
         \overline{z} &= \frac{18}{5}
     \end{align*}
     Thus, the mass is $\boxed{9}$ and the center of mass is $(x, y, z) = \boxed{\left(\frac{3}{5}, \frac{2}{5}, \frac{18}{5} \right)}$. \qed
-
+    \clearpage
 %8
 \question  Sketch the region of integration for the integral
     \[ \int_{0}^{3}\int_{9-x^2}^{9}\int_{0}^{9-y}f(x, y, z) \, dz\, dy\, dx \]
@@ -139,15 +229,31 @@
         \begin{align}
             &\int_{0}^{3}\int_{0}^{x^2}\int_{9-x^2}^{9-z} f(x, y, z) \, dy\, dz\, dx \\
             &\int_{0}^{9}\int_{\sqrt{z}}^{3}\int_{9-z}^{9-x^2} f(x, y, z) \, dy\, dx\, dz \\
-            &\int_{0}^{9}\int_{\sqrt{9-y}}^{3}\int_{0}^{9-y} f(x, y, z) \, dz\, dx\, dy
+            &\int_{0}^{9}\int_{\sqrt{9-y}}^{3}\int_{0}^{9-y} f(x, y, z) \, dz\, dx\, dy \tag*{\qed}
         \end{align}
     \end{solution}
-
+    \clearpage
 %9
 \question Find the region $E$ for which the triple integral
     \[ \int\int\int_{E} (9 - 4x^2 - 4y^2 - 4z^2) dV \]
     is a maximum, and compute this maximum value.
-
+    \begin{solution}
+        We will use spherical coordinates. First, we find the critical point, then the maximum value of the integral.
+        \begin{gather*}
+            r = \sqrt{x^2+y^2+z^2} \\
+            -4x^2 - 4y^2 - 4z^2 + 9 = 0 \\
+            \frac{9}{4} = x^2 + y^2 + z^2 \\
+            r = \frac{3}{2} \\
+            \int\int\int_{E} (9 - 4x^2 - 4y^2 - 4z^2) dV = \int\int\int_E (9-4^2)r^2sin(\phi)\, dr\, d\phi\, d\theta \\
+            \int_{0}^{2\pi} \int_{0}^{\pi}\int_{0}^{\frac{3}{2}} (9-4^2)r^2sin(\phi)\, dr\, d\phi\, d\theta \\
+            \int_{0}^{2\pi} \int_{0}^{\pi} \left(3r^3\sin(\phi) - \frac{4}{5}r^5\sin(\phi)\right)|_{p=0}^{\frac{3}{2}}\, d\phi\, d\theta \\
+            \int_{0}^{2\pi} \int_{0}^{\pi} \left(\frac{81}{8}\sin(\phi) - \frac{243}{40}\sin(\phi)\right)\, d\phi\, d\theta \\
+            \int_{0}^{2\pi} \int_{0}^{\pi} \left(- \frac{81}{20}\cos(\phi)\right)|_{\phi=0}^{\pi}\, d\theta \\
+            = \int_{0}^{2\pi}\frac{81}{10}\, d\theta \\
+            = \boxed{\frac{81\pi}{5}} \tag*{\qed}
+        \end{gather*}
+    \end{solution}
+    \clearpage
 %10
 \question A team of archeologists excavating the ancient settlement of Osmia has unearthed a previously unknown type of artifact. This can be modeled as the region $E$ that lies inside the cylinder $x^2 +y^2 = 3$, is bounded above by the plane $z = 0$, and is bounded below by the hyperboloid $x^2 + y^2 - z^2 = 1$.
 \begin{parts}
@@ -176,7 +282,8 @@
                 = \pi \int_{-\sqrt{2}}^{0} 2z - z^3 \, dz \\
                 = 2\pi - \frac{4\pi}{4} \\
                 = \pi \\
-                \boxed{\overline{z} = \frac{\pi}{133.8196341} \approx 0.02347632076}
+                \boxed{\overline{z} = \frac{\pi}{133.8196341} \approx 0.02347632076} \\
+                \boxed{(\overline{x}, \overline{y}, \overline{z}) = (0, 0, 0.02347632076) } \tag*{\qed}
             \end{gather*}
         \end{solution}
 \end{parts}
