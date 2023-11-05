@@ -14,7 +14,7 @@
 % 	Define vars here 	%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\hwName{Homework Set}
+\def\hwName{Homework Set 8: §15.7 – 16.1}
 \author{Zhengyu James Pan} %use like \@author
 \def\email{jzpan@umich.edu}
 \makeatletter
@@ -39,13 +39,107 @@
 }
 
 \begin{questions}
-\question Question
+
+%1
+\question For the following problem, take $r, \theta, \rho$, and $\phi$ to have the standard deﬁnitions in cylindrical and spherical
+coordinates. Describe (and try to sketch) the following surfaces:
 	\begin{parts}
-		\part Part
-		\begin{solution}
-			Solution
-		\end{solution}
+		\part $r = \theta$
+		\part $\rho = \theta$
+		\part $r = \rho$
+		\part $\theta = \phi$
 	\end{parts}
+
+%2
+\question Let $E$ be the ball of radius 1 centered at the point (0, 0, 1).
+	\begin{parts}
+		\part Show that $E$ is given in Cartesian coordinates by the equation $x^2 + y^2 + z^2 - 2z \leq 0$.
+		\part Write $E$ in spherical coordinates. Make sure to specify the domain of $\rho, \theta,$ and $\phi$.
+		\part Suppose the density on $E$ is proportional to the distance to the origin, with the largest density
+		being equal to 2. Use spherical coordinates to compute the mass and center of mass of $E$.
+		\part Suppose we tried to do this problem for the ball of radius 1 centered at the point (0, 1, 0). Why is this problem harder with the new ball?
+	\end{parts}
+%3
+\question Begin with a sphere of radius $R$ and bore a hole into the sphere in the shape of a right circular cylinder,
+leaving only a band of height $h$. Find the volume of the resulting shape.
+	\begin{solution}
+		The radius of the cylinder will be $r_c = \sqrt{R^2 - h^2}$. We use cylindrical coordinates to perform the integration.
+		\begin{gather*}
+			2\pi \int_{-h}^{h} \int_{\sqrt{R^2 - h^2}}^{\sqrt{R^2 - z^2}} r \, dr\, d\theta \\
+			= \pi \int_{-h}^{h} \left(r^2\right)|_{\sqrt{R^2 - h^2}}^{\sqrt{R^2 - z^2}}  \, dr\, d\theta \\
+			= \pi \int_{-h}^{h} R^2 - z^2 - R^2 + h^2 \, d\theta \\
+			= \pi \left(-\frac{z^3}{3} + h^2 z \right)|_{z = -h}^{h} \\
+			= \boxed{\frac{4\pi h^3}{3}} \tag*{\qed}
+		\end{gather*}
+	\end{solution}
+%4
+\question Find the mass of a wedge cut from a sphere of radius $R$ by two planes that intersect along a diameter and at an angle of $\frac{\pi}{5}$, assuming that the density is proportional to the distance from the origin in such a way that the maximum density is 2. (This shape should look like a segment of an orange.)
+	\begin{solution}
+		We use spherical coordinates for this problem, with $(r, \theta, \phi)$. The density function will be $\rho (r) = \frac{2 r}{R}$ to have a maximum density of 2 when the distance is equal to the radius.
+		\begin{gather*}
+			\frac{\pi}{5}\int_{0}^{R}\int_{0}^{\pi} \frac{2 r}{R} r^2 \sin(\phi)\, d\phi \, dr \\
+			= \frac{\pi}{5R}\int_{0}^{R} 2 r^3 \int_{0}^{\pi} \sin(\phi)\, d\phi \, dr \\
+			= \frac{\pi}{5R}\int_{0}^{R} 2 r^3 \left(-\cos(\phi)\right)|_{\phi = 0}^{\pi} \, dr \\
+			= \frac{\pi}{5R}\int_{0}^{R} 4 r^3 \, dr \\
+			= \frac{\pi}{5R} \left(r^4\right)|_{r=0}^{R} \\
+			= \boxed{\frac{\pi R^3}{5}} \tag*{\qed}
+		\end{gather*}
+	\end{solution}
+
+%5
+\question Find $\int\int_R f(x, y)\, dA$ where $f(x, y) = 3y^2 - 4xy - 4x^2$ and $R$ is the quadrilateral with vertices (0, 2), (3, 0), (5, 4), and (2, 6). $Hint$: There may be a straightforward but tedious way to solve this problem, as well as a faster, more subtle, way to solve this problem.
+	\begin{solution}
+		We can factor $f(x, y) = (3y+2x)(y-2x)$. Then, we can use change of variables to change both the function and the bounds. Let $u = 3y + 2x$, $v = y - 2x$. Then $f(u, v) = uv$, $d(x, y) = \left(\frac{1}{3}-\frac{1}{2}\left(-\frac{1}{2}\right)\right)d(u, v) = \frac{1}{12}d(u, v)$. Also, $R$ has vertices at $(u, v) = (6, 2), (6, -6), (22, -6), (22, 2)$.\\
+		\begin{gather*}
+			\frac{1}{12} \int_{-6}^{2} \int_{6}^{22} uv \, du\, dv \\
+			= \frac{1}{24} \int_{-6}^{2} v \left[\left(22\right)^2 - \left(6\right)^2 \right]\, dv \\
+			= \frac{1}{24} \int_{-6}^{2} 448 v dv \\
+			= \frac{1}{24} \left(224 v^2\right)|_{v=-6}^{2} \\
+			= \frac{1}{24} \cdot (-7168) \\
+			= -\frac{896}{3} \\
+		\end{gather*}
+	\end{solution}
+%6
+\question Let $E$ be the region in the ﬁrst quadrant that is above the line $y = \frac{x}{3}$, below the line $y = 3x$, and
+between the curves deﬁned by $xy = 3$ and $xy = 27$.
+	\begin{parts}
+		\part Sketch the region.
+		\part Evaluate $\int \int (\frac{x^2}{y^2} + x^2 y^2) \, dA.$ (Hint: Try $u = xy$ and $v = \frac{y}{x}$.)
+		\part Why was the hint a reasonable guess for a change of coordinates?
+	\end{parts}
+%7
+\question Do Exercises 13-18 of §16.1 in \emph{Stewart's Multivariable Calculus}.
+	\begin{solution}
+		\begin{questions}
+			\setcounter{question}{12}
+			\question \boxed{} -- explanation.
+			
+		\end{questions}
+	\end{solution}
+%8
+\setcounter{question}{7}
+\question Do Exercises 19-22 of §16.1 in \emph{Stewart's Multivariable Calculus}.
+	\begin{solution}
+		\begin{questions}
+			\setcounter{question}{18}
+			\question \boxed{IV} -- only constant vector field.
+			\question \boxed{I} -- the vector field is constant when z is fixed.
+			\question \boxed{III} -- always positive vertical direction, same direction as displacement from origin for $x$ and $y$.
+			\question \boxed{II} -- same direction/magnitude as displacement from origin.
+		\end{questions}
+	\end{solution}
+%9
+\setcounter{question}{8}
+\question Do Exercises 31-34 of §16.1 in \emph{Stewart's Multivariable Calculus}.
+	\begin{solution}
+		\begin{questions}
+			\setcounter{question}{30}
+			\question \boxed{III} -- gradient is $(2x, 2y)$, so linearly increasing magnitude and same direction as displacement from origin.
+			\question \boxed{IV} -- gradient is $(2x + y, x)$, thus the direction is close to horizontal near the y-axis and becomes more vertical as x increases.
+			\question \boxed{II} -- gradient is $(2x + 2y, 2y + 2x)$. Since the $x$ and $y$ coordinates are the same, the direction is always the same $\langle 1, 1 \rangle$, except with positive or negative magnitude.
+			\question \boxed{I} -- Gradient will include something with $\cos$ for both $f_x$ and $f_y$ coordinates, thus the magnitude will oscillate.
+		\end{questions}
+	\end{solution}
 \end{questions}
 
 \end{document}
