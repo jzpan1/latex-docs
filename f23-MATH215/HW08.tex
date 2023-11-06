@@ -103,17 +103,28 @@ coordinates. Describe (and try to sketch) the following surfaces:
 				A density equal to $\rho$ satisfies these conditions.
 				\begin{gather*}
 					M = 2\pi \int_{0}^{\frac{\pi}{2}} \int_{0}^{2\cos(\phi)} \rho^3\sin(\phi) \, d\rho\, d\phi \\
-					2\pi \int_{0}^{\frac{\pi}{2}} \sin(\phi)\int_{0}^{2\cos(\phi)} \left[\frac{\rho^4}{4}\right]_{\rho = 0}^{2\cos(\phi)} \, d\phi \\
+					2\pi \int_{0}^{\frac{\pi}{2}} \sin(\phi) \left[\frac{\rho^4}{4}\right]_{\rho = 0}^{2\cos(\phi)} \, d\phi \\
 					2\pi \int_{0}^{\frac{\pi}{2}} \sin(\phi) 4\cos^4(\phi) \, d\phi \\
 					u = \cos(\phi), du = -\sin(\phi)\, d\phi \\
 					2\pi \int_{1}^{0} -4u^4 \, d\phi \\
 					-8\pi \left(\frac{u^5}{5}\right)_{u=1}^{0} \\
 					M = \boxed{\frac{8\pi}{5}}
 				\end{gather*}
+				By symmetry, $\overline{x} = \overline{y} = \overline{\phi} = \overline{\theta} = 0$. So, to find $\overline{z}$, we can actually find $\overline{\rho}$:
+				\begin{gather*}
+					\overline{\rho} = \frac{5}{8\pi} 2\pi \int_{0}^{\frac{\pi}{2}} \int_{0}^{2\cos(\phi)} \rho^4\sin(\phi) \, d\rho\, d\phi \\
+					\frac{5}{4} \int_{0}^{\frac{\pi}{2}} \sin(\phi) \left[\frac{\rho^5}{5}\right]_{\rho = 0}^{2\cos(\phi)} \, d\phi \\
+					\frac{1}{4} \int_{0}^{\frac{\pi}{2}} \sin(\phi) 32 \cos^5(\phi) \, d\phi \\
+					u = \cos(\phi), du = -\sin(\phi)\, d\phi \\
+					\int_{1}^{0} -8u^5 \, d\phi \\
+					-\frac{8}{6} \left[u^6\right]_{u=1}^{0} \\
+					\overline{z} = \overline{\rho} = \frac{4}{3} \\
+					\boxed{(\overline{x}, \overline{y}, \overline{z} = (0, 0, \frac{4}{3})}\tag*{\qed}
+				\end{gather*}
 			\end{solution}
 		\part Suppose we tried to do this problem for the ball of radius 1 centered at the point (0, 1, 0). Why is this problem harder with the new ball?
 			\begin{solution}
-				
+				This is harder because the region of integration is not as simply described by any coordinate system. For instance, in spherical the region would be $0 \leq \rho \leq 2\sqrt{\sin^2(\theta) + \sin^2(\phi)}, 0 \leq \theta \leq \pi, 0 \leq \phi \leq \pi$. These bounds are much more annoying to integrate due to the square root for the upper bound of $\rho$.
 			\end{solution}
 	\end{parts}
 %3
