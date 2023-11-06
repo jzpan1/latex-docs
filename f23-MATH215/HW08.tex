@@ -79,12 +79,42 @@ coordinates. Describe (and try to sketch) the following surfaces:
 	\begin{parts}
 		\part Show that $E$ is given in Cartesian coordinates by the equation $x^2 + y^2 + z^2 - 2z \leq 0$.
 			\begin{solution}
-				
+				\begin{gather*}
+					x^2 + y^2 + (z-1)^2 \leq 1 \\
+					x^2 + y^2 + z^2 -2z + 1 \leq 1 \\
+					x^2 + y^2 + z^2 -2z \leq 0 \tag*{\qed}
+				\end{gather*}
 			\end{solution}
 		\part Write $E$ in spherical coordinates. Make sure to specify the domain of $\rho, \theta,$ and $\phi$.
-		\part Suppose the density on $E$ is proportional to the distance to the origin, with the largest density
-		being equal to 2. Use spherical coordinates to compute the mass and center of mass of $E$.
+			\begin{solution}
+				\begin{align*}
+					x = \rho \sin(\phi)\cos(\theta), y = \rho \sin(\phi)\sin(\theta), z = \rho \cos(\phi) &\\\\
+					(\rho \sin(\phi)\cos(\theta))^2 + (\rho \sin(\phi)\sin(\theta))^2 + (\rho \cos(\phi))^2 -2(\rho \cos(\phi)) &\leq 0 \\
+					\rho^2 \sin^2(\phi)\cos^2(\theta) + \rho^2 \sin^2(\phi)\sin^2(\theta) + \rho^2 \cos^2(\phi) -2 \rho \cos(\phi) &\leq 0 \\
+					\rho^2 \sin^2(\phi)\cos^2(\theta) + \rho^2 \sin^2(\phi)\sin^2(\theta) + \rho^2 \cos^2(\phi) -2 \rho \cos(\phi) &\leq 0 \\
+					\rho^2 \sin^2(\phi)(\cos^2(\theta) + \sin^2(\theta)) + \rho^2 \cos^2(\phi) -2 \rho \cos(\phi) &\leq 0 \\
+					\rho^2 -2 \rho \cos(\phi) &\leq 0 \\
+					\rho (\rho - 2\cos(\phi)) &\leq 0 \\
+					\boxed{0 \leq \rho \leq 2\cos(\phi), 0 \leq \phi \leq -\frac{\pi}{2}, 0 \leq \theta \leq 2\pi} \tag*{\qed}
+				\end{align*}
+			\end{solution}
+		\part Suppose the density on $E$ is proportional to the distance to the origin, with the largest density being equal to 2. Use spherical coordinates to compute the mass and center of mass of $E$.
+			\begin{solution}
+				A density equal to $\rho$ satisfies these conditions.
+				\begin{gather*}
+					M = 2\pi \int_{0}^{\frac{\pi}{2}} \int_{0}^{2\cos(\phi)} \rho^3\sin(\phi) \, d\rho\, d\phi \\
+					2\pi \int_{0}^{\frac{\pi}{2}} \sin(\phi)\int_{0}^{2\cos(\phi)} \left[\frac{\rho^4}{4}\right]_{\rho = 0}^{2\cos(\phi)} \, d\phi \\
+					2\pi \int_{0}^{\frac{\pi}{2}} \sin(\phi) 4\cos^4(\phi) \, d\phi \\
+					u = \cos(\phi), du = -\sin(\phi)\, d\phi \\
+					2\pi \int_{1}^{0} -4u^4 \, d\phi \\
+					-8\pi \left(\frac{u^5}{5}\right)_{u=1}^{0} \\
+					M = \boxed{\frac{8\pi}{5}}
+				\end{gather*}
+			\end{solution}
 		\part Suppose we tried to do this problem for the ball of radius 1 centered at the point (0, 1, 0). Why is this problem harder with the new ball?
+			\begin{solution}
+				
+			\end{solution}
 	\end{parts}
 %3
 \question Begin with a sphere of radius $R$ and bore a hole into the sphere in the shape of a right circular cylinder,
