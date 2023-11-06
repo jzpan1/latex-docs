@@ -89,14 +89,18 @@ leaving only a band of height $h$. Find the volume of the resulting shape.
 %5
 \question Find $\int\int_R f(x, y)\, dA$ where $f(x, y) = 3y^2 - 4xy - 4x^2$ and $R$ is the quadrilateral with vertices (0, 2), (3, 0), (5, 4), and (2, 6). $Hint$: There may be a straightforward but tedious way to solve this problem, as well as a faster, more subtle, way to solve this problem.
 	\begin{solution}
-		We can factor $f(x, y) = (3y+2x)(y-2x)$. Then, we can use change of variables to change both the function and the bounds. Let $u = 3y + 2x$, $v = y - 2x$. Then $f(u, v) = uv$, $d(x, y) = \left(\frac{1}{3}-\frac{1}{2}\left(-\frac{1}{2}\right)\right)d(u, v) = \frac{1}{12}d(u, v)$. Also, $R$ has vertices at $(u, v) = (6, 2), (6, -6), (22, -6), (22, 2)$.\\
+		We can factor $f(x, y) = (3y+2x)(y-2x)$. Then, we can use change of variables to change both the function and the bounds. Let $u = 3y + 2x$, $v = y - 2x$. Then $f(u, v) = uv$, $d(x, y) = \left(2 - 3(-2))\right)^{-1} d(u, v) = \frac{1}{8}d(u, v)$. Also, $R$ has vertices at $(u, v) = (6, 2), (6, -6), (22, -6), (22, 2)$.\\
 		\begin{gather*}
-			\frac{1}{12} \int_{-6}^{2} \int_{6}^{22} uv \, du\, dv \\
-			= \frac{1}{24} \int_{-6}^{2} v \left[\left(22\right)^2 - \left(6\right)^2 \right]\, dv \\
-			= \frac{1}{24} \int_{-6}^{2} 448 v dv \\
-			= \frac{1}{24} \left(224 v^2\right)|_{v=-6}^{2} \\
-			= \frac{1}{24} \cdot (-7168) \\
-			= -\frac{896}{3} \\
+			\frac{1}{8} \int_{-6}^{2} \int_{6}^{22} uv\sqrt{1 + u^2 + v^2} \, du\, dv \\
+			t = 1 + u^2 + v^2, dt = 2u\, du \\
+			= \frac{1}{16} \int_{-6}^{2} v \int_{u=6}^{u=22} \sqrt{t} \, dt\, dv \\
+			= \frac{1}{16} \int_{-6}^{2} v  \left(\frac{2t^{3/2}}{3}\right)_{u=6}^{u=22}\, dv \\
+			= \frac{1}{16} \int_{-6}^{2} v \left(\frac{2(485+v^2)^{3/2}}{3}\right) - v\left(\frac{2(37+v^2)^{3/2}}{3}\right) \, dv \\
+			= \frac{1}{16} \int_{-6}^{2} v \left(\frac{2(485+v^2)^{3/2}}{3}\right) - v\left(\frac{2(37+v^2)^{3/2}}{3}\right) \, dv \\
+			w = 485+v^2, dw = 2v\, dv; z = 37+v^2, dz = 2v\, dv \\
+			= \frac{1}{16} \int_{v = -6}^{v = 2} \left(\frac{(w)^{3/2}}{3}\right) \, dw - \frac{1}{16} \int_{v = -6}^{v = 2} \left(\frac{(z)^{3/2}}{3}\right) \, dz \\
+			= \frac{1}{8} \left(\frac{(w)^{5/2}}{15}\right)_{-6}^{v = 2} - \frac{1}{8} \left(\frac{(z)^{5/2}}{15}\right)_{v = -6}^{2} \\
+			= \boxed{-7276.863857} \tag*{\qed}
 		\end{gather*}
 	\end{solution}
 %6
@@ -112,8 +116,12 @@ between the curves deﬁned by $xy = 3$ and $xy = 27$.
 	\begin{solution}
 		\begin{questions}
 			\setcounter{question}{12}
-			\question \boxed{} -- explanation.
-			
+			\question \boxed{IV} -- vectors with direction and magnitude equal to displacement, except flipped vertically.
+			\question \boxed{V} -- downward direction when $x < y$, upward when $y < x$, horizontal when $x = y$.
+			\question \boxed{I} -- when $y = -2$, vectors are horizontal.
+			\question \boxed{VI} -- magnitude increases more with $x$ than $y$.
+			\question \boxed{III} -- the magnitude/direction oscillates when either coordinate is fixed.
+			\question \boxed{II} -- direction becomes more vertical when x increases, while horizontal component oscillates.
 		\end{questions}
 	\end{solution}
 %8
