@@ -53,7 +53,7 @@ coordinates. Describe (and try to sketch) the following surfaces:
 			\end{solution}
 		\part $\rho = \theta$
 			\begin{solution}
-				A spiral in the $xy$ plane, where each point has vertical arcs of circles passing through them to the line $x=y=0$, each with the origin as their center.
+				The surface formed when arcs of circles perpendicularly intersect the $xy$ plane at each point on a spiral in the $xy$ plane, each with the origin as their center of curvature.
 				\begin{center}
 					\includegraphics*[scale=0.5]{images/08-1b.png}
 				\end{center}
@@ -73,7 +73,7 @@ coordinates. Describe (and try to sketch) the following surfaces:
 				\end{center}
 			\end{solution}
 	\end{parts}
-
+	\clearpage
 %2
 \question Let $E$ be the ball of radius 1 centered at the point (0, 0, 1).
 	\begin{parts}
@@ -108,7 +108,7 @@ coordinates. Describe (and try to sketch) the following surfaces:
 					u = \cos(\phi), du = -\sin(\phi)\, d\phi \\
 					2\pi \int_{1}^{0} -4u^4 \, d\phi \\
 					-8\pi \left(\frac{u^5}{5}\right)_{u=1}^{0} \\
-					M = \boxed{\frac{8\pi}{5}}
+					M = \boxed{\frac{8\pi}{5}} 
 				\end{gather*}
 				By symmetry, $\overline{x} = \overline{y} = \overline{\phi} = \overline{\theta} = 0$. So, to find $\overline{z}$, we can actually find $\overline{\rho}$:
 				\begin{gather*}
@@ -118,28 +118,28 @@ coordinates. Describe (and try to sketch) the following surfaces:
 					u = \cos(\phi), du = -\sin(\phi)\, d\phi \\
 					\int_{1}^{0} -8u^5 \, d\phi \\
 					-\frac{8}{6} \left[u^6\right]_{u=1}^{0} \\
-					\overline{z} = \overline{\rho} = \frac{4}{3} \\
 					\boxed{(\overline{x}, \overline{y}, \overline{z} = (0, 0, \frac{4}{3})}\tag*{\qed}
 				\end{gather*}
 			\end{solution}
 		\part Suppose we tried to do this problem for the ball of radius 1 centered at the point (0, 1, 0). Why is this problem harder with the new ball?
 			\begin{solution}
-				This is harder because the region of integration is not as simply described by any coordinate system. For instance, in spherical the region would be $0 \leq \rho \leq 2\sqrt{\sin^2(\theta) + \sin^2(\phi)}, 0 \leq \theta \leq \pi, 0 \leq \phi \leq \pi$. These bounds are much more annoying to integrate due to the square root for the upper bound of $\rho$.
+				This is harder because the region of integration is not as simply described by any coordinate system. For instance, in spherical the region would be $0 \leq \rho \leq 2\sqrt{\sin^2(\theta) + \sin^2(\phi)}, 0 \leq \theta \leq \pi, 0 \leq \phi \leq \pi$. These bounds are much more annoying to integrate due to the square root for the upper bound of $\rho$. \qed
 			\end{solution}
 	\end{parts}
+	\clearpage
 %3
-\question Begin with a sphere of radius $R$ and bore a hole into the sphere in the shape of a right circular cylinder,
-leaving only a band of height $h$. Find the volume of the resulting shape.
+\question Begin with a sphere of radius $R$ and bore a hole into the sphere in the shape of a right circular cylinder, leaving only a band of height $h$. Find the volume of the resulting shape.
 	\begin{solution}
 		The radius of the cylinder will be $r_c = \sqrt{R^2 - h^2}$. We use cylindrical coordinates to perform the integration.
 		\begin{gather*}
-			2\pi \int_{-h}^{h} \int_{\sqrt{R^2 - h^2}}^{\sqrt{R^2 - z^2}} r \, dr\, d\theta \\
-			= \pi \int_{-h}^{h} \left(r^2\right)|_{\sqrt{R^2 - h^2}}^{\sqrt{R^2 - z^2}}  \, dr\, d\theta \\
-			= \pi \int_{-h}^{h} R^2 - z^2 - R^2 + h^2 \, d\theta \\
-			= \pi \left(-\frac{z^3}{3} + h^2 z \right)|_{z = -h}^{h} \\
+			2\pi \int_{-h}^{h} \int_{\sqrt{R^2 - h^2}}^{\sqrt{R^2 - z^2}} r \, dr\, dz \\
+			= \pi \int_{-h}^{h} \left[r^2\right]_{\sqrt{R^2 - h^2}}^{\sqrt{R^2 - z^2}}  \, dr\, dz  \\
+			= \pi \int_{-h}^{h} R^2 - z^2 - R^2 + h^2 \, dz \\
+			= \pi \left[-\frac{z^3}{3} + h^2 z \right]_{z = -h}^{h} \\
 			= \boxed{\frac{4\pi h^3}{3}} \tag*{\qed}
 		\end{gather*}
 	\end{solution}
+	\clearpage
 %4
 \question Find the mass of a wedge cut from a sphere of radius $R$ by two planes that intersect along a diameter and at an angle of $\frac{\pi}{5}$, assuming that the density is proportional to the distance from the origin in such a way that the maximum density is 2. (This shape should look like a segment of an orange.)
 	\begin{solution}
@@ -153,7 +153,7 @@ leaving only a band of height $h$. Find the volume of the resulting shape.
 			= \boxed{\frac{\pi R^3}{5}} \tag*{\qed}
 		\end{gather*}
 	\end{solution}
-
+	\clearpage
 %5
 \question Find $\int\int_R f(x, y)\, dA$ where $f(x, y) = 3y^2 - 4xy - 4x^2$ and $R$ is the quadrilateral with vertices (0, 2), (3, 0), (5, 4), and (2, 6). $Hint$: There may be a straightforward but tedious way to solve this problem, as well as a faster, more subtle, way to solve this problem.
 	\begin{solution}
@@ -164,17 +164,42 @@ leaving only a band of height $h$. Find the volume of the resulting shape.
 			= \frac{1}{16} \int_{-6}^{2} 448 v dv \\
 			= \frac{1}{16} \left(224 v^2\right)|_{v=-6}^{2} \\
 			= \frac{1}{16} \cdot (-7168) \\
-			= \boxed{- 448} \\
+			= \boxed{- 448} \tag*{\qed}
 		\end{gather*}
 	\end{solution}
+	\clearpage
 %6
 \question Let $E$ be the region in the ﬁrst quadrant that is above the line $y = \frac{x}{3}$, below the line $y = 3x$, and
 between the curves deﬁned by $xy = 3$ and $xy = 27$.
 	\begin{parts}
 		\part Sketch the region.
+			\begin{solution}
+				\begin{center}
+					\includegraphics*[scale=0.3]{images/08-6a.png}
+				\end{center}
+			\end{solution}
 		\part Evaluate $\int \int (\frac{x^2}{y^2} + x^2 y^2) \, dA.$ (Hint: Try $u = xy$ and $v = \frac{y}{x}$.)
+			\begin{solution}
+				\begin{align*}
+					\frac{d(u, v)}{d(x, y)} &= \begin{vmatrix}
+						y & x \\
+						- \frac{y}{x^2} & \frac{1}{x}
+					\end{vmatrix}  \\
+					&= v + v = 2v \\
+					d(x, y) &= \frac{d(u, v)}{2v} \\
+					\int \int (\frac{x^2}{y^2} + x^2 y^2) \, dA &= \int_{\frac{1}{3}}^{3} \frac{1}{2v} \int_{3}^{27} u^2 + v^2 \, du\, dv \\
+					&= \int_{\frac{1}{3}}^{3} \frac{1}{2v} \left(24v^2 + \frac{27^3-3^3}{3}\right)\, dv \\
+					&= \int_{\frac{1}{3}}^{3} 12v + \frac{27^3-3^3}{6v}\, dv \\
+					&= \left(6v^2 + \ln(|v|)\frac{27^3-3^3}{6}\right)_{\frac{1}{3}}^{3}\, dv \\
+					&= \dfrac{19656\ln\left(3\right)+160}{3} = \boxed{\frac{160}{3} + 6552\ln(3) }\tag*{\qed}
+				\end{align*}
+			\end{solution}
 		\part Why was the hint a reasonable guess for a change of coordinates?
+			\begin{solution}
+				Both the bounds and the integrated function could be easily expressed in terms of those variables, and the Jacobian was simple as well. \qed
+			\end{solution}
 	\end{parts}
+\clearpage
 %7
 \question Do Exercises 13-18 of §16.1 in \emph{Stewart's Multivariable Calculus}.
 	\begin{solution}
@@ -188,6 +213,7 @@ between the curves deﬁned by $xy = 3$ and $xy = 27$.
 			\question \boxed{II} -- direction becomes more vertical when x increases, while horizontal component oscillates.
 		\end{questions}
 	\end{solution}
+	\clearpage
 %8
 \setcounter{question}{7}
 \question Do Exercises 19-22 of §16.1 in \emph{Stewart's Multivariable Calculus}.
@@ -200,6 +226,7 @@ between the curves deﬁned by $xy = 3$ and $xy = 27$.
 			\question \boxed{II} -- same direction/magnitude as displacement from origin.
 		\end{questions}
 	\end{solution}
+	\clearpage
 %9
 \setcounter{question}{8}
 \question Do Exercises 31-34 of §16.1 in \emph{Stewart's Multivariable Calculus}.
