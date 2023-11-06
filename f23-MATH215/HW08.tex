@@ -78,6 +78,9 @@ coordinates. Describe (and try to sketch) the following surfaces:
 \question Let $E$ be the ball of radius 1 centered at the point (0, 0, 1).
 	\begin{parts}
 		\part Show that $E$ is given in Cartesian coordinates by the equation $x^2 + y^2 + z^2 - 2z \leq 0$.
+			\begin{solution}
+				
+			\end{solution}
 		\part Write $E$ in spherical coordinates. Make sure to specify the domain of $\rho, \theta,$ and $\phi$.
 		\part Suppose the density on $E$ is proportional to the distance to the origin, with the largest density
 		being equal to 2. Use spherical coordinates to compute the mass and center of mass of $E$.
@@ -115,16 +118,12 @@ leaving only a band of height $h$. Find the volume of the resulting shape.
 	\begin{solution}
 		We can factor $f(x, y) = (3y+2x)(y-2x)$. Then, we can use change of variables to change both the function and the bounds. Let $u = 3y + 2x$, $v = y - 2x$. Then $f(u, v) = uv$, $d(x, y) = \left(2 - 3(-2))\right)^{-1} d(u, v) = \frac{1}{8}d(u, v)$. Also, $R$ has vertices at $(u, v) = (6, 2), (6, -6), (22, -6), (22, 2)$.\\
 		\begin{gather*}
-			\frac{1}{8} \int_{-6}^{2} \int_{6}^{22} uv\sqrt{1 + u^2 + v^2} \, du\, dv \\
-			t = 1 + u^2 + v^2, dt = 2u\, du \\
-			= \frac{1}{16} \int_{-6}^{2} v \int_{u=6}^{u=22} \sqrt{t} \, dt\, dv \\
-			= \frac{1}{16} \int_{-6}^{2} v  \left(\frac{2t^{3/2}}{3}\right)_{u=6}^{u=22}\, dv \\
-			= \frac{1}{16} \int_{-6}^{2} v \left(\frac{2(485+v^2)^{3/2}}{3}\right) - v\left(\frac{2(37+v^2)^{3/2}}{3}\right) \, dv \\
-			= \frac{1}{16} \int_{-6}^{2} v \left(\frac{2(485+v^2)^{3/2}}{3}\right) - v\left(\frac{2(37+v^2)^{3/2}}{3}\right) \, dv \\
-			w = 485+v^2, dw = 2v\, dv; z = 37+v^2, dz = 2v\, dv \\
-			= \frac{1}{16} \int_{v = -6}^{v = 2} \left(\frac{(w)^{3/2}}{3}\right) \, dw - \frac{1}{16} \int_{v = -6}^{v = 2} \left(\frac{(z)^{3/2}}{3}\right) \, dz \\
-			= \frac{1}{8} \left(\frac{(w)^{5/2}}{15}\right)_{-6}^{v = 2} - \frac{1}{8} \left(\frac{(z)^{5/2}}{15}\right)_{v = -6}^{2} \\
-			= \boxed{-7276.863857} \tag*{\qed}
+			\frac{1}{8} \int_{-6}^{2} \int_{6}^{22} uv \, du\, dv \\
+			= \frac{1}{24} \int_{-6}^{2} v \left[\left(22\right)^2 - \left(6\right)^2 \right]\, dv \\
+			= \frac{1}{16} \int_{-6}^{2} 448 v dv \\
+			= \frac{1}{16} \left(224 v^2\right)|_{v=-6}^{2} \\
+			= \frac{1}{16} \cdot (-7168) \\
+			= \boxed{- 448} \\
 		\end{gather*}
 	\end{solution}
 %6
