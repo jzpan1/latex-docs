@@ -46,27 +46,61 @@
 \question Compute $\int_C x^2 \, dx + y^2 \, dy$, where $C$ is the circular arc starting at (2, 0) and ending at (0, 2) followed by the straight line segment from (0, 2) to (-1, 1).
 
 %3
-\question Do Exercise 53 of §16.2 in $Stewart's Multivariable Calculus$.
+\question Do Exercise 53 of §16.2 in $Stewart's\ Multivariable\ Calculus$.
 
 %4
 \question A wire has the shape of a helix with parametrization $x = t, y = 2 \cos t, z = 2 \sin t$ for $0 \leq t \leq 6\pi$, where distances are measured in cm. Find the mass and the center of mass of the wire if the density (in grams/cm) of the wire at any point is equal to four times the square of the distance from the origin to the point.
 
 %5
-\question Let $\overrightarrow{F} = \nabla f$ where $f(x, y) - \frac{y^{2002}}{1 + x^{200002} + y^{2002}}.$ Can you find a (smooth, simple, but not necessarily closed) curve C with the following property:
+\question Let $\overrightarrow{F} = \nabla f$ where $f(x, y) = \frac{y^{2002}}{1 + x^{200002} + y^{2002}}.$ Can you find a (smooth, simple, but not necessarily closed) curve C with the following property:
 	\begin{parts}
 		\part $\int_C \overrightarrow{F} \cdot d\overrightarrow{r} = \frac{1}{2}$
+			\begin{solution}
+				By the Fundamental Theorem of Line Integrals, this integral is equal to the value of $f(x_1, y_1)$ at the beginning of the curve subtracted from $f(x_2, y_2)$ at the end of the curve. So, we find two points where $f(x_2, y_2)  - f(x_1, y_1) = \frac{1}{2}$. (0, 0) and (0, 1) satisfy these conditions. So, the line segment from (0, 0) to (0, 1) fulfills this property.
+			\end{solution}
 		\part $\int_C \overrightarrow{F} \cdot d\overrightarrow{r} = 1$
+		\begin{solution}
+			The minimum value of $f$ is 0 at (0, 0), and only the limit at $(0, \infty)$ is 1. Thus, there is no finite curve where this is true. If an infinite curve is allowed, then the infinite line beginning at the origin along the $y$-axis satisfies this property. 
+		\end{solution}
 	\end{parts}
 
 %6
-\question Do Exercises 11, 31, and 32 of §16.3 in $Stewart's Multivariable Calculus$.
+\question Do Exercises 11, 31, and 32 of §16.3 in $Stewart's\ Multivariable\ Calculus$. \\
+	\textbf{Solution}
+	\begin{questions}
+		\setcounter{question}{10}
+		\question \begin{parts}
+			\part The vector field is conservative, the gradient of the function $f(x, y) = x^2y$. Thus, the Fundamental Theorem of Line integrals applies. Since all these curves begin and end at the same point, the line integrals have the same value.
+			\part $f(3, 2) - f(1, 2) = \boxed{16}$
+		\end{parts}
+		\setcounter{question}{30}
+		\question 
+		\question 
+	\end{questions}
 
 %7
 \question 
 	\begin{parts}
 		\part Calculate $\oint_C \overrightarrow{F} \cdot d \overrightarrow{r}$ where
 		\[ \overrightarrow{F}(x, y) = \langle \frac{2xy}{(x^2 + y^2)^2}, \frac{y^2 - x^2}{(x^2 + y^2)^2} \rangle \]
+		for $(x, y) \neq (0, 0)$ and $C$ is the circle of radius $R$ centered at the origin, oriented clockwise.
+			\begin{solution}
+				We can parameterize this by $C(t) = \langle R\cos(t), R\sin(t) \rangle, 0 \leq t \leq \pi$. Then $C'(t) = \langle -R\sin(t), R\cos(t) \rangle$.
+				The integral is then
+				\begin{align*}
+					\oint_C \overrightarrow{F} \cdot d \overrightarrow{r} &= \int_{0}^{2\pi} \langle \frac{2\sin(t)\cos(t)}{R^2}, \frac{\sin^2(t) - \cos^2(t)}{R^2} \rangle \cdot \langle -R\sin(t), R\cos(t) \rangle\, dt \\
+					&= \frac{1}{R} \int_{0}^{2\pi} -2\sin^2(t)\cos(t) +\cos(t)\sin^2(t) - \cos^3(t)\, dt \\
+					&= \frac{1}{R} \int_{0}^{2\pi} -\sin^2(t)\cos(t) - \cos^3(t)\, dt \\
+					&= \frac{1}{R} \int_{0}^{2\pi} -\cos(t)(\sin^2(t) + \cos^2(t))\, dt \\
+					&= \frac{1}{R} \int_{0}^{2\pi} -\cos(t)\, dt \\
+					&= \boxed{0}
+				\end{align*}
+				We could also have noticed that $\overrightarrow{F}$ is the gradient of the function $f(x, y) = \frac{-y}{x^2 + y^2}$. Following from the Fundamental Theorem of Line Integrals, a line integral of a conservative vector field on a closed curve is 0. \qed
+			\end{solution}
 		\part Repeat the previous part, only this time take the curve C to be the ellipse defined by $4x^2 + 9y^2 = 36$, oriented counterclockwise. Hint: It may be possible to do this integration without parametrizing the ellipse.
+		\begin{solution}
+			$\overrightarrow{F}$ is the gradient of the function $f(x, y) = \frac{-y}{x^2 + y^2}$. Following from the Fundamental Theorem of Line Integrals, a line integral of a conservative vector field on a closed curve is \boxed{0}. \qed
+		\end{solution}
 	\end{parts}
 \end{questions}
 
