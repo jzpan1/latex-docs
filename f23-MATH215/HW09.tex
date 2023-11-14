@@ -74,25 +74,26 @@
 			\part $f(3, 2) - f(1, 2) = \boxed{16}$
 		\end{parts}
 		\setcounter{question}{30}
-		\question 
+		\question This vector field is not conservative because any counterclockwise path will have positive work, whereas clockwise paths will have negative work. Thus, this field is not the gradient of a function.
 		\question 
 	\end{questions}
 
 %7
+\setcounter{question}{6}
 \question 
 	\begin{parts}
 		\part Calculate $\oint_C \overrightarrow{F} \cdot d \overrightarrow{r}$ where
 		\[ \overrightarrow{F}(x, y) = \langle \frac{2xy}{(x^2 + y^2)^2}, \frac{y^2 - x^2}{(x^2 + y^2)^2} \rangle \]
 		for $(x, y) \neq (0, 0)$ and $C$ is the circle of radius $R$ centered at the origin, oriented clockwise.
 			\begin{solution}
-				We can parameterize this by $C(t) = \langle R\cos(t), R\sin(t) \rangle, 0 \leq t \leq \pi$. Then $C'(t) = \langle -R\sin(t), R\cos(t) \rangle$.
+				We can parameterize this by $C(t) = \langle R\sin(t), R\cos(t) \rangle, 0 \leq t \leq \pi$. Then $C'(t) = \langle R\cos(t), -R\sin(t) \rangle$.
 				The integral is then
 				\begin{align*}
-					\oint_C \overrightarrow{F} \cdot d \overrightarrow{r} &= \int_{0}^{2\pi} \langle \frac{2\sin(t)\cos(t)}{R^2}, \frac{\sin^2(t) - \cos^2(t)}{R^2} \rangle \cdot \langle -R\sin(t), R\cos(t) \rangle\, dt \\
-					&= \frac{1}{R} \int_{0}^{2\pi} -2\sin^2(t)\cos(t) +\cos(t)\sin^2(t) - \cos^3(t)\, dt \\
-					&= \frac{1}{R} \int_{0}^{2\pi} -\sin^2(t)\cos(t) - \cos^3(t)\, dt \\
-					&= \frac{1}{R} \int_{0}^{2\pi} -\cos(t)(\sin^2(t) + \cos^2(t))\, dt \\
-					&= \frac{1}{R} \int_{0}^{2\pi} -\cos(t)\, dt \\
+					\oint_C \overrightarrow{F} \cdot d \overrightarrow{r} &= \int_{0}^{2\pi} \langle \frac{2\sin(t)\cos(t)}{R^2}, \frac{\cos^2(t) - \sin^2(t)}{R^2} \rangle \cdot \langle R\cos(t), -R\sin(t) \rangle\, dt \\
+					&= \frac{1}{R} \int_{0}^{2\pi} 2\sin(t)\cos^2(t) - \sin(t)\cos^2(t) + \sin^3(t)\, dt \\
+					&= \frac{1}{R} \int_{0}^{2\pi} \sin(t)\cos^2(t) + \sin^3(t)\, dt \\
+					&= \frac{1}{R} \int_{0}^{2\pi} \sin(t)(\sin^2(t) + \cos^2(t))\, dt \\
+					&= \frac{1}{R} \int_{0}^{2\pi} \sin(t)\, dt \\
 					&= \boxed{0}
 				\end{align*}
 				We could also have noticed that $\overrightarrow{F}$ is the gradient of the function $f(x, y) = \frac{-y}{x^2 + y^2}$. Following from the Fundamental Theorem of Line Integrals, a line integral of a conservative vector field on a closed curve is 0. \qed
