@@ -1,0 +1,138 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set 8: §16.3 – 16.6}
+\author{Zhengyu James Pan} % use like \@author
+\def\email{jzpan@umich.edu}
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 215}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\begin{center}
+	\bf MATH 215 FALL 2023\\
+	\bf \hwName \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+%1
+\question Calculate $\oint_C \overrightarrow{F} \cdot d\overrightarrow{r}$ where $F (x, y) = \langle x^3 + 3y, y^2 + 2x\rangle$ and $C$ is the negatively oriented smooth boundary curve of some region $D$ that has area 1324.
+	
+%2
+\question Let $C$ be the part of the circle with radius 2 and center (0, 4) that lies in the left half-plane $x \leq 0$. Suppose $C$ is oriented so that the starting point is (0, 2) and the endpoint is (0, 6). Compute the line integral $\int_C(\sin x + y)\, dx + (3x + y)\, dy$. $Hint$: This problem would be much easier if we could find a way to apply Green's theorem.
+
+%3
+\question Let's revisit the shoelace theorem from Homework 0. 
+    \begin{parts}
+        \part Let $C$ be the line segment starting at $(x_1, y_1)$ and ending at (x2, y2). Let $\overrightarrow{F} = \langle -\frac{y}{2}, \frac{x}{2} \rangle$. Compute directly the integral $\oint_C \overrightarrow{F} \cdot d\overrightarrow{r}$
+        \part Now let $D$ be the triangle with vertices $(x_1, y_1), (x_2, y_2)$ and $(x_3, y_3)$, oriented counterclockwise in
+        the plane. Use Green's theorem to find the area of this triangle.
+        \part Explain how to use Green's theorem to extend the shoelace theorem to any polygon in the plane.
+    \end{parts}
+
+%4
+\question The gradient, curl, and divergence operators can be combine in some, but not all, orders. Explore this by doing Exercise 14 of §16.5 in Stewart's Multivariable Calculus.
+    \begin{solution}
+        \begin{parts}
+            \part No, cannot take dot product of a vector and a scalar.
+            \part Yes, this is a vector field.
+            \part Yes, this is a scalar field.
+            \part Yes, this is a vector field.
+            \part No, you cannot take the gradient of a vector field.
+            \part Yes, this is a vector field.
+            \part Yes, this is a scalar field.
+            \part No, you cannot take the gradient of a scalar field (dot product of vector with scalar).
+            \part Yes, this is a vector field.
+            \part No, you cannot take the divergence of a scalar field (dot product of vector with scalar).
+            \part No, this is the cross product of a vector with a scalar.
+            \part Yes, this is a scalar field.
+        \end{parts}
+    \end{solution}
+
+%5
+\question Let $\overrightarrow{r}= \langle x, y, z \rangle$ and $r = |\overrightarrow{r}|$. Verify the following identities:
+    \begin{parts}
+        \part $\nabla \cdot \overrightarrow{r} = 3$
+            \begin{solution}
+                \begin{gather*}
+                    \frac{dx}{dx} + \frac{dy}{dy} + \frac{dz}{dz} = 1 + 1 + 1 = 3
+                \end{gather*}
+            \end{solution}
+        \part $\nabla r = \frac{\overrightarrow{r}}{r}$
+            \begin{solution}
+                \begin{align*}
+                    \nabla r &= \left\langle \frac{1}{2\sqrt{x^2+y^2+z^2}}\cdot 2x, \frac{1}{2\sqrt{x^2+y^2+z^2}}\cdot 2y, \frac{1}{2\sqrt{x^2+y^2+z^2}}\cdot 2z \right\rangle \\
+                    &= \left\langle \frac{x}{\sqrt{x^2+y^2+z^2}}, \frac{y}{\sqrt{x^2+y^2+z^2}}, \frac{z}{\sqrt{x^2+y^2+z^2}} \right\rangle \\
+                    &= \frac{\overrightarrow{r}}{r} = \frac{\langle x, y, z \rangle}{\sqrt{x^2 + y^2 + z^2}}
+                \end{align*}
+            \end{solution}
+        \part $\nabla \left( \frac{1}{r} \right) = - \frac{\overrightarrow{r}}{r^3}$
+            \begin{solution}
+                \begin{align*}
+                    \nabla \frac{1}{r} &= \left\langle -\frac{x}{(x^2+y^2+z^2)^{3/2}}, -\frac{y}{(x^2+y^2+z^2)^{3/2}}, -\frac{z}{(x^2+y^2+z^2)^{3/2}} \right\rangle \\
+                    &= -\frac{\overrightarrow{r}}{r^3} = -\frac{\langle x, y, z \rangle}{(x^2 + y^2 + z^2)^{3/2}}
+                \end{align*}
+            \end{solution}
+        \part $\nabla \times \overrightarrow{r} = \overrightarrow{0}$
+            \begin{solution}
+                \begin{align*}
+                    \nabla \times \overrightarrow{r} &= \begin{vmatrix}
+                        \hat{\mathbf{i}} & \hat{\mathbf{j}} & \hat{\mathbf{k}} \\
+                        \frac{\delta}{\delta x} & \frac{\delta}{\delta y} & \frac{\delta}{\delta z} \\
+                        x & y & z
+                    \end{vmatrix} \\
+                    &= \left\langle \frac{\delta z}{\delta y} - \frac{\delta y}{\delta z}, \frac{\delta x}{\delta z} - \frac{\delta z}{\delta x}, \frac{\delta y}{\delta x} - \frac{\delta x}{\delta y} \right\rangle \\
+                    &= \langle 0, 0, 0 \rangle
+                \end{align*}
+            \end{solution}
+    \end{parts}
+
+%6
+\question Is there a vector field $\overrightarrow{F}(x, y, z)$ such that
+    \[\nabla \times \overrightarrow{F} = \langle xe^y + \cos\left(\frac{e^{y^2 + z^2}}{1 + y^2 + z^2}\right), -e^y + \frac{\sin^-1(x)}{1+e^z}, \cos z + (1 + y^2)^{1+x^2} \]
+    Justify your answer and explain your reasoning.
+
+%7
+\question Please do Exercises 25-31 of §16.5 in Stewart's \textit{Multivariable Calculus}.
+
+%8
+\question Please do Exercises 13-18 of §16.6 in Stewart’s \textit{Multivariable Calculus}.
+    \begin{solution}
+        \setcounter{question}{12}
+        \begin{questions}
+            \question 
+        \end{questions}
+    \end{solution}
+
+%9
+\question Sketch the surface defined by the parametrization $\overrightarrow{r} (u, v) = 〈u, v \cos u, v \sin u \rangle$, for $0 \leq u \leq 6\pi$ and $2 \leq v \leq 4$. Find the area of this surface. You may use without proof the fact that
+\[f (x) = x\sqrt{1 + x} + \ln(x + \sqrt{1 + x})\]
+is the antiderivative of the function $g(x) = 2\sqrt{1 + x^2}$. $Hint$: This problem covers material from §16.6 of the textbook, but if you want to start it before Friday, it is really an extension of how we found surface area earlier in the course. Construct two tangent vectors, $\delta \overrightarrow{r} / \delta u$ and $\delta \overrightarrow{r} / \delta v$, use them to construct a normal vector to the given surface, and then integrate the magnitude of this normal vector over the relevant rectangle in the $uv$-plane.
+
+\end{questions}
+
+\end{document}
