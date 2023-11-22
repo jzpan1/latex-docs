@@ -44,27 +44,65 @@
     \begin{solution}
         \begin{gather*}
             Q = x^3 + 3y, P = y^2 + 2x \\
-            -\int_C Q\, dx + P\, dy = -\int\int_D \left( \frac{\delta P}{\delta x} -  \frac{\delta Q}{\delta y}\right)\, dA \\
+            \int_{-C} Q\, dx + P\, dy = -\int\int_D \left( \frac{\delta P}{\delta x} -  \frac{\delta Q}{\delta y}\right)\, dA \\
             \frac{\delta P}{\delta x} = 2, \frac{\delta Q}{\delta y} = 3 \\
             = -\int\int_D (2 - 3)\, dA \\
             = --1 \cdot 1324
-            = \boxed{1324}
-        \end{gather*}
+            = \boxed{1324} \tag*{\qed}
+        \end{gather*} 
     \end{solution}
-	
+\clearpage
 %2
 \question Let $C$ be the part of the circle with radius 2 and center (0, 4) that lies in the left half-plane $x \leq 0$. Suppose $C$ is oriented so that the starting point is (0, 2) and the endpoint is (0, 6). Compute the line integral $\int_C(\sin x + y)\, dx + (3x + y)\, dy$. $Hint$: This problem would be much easier if we could find a way to apply Green's theorem.
-
-
+    \begin{solution}
+        \begin{gather*}
+            \int_{-C} (\sin(x) + y)\, dx + (3x + y)\, dy \\
+            P = \sin(x) + y, Q = 3x + y \\
+            \frac{\delta P}{\delta y} = 1, \frac{\delta Q}{\delta x} = 3 \\
+            -\int\int_D [3-1]\, dA \\
+            = -2 \cdot A_\text{D} \\
+            = \boxed{-4\pi} \tag*{\qed}
+        \end{gather*}
+    \end{solution}
+    \clearpage
 %3
 \question Let's revisit the shoelace theorem from Homework 0. 
     \begin{parts}
-        \part Let $C$ be the line segment starting at $(x_1, y_1)$ and ending at (x2, y2). Let $\overrightarrow{F} = \langle -\frac{y}{2}, \frac{x}{2} \rangle$. Compute directly the integral $\oint_C \overrightarrow{F} \cdot d\overrightarrow{r}$
+        \part Let $C$ be the line segment starting at $(x_1, y_1)$ and ending at $(x_2, y_2)$. Let $\overrightarrow{F} = \langle -\frac{y}{2}, \frac{x}{2} \rangle$. Compute directly the integral $\oint_C \overrightarrow{F} \cdot d\overrightarrow{r}$.
+            \begin{solution}
+                \begin{gather*}
+                    \mathbf{\sigma}(t) = \langle x_1 + (x_2 - x_1)t, y_1 + (y_2 - y_1) t \rangle, \\0 \leq t \leq 1\\
+                    \mathbf{\sigma}'(t) = \langle x_2 - x_1, y_2 - y_1 \rangle \\\\
+                    \int_C -\frac{y}{2}\, dx + \frac{x}{2}\, dy\\
+                    = \frac{1}{2} \int_{0}^{1} (- y_1 + (y_2 - y_1)t) (x_2 - x_1) + (x_1 + (x_2 - x_1)t)(y_2 - y_1)\, dt \\
+                    = \frac{1}{2} \left[ -(x_2 - x_1)(y_1 t + \frac{(y_2 - y_1)t^2}{2})  + (y_2 - y_1)(x_1 t + \frac{(x_2 - x_1)t^2}{2}) \right]_0^1 \\
+                    = -(x_2 - x_1)(\frac{1}{2} y_1 + \frac{y_2 - y_1}{4})  + (y_2 - y_1)( \frac{1}{2}x_1 + \frac{x_2 - x_1}{4}) \\
+                    = \frac{-y_1(x_2 - x_1) + x_1(y_2 - y_1)}{2} \\
+                    = \boxed{\frac{x_1 y_2 - y_1 x_2}{2}} \tag*{\qed}
+                \end{gather*}
+            \end{solution}
         \part Now let $D$ be the triangle with vertices $(x_1, y_1), (x_2, y_2)$ and $(x_3, y_3)$, oriented counterclockwise in
         the plane. Use Green's theorem to find the area of this triangle.
+            \begin{solution}
+                \begin{gather*}
+                    P = -\frac{y}{2},\ Q = \frac{x}{2} \\
+                    \frac{\delta P}{\delta y} = -\frac{1}{2}, \frac{\delta Q}{\delta x} = \frac{1}{2} \\ \\
+                    \int_C \overrightarrow{F} \cdot d\overrightarrow{r} = \int \int_D(\frac{1}{2} + \frac{1}{2})\, dA = \int \int_D\, dA \\
+                    = A_D \tag*{\qed}
+                \end{gather*}\\
+                \begin{gather*}
+                    \int_{C} \overrightarrow{F} \cdot d\overrightarrow{r} = \int_{(x_1, y_1)\rightarrow(x_2, y_2)} \overrightarrow{F} \cdot d\overrightarrow{r} + \int_{(x_2, y_2)\rightarrow(x_3, y_3)} \overrightarrow{F} \cdot d\overrightarrow{r} \\ + \int_{(x_3, y_3)\rightarrow(x_1, y_1)} \overrightarrow{F} \cdot d\overrightarrow{r} \\
+                    = \left(\frac{-y_1(x_2 - x_1) + x_1(y_2 - y_1)}{2}\right) + \left(\frac{-y_2(x_3 - x_2) + x_2(y_3 - y_2)}{2}\right) \\ + \left(\frac{-y_3(x_1 - x_3) + x_3(y_1 - y_3)}{2}\right) \\
+                    = \frac{-y_1(x_2 - x_1) + x_1(y_2 - y_1) - y_2(x_3 - x_2) + x_2(y_3 - y_2) - y_3(x_1 - x_3) + x_3(y_1 - y_3)}{2} \\
+                    = \frac{x_1 y_2 + x_2 y_3 + x_3 y_1 - y_1 x_2 - y_2 x_3 - y_3 x_1}{2} \tag*{\qed}
+                \end{gather*}
+            \end{solution}
         \part Explain how to use Green's theorem to extend the shoelace theorem to any polygon in the plane.
+            \begin{solution}
+                We have found that the integral $\oint_C \overrightarrow{F} \cdot d\overrightarrow{r}$ on a segment from $(x_1, y_1)$ to $(x_2, y_2)$ is $\frac{-y_1(x_2 - x_1) + x_1(y_2 - y_1)}{2}$. When this is evaluated on consecutive segments, the absolute value of the sum is equal to the shoelace theorem formula, as if those segments formed a polygon. Additionally, the value of this integral on a positively oriented closed curve is equal to the area enclosed by Green's theorem. Thus, the shoelace theorem formula will apply to any polygon on the plane, since a polygon by definition forms a closed curve with its perimeter. \qed
+            \end{solution}
     \end{parts}
-
+    \clearpage
 %4
 \question The gradient, curl, and divergence operators can be combine in some, but not all, orders. Explore this by doing Exercise 14 of §16.5 in Stewart's Multivariable Calculus.
     \begin{solution}
@@ -83,14 +121,14 @@
             \part Yes, this is a scalar field.
         \end{parts}
     \end{solution}
-
+    \clearpage
 %5
 \question Let $\overrightarrow{r}= \langle x, y, z \rangle$ and $r = |\overrightarrow{r}|$. Verify the following identities:
     \begin{parts}
         \part $\nabla \cdot \overrightarrow{r} = 3$
             \begin{solution}
                 \begin{gather*}
-                    \frac{dx}{dx} + \frac{dy}{dy} + \frac{dz}{dz} = 1 + 1 + 1 = 3
+                    \frac{dx}{dx} + \frac{dy}{dy} + \frac{dz}{dz} = 1 + 1 + 1 = 3 \tag*{\qed}
                 \end{gather*}
             \end{solution}
         \part $\nabla r = \frac{\overrightarrow{r}}{r}$
@@ -98,14 +136,14 @@
                 \begin{align*}
                     \nabla r &= \left\langle \frac{1}{2\sqrt{x^2+y^2+z^2}}\cdot 2x, \frac{1}{2\sqrt{x^2+y^2+z^2}}\cdot 2y, \frac{1}{2\sqrt{x^2+y^2+z^2}}\cdot 2z \right\rangle \\
                     &= \left\langle \frac{x}{\sqrt{x^2+y^2+z^2}}, \frac{y}{\sqrt{x^2+y^2+z^2}}, \frac{z}{\sqrt{x^2+y^2+z^2}} \right\rangle \\
-                    &= \frac{\overrightarrow{r}}{r} = \frac{\langle x, y, z \rangle}{\sqrt{x^2 + y^2 + z^2}}
+                    &= \frac{\overrightarrow{r}}{r} = \frac{\langle x, y, z \rangle}{\sqrt{x^2 + y^2 + z^2}} \tag*{\qed}
                 \end{align*}
             \end{solution}
         \part $\nabla \left( \frac{1}{r} \right) = - \frac{\overrightarrow{r}}{r^3}$
             \begin{solution}
                 \begin{align*}
                     \nabla \frac{1}{r} &= \left\langle -\frac{x}{(x^2+y^2+z^2)^{3/2}}, -\frac{y}{(x^2+y^2+z^2)^{3/2}}, -\frac{z}{(x^2+y^2+z^2)^{3/2}} \right\rangle \\
-                    &= -\frac{\overrightarrow{r}}{r^3} = -\frac{\langle x, y, z \rangle}{(x^2 + y^2 + z^2)^{3/2}}
+                    &= -\frac{\overrightarrow{r}}{r^3} = -\frac{\langle x, y, z \rangle}{(x^2 + y^2 + z^2)^{3/2}} \tag*{\qed}
                 \end{align*}
             \end{solution}
         \part $\nabla \times \overrightarrow{r} = \overrightarrow{0}$
@@ -117,20 +155,80 @@
                         x & y & z
                     \end{vmatrix} \\
                     &= \left\langle \frac{\delta z}{\delta y} - \frac{\delta y}{\delta z}, \frac{\delta x}{\delta z} - \frac{\delta z}{\delta x}, \frac{\delta y}{\delta x} - \frac{\delta x}{\delta y} \right\rangle \\
-                    &= \langle 0, 0, 0 \rangle
+                    &= \langle 0, 0, 0 \rangle \tag*{\qed}
                 \end{align*}
             \end{solution}
     \end{parts}
-
+    \clearpage
 %6
 \question Is there a vector field $\overrightarrow{F}(x, y, z)$ such that
-    \[\nabla \times \overrightarrow{F} = \langle xe^y + \cos\left(\frac{e^{y^2 + z^2}}{1 + y^2 + z^2}\right), -e^y + \frac{\sin^-1(x)}{1+e^z}, \cos z + (1 + y^2)^{1+x^2} \]
+    \[\nabla \times \overrightarrow{F} = \langle xe^y + \cos\left(\frac{e^{y^2 + z^2}}{1 + y^2 + z^2}\right), -e^y + \frac{\sin^-1(x)}{1+e^z}, \cos z + (1 + y^2)^{1+x^2} \rangle \]
     Justify your answer and explain your reasoning.
-
+    \begin{solution}
+        $\nabla \cdot (\nabla \times \overrightarrow{F}) = 0$ is an identity. However, in this case, 
+        \begin{gather*}
+            \nabla \cdot (\nabla \times \overrightarrow{F}) = \frac{\delta }{\delta x} \left[xe^y + \cos\left(\frac{e^{y^2 + z^2}}{1 + y^2 + z^2}\right)\right] + \\ \frac{\delta }{\delta y}\left[-e^y + \frac{\sin^-1(x)}{1+e^z}\right] + \frac{\delta }{\delta z}\left[-e^y + \frac{\sin^-1(x)}{1+e^z}, \cos z + (1 + y^2)^{1+x^2}\right] \\
+            = e^y - e^y - \sin(z) = -\sin(z)
+        \end{gather*}
+        For $\overrightarrow{F}, \nabla \cdot (\nabla \times \overrightarrow{F}) \neq 0$. Thus, it cannot be a valid vector field. \qed
+    \end{solution}
+    \clearpage
 %7
 \question Please do Exercises 25-31 of §16.5 in Stewart's \textit{Multivariable Calculus}.
-
+    \begin{solution}
+        \begin{questions}
+            \setcounter{question}{24}
+            \question 
+                \begin{gather*}
+                    F+G = \langle P_1 + P_2, Q_1 + Q_2, R_1 + R_2 \rangle \\
+                    \nabla \cdot (F+G) = \frac{\delta (P_1 + P_2)}{\delta x} + \frac{\delta (Q_1 + Q_2)}{\delta y} + \frac{\delta (R_1 + R_2)}{\delta z} \\
+                    = \frac{\delta P_1}{\delta x} \frac{\delta Q_1}{\delta z} + \frac{\delta R_1}{\delta z} + \\ \frac{\delta P_2}{\delta x} \frac{\delta Q_2}{\delta z} + \frac{\delta R_2}{\delta z}
+                \end{gather*}
+            \question 
+                \begin{gather*}
+                    \nabla \times (F+G) = \langle \frac{\delta (R_1 + R_2)}{\delta y} - \frac{\delta (Q_1 + Q_2)}{\delta z},\\ \frac{\delta (P_1 + P_2)}{\delta z} - \frac{\delta (R_1 + R_2)}{\delta x}, \frac{\delta (Q_1 + Q_2)}{\delta x} - \frac{\delta (P_1 + P_2)}{\delta y} \rangle \\
+                    = \langle \frac{\delta (R_1)}{\delta y} - \frac{\delta (Q_1)}{\delta z}, \frac{\delta (P_1)}{\delta z} - \frac{\delta (R_1)}{\delta x}, \frac{\delta (Q_1 )}{\delta x} - \frac{\delta (P_1)}{\delta y} \rangle + \\
+                    \langle \frac{\delta (R_2)}{\delta y} - \frac{\delta (Q_2)}{\delta z}, \frac{\delta (P_2)}{\delta z} - \frac{\delta (R_2)}{\delta x}, \frac{\delta (Q_2)}{\delta x} - \frac{\delta (P_2)}{\delta y} \rangle \\
+                    = \nabla \times F + \nabla \times G
+                \end{gather*}
+            \question 
+                \begin{gather*}
+                    \nabla \cdot \langle fP, fQ, fR \rangle = \frac{\delta (fP)}{\delta x} + \frac{\delta (fQ)}{\delta y} + \frac{\delta (fR)}{\delta z} \\
+                    = f_x P + P_x f + f_y Q + Q_y f + f_z R + R_z f\\
+                    = f(\nabla \cdot \langle P, Q, R \rangle) + \langle P, Q, R \rangle \cdot (\nabla f)
+                \end{gather*}
+            \question
+                \begin{gather*}
+                    \nabla \times (fF) = \langle \frac{\delta (fR)}{\delta y} - \frac{\delta (fQ)}{\delta z}, \frac{\delta (fP)}{\delta z} - \frac{\delta (fR)}{\delta x}, \frac{\delta (fQ)}{\delta x} - \frac{\delta (fP)}{\delta y} \rangle \\
+                    = \langle \frac{f\delta (R)}{\delta y} + R\frac{\delta (f)}{\delta y} - f\frac{\delta (Q)}{\delta z} - Q\frac{\delta (f)}{\delta z}, f\frac{\delta (P)}{\delta z} + P\frac{\delta (f)}{\delta z} - f\frac{\delta (R)}{\delta x} - R\frac{\delta (f)}{\delta x}, \\ f\frac{\delta (Q)}{\delta x} + Q\frac{\delta (f)}{\delta x} - f\frac{\delta (P)}{\delta y} - P\frac{\delta (f)}{\delta y}\rangle \\
+                    = f \langle R_y - Q_z, P_z - R_x, Q_x - P_y \rangle + \langle R f_y - Q f_z, P f_z - R f_x, Q f_x - P f_y \rangle \\
+                    = f (\nabla \times F) + \nabla f \times F
+                \end{gather*}
+            \question 
+                \begin{gather*}
+                    \nabla \cdot (F \times G) = \left( Q_1 \frac{\delta R_2}{\delta x} + R_2 \frac{\delta Q_1}{\delta x} - Q _2\frac{\delta R_1}{\delta x} - R_1\frac{\delta Q_2}{\delta x} \right) - \\ \left( P_1 \frac{\delta R_2}{\delta y} + R_2 \frac{\delta P_1}{\delta y} - P_2\frac{\delta R_1}{\delta y} - R_1\frac{\delta P_2}{\delta y} \right) + \left( P_1 \frac{\delta Q_2}{\delta z} + Q_2 \frac{\delta P_1}{\delta z} - P_2\frac{\delta Q_1}{\delta z} - Q_1\frac{\delta P_2}{\delta z} \right) \\\\
+                    \left( P_2 \left(\frac{\delta R_2}{\delta y} - \frac{\delta Q_2}{\delta z} \right) + Q_1 \left(\frac{\delta P_2}{\delta z} - \frac{\delta R_2}{\delta z} \right)  + R_1 \left(\frac{\delta Q_2}{\delta x} - \frac{\delta P_2}{\delta y} \right)  \right) \\
+                    = G \cdot (\nabla \times F) - F \cdot (\nabla \times G)
+                \end{gather*} 
+            \question
+                \begin{gather*}
+                    \nabla \cdot (\nabla f \times \nabla g) = \frac{\delta }{\delta x}(f_y g_z - f_z g_y) - \frac{\delta }{\delta y} (f_x g_z - f_z g_x) + \frac{\delta }{\delta z} (f_x g_y - f_y g_x) \\
+                    = (f_y g_zx + f_yx g_z- f_z g_yx - f_zx g_y) - (f_x g_zy + f_xy g_z - f_z g_xy - f_zy g_x) \\ + (f_x g_yz + f_xz g_y - f_y g_xz + f_yz g_x) \\
+                    = (g_x(f_xy - f_yz) + g_y(f_xz - f_zx) + g_z(f_yx - f_xy)) \\ - (f_x (g_zy - g_yz) + f_y(g_xz - g_zx) + f_z(g_yx - g_xy)) \\
+                    = \nabla g \cdot (\nabla \times (\nabla f)) - \nabla f \cdot (\nabla \times (\nabla g)) = 0
+                \end{gather*}
+            \question
+                \begin{gather*}
+                    \nabla \times (\nabla \times F) = \langle Q_xy - P_yy -P_zz + R_xz, \\ R_yz - Q_zz - Q_xx + P_yx, P_zx - R_xx - R_yy + Q_zy \rangle \\
+                    \nabla(\nabla \cdot F) - \nabla^2 F = \langle P_xx + Q_yx + R_yx, P_xy + Q_yy + R_xy, P_xz + Q_yz + R_zz \rangle \\ - \langle P_xx + P_yy + P_zz, Q_xx + Q_yy + Q_zz, R_xx + R_yy + R_zz \rangle \\
+                    = \langle Q_xy - P_yy -P_zz + R_xz,\\ R_yz - Q_zz - Q_xx + P_yx,\\ P_zx - R_xx - R_yy + Q_zy \rangle \\
+                    \nabla \times (\nabla \times F) = \nabla(\nabla \cdot F)
+                \end{gather*}
+        \end{questions}
+    \end{solution}
+    \clearpage
 %8
+\setcounter{question}{7}
 \question Please do Exercises 13-18 of §16.6 in Stewart’s \textit{Multivariable Calculus}.
     \begin{solution}
         \begin{questions}
@@ -143,11 +241,23 @@
             \question  \boxed{II} -- Cross sections parallel to $xy$ plane are circles scaled by $z$ in the $y$ direction. Curves in a parallel to $xy$ plane have $v$ constant, and the vertical curves have $u$ constant.
         \end{questions}
     \end{solution}
-
+    \clearpage
 %9
+\setcounter{question}{8}
 \question Sketch the surface defined by the parametrization $\overrightarrow{r} (u, v) = 〈u, v \cos u, v \sin u \rangle$, for $0 \leq u \leq 6\pi$ and $2 \leq v \leq 4$. Find the area of this surface. You may use without proof the fact that
 \[f (x) = x\sqrt{1 + x} + \ln(x + \sqrt{1 + x})\]
 is the antiderivative of the function $g(x) = 2\sqrt{1 + x^2}$. $Hint$: This problem covers material from §16.6 of the textbook, but if you want to start it before Friday, it is really an extension of how we found surface area earlier in the course. Construct two tangent vectors, $\delta \overrightarrow{r} / \delta u$ and $\delta \overrightarrow{r} / \delta v$, use them to construct a normal vector to the given surface, and then integrate the magnitude of this normal vector over the relevant rectangle in the $uv$-plane.
+    \begin{solution}
+        \begin{gather*}
+            r_u \times r_v = \langle -v \sin^2 u - v \cos^2, + 0 - \cos u, \sin u + 0 \rangle \\
+            = \langle -v, - \cos u, \sin u \rangle \\
+            |r_u \times r_v| = \sqrt{v^2 + \cos^2 u + \sin^2 u} = \sqrt{v^2 + 1}\\
+            A(s) = \int\int_D \sqrt{v^2 + 1} \, dA \\
+            = \int_{0}^{6\pi} \int_{2}^{4} \sqrt{v^2 + 1}\, dv\, du = 6\pi \int_{2}^{4} \sqrt{v^2 + 1}\, dv
+            = 3\pi \left[v\sqrt{1+v^2} + \ln(v + \sqrt{1+v^2}) \right]_2^4 \\
+            = \boxed{ 3\pi(4\sqrt{17} + \ln(4 + \sqrt{17}) - 2\sqrt{5} - \ln(2 + \sqrt{5})) } \tag*{\qed}
+        \end{gather*}
+    \end{solution}
 
 \end{questions}
 
