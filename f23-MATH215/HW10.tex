@@ -41,9 +41,20 @@
 \begin{questions}
 %1
 \question Calculate $\oint_C \overrightarrow{F} \cdot d\overrightarrow{r}$ where $F (x, y) = \langle x^3 + 3y, y^2 + 2x\rangle$ and $C$ is the negatively oriented smooth boundary curve of some region $D$ that has area 1324.
+    \begin{solution}
+        \begin{gather*}
+            Q = x^3 + 3y, P = y^2 + 2x \\
+            -\int_C Q\, dx + P\, dy = -\int\int_D \left( \frac{\delta P}{\delta x} -  \frac{\delta Q}{\delta y}\right)\, dA \\
+            \frac{\delta P}{\delta x} = 2, \frac{\delta Q}{\delta y} = 3 \\
+            = -\int\int_D (2 - 3)\, dA \\
+            = --1 \cdot 1324
+            = \boxed{1324}
+        \end{gather*}
+    \end{solution}
 	
 %2
 \question Let $C$ be the part of the circle with radius 2 and center (0, 4) that lies in the left half-plane $x \leq 0$. Suppose $C$ is oriented so that the starting point is (0, 2) and the endpoint is (0, 6). Compute the line integral $\int_C(\sin x + y)\, dx + (3x + y)\, dy$. $Hint$: This problem would be much easier if we could find a way to apply Green's theorem.
+
 
 %3
 \question Let's revisit the shoelace theorem from Homework 0. 
@@ -124,9 +135,9 @@
     \begin{solution}
         \begin{questions}
             \setcounter{question}{12}
-            \question \boxed{II} -- creates circles of radius $u$ when projected to $xy$ plane, and is helical in 3D because $z = v$. The circular curves have $u$ constant, while the radial ones have $v$ constant.
+            \question \boxed{IV} -- creates circles of radius $u$ when projected to $xy$ plane, and is helical in 3D because $z = v$. The helical curves have $u$ constant, while the radial ones have $v$ constant.
             \question \boxed{VI} -- The line $x=y$ has $z=0$ since $u=v$. The grid curves "parallel" to the $y$-axis have $v$ constant, and the curves "parallel" to the $x$ axis have $u$ constant.
-            \question \boxed{VI} -- A cylinder because $x$ and $z$ are not related to $y$ at all. Curves parallel to $y$ axis have $u$ constant, while those parallel to $x$ have $v$ constant.
+            \question \boxed{I} -- A cylinder because $x$ and $z$ are not related to $y$ at all. Curves parallel to $y$ axis have $u$ constant, while those parallel to $x$ have $v$ constant.
             \question \boxed{V} -- If $u=0$, $x = 3 + \cos v, y = 0, z = \sin(v)$. This forms a circle in the $xz$ plane, which only graph V contains. The circles around the surface have $u$ fixed, while the curves along the surface have $v$ constant.
             \question \boxed{III} -- This figure should not have circles, and also the $xy$ cross section shrinks as $z$ increases or decreases from 0. The grid curves within a plane parallel to the $xy$ plane have $z$ constant, and those which are not have $u$ constant.
             \question  \boxed{II} -- Cross sections parallel to $xy$ plane are circles scaled by $z$ in the $y$ direction. Curves in a parallel to $xy$ plane have $v$ constant, and the vertical curves have $u$ constant.
