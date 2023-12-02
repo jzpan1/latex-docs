@@ -1,0 +1,118 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set 11: §16.4 – 16.9}
+\author{Zhengyu James Pan} %use like \@author
+\def\email{jzpan@umich.edu}
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 215}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\begin{center}
+	\bf MATH 215 FALL 2023\\
+	\bf \hwName \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+%1
+\question We define a flow line of a vector field $\overrightarrow{F}$ as a curve parametrized by $\overrightarrow{c}(t), t_0 \leq t \leq t_f$ for which
+\[ \frac{d\overrightarrow{c}}{dt} = \overrightarrow{F}(\overrightarrow{c}(t)) \]
+	\begin{parts}
+		\part For the vector field $\overrightarrow{F} (x, y, z) = \langle 0, x, 0 \rangle$, verify that lines parallel to the $y$-axis are flow lines, when
+        $x \neq 0$.
+		\begin{solution}
+			Choosing any point with $x \neq 0$ as the beginning of a flow curve, the $x$- and $z$-values remain constant. Because of this, only the y-value of the curve changes, at a constant rate with respect to $t$ since $x$ remains constant. This will result in a curve parallel to the $y$-axis. \qed
+		\end{solution}
+        \part Find the curl of $\overrightarrow{F}$ for any point for which $x \neq 0$. Even though there is no rotation in the vector-field, explain why the curl is non-zero. Where is the rotation in this vector field?
+            \begin{solution}
+                The curl is nonzero because of the flip of the sign of $x$ across the y-axis. For instance, a particle traveling with constant $x$ velocity across the $y$-axis will be pushed one direction by the vector field on the negative side of the $x$-axis, but then the opposite direction on the other side. \qed
+                \begin{center}
+                    \includegraphics*[scale=0.5]{images/11-1b.png}
+                \end{center}
+            \end{solution}
+	\end{parts}
+
+%2
+\question We are going to revisit the basic premise of the last problem, this time with two new vector fields.
+    \begin{parts}
+        \part For the vector field $\overrightarrow{F} (x, y) = \langle -y, x \rangle$, verify that a circle of arbitrary fixed radius, centered at the origin, is a flow line of $\overrightarrow{F}$.
+
+        \part For the vector field $\overrightarrow{G}(x, y) =
+        \langle \frac{-y}{x^2 + y^2}, \frac{x}{x^2 + y^2} \rangle$, verify that a circle of arbitrary fixed radius, centered at the origin, is a flow line of $\overrightarrow{G}$. It may help to remember that you may need to choose the \textit{frequency}, or \textit{angular speed}, of motion around the circle to be a special value to ensure that your answer is a flow line.
+
+        \part Treating the vector fields from the previous two parts as 3d-vector fields (with z-component identically equal to zero), compute the curls of $\overrightarrow{F}$ and $\overrightarrow{G}$.
+
+        \part One of your answers from the previous part should be the zero vector. Explain why, even though these two vector fields both have circles as flow lines, the curl is zero for one and non-zero for the other.
+    \end{parts}
+
+%3
+\question Find a parametric representation for the part of the sphere (a surface, not a solid) of radius 4 centered at the origin that lies
+    \begin{parts}
+        \part inside the cone $z = \sqrt{3(x^2 + y^2)}$
+        \part inside the cone $x = \sqrt{y^2 + z^2}$
+        \part inside the cone $y = \sqrt{\frac{1}{3 (x^2 + z^2)}}$ 
+        $Hint$: You may want to use \textit{spherical-like} coordinates, but not actually spherical coordinates. 
+    \end{parts}
+
+%4
+\question Prove that if $S$ is the surface of any sphere of radius 2, then the surface integral over S of the function $f (x, y, z) = \cos(\pi z)$ is zero.
+
+%5
+\question Compute directly the flux of the vector field $\overrightarrow{F}(x, y, z) = \langle x^2, z, y^2 \rangle$ outward across the surface of the tetrahedron with vertices (0, 0, 0), (1, 0, 0), (0, 1, 0), and (0, 0, 2).
+
+%6
+\question Verify that Stokes' Theorem is true for the vector field $\overrightarrow{F}(x, y, z) = \langle x^2, z, y^2 \rangle$ and the surface S that is the part of the paraboloid $y = x2 + z2$ that lies in the half-space $\{(x, y, z)\ |\ y \leq 1\}$. We assume that the surface is oriented in the positive direction of the y-axis.
+
+%7
+\question Evaluate the integral $\int \int_S (\nabla \times \overrightarrow{F}) \cdot d\overrightarrow{S}$ , where $S$ is the portion of the surface of the sphere defined by
+$x^2 + y^2 + z^2 = 1$ and $x + y + z \geq 1$, and where $\overrightarrow{F} = \langle x, y, z \rangle \times \left(\hat{i} + \hat{j} + \hat{k}\right)$.
+
+%8 
+Suppose that $E$ is the unit cube in the first octant (i.e. the cube with the vectors $\hat{i} + \hat{j} + \hat{k}$ as 3 of the edges) and $\overrightarrow{F} (x, y, z) = \langle 3x, -3y, 2z\rangle$. Let $S$ be the surface obtained by taking the surface of $E$ without its top (so $S$ has five sides and is oriented “out” from $E$). Calculate $\int\int_S \overrightarrow{F} \cdot d \overrightarrow{S}$ directly and by using
+the divergence theorem.
+
+%9
+\question Define $ \overrightarrow{e_r}(x, y, z) = \langle \frac{x}{r}, \frac{y}{r}, \frac{z}{r} \rangle$, where $r = \sqrt{x^2 + y^2 + z^2}$ and $(x, y, z) \neq (0, 0, 0)$. This vector field is often called the unit radial vector field.
+    \begin{parts}
+        \part Show that the flux of $\overrightarrow{F} = \overrightarrow{e_r} / r^2$ outward through the surface of a sphere centered at the origin is
+        independent of the radius of the sphere.
+        \part Calculate the flux of $\overrightarrow{F}$ through the disk $D$ of radius 2 parallel to the $yz$-plane and centered at (3, 0, 0). The orientation of $D$ is chosen so that the normal vector points in the direction of the positive $x$-axis.
+        \part Compute the outward flux of the vector field $\overrightarrow{F} = \overrightarrow{e_r} /r^2$ through the ellipsoid $4x^2 + 9y^2 + z^2 = 36$.
+    \end{parts}
+
+%10
+\question Suppose $\overrightarrow{F}$ is a smooth vector field. Let $S_1$ be the sphere of radius 1 centered at the origin and oriented outward. Let $S_2$ be the sphere of radius 2 centered at the origin, oriented outward. Let $E$ be the volume
+between $S_1$ and $S_2$. Suppose that the outward flux of $\overrightarrow{F}$ across $S_1$ is $3\pi$, and the divergence of $\overrightarrow{F}$ on $E$
+is 4. If possible, evaluate the following integrals:
+    \[ (a) \int\int\int_E(\nabla \cdot F)\, dV \ \ \ \ \ (b) \int\int_{S_2}\overrightarrow{F} \cdot d\overrightarrow{S} \ \ \ \ \ \int\int_{S_1} \left(\nabla \times \overrightarrow{F}\right) \cdot d\overrightarrow{S} \]
+    If it is not possible to evaluate any of the integrals, explain why.
+
+
+\end{questions}
+
+\end{document}
