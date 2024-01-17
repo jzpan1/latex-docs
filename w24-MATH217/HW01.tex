@@ -1,0 +1,72 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework 1 Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\email{jzpan@umich.edu}
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\begin{center}
+	\bf MATH 217 - LINEAR ALGEBRA\\
+	\bf \hwName, DUE Thursday, January 18 at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+%1
+\question Decide whether the following statements are true or false.Brieﬂy justify your answers.
+	\begin{parts}
+		\part 2 is even or 3 is odd.
+		\begin{solution}
+			\boxed{True,} both P and Q are true, so the "or" statement is also true.
+		\end{solution}
+        \part If the Riemann Hypothesis is true, then 217 is not a prime number.
+		\begin{solution}
+			\boxed{\text{True,}} Q is true. "If" propositions are only false when Q is false and P is true.
+		\end{solution}
+		\part $\frac{d}{dx}(x^2) = 2x$ if and only if $tan(\pi/6) = \sqrt{3}$.
+		\begin{solution}
+			\boxed{\text{True,}} both P and Q are true, so $P \implies Q$ and $Q \implies P$ are true. 
+		\end{solution}
+		\part If the set of even prime numbers is infinite, then 10 is even and $10^10$ is odd.
+		\begin{solution}
+			\boxed{\text{True,}} P is false.
+		\end{solution}
+		\part If every right triangle in $\mathbb{R}^2$ has two acute angles, then every real number has a positive cube root.
+		\begin{solution}
+			\boxed{\text{False,}} P is true but Q is false.
+		\end{solution}
+	\end{parts}
+\clearpage
+
+%2
+\question Let P (x) be a statement whose truth value depends on x. An example is a value of x that makes $P (x)$ true, and a counterexample is a value of x that makes P (x) false. Fill in the blank spaces with “is true”, “is false”, or “nothing” as appropriate:
+\end{questions}
+
+\end{document}
