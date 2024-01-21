@@ -10,15 +10,20 @@
 \usepackage{bm} %bold symbols
 \usepackage{hyperref} %add links
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-% 	Define vars here 	%
-%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars/macros here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\hwName{Homework Set Part B}
 \author{Zhengyu James Pan} %use like \@author
 \def\instructor{Dr. Paul Kessenich}
 \def\email{jzpan@umich.edu}
 \def\dueDate{Thursday, January 25}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\naturals}{\mathbb{N}}
+
+
 \makeatletter
 
 \begin{document}
@@ -45,27 +50,51 @@
 \question In parts (a) - (d) below, determine whether the given function is injective, surjective,
 both, or neither. Justify your answers.
 	\begin{parts}
-		\part the function $f : [0, 4] → [0, 18]$ deﬁned by $f (x) = x^2 + 2$;
+		\part the function $f : [0, 4] \rightarrow [0, 18]$ deﬁned by $f (x) = x^2 + 2$;
 		\begin{solution}
-			Solution
+			Injective. If $f(x_1) = f(x_2)$, it follows that $x_1^2 = x_2^2$. Since the domain is positive, this also means $x_1 = x_2$, showing injectivity. There is no solution in the domain to $f(x) = 0$, so there exists a value in the codomain which is not in the image of $f$. Thus, the function is not surjective.
 		\end{solution}
         \part the function $g : \mathbb{R} \rightarrow \mathbb{R}$ deﬁned by $g(x) = 2x - 5$;
+            \begin{solution}
+                Bijective. If $g(x_1) = g(x_2)$, $2x_1 - 5 = 2x_2 - 5$. Therefore, $x_1 = x_2$, showing injectivity. Let $y\in\mathbb{R}$, and $x = \frac{y+5}{2}$. Then $x\in\reals$, and $g(x) = y$. Thus $g$ is surjective.
+            \end{solution}
         \part the function $h : \mathbb{R}^2 \rightarrow \mathbb{R}$ deﬁned by $h(x, y) = 2x^2 + 5y^2$;
-        \part the function q : N → N deﬁned by $q(n) = \begin{cases*}
+            \begin{solution}
+                Neither. $10 = h\left(\sqrt{5}, 0\right) = h\left(0, \sqrt{2}\right)$, so $h$ is not injective. $h(x, y) = -2$ has no solutions in $\reals^2$ since a square cannot be a negative number, therefore $h$ is not surjective.
+            \end{solution}
+        \part the function $q : \naturals \rightarrow \naturals$ deﬁned by $q(n) = \begin{cases*}
             n, &\text{if n is odd} \\
             n/2 &\text{if n is even.}
         \end{cases*}$
+            \begin{solution}
+                Surjective. $1 = q(1) = q(2)$, so $q$ is not injective. Let $m \in \naturals, n = 2m$. Then $n \in \naturals$, $n$ is even, and $q(n) = m$. So $q$ is surjective.
+            \end{solution}
 	\end{parts}
 
 %2
 \question Determine whether each statement is true or false. If it is true, prove it. If it is false, prove this by giving a counterexample.
-\begin{parts}
-    \part For every function $f : X \rightarrow Y$ and all $A, B \subseteq X$, if $A \cap B = \emptyset$, then $f [A] \cap f [B] = \emptyset$.
-    \part For every function $f : X \rightarrow Y$ and all $A, B \subseteq X$, if $f [A] \cap f [B] = \emptyset$, then $A \cap B = \emptyset$.
-    \part For every function $f : X \rightarrow Y$ and all $A \subseteq X$, we have $f^{-1}[f [A]] = A$.
-    \part For every function $f : X \rightarrow Y$ and all $A \subseteq X$, we have $f [X \backslash A] = Y \backslash f [A]$.
-    \part For every bijective function $f : X \rightarrow Y$ and all $A, B \subseteq X$, we have $f [A \cap B] = f [A] \cap f [B]$.
-\end{parts}
+    \begin{parts}
+        \part For every function $f : X \rightarrow Y$ and all $A, B \subseteq X$, if $A \cap B = \emptyset$, then $f [A] \cap f [B] = \emptyset$.
+            \begin{solution}
+                False. Let $f : \reals \rightarrow \reals$ be defined by $f(x) = x^2$. Assign $A = \reals^+$, $B = \reals^-$. Then $A \cap B = \emptyset$, but $f(1\in A) = f(-1 \in B) = 1$. Therefore $f[A] \cap f[B] \neq \emptyset$. 
+            \end{solution}
+        \part For every function $f : X \rightarrow Y$ and all $A, B \subseteq X$, if $f [A] \cap f [B] = \emptyset$, then $A \cap B = \emptyset$.
+            \begin{solution}
+                True. PROOF NEEDED
+            \end{solution}
+        \part For every function $f : X \rightarrow Y$ and all $A \subseteq X$, we have $f^{-1}[f [A]] = A$.
+            \begin{solution}
+                False. Let $f : \reals \rightarrow \reals$ be defined by $f(x) = x^2$. Assign $A = \{1\}.$ Then $f[A] = \{1\}$. However, $f(1) = f(-1) = 1$, so $f^{-1}[f[A]] = \{-1, 1\} \neq A$.
+            \end{solution}
+        \part For every function $f : X \rightarrow Y$ and all $A \subseteq X$, we have $f [X \backslash A] = Y \backslash f [A]$.
+            \begin{solution}
+                False. Let $f : \reals \rightarrow \reals$ be defined by $f(x) = x^2$. Assign $A = \{1\}$. Then $f[A] = \{1\}$, but $f(1) = f(-1) = 1$. Therefore $f[A] \subseteq f[X\backslash A]$, and $f[X\backslash A] \neq Y\backslash f[A]$. 
+            \end{solution}
+        \part For every bijective function $f : X \rightarrow Y$ and all $A, B \subseteq X$, we have $f [A \cap B] = f [A] \cap f [B]$.
+            \begin{solution}
+                True. PROOF NEEDED
+            \end{solution}
+    \end{parts}
     
 
 %3
