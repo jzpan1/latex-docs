@@ -1,0 +1,86 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework 2 Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\email{jzpan@umich.edu}
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\begin{center}
+	\bf MATH 217 - LINEAR ALGEBRA\\
+	\bf \hwName, DUE Thursday, January 25 at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+\question In parts (a) – (d) below, determine whether the given function is injective, surjective,
+both, or neither. Justify your answers.
+	\begin{parts}
+		\part the function f : [0, 4] → [0, 18] deﬁned by f (x) = x2 + 2;
+		\begin{solution}
+			Solution
+		\end{solution}
+        \part the function g : R → R deﬁned by g(x) = 2x − 5;
+        \part the function h : R2 → R deﬁned by h(x, y) = 2x2 + 5y2;
+        \part the function q : N → N deﬁned by $q(n) = $\begin{cases*}
+            n, if n is odd
+        n/2 if n is even.
+        \end{cases*}
+	\end{parts}
+
+%2
+\question Determine whether each statement is true or false. If it is true, prove it. If it is false, prove this by giving a counterexample.
+    \part For every function f : X → Y and all A, B ⊆ X, if A ∩ B = ∅, then f [A] ∩ f [B] = ∅.
+    \part For every function f : X → Y and all A, B ⊆ X, if f [A] ∩ f [B] = ∅, then A ∩ B = ∅.
+    \part For every function f : X → Y and all A ⊆ X, we have f −1[f [A]] = A.
+    \part For every function f : X → Y and all A ⊆ X, we have f [X \ A] = Y \ f [A].
+    \part For every bijective function f : X → Y and all A, B ⊆ X, we have f [A ∩ B] = f [A] ∩ f [B].
+
+%3
+\question
+    \begin{parts}
+        \part Prove that for every function f : R → R, if f (cx) = cf (x) for all c ∈ R and x ∈ R, then f (x + y) = f (x) + f (y) for all x, y ∈ R. (In other words, prove that every function f : R → R that preserves scalar multiplication is a linear transformation from R to R.)
+        \part Give an example to show that the argument you gave in part (a) cannot work in 2 dimen-
+        sions. That is, explicitly describe a function f : R2 → R2 that is not a linear transformation
+        but has the property that f (c~x) = cf (~x) for all ~x ∈ R2 and c ∈ R. Remember to prove
+        that your example works!
+    \end{parts}
+
+%4
+\question Let f : R → R be a function, and suppose that f (x + y) = f (x) + f (y) for all x, y ∈ R. (In other words, suppose that f preserves addition).
+    \begin{parts}
+        \part Prove that f (0) = 0.
+        \part Prove that for all x ∈ R, f (−x) = −f (x).
+        \part Use induction to prove that for all n ∈ N and x ∈ R, f (nx) = nf (x).
+        \part Prove that for all m ∈ Z and x ∈ R, f (mx) = mf (x).
+    \end{parts}
+
+\end{questions}
+
+\end{document}
