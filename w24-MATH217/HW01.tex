@@ -1,0 +1,249 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework 1 Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\email{jzpan@umich.edu}
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\begin{center}
+	\bf MATH 217 - LINEAR ALGEBRA\\
+	\bf \hwName, DUE Thursday, January 18 at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+%1
+\question Decide whether the following statements are true or false. Brieﬂy justify your answers.
+	\begin{parts}
+		\part 2 is even or 3 is odd.
+		\begin{solution}
+			\boxed{\text{True,}} both P and Q are true, so the "or" statement is also true.
+		\end{solution}
+        \part If the Riemann Hypothesis is true, then 217 is not a prime number.
+		\begin{solution}
+			\boxed{\text{True,}} Q is true. "If" propositions can only be false when Q is false.
+		\end{solution}
+		\part $\frac{d}{dx}(x^2) = 2x$ if and only if $\tan(\pi/6) = \sqrt{3}$.
+		\begin{solution}
+			\boxed{\text{False,}} Q is false, so $Q \implies P$ will be false. 
+		\end{solution}
+		\part If the set of even prime numbers is infinite, then 10 is even and $10^10$ is odd.
+		\begin{solution}
+			\boxed{\text{True,}} P is false.
+		\end{solution}
+		\part If every right triangle in $\mathbb{R}^2$ has two acute angles, then every real number has a positive cube root.
+		\begin{solution}
+			\boxed{\text{False,}} P is true but Q is false.
+		\end{solution}
+	\end{parts}
+\clearpage
+
+%2
+\question 
+	\begin{parts}
+		\part Let P (x) be a statement whose truth value depends on x. An example is a value of x that makes $P (x)$ true, and a counterexample is a value of x that makes P (x) false. Fill in the blank spaces with “is true”, “is false”, or “nothing” as appropriate:
+		\begin{solution}
+			\begin{center}
+				\begin{tabular}{ |c|c|c| } 
+					\hline
+					& ``$\forall x, P(x)$'' & ``$\exists x \text{ s.t. } P(x)$'' \\ 
+					\hline
+					An example proves & nothing & is true \\ 
+					\hline
+					A counterexample proves & is false & nothing \\ 
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{solution}
+		\part Every prime number is even or odd.
+			\begin{solution}
+				True, prime numbers are all integers, which are all either even or odd.
+			\end{solution}
+		\part Every prime number is even or every prime number is odd.
+			\begin{solution}
+				False, 3 and 2 are counterexamples respectively.
+			\end{solution}
+		\part There exists $n \in \mathbb{Z}$ such that for every $x \in \mathbb{R}, n < x.$
+			\begin{solution}
+				False, if you fix such a $n$, $n \nless n-1$ which is a contradiction.
+			\end{solution}
+		\part For every $x \in \mathbb{R}$ there exists $n \in \mathbb{Z}$ such that $n<x$.
+			\begin{solution}
+				True, $n = \lfloor x \rfloor < x$ by definition.
+			\end{solution}
+		\part Some squares are rectangles.
+			\begin{solution}
+				True, all squares are rectangles, so some squares are also rectangles.
+			\end{solution}
+		\part For every nonnegative real number $a$, there exists a unique real number $x$ such that $x^2 = a$.
+			\begin{solution}
+				False, $4 = 2^2 = (-2)^2$.
+			\end{solution}
+	\end{parts}
+
+%3
+\question Formulate the negation of each of the statements below in a meaningful way (these statements have been recycled from Problems 1 and 2). Note: just writing “It is not the case that . . . ” before each statement will not receive credit, as that does not help the reader understand the meaning of the negation. (No justiﬁcation is needed – you may just write the negation).
+	\begin{parts}
+		\part 2 is even or 3 is odd.
+			\begin{solution}
+				2 is not even and 3 is not odd.
+			\end{solution}
+		\part If the Riemann Hypothesis is true, then 217 is not a prime number.
+			\begin{solution}
+				The Riemann Hypothesis is true and 217 is a prime number.
+			\end{solution}
+		\part $\frac{d}{dx}(x^2) = 2x$ if and only if $\tan(\pi/6) = \sqrt{3}$.
+			\begin{solution}
+				$\frac{d}{dx}(x^2) = 2x$ or $\tan(\pi/6) = \sqrt{3}$, but not both.
+			\end{solution}
+		\part If the set of even prime numbers is infinite, then 10 is even and $10^10$ is odd.
+			\begin{solution}
+				The set of even prime numbers is infinite, and either 10 is not even or $10^10$ is not odd.
+			\end{solution}
+		\part If every right triangle in $\mathbb{R}^2$ has two acute angles, then every real number has a positive cube root.
+			\begin{solution}
+				Every right triangle in $\mathbb{R}^2$ has two acute angles, and some real numbers do not have a positive cube root.
+			\end{solution}
+		\part There exists $n \in \mathbb{Z}$ such that for every $x \in \mathbb{R}, n < x.$
+			\begin{solution}
+				For all $n \in \mathbb{Z}$, every $x \in \mathbb{R}$ satisfies $n \geq x.$
+			\end{solution}
+		\part Some squares are rectangles.
+			\begin{solution}
+				All squares are not rectangles.
+			\end{solution}
+	\end{parts}
+
+%4
+\question Write both the converse and the contrapositive of the following “if-then” statements.
+	\begin{parts}
+		\part If something can think, then it exists.
+			\begin{solution}
+				Converse: If something exists, then it can think.\\
+				Contrapositive: If something does not exist, it cannot think.
+			\end{solution}
+		\part If $p$ is an irrational number, then $p^2$ is an irrational number.
+			\begin{solution}
+				Converse: If $p^2$ is an irrational number, then $p$ is an irrational number.\\
+				Contrapositive: If $p^2$ is not an irrational number, then $p$ is not an irrational number.
+			\end{solution}
+		\part If $n > 2$ is a natural number such that the Collatz sequence beginning with $n$ does not eventually reach 1, then $n^2 + 1$ is prime.
+			\begin{solution}
+				Converse: If $n^2 + 1$ is prime, then $n > 2$ and $n$ is a natural number such that the Collatz sequence beginning with $n$ does not eventually reach 1.\\
+				Contrapositive: If $n^2 + 1$ is not prime, then $n \nless 2$ or $n$ is not a natural number such that the Collatz sequence beginning with $n$ does not eventually reach 1.
+			\end{solution}
+	\end{parts}
+
+%5
+\question 
+	\begin{parts}
+		\part Give common English descriptions of the following sets:
+			\begin{subparts}
+				\subpart $\{n\in\mathbb{N} | \text{there exist } a\in\mathbb{N} \text{ such that } n=2a-1 \}$.
+					\begin{solution}
+						Natural numbers which are the result of subtracting 1 from double another natural number. Alternatively, the odd natural numbers.
+					\end{solution}
+				\subpart $\{(a, b)\in\mathbb{R}^2 : a^2 + b^2 \leq 1 \text{ and } a\geq2a-1 \}$.
+					\begin{solution}
+						The set of points in the plane for which the sum of the squares of each coordinate are less than or equal to 1, and the first coordinate is nonnegative. Alternatively, the area bounded by the unit circle and the y-axis. 
+					\end{solution}
+			\end{subparts}
+		\part Use set comprehension notation to give a description of each of the following sets:
+			\begin{subparts}
+				\subpart The unit sphere in $\mathbb{R}^3$
+					\begin{solution}
+						$\{(a, b, c) : a^2 + b^2 + c^2 \leq 1 \}$ \\
+						(Assumed solid, hollow would have $=$ instead of $\leq$)
+					\end{solution}
+				\subpart The set of all integer multiples of $\sqrt{2}$
+					\begin{solution}
+						$\{a\sqrt{2} | a\in \mathbb{Z} \}$
+					\end{solution}
+			\end{subparts}
+		\part Determine whether each of the following statements is true or false (no justification necessary):
+			\begin{subparts}
+				\subpart $\sqrt{2} \in \mathbb{R}$
+					\begin{solution}
+						True
+					\end{solution}
+				\subpart $\sqrt{2} \subset \mathbb{R}$
+					\begin{solution}
+						False
+					\end{solution}
+				\subpart $\{\sqrt{2}\} \in \mathbb{R}$
+					\begin{solution}
+						False
+					\end{solution}
+				\subpart $\{\sqrt{2}\} \subset \mathbb{R}$
+					\begin{solution}
+						True
+					\end{solution}
+				\subpart $\emptyset \in \mathbb{R}$
+					\begin{solution}
+						False
+					\end{solution}
+				\subpart $\emptyset \subset \mathbb{R}$
+					\begin{solution}
+						True
+					\end{solution}
+				\subpart $\emptyset \in \emptyset$
+					\begin{solution}
+						False
+					\end{solution}
+				\subpart $\emptyset \subset \emptyset$
+					\begin{solution}
+						True
+					\end{solution}
+			\end{subparts}
+	\end{parts}
+
+%6
+\question For each rational number $q$, let $q\mathbb{N} = \{ qm | m \in \mathbb{N}\}$, so that we have $q\mathbb{} \subset Q$.
+	\begin{parts}
+		\part Use enumeration to describe each of the following sets (listing at least the first six elements
+		of each set, in order from smallest to largest): 
+			\begin{solution}
+				\begin{align*}
+					\frac{1}{2}\mathbb{N} &= \left\{ \frac{1}{2}, 1, \frac{3}{2}, 2, \frac{5}{2}, 3, ... \right\} \\
+					\frac{1}{3}\mathbb{N} &= \left\{ \frac{1}{3}, \frac{2}{3}, 1, \frac{4}{3}, \frac{5}{3}, 2, ... \right\} \\
+					\frac{1}{2}\mathbb{N} \cap \frac{1}{3}\mathbb{N} &= \left\{ 1, 2, 3, 4, 5, 6, ... \right\} \\
+					\frac{1}{2}\mathbb{N} \cup \frac{1}{3}\mathbb{N} &= \left\{ \frac{1}{3}, \frac{1}{2}, \frac{2}{3}, 1, \frac{4}{3}, \frac{3}{2}, \frac{5}{3}, 2, ... \right\} \\
+					\frac{1}{2}\mathbb{N} \ \backslash\ \frac{1}{3}\mathbb{N} &= \left\{ \frac{1}{2}, \frac{3}{2}, \frac{5}{2}, \frac{7}{2}, \frac{9}{2}, \frac{11}{2}, \frac{13}{2} ... \right\} \\
+					(3\mathbb{N})^C &= \left\{ 1, 2, 4, 5, 7, 8, ... \right\}
+				\end{align*}
+			\end{solution}
+		\part What is the smallest natural number n such that every set from part (a) is contained in $\frac{1}{n} \mathbb{N}$?(Alternatively, if you think no such n exists, explain why.)
+			\begin{solution}
+				6. Both 1/2 and 1/3 are divisible by 1/6 (with integer quotient), so by definition all elements of $\frac{1}{2}\mathbb{N}$ and $\frac{1}{3}\mathbb{N}$ are. Additionally, 1/6 divides 1, so it also divides $\mathbb{N}$.
+			\end{solution}
+	\end{parts}
+\end{questions}
+
+\end{document}
