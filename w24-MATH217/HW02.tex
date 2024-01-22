@@ -80,7 +80,7 @@ both, or neither. Justify your answers.
             \end{solution}
         \part For every function $f : X \rightarrow Y$ and all $A, B \subseteq X$, if $f [A] \cap f [B] = \emptyset$, then $A \cap B = \emptyset$.
             \begin{solution}
-                True. PROOF NEEDED
+                True. We prove the contrapositive. Take any $f : X \rightarrow Y$ and $A, B \subseteq X$ such that $A \cap B$. Then $\exists a \in X$ such that $a \in A \cap B$. Since $a\in A, f(a) \in f[A]$. Similarly, $a \in B,$ so $f(a) \in f[B]$. As $f(a) \in f[A]$ and $f(a) \in f[B]$, $f(a) \in f[A] \cap f[B]$. This means that for every function $f : X \rightarrow Y$ and all $A, B \subseteq X$, if $A \cap B \neq \emptyset$, then $f [A] \cap f [B] \neq \emptyset$. Thus the contrapositive is true, so the original statement is true.
             \end{solution}
         \part For every function $f : X \rightarrow Y$ and all $A \subseteq X$, we have $f^{-1}[f [A]] = A$.
             \begin{solution}
@@ -92,7 +92,7 @@ both, or neither. Justify your answers.
             \end{solution}
         \part For every bijective function $f : X \rightarrow Y$ and all $A, B \subseteq X$, we have $f [A \cap B] = f [A] \cap f [B]$.
             \begin{solution}
-                True. PROOF NEEDED
+                True. PROOF NEEDED. Let $x \in f[A \cap B]$. Then let $a = f^{-1}(x)$. We know $a \in A \cap B$ is unique due to bijectivity. Since $a \in A \cap B, a \in A \wedge a \in B$.
             \end{solution}
     \end{parts}
     
