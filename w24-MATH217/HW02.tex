@@ -92,20 +92,23 @@ both, or neither. Justify your answers.
             \end{solution}
         \part For every bijective function $f : X \rightarrow Y$ and all $A, B \subseteq X$, we have $f [A \cap B] = f [A] \cap f [B]$.
             \begin{solution}
-                True. PROOF NEEDED. Let $x \in f[A \cap B]$. Then let $a = f^{-1}(x)$. We know $a \in A \cap B$ is unique due to bijectivity. Since $a \in A \cap B, a \in A \wedge a \in B$.
+                True. \\\\
+                Let $x \in f[A \cap B]$. Then let $a = f^{-1}(x)$. We know $a \in A \cap B$ is unique due to bijectivity. Since $a \in A \cap B, a \in A \wedge a \in B$. Thus $f[A \cap B] \subseteq f[A] \cap f[B]$. \\
+                Let $y \in f[A] \cap f[B]$. Then let $b = f^{-1}(y)$. We know $b$ is unique due to bijectivity. Additionally, $b \in A \wedge b \in B$ because $y \in f[A] \cap f[B]$. Since $b \in A \cap B, f(b) = y \in A \wedge a \in B$. Thus $f[A] \cap f[B] \subseteq f[A \cap B]$.\\
+                Both $f[A] \cap f[B] \subseteq f[A \cap B]$ and $f[A \cap B] \subseteq f[A] \cap f[B]$, so $f[A \cap B] = f[A] \cap f[B]$.
             \end{solution}
     \end{parts}
     
 
 %3
-% \question
-%     \begin{parts}
-%         \part Prove that for every function f : R → R, if f (cx) = cf (x) for all c ∈ R and x ∈ R, then f (x + y) = f (x) + f (y) for all x, y ∈ R. (In other words, prove that every function f : R → R that preserves scalar multiplication is a linear transformation from R to R.)
-%         \part Give an example to show that the argument you gave in part (a) cannot work in 2 dimen-
-%         sions. That is, explicitly describe a function f : R2 → R2 that is not a linear transformation
-%         but has the property that f (c~x) = cf (~x) for all ~x ∈ R2 and c ∈ R. Remember to prove
-%         that your example works!
-%     \end{parts}
+\question
+    \begin{parts}
+        \part Prove that for every function $f : \reals \rightarrow \reals$, if $f (cx) = cf (x)$ for all $c \in \reals$ and $x \in \reals$, then $f (x + y) = f (x) + f (y)$ for all $x, y \in \reals$. (In other words, prove that every function $f : \reals \rightarrow \reals$ that preserves scalar multiplication is a linear transformation from $\reals$ to $\reals$.)
+            \begin{solution}
+                Let $x \neq 0 \in \reals$, $y \in \reals$. Then $y = cx$, where $c\in \reals$, by closure of nonzero division in the reals. Additionally, $f(y) = f(cx) = cf(x)$. Thus $f(x+y) = f(x + cx) = f((1 + c)x) = (1+c)f(x) = f(x) + cf(x) = f(x) + f(y)$. NEEDS MORE
+            \end{solution}
+        \part Give an example to show that the argument you gave in part (a) cannot work in 2 dimensions. That is, explicitly describe a function $f : \reals^2 \rightarrow \reals^2$ that is not a linear transformation but has the property that $f (c\vec{x}) = cf (\vec{x})$ for all $\vec{x} \in \reals^2$ and $c \in \reals$. Remember to prove that your example works!
+    \end{parts}
 
 % %4
 % \question Let f : R → R be a function, and suppose that f (x + y) = f (x) + f (y) for all x, y ∈ R. (In other words, suppose that f preserves addition).
