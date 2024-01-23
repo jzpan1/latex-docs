@@ -79,6 +79,7 @@ submitting your own work.
 \newpage
 %%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
 \section*{Individual Portion}
+%1
 \subsection*{\probnum Collaboration and Support [3 points]}
 \begin{qparts}
 \item Give the names and uniqnames of 2 of your EECS 203 classmates (these
@@ -93,10 +94,10 @@ overall well-being.
 		\part Will Guo, guowill \\
 			Hannah Hoang-Pham, hoangpha
 		\part I would most likely ask them in person at the lectures, or through text.
-		\part I want to take a lot of walks, I find them a nice stress relief.
+		\part I want to take a lot of walks, I find them a nice source of stress relief.
 	\end{parts}
 \end{solution}
-
+%2
 \subsection*{\probnum Rock the Vote [12 points]}
 Let $p$ and $q$ be the following propositions:
 \begin{itemize}
@@ -109,8 +110,12 @@ Express each of these propositions as an English statement:
 \item $\neg q \lor (\neg p \land q)$
 \end{qparts}
 \begin{solution}
-	
+	\begin{qparts}
+		\item ``If the election has not been decided, then the votes have not been counted."
+		\item ``Either the votes have not been counted or both the election has not been decided and the votes have been counted." \\This can be simplified to ``Either the votes have not been counted or the election has not been decided."
+	\end{qparts}
 \end{solution}
+%3
 \subsection*{\probnum Negation Station [16 points]}
 For each of the following propositions, give their negation in natural English.
 Your answer should not contain the original proposition. That is, you shouldn't
@@ -124,7 +129,14 @@ earn partial credit if you do.
 \item If $d$ is divisible by 2, then it is even.
 \end{qparts}
 \begin{solution}
+	\begin{qparts}
+		\item $a$ is at most 6 and greater than 2.
+		\item $b$ is not a perfect square, is not odd, or is divisible by 7.
+		\item $c$ is not odd whenever it is prime and greater than 3.
+		\item $d$ is divisible by 2 and not even.
+	\end{qparts}
 \end{solution}
+%4
 \subsection*{\probnum Lying and Politics [16 points]}
 Imagine a world with two kinds of people: knights and knaves, where knights always
 tell the truth and knaves always lie. There are three people A, B, and C, and one
@@ -137,7 +149,12 @@ of them is the city mayor.
 Is the city mayor a knight or a knave? As part of your solution, determine
 everything you can about whether A, B, and C are knights or knaves.
 \begin{solution}
+	C's statement cannot be true, since he calls himself a knave with his statement. Thus, he is a knave, and at most 2 of the people are knaves. Hence only one of A or B is a knave. \\
+	If A is a knave, they are the city mayor. B is then telling the truth.
+	If A is telling the truth, B cannot be a knave because B and C would both be knaves, and have the city mayor among them. This would make B's statement true, causing a contradiction. Thus B is a knight, making C the knavish city mayor. \\
+	In conclusion, the city mayor is a knave, C is always a knave, and B is always a knight.
 \end{solution}
+%5
 \subsection*{\probnum Is Equivalence Equivalent to Equality? [15 points]}
 Show that $(b \rightarrow a) \land (c \rightarrow a)$ is logically equivalent to $\
 neg(b \lor c) \lor a$. If you use a truth table, be sure to state why the table
@@ -145,6 +162,7 @@ tells you what you claim. If you use logical equivalences, be sure to cite each
 law you use.
 \begin{solution}
 \end{solution}
+%6
 \subsection*{\probnum Deduce, Reuse, Recycle [20 points]}
 Given that the following statements are \textbf{true}:
 \[ (p \land r) \rightarrow q\hspace{0.5in}\: \neg q \hspace{0.5in} \: r \lor s \
@@ -153,6 +171,7 @@ For each of the propositions, $p,\ q,\ r,$ and $s$, state its truth value and
 explain. If it cannot be found, briefly explain why.
 \begin{solution}
 \end{solution}
+%7
 \subsection*{\probnum Preposterous Propositions [18 points]}
 Consider the following truth table, where $s$, $t$, and $w$ are unknown
 propositions.
