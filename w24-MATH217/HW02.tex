@@ -22,6 +22,7 @@
 
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
 
 
 \makeatletter
@@ -105,19 +106,65 @@ both, or neither. Justify your answers.
     \begin{parts}
         \part Prove that for every function $f : \reals \rightarrow \reals$, if $f (cx) = cf (x)$ for all $c \in \reals$ and $x \in \reals$, then $f (x + y) = f (x) + f (y)$ for all $x, y \in \reals$. (In other words, prove that every function $f : \reals \rightarrow \reals$ that preserves scalar multiplication is a linear transformation from $\reals$ to $\reals$.)
             \begin{solution}
-                Let $x \neq 0 \in \reals$, $y \in \reals$. Then $y = cx$, where $c\in \reals$, by closure of nonzero division in the reals. Additionally, $f(y) = f(cx) = cf(x)$. Thus $f(x+y) = f(x + cx) = f((1 + c)x) = (1+c)f(x) = f(x) + cf(x) = f(x) + f(y)$. NEEDS MORE
+                We use 3 cases: 
+                $\begin{cases}
+                    (1) & x \neq 0 \in \reals,y \in \reals\\
+                    (2) & x = 0, y \neq 0 \in \reals\\
+                    (3) & x = 0, y = 0
+                \end{cases}$\\
+                (1) Let $x \neq 0 \in \reals$, $y \in \reals$. Then $y = cx$, where $c\in \reals$, by closure of nonzero division in the reals. Additionally, $f(y) = f(cx) = cf(x)$. Thus \[f(x+y) = f(x + cx) = f((1 + c)x) = (1+c)f(x) = f(x) + cf(x) = f(x) + f(y)\] \\
+                (2) The variables are analagously switched from case (1) if $x=0$ and $y$ is nonzero. \\
+                (3) Note that \[f(0) = 0f(k) = 0 k \in \reals.\] So, if $x=y=0$, \[f(0 + 0) = f(0) + f(0) = 0.\] Thus, linearity holds in all cases for all $f : \reals \rightarrow \reals$ if $f (cx) = cf (x)$ for all $c \in \reals$ and $x \in \reals$.
             \end{solution}
         \part Give an example to show that the argument you gave in part (a) cannot work in 2 dimensions. That is, explicitly describe a function $f : \reals^2 \rightarrow \reals^2$ that is not a linear transformation but has the property that $f (c\vec{x}) = cf (\vec{x})$ for all $\vec{x} \in \reals^2$ and $c \in \reals$. Remember to prove that your example works!
+        \begin{solution}
+            Define $f(x, y) = (\sqrt{x^2 + y^2}, 0)$. 
+            \begin{gather*}
+                \text{Scalar multiplication: } cf(x, y) = \left(c\sqrt{x^2+y^2}, 0\right) = \left(\sqrt{(cx)^2 + (cy)^2}, 0\right) = f(cx, cy) \\
+                f(1, 0) = (1, 1)\\
+                f(0, 1) = (1, 1) \\
+                f(1, 1) = (1, 2) \neq (1, 1) + (1, 1) = f(1, 0) + f(0, 1)
+            \end{gather*}
+            Thus linearity does not hold here, even though scalar multiplication is preserved through the function.
+        \end{solution}
     \end{parts}
 
-% %4
-% \question Let f : R → R be a function, and suppose that f (x + y) = f (x) + f (y) for all x, y ∈ R. (In other words, suppose that f preserves addition).
-%     \begin{parts}
-%         \part Prove that f (0) = 0.
-%         \part Prove that for all x ∈ R, f (−x) = −f (x).
-%         \part Use induction to prove that for all n ∈ N and x ∈ R, f (nx) = nf (x).
-%         \part Prove that for all m ∈ Z and x ∈ R, f (mx) = mf (x).
-%     \end{parts}
+%4
+\question Let $f : \reals \rightarrow \reals$ be a function, and suppose that $f (x + y) = f (x) + f (y)$ for all $x, y \in \reals$. (In other words, suppose that $f$ preserves addition).
+    \begin{parts}
+        \part Prove that $f (0) = 0$.
+            \begin{solution}
+                Let $x \in R$. Then \[f(x) = f(x + 0) = f(x) + f(0) = f(x) + 0.\] Thus $f(0)=0$.
+            \end{solution}
+        \part Prove that for all $x \in \reals$, $f (-x) = -f (x)$.
+            \begin{solution}
+                Let $x \in \reals$. Then \[f(x + (-x)) = f(0) = f(x) + f(-x) = 0.\] Hence $f(-x) = -f(x)$.
+            \end{solution}
+        \part Use induction to prove that for all $n \in \naturals$ and $x \in \reals, f (nx) = nf (x)$.
+            \begin{solution}
+                Base case: $n=1, f(1 \cdot x) = 1 \cdot f(x)$.\\
+                Inductive step: Assume $f(nx) = nf(x)$. Then 
+                \begin{align*}
+                    f((n+1)x) &= f(nx + x) &\\
+                    &= f(nx) + f(x) &(f \text{ preserves addition}) \\
+                    &= nf(x) + f(x) &(\text{assumption})\\
+                    &= (n+1)f(x)
+                \end{align*}
+                Thus the statement holds for all $n$.
+            \end{solution}
+        \part Prove that for all $m \in \ints$ and $x \in \reals, f (mx) = mf (x)$.
+            \begin{solution}
+                We split possibilities for $m \in \ints$ into 3 cases: $\begin{cases}
+                    (1) & x \in \ints^+ = \naturals \\
+                    (2) & x \in 0\\
+                    (3) & x \in \ints^- = -\naturals
+                \end{cases}$\\
+                (1) We have shown this in part (c). \\
+                (2) We know from part (a) that \[f(0x) = f(0) = 0 = 0f(x).\] \\
+                (3) We know from part (b) that $f(-x) = -f(x)$. Then \[f(mx) = -(-f(mx)= -f(-mx).\] By the case assumption, $-m$ is positive, so it falls under case 1. Then we know \[-f(-mx) = -(-mf(x)) = mf(x).\]\\
+                Thus the statement is true for all cases of $m$ and $x$.
+            \end{solution}
+    \end{parts}
 
 \end{questions}
 
