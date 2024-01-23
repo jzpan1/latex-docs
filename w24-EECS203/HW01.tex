@@ -156,20 +156,33 @@ everything you can about whether A, B, and C are knights or knaves.
 \end{solution}
 %5
 \subsection*{\probnum Is Equivalence Equivalent to Equality? [15 points]}
-Show that $(b \rightarrow a) \land (c \rightarrow a)$ is logically equivalent to $\
-neg(b \lor c) \lor a$. If you use a truth table, be sure to state why the table
+Show that $(b \rightarrow a) \land (c \rightarrow a)$ is logically equivalent to $\neg(b \lor c) \lor a$. If you use a truth table, be sure to state why the table
 tells you what you claim. If you use logical equivalences, be sure to cite each
 law you use.
 \begin{solution}
+	\begin{align*}
+		(b \rightarrow a) \land (c \rightarrow a) \equiv& (\neg b \vee a) \wedge (\neg c \vee a) \tag*{implication breakout}\\
+		\equiv& (\neg b \vee a \wedge \neg c) \vee (\neg b \vee a \wedge a) & \tag*{distributive property} \\
+		\equiv& (\neg b \vee a \wedge \neg c) \vee (\neg b \vee a) & \tag*{$a \wedge a \equiv a$} \\
+		\equiv& (\neg b \vee a) \vee (\neg b \vee a \wedge \neg c)  & \tag*{commutativity of or} \\
+		\equiv& (a \vee \neg b) \vee (\neg b \vee a \wedge \neg c)  & \tag*{commutativity of or} \\
+		\equiv& a \vee \neg b \vee a \wedge \neg c  & \tag*{$\neg b \vee \neg b \equiv \neg b$} \\
+		\equiv& a \vee \neg b \vee a \wedge \neg c & \tag*{$\neg b \vee \neg b \equiv \neg b$} \\
+		\equiv& a \vee \neg b \wedge \neg c  & \tag*{$a \vee a \equiv a$} \\
+		\equiv& a \vee \neg (b \vee c)  & \tag*{DeMorgan's Law}
+	\end{align*}
 \end{solution}
 %6
 \subsection*{\probnum Deduce, Reuse, Recycle [20 points]}
 Given that the following statements are \textbf{true}:
-\[ (p \land r) \rightarrow q\hspace{0.5in}\: \neg q \hspace{0.5in} \: r \lor s \
-hspace{0.5in} \: q \lor r \]
+\[ (p \land r) \rightarrow q \hspace{0.5in} \: \neg q \hspace{0.5in} \: r \lor s \hspace{0.5in} \: q \lor r \]
 For each of the propositions, $p,\ q,\ r,$ and $s$, state its truth value and
 explain. If it cannot be found, briefly explain why.
 \begin{solution}
+	$q$: False, since $\neg q$ is true. \\
+	$r$: True, since $q$ is false, so for $q \vee r$ to be true, $r$ must be true. \\
+	$s$: Unknown, $r$ is true so $r \vee s$ will be true no matter what value $s$ has. \\
+	$p$: False. Since $q$ is false, the condition of the first statement must be false. $r$ is true, so $p$ must make the $\wedge$ statement false.
 \end{solution}
 %7
 \subsection*{\probnum Preposterous Propositions [18 points]}
@@ -201,25 +214,8 @@ each of your answers.
 answers.
 \end{itemize}
 \begin{solution}
-\end{solution}
-\pagebreak
-\setcounter{probnumcount}{1}
-\section*{Groupwork \hwnum{} Problems}
-\subsection*{\probnum Caught Red-Handed! [20 points]}
-Four friends have been identified as suspects for a recent hack. They have made the
-follow statements to the authorities:
-\begin{itemize}
-\item Redd says that ``Blu did it"
-\item Violet says that ``I did not do it"
-\item Blu says that ``Grey did it"
-\item Grey says that ``Blu lied when they said that I did it"
-\end{itemize}
-\begin{qparts}
-\item If the authorities know exactly one of the four suspects is telling the
-truth, who did it?
-\item If the authorities know exactly one of the four suspects is lying, who
-did it?
-\end{qparts}
-\begin{solution}
+	$s$: $p \wedge q \wedge \neg r$ \\
+	$t$: $q \wedge \neg r$ \\
+	$w$: $r \wedge \neg(p \wedge q)$
 \end{solution}
 \end{document}
