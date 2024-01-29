@@ -14,11 +14,11 @@
 % 	Define vars here 	%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\hwName{Homework Set Part B}
+\def\hwName{Homework 3 Part B}
 \author{Zhengyu James Pan} %use like \@author
 \def\instructor{Dr. Paul Kessenich}
 \def\email{jzpan@umich.edu}
-\def\dueDate{???}
+\def\dueDate{Thursday, February 1}
 
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\naturals}{\mathbb{N}}
@@ -48,12 +48,21 @@
 }
 
 \begin{questions}
-\question Question
+\question Determine whether the following statements are true or false, and justify your answer with a proof or a counterexample.
 	\begin{parts}
-		\part Part
+		\part For all $2 \times 2$ matrices $A$ and $B$, $(AB)^T = A^T B^T$.
 		\begin{solution}
-			Solution
+            \begin{align*}
+                (AB)\transpose &= \begin{bmatrix}
+                    a_{11} b_{11} + a_{12} b_{21} & a_{11} b_{12} + a_{12} b_{22} \\
+                    a_{21} b_{11} + a_{22} b_{21} & a_{21} b_{12} + a_{22} b_{22}
+                \end{bmatrix}
+            \end{align*}
 		\end{solution}
+        \part For all $2 \times 2$ matrices $A$ and $B$, $(AB)^\top \neq A\transpose B\transpose$.
+        \part For all matrices A and B such that the matrix product AB exists, $(AB)\transpose = B\transpose A\transpose$.
+        \part If $A$ is a symmetric matrix, then for all $n \in \naturals$, $An$ is also symmetric.
+        \part If $A$ is a square matrix and $A^2$ is symmetric, then so is $A$.
 	\end{parts}
 \end{questions}
 
