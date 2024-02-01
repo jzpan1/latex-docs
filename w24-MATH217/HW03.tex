@@ -166,28 +166,37 @@
     \begin{parts}
         \part Every 3-by-3 matrix that has a row of zeros is not invertible.
             \begin{solution}
-                A matrix with a row of zeros can only have 2 pivots, for a rank of 2. Thus by theorem 2.4.3, it is not invertible.
+                A matrix with a row of zeros can have at most 2 pivots, for a rank of 2. Thus by Theorem 2.4.3, it is not invertible.
             \end{solution}
         \part Every square matrix with 1's down the main diagonal is invertible.
             \begin{solution}
                 False. For example, $A= \begin{bmatrix}
                     1 & 2 \\
                     0.5 & 1
-                \end{bmatrix}$ is not invertible: both $A\begin{bmatrix} 2 \\ 0 \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix} = A\begin{bmatrix} 0 \\ 1 \end{bmatrix}$
+                \end{bmatrix}$ is not bijective: $A\begin{bmatrix} 2 \\ 0 \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix} = A\begin{bmatrix} 0 \\ 1 \end{bmatrix}$ shows that there are multiple solutions to the same matrix equation. Thus it is not invertible.
             \end{solution}
         \part For any matrix $A$, if $A$ is invertible, then so is $A^{-1}$.
             \begin{solution}
-                True. PROOF NEEDED
+                True. Since $AA^{-1} = A^{-1}A = I_n$, $A^{-1}$ is invertible by definition 2.16 from the Theory of Linear Algebra handout.
             \end{solution}
         \part For any matrix $A$, if $A$ is invertible, then $A^n$ is invertible.
             \begin{solution}
-                True. $\left(A^n\right)^{-1} = \left(A^{-1}\right)^n$ PROOF NEEDED
+                True. This is a special case of Problem 6c on Worksheet 7, where $A_1 = ... = A_n = A$. The inverse is thus $\left(A^n\right)^{-1} = \left(A^{-1}\right)^n$.
             \end{solution}
     \end{parts}
 
 
 %3
 \question Let $A$ be an $m \times n$ matrix. Prove that if there exists an $n \times m$ matrix $B$ such that $BA = I_n$, then the system of linear equations $A\vec{x} = \vec{0}$ has a unique solution. (Note: a matrix $B$ with this property is called a left-inverse for $A$. Can you guess why?)
+    \begin{solution}
+        Left multiplying the matrix equation by $B$, 
+        \begin{align*}
+            BA \vec{x} = B \vec{0} \\
+            I_n \vec{x} = \vec{0} \\
+            \vec{x} = \vec{0}
+        \end{align*}
+        Then the only solution to the system is $\vec{x} = \vec{0}$.
+    \end{solution}
 
 %4 
 \question Given two matrices A and B such that the product AB is defined (say, $A$ is $n \times m$ and $B$ is $m \times k$), exactly one of the following two statements is true:
@@ -196,6 +205,21 @@
         \part Every column of AB is a linear combination of columns of B.
     \end{parts}
     Prove the one that is true, and provide a counterexample for the one that is false.
+    \begin{solution}
+        By theorem 2.3.2, the matrix product $AB = \begin{bmatrix*}
+            | & | &  | \\
+            \vec{a_1} & ... & \vec{a_m} \\
+            | & | & |
+        \end{bmatrix*}\begin{bmatrix*}
+            | & | &  | \\
+            \vec{b_1} & ... & \vec{b_k} \\
+            | & | & |
+        \end{bmatrix*} = \begin{bmatrix*}
+            | & | &  | \\
+            A\vec{b_1} & ... & A\vec{_k} \\
+            | & | & |
+        \end{bmatrix*}$. This means each column of AB is a product $A\vec{b_j}$. By Example 13, we know that this product is the linear combination $\vec{a_1} b_{1j} + ... + \vec{a_1} b_{mj}$, where $b_{ij}$ is the $ij$th element of $B$. Thus statement (a) is true.
+    \end{solution}
 
 \question Let $f : X \rightarrow X$ be a function. We let $f^n$ denote the function $f^n : X \rightarrow X$ given by
 composing $f$ iteratively, $n$ many times. Also, we define $f^0$ to be the identity function, i.e. $\forall x \in X, f^0(x) = x$.
