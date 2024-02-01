@@ -218,16 +218,33 @@
             | & | &  | \\
             A\vec{b_1} & ... & A\vec{_k} \\
             | & | & |
-        \end{bmatrix*}$. This means each column of AB is a product $A\vec{b_j}$. By Example 13, we know that this product is the linear combination $\vec{a_1} b_{1j} + ... + \vec{a_1} b_{mj}$, where $b_{ij}$ is the $ij$th element of $B$. Thus statement (a) is true.
+        \end{bmatrix*}$. =By Example 13, we know that each product $A\vec{b_j}$ is the linear combination $\vec{a_1} b_{1j} + ... + \vec{a_m} b_{mj}$, where $b_{ij}$ is the $ij$th element of $B$. Thus statement (a) is true.\\
+        For a counterexample to (b), take $ \begin{bmatrix*}
+        1 & 2 \\  1 & 1 
+        \end{bmatrix*}\begin{bmatrix*}
+            1 & 2 \\  1 & 2 
+            \end{bmatrix*} = \begin{bmatrix*}
+                3 & 6 \\  2 & 4 
+                \end{bmatrix*}$.
     \end{solution}
 
 \question Let $f : X \rightarrow X$ be a function. We let $f^n$ denote the function $f^n : X \rightarrow X$ given by
 composing $f$ iteratively, $n$ many times. Also, we define $f^0$ to be the identity function, i.e. $\forall x \in X, f^0(x) = x$.
     \begin{parts}
         \part Assume that $X = \reals^d$. Prove by induction that if $f$ is a linear transformation, then the nth iterate $f^n$ is also a linear transformation.
-        \part Find an example of a function $f : \reals^2 \rightarrow \reals^2$ which is not a linear transformation, but for
-        which there exists an n such that the nth iterate $f^n$ is a linear transformation.
-        \part Prove that for $X = Rd$ and $f$ linear, if the equation $f (x) = 0$ has a unique solution, then the iterated equation $f^n(x) = 0$ also has a unique solution.
+            \begin{solution}
+                Base case: $f^1=f$ is a linear transformation. \\
+                Induction hypothesis: Assume $f^n$ is a linear transformation. \\ 
+                Inductive step: $f^{n+1} = f^n \circ f$ by definition. By Theorem 2.12 from the Theory of Linear Algebra handout, the composition of two linear transformations is also linear. Thus $f^{n+1}$ is linear. Thus the statement is true for all $n$.
+            \end{solution}
+        \part Find an example of a function $f : \reals^2 \rightarrow \reals^2$ which is not a linear transformation, but for which there exists an n such that the nth iterate $f^n$ is a linear transformation.
+            \begin{solution}
+                $f(x) = 1-x$ is not linear, but $f^2(x) = f(f(x)) = 1-(1-x) = x$ is linear. 
+            \end{solution}
+        \part Prove that for $X = \reals^d$ and $f$ linear, if the equation $f (x) = 0$ has a unique solution, then the iterated equation $f^n(x) = 0$ also has a unique solution.
+            \begin{solution}
+                Let $A$ be the unique standard matrix of $f$ using the Key Theorem. Then the composition $f^n$ can be represented by the standard matrix $A^n$. Since $f(x) = 0$ has a unique solution, the matrix equation $A\vec{x} = \vec{0}$ has a unique solution. By the linear combination definition of matrix multiplication, $B\vec{0} = \vec{0}$ for all compatible matrices $B$, so the unique solution for $A$ must be $\vec{0}$. The matrix equation $A^n \vec{x} = \vec{0}$ represents the iterated equation $f^n(x) = 0$. \\When $\vec{x} = \vec{0}$, \[A^{n}\vec{0} = \vec{0}.\] Meanwhile, when $\vec{x} \neq \vec{0} $, we know $A\vec{x}\neq \vec{0}$. Assuming $A^n\vec{x} \neq \vec{0}$, then \[A^{n+1} \vec{x} = A (A^n \vec{x}) = A(\text{nonzero vector}) \neq 0.\] So by induction, $A^n\vec{x} = \vec{0}$ has no solutions when $\vec{x}$ is nonzero. Thus $\vec{0}$ is the unique solution to $f$.
+            \end{solution}
     \end{parts}
 \end{questions}
 
