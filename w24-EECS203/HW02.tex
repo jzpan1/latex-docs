@@ -110,7 +110,7 @@ Your answer should not contain the original proposition. That is, you shouldn't 
     \begin{qparts}
         \item There is at least 1 student in this course who is not enrolled in exactly 1 discussion section.
         \item Every student in this class is on both Gradescope and Piazza.
-        \item There exist integers $a$ and $b$ such that if $a+b > 0$, then $a-b \geq 0$.
+        \item There exist integers $a$ and $b$ such that $a+b > 0$ and $a-b \geq 0$.
         \item There is an irrational number $x$ for which there does not exist a rational number $y$ such that $x^y$ is rational.
     \end{qparts}
 \end{solution}
@@ -129,7 +129,7 @@ Negate the following statements so that all negation symbols immediately precede
 \begin{solution}
     \begin{qparts}
         \item $\exists y [ \forall x \neg P(x,y) \wedge \exists x \neg Q(x, y) ]$
-        \item $\forall x \forall y [ R(x,y) \wedge \neg R(y, x) ]$
+        \item $\forall x \exists y [ R(x,y) \wedge \neg R(y, x) ]$
     \end{qparts}
 \end{solution}
 
@@ -156,7 +156,7 @@ Let $P(x,y)$ be the statement ``customer $x$ has ordered dish $y$," where the do
         \item $\forall y \exists x [P(x, y)]$
         \item $\forall x \forall y [P(x, y)]$
         \item $\exists y \exists x [P(x, y)]$
-        \item $\forall y \exists x [P(x, y)]$
+        \item $\forall y \forall x [P(x, y)]$
     \end{qparts}    
 \end{solution}
 
@@ -193,7 +193,7 @@ For each of the propositions below, write the negation, and determine whether th
     \begin{qparts}
         \item $\forall x (x^3 \neq -1)$. The original is true: $x=-1$ satisfies the original.
         \item $\exists x (2x \leq x)$. The negation is true: $x=-1$ satisfies the negation.
-        \item $\forall x \forall y (x+y \neg 0)$. The negation is true: when $x$ is nonzero, $x+x =2x \neq 0$. When $x = 0$, $x + 1 = 1 \neq 0$.
+        \item $\forall x \exists y (x+y \neq 0)$. The negation is true: when $x$ is nonzero, $x+x =2x \neq 0$. When $x = 0$, $x + 1 = 1 \neq 0$.
         \item $\exists x \forall y (x+y \neq 0)$. The original is true: $x + (-x) = 0$ for any $x$.
     \end{qparts}
 \end{solution}
@@ -244,7 +244,7 @@ For this problem, let the domain of discourse be positive integers.
     \begin{qparts}
         \item In English, the predicate means that $z$ is greater than $x$ and divisible by $x$ and not divisible by 4. When $x = 10$, the solutions $z=30, 50, 70$ fulfill these requirements. These are the smallest values since $z$ must be greater than 10.
     
-        \item Assuming that $4 \nmid x$, we construct a $z$ which fulfills the requirements. Let $z = 5x$. Since $x$ is positive, $z = 5x > x$. We also know $x | z$ since $z = 5x$. Additionally, since $5x = 4x + x$, $z$ is not divisible by 4 because $4 | 4x$ and $4 \nmid x$. Thus $z$ fulfills predicate $P(x, z)$.
+        \item Assuming that $4 \nmid x$, we construct a $z$ which fulfills the requirements. Let $z = 5x$. Since $x$ is positive, $z = 5x > x$. We also know $x | z$ since $z = 5x$. Additionally, since $5x = 4x + x$, $z$ is not divisible by 4 because $4 | 4x$ and $4 \nmid x$. Thus $z$ fulfills predicate $P(x, z)$. 
     \end{qparts}
 \end{solution}
 
