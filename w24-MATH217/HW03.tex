@@ -37,6 +37,7 @@
 \printanswers
 \unframedsolutions
 
+\setlength{\parskip}{6pt}
 %Top matter
 {\parindent0in
 \bf
@@ -146,9 +147,9 @@
                     \end{bmatrix}
                 \end{align*}
             \end{solution}
-        \part If $A$ is a symmetric matrix, then for all $n \in \naturals$, $An$ is also symmetric.
+        \part If $A$ is a symmetric matrix, then for all $n \in \naturals$, $A^n$ is also symmetric.
             \begin{solution}
-                True. If $A$ is symmetric, then $A = A\transpose$. Multiplying by $n$ on both sides results in $An = A\transpose n$. Since scalar multiplication applies to all elements of a matrix, transpose clearly respects scalar multiplication; thus $An = (An)\transpose$. This means $An$ is symmetric.
+                True. By definition, if $A$ is symmetric, then $A = A\transpose$. Assume $A^n = (A^n)\transpose$. Then \[ A^{n+1} = A^nA = (A^n)\transpose A\transpose. \] By part (c) of this problem, \[(A^n)\transpose A\transpose = (AA^n)\transpose = (A^{n+1})\transpose.\] So if $A$ is symmetric, $A^n$ is symmetric for all $n$ by induction.
             \end{solution}
         \part If $A$ is a square matrix and $A^2$ is symmetric, then so is $A$.
             \begin{solution}
