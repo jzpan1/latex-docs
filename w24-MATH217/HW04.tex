@@ -1,0 +1,65 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\instructor{Dr. Paul Kessenich}
+\def\email{jzpan@umich.edu}
+\def\dueDate{Thurs, Feb 8}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\bf
+\begin{center}
+	MATH 217 W24 - LINEAR ALGEBRA, Section 001 ({\instructor}) \\
+	{\hwName} due {\dueDate} at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+\question Let $\reals^n \xrightarrow{T} \reals^n$ be a linear transformation. As on HW 3, we deﬁne $T^k$ to be the $k$-fold composition of $T$ with itself. Let $A$ be the standard matrix of $T$, by which we mean the unique $n \times n$ matrix such that $T (\vec{x}) = A\vec{x}$ for all $\vec{x} \in \reals^n$.
+	\begin{parts}
+		\part Prove that for all $k$, the standard matrix for $T^k$ is the matrix $A^k$. [Hint: induction works nicely.]
+		\begin{solution}
+			We are given that the standard matrix $A^{(1)}$ represents the transformation $T^{(1)}$. Assume that the transformation $T^n$ can be represented by the standard matrix $A^n$. We know by a theorem on the worksheets that the standard matrix of two linear transformations, both from $\reals^n \rightarrow \reals^n$, is equal to the product of their respective standard matrices. Then $(T^n \circ T)(x) = A^n A \vec{x}$. This is equal to $T^{n+1}(x) = A^{n+1}\vec{x}$. So by induction, $T^k (\vec{x}) = A^k\vec{x}$ for all $\vec{x} \in \reals^n$ and $k \in \naturals$.
+		\end{solution}
+        \part We deﬁne $T$ to be nilpotent if there exists some $k \in \naturals$ such that $T^k$ is the zero transformation. Prove that if $T$ is nilpotent, then $A$ is not invertible.
+            \begin{solution}
+                
+            \end{solution}
+        \part Prove that if $T$ is nilpotent, then $A - I_n$ is invertible. [Hint: try multiplying out $(A - I_n)(I_n + A + A+2 + \cdots + A_{k-1})$ and see what you get.]
+	\end{parts}
+\end{questions}
+
+\end{document}
