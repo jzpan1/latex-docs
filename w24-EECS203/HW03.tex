@@ -226,13 +226,6 @@ Let $P(x)$ and $Q(x)$ be arbitrary predicates.
 \end{qparts}
 
 \begin{solution}
-    \begin{gather*}
-        \exists x(P(x) \leftrightarrow Q(x)) \\
-        \equiv \exists x\left[(P(x) \rightarrow Q(x)) \wedge (Q(x) \rightarrow P(x))\right] (\text{defn iff})\\
-        \equiv \exists x\left[(\neg P(x) \vee Q(x)) \wedge (\neg Q(x) \vee P(x))\right]  (\text{implication breakout})\\
-        \equiv \exists x\left[(\neg P(x) \vee Q(x) \wedge \neg Q(x)) \vee (\neg P(x) \vee Q(x) \wedge P(x))\right] \text{(distribute }\wedge \text{ over }\vee) \\
-        \equiv \exists x\left[(\neg P(x) \vee (Q(x) \wedge \neg Q(x))) \vee (Q(x) \vee \neg P(x) \wedge P(x))\right] \tag{(associativity/commutativity of \wedge and \vee)} \\
-        \equiv \exists x\left[(\neg P(x) \vee F) \vee (\neg P(x) \vee Q(x) \wedge P(x))\right] \tag{ $A \wedge \neg A$}
-    \end{gather*}
+    
 \end{solution}
 \end{document}

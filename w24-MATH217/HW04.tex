@@ -56,10 +56,45 @@
 		\end{solution}
         \part We deﬁne $T$ to be nilpotent if there exists some $k \in \naturals$ such that $T^k$ is the zero transformation. Prove that if $T$ is nilpotent, then $A$ is not invertible.
             \begin{solution}
-                
+                Assume $A$ is invertible. Let $k \in \naturals$ such that $T^k$ is the zero transformation. We know by part (a) that the standard matrix of $T^k$ is $A^k$. By problem 6c on Worksheet 6 (CHECK CITATION), the inverse of $A^k$ is $(A^{-1})^k$. However, the zero transformation has no inverse, so there is a contradiction. Thus $A$ cannot be invertible.
             \end{solution}
-        \part Prove that if $T$ is nilpotent, then $A - I_n$ is invertible. [Hint: try multiplying out $(A - I_n)(I_n + A + A+2 + \cdots + A_{k-1})$ and see what you get.]
+        \part Prove that if $T$ is nilpotent, then $A - I_n$ is invertible. [Hint: try multiplying out $(A - I_n)(-I_n - A - A^2 - \cdots - A^{k-1})$ and see what you get.]
+            \begin{solution}
+                Let $k \in \naturals$ such that $T^k$ is the zero transformation.\\
+                Expanding $(A - I_n)(-I_n - A - A^2 - \cdots - A^{k-1})$:
+                \begin{align*}
+                    &= -A\left(I_n + A + \cdots + A^{k-1}\right) + I_n\left(I_n + A + \cdots + A^{k-1}\right) \tag{distributivity}\\
+                    &= -\left(A + A^2 + \cdots + A^{k-1} + A^{k}\right) + \left(I_n + A + \cdots + A^{k-1}\right) \tag{distributivity} \\
+                    &= \left(I_n + A + \cdots + A^{k-1}\right) - \left(A + A^2 + \cdots + A^{k-1} + 0_{n \times n}\right) \tag{$A^k = 0_{n \times n}$}\\
+                    &= I_n
+                \end{align*}
+                Swapping the order of multiplication, 
+                \begin{align*}
+                    (-I_n &- A - A^2 - \cdots - A^{k-1})(A - I_n) \\
+                    &= -\left(I_n + A + \cdots + A^{k-1}\right)A + \left(I_n + A + \cdots + A^{k-1}\right)I_n \tag{distributivity}\\
+                    &= -\left(A + A^2 + \cdots + A^{k-1} + A^{k}\right) + \left(I_n + A + \cdots + A^{k-1}\right) \tag{distributivity} \\
+                    &= \left(I_n + A + \cdots + A^{k-1}\right) - \left(A + A^2 + \cdots + A^{k-1} + 0_{n \times n}\right) \tag{$A^k = 0_{n \times n}$}\\
+                    &= I_n
+                \end{align*}
+                So the inverse of $A - I_n$ is $-(I_n + A + A^2 + \cdots + A^{k-1})$, and $A - I_n$ is invertible by definition.
+            \end{solution}
 	\end{parts}
+
+%2
+\question Let $V$ be any vector space, and let $S$ be any set. Let $\mathcal{F}(S, V)$ denote the set of all functions from $S$ to $V$ . (Note: we are not assuming $S \subseteq V$ here, just that $S$ is some set. $S$ is not assumed to be a vector space, but it could be. Similarly, the functions in $F(S, V )$ are not assumed to be linear transformations, although it is possible that some of them might be.)
+\par For any functions $f$, $g \in \mathcal{F}(S, V )$ we can deﬁne their sum to be the function $f + g$ given by the formula $(f + g)(s) = f (s) + g(s)$, where $s$ is any element in $S$. Similarly, for any scalar $c \in R$ and any function $f \in \mathcal{F}(S, V )$ we deﬁne the function $cf$ to be given by the formula $(cf )(s) = c(f (s))$ for all $s \in S$.
+    \begin{parts}
+        \part Prove that $\mathcal{F}(S, V )$ is a vector space. Note: For this problem you must explicitly prove that each of the vector space properties VS1-8 from Worksheet 6 is true. (These proofs should be very short but are not skippable.)
+            \begin{solution}
+                Let arbitrary $a, b \in \reals$, arbitrary $f, g, h \in \mathcal{F}(S, V )$. Note that $+_{\mathcal{F}(S, V )}$ borrows the qualities of $+_V$ (the summation operation of $V$) through the definition; namely associativity and commutativity. 
+                \par VS-1: $((f + g) + h)(s) = (f(s) +_V g(s)) +_V h(s) =  f(s) +_V (g(s) +_V h(s)) = (f + (g + h))(s)$ by associativity of vector space addition.\\
+                VS-2: $(f + g)(s) = f(s) + g(s) = g(s) +_V f(s) = (g + f)(s)$ by commutativity of vector space addition. \\
+                VS-3: 
+            \end{solution}
+        \part Is $0_{\mathcal{F}(S,V )}$ the same element as $0_V$ ? If not, explain how they are different.
+        \part We could similarly deﬁne $\mathcal{F}(V, S)$ to be the set of all functions from $V$ to $S$. Would $\mathcal{F}(V, S)$ also a vector space? Why or why not?
+        \part The familiar vector spaces $\mathcal{P}$, $\mathcal{P}_n$ and $\mathcal{C}^\infty$ (all from Worksheet 6) are all subsets of $\mathcal{F}(S, V )$ for some $S$ and $V$ . What are $S$ and $V$ for each of these functions?
+    \end{parts}
 \end{questions}
 
 \end{document}
