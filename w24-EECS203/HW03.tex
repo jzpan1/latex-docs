@@ -100,7 +100,11 @@ Then,
 
 
 \begin{solution}
-
+    \begin{qparts}
+        \item We will prove the contrapositive. Assume $n$ is even. Then $n$ can be expressed as $2m$, where $m$ is an integer. Then $n^2-1 = (2m)^2 - 1 = 4m^2 - 1$. $m^2$ is an integer, so $n^2-1$ is not divisible by 4. Thus the contrapositive is true, and the original statement is also true.
+        \item Assume $4\,|\,(n^2-1)$ and $n$ is even. Then $n$ can be expressed as $2m$, where $m$ is an integer. Then $n^2-1 = (2m)^2 - 1 = 4m^2 - 1$. $m^2$ is an integer, so $n^2-1$ is not divisible by 4. This contradicts our original assumption, so the assumption is false.
+        \item The assumption for contradiction contains one more clause. The contrapositive proof is to prove a truth, while the contradiction proves falsity. However, most of the steps taken to prove these two are the same, such as using $n = 2m$.
+    \end{qparts}
 \end{solution}
 
 
@@ -116,15 +120,19 @@ Then,
 \end{qparts}
 
 \begin{solution}
-
+    \begin{qparts}
+        \item Assume $x$ is even. Then $x$ can be expressed $2m$, where $m$ is an integer. Then $x^2 = (2m)^2 = 4m^2 = 2(2m^2)$. $2m^2$ is an integer since $m$ is an integer, so $x^2$ is even.  
+        \item We will prove the contrapositive. Assume $x$ is odd. Then $x$ can be written $2k + 1$ where $k$ is an integer. Then $x^2$ can be expressed $(2k+1)^2 = 4k^2+ 4k + 1 = 2(2k^2 + 2k) + 1$. So $x^2$ is not even when $x$ is odd, and the given statement is true.
+        \item $2x$ is always even by definition, so the implication is true.
+        \item False. Consider $x=1$. $2x =2$ is even, but $x$ is odd.
+    \end{qparts}
 \end{solution}
 
 
 \subsection*{\probnum Even Stevens [16 points]}
 \textbf{Prove or disprove} the following statement: ``There is a finite amount of even numbers."
-
 \begin{solution}
-
+    Assume the statement is true, and let $2n$ be the largest of these even numbers, where $n$ is an integer. Then $2n + 2 = 2(n+1)$ is even by definition, so $2n$ was not the largest even number and there is a contradiction. Thus the statement is false.
 \end{solution}
 
 
@@ -144,7 +152,11 @@ Consider a centipede game, where there are two players: Ka-chun and Zyaire. The 
 \end{qparts}
 
 \begin{solution}
-
+    \begin{qparts}
+        \item In round 20, Zyaire is required to take the \$20.
+        \item In round 19, Ka-chun knows Zyaire will take the \$20 next round, so he will take \$19 in this round to maximize his reward, instead of getting nothing next round.
+        \item In round 18, Zyaire will have the same reasoning as Ka-chun in round 19, so he would take the money in this round. Ka-chun, knowing this, would then take the money in round 17. This pattern extends similarly until the first round, where Ka-chun knows Zyaire will to take the money in the next round. So, Ka-chun should take the \$1 in the first round.
+    \end{qparts}
 \end{solution}
 
 
@@ -160,7 +172,14 @@ Prove that for all real numbers $a$, $b$, and $c$, if $\max\left \{a^2(b-c), -a\
 \end{itemize}
 
 \begin{solution}
-
+    Assume $\max\left \{a^2(b-c), -a\right \}$ is non-negative. We will use casework. 
+    \begin{itemize}
+        \item \par (Case 1) Assume $\max\left \{a^2(b-c), -a\right \} = a^2(b-c)$. Then $a^2(b-c)$ is nonnegative.
+        \begin{itemize}
+            \item If $a^2(b-c) = 0$, one or both of the factors is 0 by the zero product property (0 can only be the product of 0 and some other number). If $a^2 = 0$, then $a = 0 \leq 0$ and the statement is true. If $b-c = 0$, then $b=c$ and the statement is true.
+            \item If $a^2(b-c) = 0$, either both $x$ and $y$ are positive or negative by the given facts.
+        \end{itemize}
+    \end{itemize}
 \end{solution}
 
 
