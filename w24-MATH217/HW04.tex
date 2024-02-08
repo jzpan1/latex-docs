@@ -56,7 +56,7 @@
 		\end{solution}
         \part We deﬁne $T$ to be nilpotent if there exists some $k \in \naturals$ such that $T^k$ is the zero transformation. Prove that if $T$ is nilpotent, then $A$ is not invertible.
             \begin{solution}
-                Assume $A$ is invertible. Let $k \in \naturals$ such that $T^k$ is the zero transformation. We know by part (a) that the standard matrix of $T^k$ is $A^k$. By problem 6c on Worksheet 6 (CHECK CITATION), the inverse of $A^k$ is $(A^{-1})^k$. However, the zero transformation has no inverse, so there is a contradiction. Thus $A$ cannot be invertible.
+                We will prove the contrapositive. Assume $A$ is invertible. We know zero transformation is surjective, so it is noninvertible, and We know by part (a) that the standard matrix of $T^k$ is $A^k$ for natural number $k$. By problem 5c on Worksheet 7, the inverse of $A^k$ is $(A^{-1})^k$. So $A^k$ can never be noninvertible, and is thus never the zero transformation. Thus if $A$ is invertible, then $T$ is not nilpotent, so the original statement is true.
             \end{solution}
         \part Prove that if $T$ is nilpotent, then $A - I_n$ is invertible. [Hint: try multiplying out $(A - I_n)(-I_n - A - A^2 - \cdots - A^{k-1})$ and see what you get.]
             \begin{solution}
@@ -79,7 +79,7 @@
                 So the inverse of $A - I_n$ is $-(I_n + A + A^2 + \cdots + A^{k-1})$, and $A - I_n$ is invertible by definition.
             \end{solution}
 	\end{parts}
-
+\clearpage
 %2
 \question Let $V$ be any vector space, and let $S$ be any set. Let $\mathcal{F}(S, V)$ denote the set of all functions from $S$ to $V$ . (Note: we are not assuming $S \subseteq V$ here, just that $S$ is some set. $S$ is not assumed to be a vector space, but it could be. Similarly, the functions in $F(S, V )$ are not assumed to be linear transformations, although it is possible that some of them might be.)
 \par For any functions $f$, $g \in \mathcal{F}(S, V )$ we can deﬁne their sum to be the function $f + g$ given by the formula $(f + g)(s) = f (s) + g(s)$, where $s$ is any element in $S$. Similarly, for any scalar $c \in R$ and any function $f \in \mathcal{F}(S, V )$ we deﬁne the function $cf$ to be given by the formula $(cf )(s) = c(f (s))$ for all $s \in S$.
@@ -109,7 +109,7 @@
                 All of these vector spaces are composed of functions which map from $\reals \rightarrow \reals$.
             \end{solution}
     \end{parts}
-
+\clearpage
 %3
 \question Let $\mathcal{P}$ be the vector space of all polynomial functions from $\reals$ to $\reals$ in the variable $t$, and for each $n \in \naturals$, let $\mathcal{P}_n$ be (as usual) the subset of $\mathcal{P}$ consisting of all polynomial functions of degree at most $n$. (We already know that $\mathcal{P}_n$ is also a vector space.) Also let $T : \mathcal{P} \rightarrow \mathcal{P}$ be the map deﬁned by $T (p)(t) = p'(t) + p(0)$ for each $p \in \mathcal{P}$ and for all $t \in \reals$.
     \begin{parts}
@@ -142,7 +142,7 @@
                 $T$ is surjective: for any polynomial $p(x) \in \mathcal{P}$, let $q = \int p(x)\, dx$. Then $T(q) = p(x)$, so $T$ is surjective. However, $T$ is not injective: $T(2x) = 2 = T(2)$.
             \end{solution}
     \end{parts}
-
+\clearpage
 %4
 \question We denote by $\reals^{n\times n}$ the vector space of all $n\times n$ matrices. Let $A$ be an $n\times n$ matrix, and define the function $L_A : \reals^{n\times n} \rightarrow \reals^{n\times n}$ by $L_A(B) = AB$ for all $B \in \reals^{n \times n}$. (Note carefully: this is $not$ the same function as $T_A$. While both can be described informally as “multiplication by $A$”, the two functions $L_A$ and $T_A$ have different domains and codomains. Make sure you understand this distinction before beginning to work on this problem!)
     \begin{parts}
@@ -179,21 +179,28 @@
             \end{solution}
         \part Is $L$ surjective? Be sure to justify your claim.
             \begin{solution}
-                No, $L$ cannot map to functions which are nonlinear by part (a).
+                No, $L$ cannot map to functions which are nonlinear by part (a), even though such functions assuredly exist for $\reals^{n \times n} \rightarrow \reals^{n \times n}$.
             \end{solution}
     \end{parts}
-
+\clearpage
 %5
 \question Let $T : \reals^2 \rightarrow \reals^2$ be the linear transformation defined as follows:
 \[ T = \text{Rot}_{-80^\circ} \circ \text{Proj}_y \circ \text{Rot}_{35^\circ}, \]
 where Rot$_\theta$ is counter-clockwise rotation by $\theta$, and Proj$_y$ is projection onto the $y$-axis.
     \begin{parts}
         \part Sketch im($T$ ) in $\reals^2$. Indicate the angle between im($T$ ) and the $x$-axis.
-            \begin{solution}
-                
-            \end{solution}
         \part Sketch ker($T$ ) in $\reals^2$. Indicate the angle between ker($T$ ) and the $x$-axis.
-        \part Let $T_{\phi, \theta} := \text{Rot}_{\theta} \circ \text{Proj}_y \circ \text{Rot}_{\theta}$. For which $\phi$ and $\theta$ is im($T_{\phi,\theta}$) = ker($T_{\phi,\theta}$)?
+        \begin{solution}
+            \begin{center}
+                \includegraphics*[scale=0.7]{images/04-graph.png}
+            \end{center}
+            The image is the image of the y-axis rotated by 80 degrees clockwise, which forms an angle of 10 degrees with the x-axis.
+            \par The kernel of the rotation is the origin. The kernel of the projection is the x-axis. So the line 35 degrees clockwise of the x-axis is the kernel of the compositions.
+        \end{solution}
+        \part Let $T_{\phi, \theta} := \text{Rot}_{\theta} \circ \text{Proj}_y \circ \text{Rot}_{\phi}$. For which $\phi$ and $\theta$ is im($T_{\phi,\theta}$) = ker($T_{\phi,\theta}$)?
+        \begin{solution}
+            Using the logic from the previous part, the y-axis rotated by $\theta$ counterclockwise should match the x-axis rotated by $\phi$ clockwise. So $\theta + 90^\circ = -\phi$.
+        \end{solution}
     \end{parts}
 \end{questions}
 
