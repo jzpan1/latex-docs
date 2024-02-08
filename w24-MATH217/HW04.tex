@@ -93,7 +93,7 @@
                 VS-4: True, for all values of $f(s)$, such a $-f(s)$ exists since $V$ is a vector space. So the function $-f$ exists as well. \\
                 VS-5: True, $a(f+g) = a(f(s) + g(s)) = af(s) + ag(s) = af + ag$ by distributivity of the vector space $V$. \\
                 VS-6: True, $(a + b)f = (a + b)f(s) = af(s) + bf(s) = af + bf$. by scalar multiplicative distributivity of vector space $V$. \\
-                VS-7: True, $a(bf) = a(bf(s)) = (ab)f(s) = (ab)f$ by scalar multiplicative associativity of vector space $V$.
+                VS-7: True, $a(bf) = a(bf(s)) = (ab)f(s) = (ab)f$ by scalar multiplicative associativity of vector space $V$. \\
                 VS-8: True, $1f = 1f(s) = f(s) = f$ by the unitary law of vector space V.
             \end{solution}
         \part Is $0_{\mathcal{F}(S,V )}$ the same element as $0_V$ ? If not, explain how they are different.
@@ -133,7 +133,67 @@
                 Thus $T$ is linear.
             \end{solution}
         \part Let $n \in \naturals$, and let $T_n : \mathcal{P}_n \rightarrow \mathcal{P}_n$ be deﬁned by $T_n(p)(t) = p'(t) + p(0)$, so that $T_n$ is just $T$ with both domain and codomain restricted to $\mathcal{P}_n$. Is $T_n$ injective? Is $T_n$ surjective?
+            \begin{solution}
+                $T$ is not surjective in $\mathcal{P}_n$: no $p \in \mathcal{P}_n$ satisfies $T(p) = x^n$.
+                $T$ is not injective in $\mathcal{P}_n$: $T(2x) = 2 = T(2)$.
+            \end{solution}
         \part Is $T$ injective? Is $T$ surjective?
+            \begin{solution}
+                $T$ is surjective: for any polynomial $p(x) \in \mathcal{P}$, let $q = \int p(x)\, dx$. Then $T(q) = p(x)$, so $T$ is surjective. However, $T$ is not injective: $T(2x) = 2 = T(2)$.
+            \end{solution}
+    \end{parts}
+
+%4
+\question We denote by $\reals^{n\times n}$ the vector space of all $n\times n$ matrices. Let $A$ be an $n\times n$ matrix, and define the function $L_A : \reals^{n\times n} \rightarrow \reals^{n\times n}$ by $L_A(B) = AB$ for all $B \in \reals^{n \times n}$. (Note carefully: this is $not$ the same function as $T_A$. While both can be described informally as “multiplication by $A$”, the two functions $L_A$ and $T_A$ have different domains and codomains. Make sure you understand this distinction before beginning to work on this problem!)
+    \begin{parts}
+        \part Show that $L_A$ is a linear transformation.   
+            \begin{solution}
+                Let $B, C \in \reals^{n \times n}$, and $k \in \reals$. We first show $L_A$ respects addition:
+                \begin{align*}
+                    L_A(B + C) &= A(B + C) \tag{definition of $L_A$} \\
+                    &= AB + AC \tag{distributivity of matrix multiplication} \\
+                    &= L_A(B) + L_A(C)
+                \end{align*}
+                Next, we show $L_A$ respects scalar multiplication.
+                \begin{align*}
+                    L_A(kB) &= A(kB) \tag{definition of $L_A$} \\
+                    &= (Ak)B \tag{scalar associativity of matrix multiplication} \\
+                    &= (kA)B \tag{scalar commutativity of matrices} \\
+                    &= k(AB) \\
+                    &= kL_A(B) \tag{definition of $L_A$}
+                \end{align*}
+                So $L_A$ is linear.
+            \end{solution}
+        \part Show that the matrix $A$ is invertible if and only if the linear transformation $L_A$ is invertible.
+            \begin{solution}
+                Assume the linear transformation $L_A$ is invertible. Then there exists $L_A^{-1} $ such that $L_A \circ L_A^{-1} = L_A^{-1} \circ L_A$ is the identity function. Let $C \in \reals^{n \times n}$ such that $C = L_A^{-1}(I_n)$. Then $A (C) = L_A \left(L_A^{-1} (I_n) \right) = I_n$. So $A$ is invertible by corollary 2.19 from the Theory of Linear Algebra handout.
+                \par Assume $A$ is invertible. Let its inverse be $C$. Then $L_A(L_C(B)) = A(CB) = (AC)B = I_nB$ is the identity function. Similarly, $L_C(L_A(B)) = C(AB) = (CA)B = I_nB$ is the identity function. So $L_A$ is invertible with inverse $L_C$.
+            \end{solution}
+    \end{parts}
+    Now let $\mathcal{F}$ be the set of all functions from $\reals^{n \times n}$ to $\reals^{n \times n}$, and define the function $L : \reals^{n \times n} \rightarrow \mathcal{F}$ by $L(A) = L_A$.
+    \begin{parts}
+        \setcounter{partno}{2}
+        \part Show that $L$ is injective.
+            \begin{solution}
+                Let $A_1, A_2 \in \reals^{n \times n}$ be such that $L(A_1) = L(A_2)$. Then $L_{A_1}(I_n) = A_1 I_n = A_1$ is equal to $L_{A_2} = A_2 I_n = A_2$. So $A_1 = A_2$, and $L$ is injective.
+            \end{solution}
+        \part Is $L$ surjective? Be sure to justify your claim.
+            \begin{solution}
+                No, $L$ cannot map to functions which are nonlinear by part (a).
+            \end{solution}
+    \end{parts}
+
+%5
+\question Let $T : \reals^2 \rightarrow \reals^2$ be the linear transformation defined as follows:
+\[ T = \text{Rot}_{-80^\circ} \circ \text{Proj}_y \circ \text{Rot}_{35^\circ}, \]
+where Rot$_\theta$ is counter-clockwise rotation by $\theta$, and Proj$_y$ is projection onto the $y$-axis.
+    \begin{parts}
+        \part Sketch im($T$ ) in $\reals^2$. Indicate the angle between im($T$ ) and the $x$-axis.
+            \begin{solution}
+                
+            \end{solution}
+        \part Sketch ker($T$ ) in $\reals^2$. Indicate the angle between ker($T$ ) and the $x$-axis.
+        \part Let $T_{\phi, \theta} := \text{Rot}_{\theta} \circ \text{Proj}_y \circ \text{Rot}_{\theta}$. For which $\phi$ and $\theta$ is im($T_{\phi,\theta}$) = ker($T_{\phi,\theta}$)?
     \end{parts}
 \end{questions}
 
