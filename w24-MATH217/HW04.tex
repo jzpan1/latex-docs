@@ -87,13 +87,53 @@
         \part Prove that $\mathcal{F}(S, V )$ is a vector space. Note: For this problem you must explicitly prove that each of the vector space properties VS1-8 from Worksheet 6 is true. (These proofs should be very short but are not skippable.)
             \begin{solution}
                 Let arbitrary $a, b \in \reals$, arbitrary $f, g, h \in \mathcal{F}(S, V )$. Note that $+_{\mathcal{F}(S, V )}$ borrows the qualities of $+_V$ (the summation operation of $V$) through the definition; namely associativity and commutativity. 
-                \par VS-1: $((f + g) + h)(s) = (f(s) +_V g(s)) +_V h(s) =  f(s) +_V (g(s) +_V h(s)) = (f + (g + h))(s)$ by associativity of vector space addition.\\
-                VS-2: $(f + g)(s) = f(s) + g(s) = g(s) +_V f(s) = (g + f)(s)$ by commutativity of vector space addition. \\
-                VS-3: 
+                \par VS-1: True, $(f + g) + h = (f(s) + g(s)) + h(s) =  f(s) + (g(s) + h(s)) = f + (g + h)$ by additive associativity of vector space $V$.\\
+                VS-2: $f + g = f(s) + g(s) = g(s) + f(s) = g + f$ by addititve commutativity of vector space $V$. \\
+                VS-3: True, $f(s) = 0_V$ satisfies this property. $g + f = g(s) + 0_V = g$ \\
+                VS-4: True, for all values of $f(s)$, such a $-f(s)$ exists since $V$ is a vector space. So the function $-f$ exists as well. \\
+                VS-5: True, $a(f+g) = a(f(s) + g(s)) = af(s) + ag(s) = af + ag$ by distributivity of the vector space $V$. \\
+                VS-6: True, $(a + b)f = (a + b)f(s) = af(s) + bf(s) = af + bf$. by scalar multiplicative distributivity of vector space $V$. \\
+                VS-7: True, $a(bf) = a(bf(s)) = (ab)f(s) = (ab)f$ by scalar multiplicative associativity of vector space $V$.
+                VS-8: True, $1f = 1f(s) = f(s) = f$ by the unitary law of vector space V.
             \end{solution}
         \part Is $0_{\mathcal{F}(S,V )}$ the same element as $0_V$ ? If not, explain how they are different.
+            \begin{solution}
+                No. $0_{\mathcal{F}(S,V)}$ maps any element of the set $S$ to $0_V$, while $0_V$ is only a vector in the space $V$. $0_{\mathcal{F}(S,V)}$ is a function and can take an input, while $0_V$ cannot take an input like a function.
+            \end{solution}
         \part We could similarly deﬁne $\mathcal{F}(V, S)$ to be the set of all functions from $V$ to $S$. Would $\mathcal{F}(V, S)$ also a vector space? Why or why not?
+            \begin{solution}
+                Not necessarily. We used the vector space properties of image $V$ to prove the vector space axioms for $\mathcal{F}(S, V)$. However, when arbitrary set $S$ is the image, those properties do not necessarily apply.
+            \end{solution}
         \part The familiar vector spaces $\mathcal{P}$, $\mathcal{P}_n$ and $\mathcal{C}^\infty$ (all from Worksheet 6) are all subsets of $\mathcal{F}(S, V )$ for some $S$ and $V$ . What are $S$ and $V$ for each of these functions?
+            \begin{solution}
+                All of these vector spaces are composed of functions which map from $\reals \rightarrow \reals$.
+            \end{solution}
+    \end{parts}
+
+%3
+\question Let $\mathcal{P}$ be the vector space of all polynomial functions from $\reals$ to $\reals$ in the variable $t$, and for each $n \in \naturals$, let $\mathcal{P}_n$ be (as usual) the subset of $\mathcal{P}$ consisting of all polynomial functions of degree at most $n$. (We already know that $\mathcal{P}_n$ is also a vector space.) Also let $T : \mathcal{P} \rightarrow \mathcal{P}$ be the map deﬁned by $T (p)(t) = p'(t) + p(0)$ for each $p \in \mathcal{P}$ and for all $t \in \reals$.
+    \begin{parts}
+        \part Show that $T$ is a linear transformation.
+            \begin{solution}
+                Note that the derivative is linear by problem 5 of worksheet 6. Although the current domain and codomain are $\mathcal{P}$ and not $\mathcal{C}^\infty$, the derivative is closed in $\mathcal{P} \subset \mathcal{C}^\infty$, so it is still linear.
+                First, we show $T$ respects addition:
+                \begin{align*}
+                    T(p + q)(t) &= (p + q)'(t) + (p + q)(0) \tag{definition of $T$}\\
+                    &= p'(t) + q'(t) + p(0) + q(0) \tag{linearity of derivative} \\
+                    &= p'(t) + p(0) + q'(t) + q(0) \tag{associativity and commutativity of $\mathcal{P}$}\\
+                    &= T(p) + T(q) \tag{definition of $T(p)$}
+                \end{align*}
+                Next, we show $T$ respects scalar multiplication. Let $c \in \reals$.
+                \begin{align*}
+                    T(cp) &= (cp)'(t) + (cp)(0) \tag{definition of $T$} \\
+                    &= c(p'(t)) + cp(0) \tag{linearity of derivative} \\
+                    &= c(p'(t) + p(0)) \tag{distributivity of scalar multiplication in vector space $\mathcal{P}$} \\
+                    &= cT(p)
+                \end{align*}
+                Thus $T$ is linear.
+            \end{solution}
+        \part Let $n \in \naturals$, and let $T_n : \mathcal{P}_n \rightarrow \mathcal{P}_n$ be deﬁned by $T_n(p)(t) = p'(t) + p(0)$, so that $T_n$ is just $T$ with both domain and codomain restricted to $\mathcal{P}_n$. Is $T_n$ injective? Is $T_n$ surjective?
+        \part Is $T$ injective? Is $T$ surjective?
     \end{parts}
 \end{questions}
 
