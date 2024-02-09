@@ -120,7 +120,7 @@
                 \begin{align*}
                     T(p + q)(t) &= (p + q)'(t) + (p + q)(0) \tag{definition of $T$}\\
                     &= p'(t) + q'(t) + p(0) + q(0) \tag{linearity of derivative} \\
-                    &= p'(t) + p(0) + q'(t) + q(0) \tag{associativity and commutativity of $\mathcal{P}$}\\
+                    &= p'(t) + p(0) + q'(t) + q(0) \tag{associativity and commutativity of +}\\
                     &= T(p) + T(q) \tag{definition of $T(p)$}
                 \end{align*}
                 Next, we show $T$ respects scalar multiplication. Let $c \in \reals$.
@@ -139,7 +139,7 @@
             \end{solution}
         \part Is $T$ injective? Is $T$ surjective?
             \begin{solution}
-                $T$ is surjective: for any polynomial $p(x) \in \mathcal{P}$, let $q = \int p(x)\, dx$. Then $T(q) = p(x)$, so $T$ is surjective. However, $T$ is not injective: $T(2x) = 2 = T(2)$.
+                $T$ is surjective: for any polynomial $p(x) \in \mathcal{P}$, let $q = \int p(x)\, dx$ with any constant term. We know this is in $\mathcal{P}$ by the power rule for antiderivatives. Then $T(q) = p(x)$, so $T$ is surjective. However, $T$ is not injective: $T(2x) = 2 = T(2)$.
             \end{solution}
     \end{parts}
 \clearpage
