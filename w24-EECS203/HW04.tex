@@ -1,0 +1,245 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{3}
+\newcommand{\hwnum}{4}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework 4}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Thursday, Feb. 15th}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $8 + 2$
+\hspace{3cm}
+Total Points: $100+20$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum Even Just One [12 points]}
+
+Prove that if $n^3 + 4$ is even or $3n + 3$ is odd, then $n$ is even.
+
+\begin{solution}
+    We show the contrapositive, that is, if $n$ is odd, then $n^3 + 4$ is odd and $3n + 3$ is even. Assume $n$ is odd. Then $n$ can be expressed $n = 2k + 1$, where $k$ is an integer. Then for $n^3 + 4$,
+    \begin{align*}
+        n^3 + 4 &= \\
+        &= (2k + 1)^3 + 4 \\
+        &= 8k^3 + 12k^2 + 6k + 1 + 4 \\
+        &= 2(4k^3 + 6k^2 + 3k + 2) + 1
+    \end{align*}
+    So $n^3$ is odd, since $4k^3 + 6k^2 + 3k + 2$ is an integer. 
+    \par Similarly, for $3n + 3$:
+    \begin{align*}
+        3n + 3 &= \\
+        &= 3(2k+1) + 3 \\
+        &= 6k + 3 + 3 \\
+        &= 2(3k + 3)
+    \end{align*}
+    Since $3k + 3$ is an integer, $3n + 3$ is even. So the contrapositive is true, and the original statement is true.
+\end{solution}
+
+
+\subsection*{\probnum $\text{Odd}^2$ [20 points]}
+
+Prove the following for all integers $x$ and $y$:
+\begin{qparts}
+    \item If $x + y$ is even, then ($x$ is even and $y$ is even) or ($x$ is odd and $y$ is odd).
+    \item Using your answer from part (a), show that if $(x-y)^2$ is odd, then $x + y$ is odd.
+\end{qparts}
+
+\begin{solution}
+    \begin{qparts}
+        \item We use casework, with all possible cases: $x, y$ are even; $x, y$ are odd; and $x$ is even and $y$ is odd. Note that the final case is equivalent to $x$ being odd and $y$ being even due to commutativity.
+        \par $x, y$ are even: $x, y$ can be expressed as $x = 2n$, $y = 2m$, where $n, m \in \ints$. So $x + y = 2n + 2m = 2(n + m)$. Since $n + m$ is an integer, $x + y$ is even.
+        \par $x, y$ are odd: $x, y$ can be expressed as $x = 2n + 1$, $y = 2m + 1$, where $n, m \in \ints$. So $x + y = 2n + 1 + 2m + 1 = 2(n + m + 1)$. Since $n + m + 1$ is an integer, $x + y$ is even.
+        \par $x$ is even and $y$ is odd: $x$ and $y$ can be expressed as $x = 2n$, $y = 2m + 1$, where $n, m \in \ints$. So $x + y = 2n + 2m + 1 = 2(n + m)+1$. Since $n + m$ is an integer, $x + y$ is odd.
+        \item We show the contrapositive, that is, if $x + y$ is even, then $(x-y)^2$ is even. From part (a), we know that if $x + y$ is even, then both $x$ and $y$ have the same parity. We use casework to find the parity of $x - y$.
+        \par If they are even, then $x = 2n$ and $y = 2m$, where $n, m \in \ints$. So $x - y = 2n - 2m = 2(n - m)$. Since $n - m$ is an integer, $x - y$ is even.
+        \par If $x$ and $y$ are odd, then $x = 2n + 1$ and $y = 2m + 1$, where $n, m \in \ints$. So $x - y = 2n + 1 - 2m - 1 = 2(n - m)$. Since $n - m$ is an integer, $x - y$ is even.
+        \par So, $x - y$ is always even when $x + y$ is even. Then by problem 2 (a) of HW 3, $(x - y)^2$ is even. Thus, the contrapositive is proven and the statement is true.
+    \end{qparts}
+\end{solution}
+
+
+\subsection*{\probnum Do you $\exists$xist...? [8 points]}
+\textbf{Prove or disprove} the following: There exist integers $x$ and $y$ so that $20x + 4y = 1$.
+
+\begin{solution}
+    False. Assume such integers exist. Then $20x + 4y = 2(10x + 2y)$. So since $x$ and $y$ are integers, $20x + 4y$ is even. But 1 is odd, so there is a contradiction. Thus, such integers cannot exist.
+\end{solution}
+
+
+\subsection*{\probnum What's Nunya? Nunya Products are Negative. [12 points]}
+Given any three real numbers, prove that the product of two of them will always be non-negative.
+\begin{solution}
+    We know from lecture that 2 nonzero real numbers with the same sign multiply to a positive number. Further, zero multiplied by anything is zero. Thus, the product of two nonnegative numbers is nonnegative. \par Let $a, b, c \in \reals$. We use cases (1) $a, b, c \geq 0$; (2) $a, b \geq 0, c < 0$; (3) $b, c < 0, a \geq 0$; \\ (4) $a, b, c < 0$.
+    \par (1) $a, b, c \geq 0$: Any pair of these is nonnegative, so their product is nonnegative.
+    \par (2) $a, b \geq 0, c < 0$: Since $a$ and $b$ are nonnegative, $ab \geq 0$.
+    \par (3) $b, c < 0, a \geq 0$: Since $b$ and $c$ are both negative, $bc \geq 0$.
+    \par (4) $a, b, c < 0$: Since $b$ and $c$ are both negative, $bc \geq 0$.
+    So we have shown for all possible cases that the statement is true.
+\end{solution}
+
+
+\subsection*{\probnum Element or Subset? [8 points]}
+Let $A = \{1,2,\text{``a"}\}$. State whether each statement is true or false. Give a brief explanation if false (you do not need to justify why a statement is true).
+\begin{qparts}
+    \item $\text{``a"}\in A$ 
+    \item $\text{``a"}\subseteq A$ 
+    \item $\{1,2\} \in A$ 
+    \item $\{1,2\} \subseteq A$
+\end{qparts}
+
+\begin{solution}
+    \begin{qparts}
+        \item True
+        \item False, ``a" is not a set.
+        \item False, $A$ has no element which is a set.
+        \item True
+    \end{qparts}
+\end{solution}
+
+\subsection*{\probnum Ready, $\{s,e,t\}$, go! [12 points]}
+Let $S = \{1,2,3,4,5\},\ A = \{1,2\},\ B =\{2,3\},$ and $C =\{4,5\}.$ Compute the following, where complements are taken within $S.$ Show intermediate steps as part of your justification.
+
+\begin{qparts}
+    \item $\mathcal{P}\left( (A \cap B) \cap \overline C ) \right)$ 
+    \item $\mathcal{P} \left( ( \overline{C} - B ) \cap A \right)$  
+    \item $\{A \times B\} \cap \{S \times B\}$
+    \item $(A \times B) \cap (S \times B)$
+\end{qparts}
+
+\begin{solution}
+    \begin{qparts}
+        \item \begin{align*}
+            \mathcal{P}\left( (A \cap B) \cap \overline C \right)& \\
+            &= \mathcal{P}\left( \left(\{1, 2\} \cap \{2, 3\} \right) \cap \{1, 2, 3\} \right) \\
+            &= \mathcal{P}\left( \{2\} \cap \{1, 2, 3\} \right) \\
+            &= \mathcal{P}\left( \{2\} \right) \\
+            &= \{\emptyset, \{2\}\}
+        \end{align*}
+        \item \begin{align*}
+            \mathcal{P} \left( ( \overline{C} - B ) \cap A \right)& \\
+            &= \mathcal{P}\left( \left(\{1, 2, 3\} - \{2, 3\} \right) \cap \{1, 2\} \right) \\
+            &= \mathcal{P}\left( \{1\} \cap \{1, 2\} \right) \\
+            &= \mathcal{P}\left( \{1\} \right) \\
+            &= \{\emptyset, \{1\}\}
+        \end{align*}
+        \item \begin{align*}
+            \{A \times B\} \cap \{S \times B\}& \\
+            &=\left\{\{a, b\ | a\in A, b \in B \}\right\} \cap \left\{\{s, b\ \vert s \in S, b \in B\}\right\} \\
+            &= \emptyset
+        \end{align*}
+        \item \begin{align*}
+            (A \times B) \cap (S \times B)& \\
+            &= (A \cap S) \times B\ \\
+            &= \{1, 2\} \times \{2, 3\} \\
+            &= \{ (1, 2), (1, 3), (2, 2), (2, 3) \}
+        \end{align*}
+    \end{qparts}
+\end{solution}
+
+
+\subsection*{\probnum Subset Proofs [16 points]}
+Prove that if $A$ and $B$ are sets, then $A\cup (A\cap B) =A$ by proving each side is a subset of the other. This set identity is known as an absorption law. Your answer should be a word proof, and not use any set equivalence laws.
+
+\begin{solution}
+    Let $A$ and $B$ be sets. Consider arbitrary element $x \in A\cup (A\cap B)$. By definition of the union operation, $x$ is contained in $A$ or $A \cap B$. If $x \in A \cap B$, then $x \in A$ by definition of the intersection operation. So $x$ is always an element of $A$. So $A\cup (A\cap B) \subseteq A$. 
+    \par Consider arbitrary element $y \in A$. By definition of the union operation, $y$ is contained in any set $A \cup C$ for any set $C$. So $y \in A\cup (A\cap B)$. Thus $A \subseteq A\cup (A\cap B)$.
+    \par So $A$ and $A\cup (A\cap B)$ are mutual subsets, and $A\cup (A\cap B) =A$.
+\end{solution}
+
+
+\subsection*{\probnum IceCream-Exclusion [12 points]}
+Out of the 40 EECS 203 staff members, 21 like vanilla ice cream, 18 like chocolate ice cream, and 24 like strawberry ice cream. In addition, 13 like both strawberry and vanilla, and 7 like chocolate and vanilla.
+\begin{parts}
+    \item How many staff members like all three ice cream flavors if 9 staff members like both strawberry and chocolate ice cream, assuming everyone likes at least one type of ice cream?
+    \item How many staff members don't like any of the ice cream flavors if 14 staff members like both strawberry and chocolate ice cream and 3 staff members like all three ice cream flavors?
+\end{parts}
+
+\begin{solution}
+    \begin{parts}
+        \item 21 + 18 + 24 - 13 - 7 - 9 = 34. 40 - 34 = 6 people like all 3 ice cream flavors.
+        \item 21 + 18 + 24 - 13 - 7 - 14 + 3 = 32. 40 - 32 = 8 people like no ice cream flavors.
+    \end{parts}
+\end{solution}
+\end{document}
