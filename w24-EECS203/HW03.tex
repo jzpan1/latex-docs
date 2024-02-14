@@ -56,6 +56,11 @@
 
 \printanswers
 
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
 \newcommand{\prevhwnum}{2}
 \newcommand{\hwnum}{3}
 
@@ -172,14 +177,17 @@ Prove that for all real numbers $a$, $b$, and $c$, if $\max\left \{a^2(b-c), -a\
 \end{itemize}
 
 \begin{solution}
-    Assume $\max\left \{a^2(b-c), -a\right \}$ is non-negative. We will use casework. 
+    Assume $\max\left \{a^2(b-c), -a\right \}$ is non-negative. We will use casework. There are 2 possible cases, $\max\left \{a^2(b-c), -a\right \} = a^2(b-c)$ or $\max\left \{a^2(b-c), -a\right \} = -a$.
     \begin{itemize}
         \item \par (Case 1) Assume $\max\left \{a^2(b-c), -a\right \} = a^2(b-c)$. Then $a^2(b-c)$ is nonnegative.
         \begin{itemize}
             \item If $a^2(b-c) = 0$, one or both of the factors is 0 by the zero product property (0 can only be the product of 0 and some other number). If $a^2 = 0$, then $a = 0 \leq 0$ and the statement is true. If $b-c = 0$, then $b=c$ and the statement is true.
-            \item If $a^2(b-c) = 0$, either both $x$ and $y$ are positive or negative by the given facts.
+            \item If $a^2(b-c) > 0$, both $a^2$ and $b-c$ are simultaneously positive or negative by the given facts. It is impossible for $a^2$ to be negative by the given facts; $a \cdot a$ is either positive$\cdot$positive or negative$\cdot$negative. This would result in a contradiction if both factors were negative, so they must both be positive. 
+            \par If they are positive, then $b-c > 0 \Rightarrow b \geq c$, which satisfies the original statement. 
         \end{itemize}
+        \item (Case 2) Assume $\max\left \{a^2(b-c), -a\right \} = -a$. Then $-a \geq 0$. Adding $a$ to both sides, we find $0 \geq a$, making the statement true.
     \end{itemize}
+    We have shown that the statement holds for all cases, so it is true.
 \end{solution}
 
 
@@ -195,7 +203,10 @@ Show that these statements about a real number $x$ are equivalent to each other:
 \textbf{Hint:} One way to prove statements (i), (ii) and (iii) are equivalent is by proving (i) $\rightarrow$ (ii), (ii) $\rightarrow$ (iii), and (iii) $\rightarrow$ (i).
 
 \begin{solution}
-
+    Assume $x$ is rational. Then it can be expressed $\frac{p}{q}$, where $p, q \in \ints$ are relatively prime and $q$ is nonzero. Then $\frac{x}{2} = \frac{p}{2q}$. Since $2q \neq 0 \in \ints$, this is also a rational number. So (i) $\rightarrow$ (ii).
+    \par Assume $\frac{x}{2}$ is rational. Then it can be expressed $\frac{p}{q}$, where $p, q \in \ints$ are relatively prime and $q$ is nonzero. Then $3x-1 = \frac{6p}{q} - 1 = \frac{6p - q}{q}$. Since $p$ and $q$ are integers, $6p - q$ is an integer. Also, $q \neq 0$. Thus $3x - 1$ is rational by definition. So (ii) $\rightarrow$ (iii).
+    \par Assume $3x - 1$ is rational. Then it can be expressed $\frac{p}{q}$, where $p, q \in \ints$ are relatively prime and $q$ is nonzero. Then $x = \frac{(3x - 1)+1}{3} = \frac{\frac{p+q}{q}}{3} = \frac{p+q}{3q}$. Since $p$ and $q$ are integers, $p+q$ and $3q$ are integers, $3q \neq 0$, and $x$ is rational by definition. So (iii) $\rightarrow$ (i).
+    \par We have proven (i) $\rightarrow$ (ii), (ii) $\rightarrow$ (iii), and (iii) $\rightarrow$ (i). Thus (i), (ii) and (iii) are equivalent.
 \end{solution}
 
 
@@ -203,48 +214,11 @@ Show that these statements about a real number $x$ are equivalent to each other:
 Prove or disprove that the product of a nonzero rational number and an irrational number is irrational.
 
 \begin{solution}
-
+    Let $r = \frac{a}{b}$ be a nonzero rational number with $a,b \in \ints$, with $a, b \neq 0$. Let $t$ be an irrational number. Assume the product $rt$ is rational and can be expressed $rt = \frac{p}{q}$. Then \begin{align*}
+        t = \frac{rt}{r} &= \frac{\frac{p}{q}}{\frac{a}{b}} \\
+        &= \frac{bp}{aq}
+    \end{align*}
+    $bp, aq \in \ints$ because $b, p, a, q \in \ints$. This means $t$ is rational, which is a contradiction. Thus, our assumption that $rt$ is rational was impossible. So the statement is true.
 \end{solution}
 
-\pagebreak
-\section*{Grading of Groupwork 2}
-Using the solutions and Grading Guidelines, grade your Groupwork 2 Problems:
-\begin{itemize}
-    \item Use the table below to grade your past groupwork submission and calculate scores.
-    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
-    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
-    \item For extra credit, write positive comment(s) about your work.
-    \item You don't have to redo problems correctly, but it is recommended!
-    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
-\end{itemize}
-
-\begin{center}
-\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
-\hline
- & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
-\hline
-Problem 1 & & & & & & & &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/20\\
-\hline 
-Problem 2 & & & & &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/20\\
-\Xhline{1.25pt}
-Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/40\\
-\hline
-\end{tabular}}
-\end{center}
-
-\pagebreak
-\setcounter{probnumcount}{1}
-\section*{Groupwork 3 Problems}
-
-\subsection*{\probnum $\forall$re These $\exists$quiv$\diamondsuit$lent? [30 points]}
-Let $P(x)$ and $Q(x)$ be arbitrary predicates.
-\begin{qparts}
-    \item Prove or disprove that for any domain of $x$, $\forall x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\forall x P(x) \leftrightarrow \forall x Q(x)$.
-    \item Prove or disprove that for any domain of $x$, $\exists x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\exists x P(x) \leftrightarrow \exists x Q(x)$.
-    \item Let $\diamondsuit x$ mean that ``there exists \textbf{at most one} $x.$" Prove or disprove that for any domain of $x$, $\diamondsuit x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\diamondsuit x P(x) \leftrightarrow \diamondsuit x Q(x)$.
-\end{qparts}
-
-\begin{solution}
-    
-\end{solution}
 \end{document}
