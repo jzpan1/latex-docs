@@ -48,12 +48,32 @@
 }
 
 \begin{questions}
-\question Question
+\question Let $V$ and $W$ be vector spaces, and let $T : V \rightarrow W$ be a linear transformation. Let $X = (\vec x_1, \dots, \vec x_k)$ be a list of vectors in $V$ , and consider the list $Y = (T (\vec x_1), \dots, T (\vec x_k))$ of vectors in W. Determine whether the following statements are true or false. If true, provide a proof. If false, provide a counter-example.
 	\begin{parts}
-		\part Part
+		\part If X is linearly independent, then Y is also linearly independent.
 		\begin{solution}
-			Solution
+			False, consider $T_0 : \reals^2 \rightarrow \reals^2$, $\vec v \mapsto \begin{bmatrix*}
+				0 \\ 0
+			\end{bmatrix*}$
+			, $X = \left\{ \begin{bmatrix*}
+				1 \\ 0
+			\end{bmatrix*}, \begin{bmatrix*}
+				0 \\ 1
+			\end{bmatrix*} \right\}$. Then $Y = \left\{ \begin{bmatrix*}
+				0 \\ 0
+			\end{bmatrix*}, \begin{bmatrix*}
+				0 \\ 0
+			\end{bmatrix*} \right\}$, which is not linearly independent since $\vec y_1 + \vec y_2 = 0$.
 		\end{solution}
+		\part If Y is linearly independent, then X is also linearly independent.
+			\begin{solution}
+				True. We show the contrapositive. Let $X$ be a linearly dependent set of vectors in $V$. Then there exist nonzero scalars $c_1, c_2, \dots, c_k$ such that $c_1 \vec x_1 + \cdots c_n \vec x_n = 0$. Then we know: 
+				\begin{align*}
+					T(c_1 \vec x_1 + \cdots + c_n \vec x_n) &= T(0) \\
+					T(c_1 \vec x_1) + \cdots + T(c_n \vec x_n) &= 0_V  \tag{linearity}\\
+					c_1T(\vec x_1) + \cdots + c_nT(\vec x_n) &= 0_V \tag{linearity} \\
+				\end{align*}
+			\end{solution}
 	\end{parts}
 \end{questions}
 
