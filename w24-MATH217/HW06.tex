@@ -1,0 +1,127 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\instructor{Dr. Paul Kessenich}
+\def\email{jzpan@umich.edu}
+\def\dueDate{???}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\bf
+\begin{center}
+	MATH 217 W24 - LINEAR ALGEBRA, Section 001 ({\instructor}) \\
+	{\hwName} due {\dueDate} at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+\question Let $V$ be a vector space, and let ($\vec v_1, . . . , \vec v_n$) be a list of vectors in $V$. Deﬁne the function $T : \reals^n \rightarrow V$ by
+\[ T\left( \begin{bmatrix}
+    c_1 \\ \vdots \\ c_n
+\end{bmatrix}\right) = c_1 \vec v_1 + \cdots + c_n \vec v_n \text{ for all } \begin{bmatrix}
+    c_1 \\ \vdots \\ c_n
+\end{bmatrix} \in \reals^n\]
+	\begin{parts}
+		\part Prove that $T$ is a linear transformation.
+            \begin{solution}
+                Let $b = \begin{bmatrix}
+                    b_1 \\ \vdots \\ b_n
+                \end{bmatrix}, c = \begin{bmatrix}
+                    c_1 \\ \vdots \\ c_n
+                \end{bmatrix} \in \reals^n, k \in \reals$
+                \begin{align*}
+                    T(b + c) &= (b_1 + c_1) v_1 + \cdots + (b_n + c_n) v_n \\
+                    &= b_1 v_1 + \cdots + b_n v_n + c_1 v_1 + \cdots + c_n v_n \\
+                    &= T(b) + T(c) \\
+                    T(kc) &= (kc_1) v_1 + \cdots + (kc_n) v_n \\
+                    &= k(c_1 v_1) + \cdots + k(c_n v_n) \\
+                    &= k(c_1 v_1 + \cdots + c_n v_n) \\
+                    &= kT(c)
+                \end{align*}
+            \end{solution}
+        \part Prove that $T$ is injective if and only if $(\vec v_1, \dots , \vec v_n)$ is linearly independent.
+            \begin{solution}
+                We know $T$ is injective if and only if its kernel is $0_V$. By definition, if ($\vec v_1, \dots, \vec v_n$) is linearly independent, then only $c_1 = \cdots = c_n = 0 \in \reals$ satisfies $c_1 v_1 + \cdots + c_n v_n = 0_V$, so the kernel of $T$ is $\{0_n\}$. Meanwhile, if ($\vec v_1, \dots, \vec v_n$) is linearly dependent, there exists $c_1, \cdots, c_n \in \reals$ not all zero which satisfy $c_1 v_1 + \cdots + c_n v_n = 0_V$, meaning the kernel of $T$ would not only be $\{0_n\}$. So linear independence of ($\vec v_1, \dots, \vec v_n$) is equivalent to $T$ satisfying ker[$T$] = $0_n$, which in turn is equivalent to $T$ being injective.
+            \end{solution}
+        \part Prove that $T$ is surjective if and only if $(\vec v_1, \dots , \vec v_n)$ spans $V$.
+            \begin{solution}
+                If $(\vec v_1, \dots , \vec v_n)$ spans $V$, any vector $\vec v \in V$ can be represented as $c_1 v_1 + \cdots + c_n v_n = \vec v$, with $c_1, \dots, c_n \in \reals$. Then $T\left(\begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix}\right) = v$. So $(\vec v_1, \dots , \vec v_n)$ spanning $V$ implies that $T$ is surjective.
+
+                \par If $T$ is surjective, then for all $v \in V$, there exists $\begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix} \in \reals^n$ such that $T\left(\begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix}\right) = \vec v$. Then $v = c_1 \vec v_1 + \cdots + c_n \vec v_n$ is a linear combination of $(\vec v_1, \dots , \vec v_n)$. So every $v \in V$ is in the span of $(\vec v_1, \dots , \vec v_n)$.
+                \par So we have shown that the surjectivity of $T$ is equivalent to if $(\vec v_1, \dots , \vec v_n)$ spans $V$.
+            \end{solution}
+        \part Prove that $T$ is an isomorphism if and only if $(\vec v_1, \dots , \vec v_n)$ is an ordered basis of $V$.
+            \begin{solution}
+                By parts (b) and (c), $(\vec v_1, \dots , \vec v_n)$ must be both linearly independent and span $V$ in order for linear transformation $T$ to be bijective. Then by Theorem B of Worksheet 11, the minimal spanning subset and maximal linearly independent ordered set $(\vec v_1, \dots , \vec v_n)$ must be an ordered basis.
+            \end{solution}
+	\end{parts}
+
+%2
+\question For a $2 \times 2$ matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, define the \textbf{transpose} of $A$ to be the matrix 
+\[A\transpose = \begin{bmatrix} a & c \\ b & d\end{bmatrix}\]
+Consider the linear transformation 
+\[ T: \reals^{2 \times 2} \rightarrow \reals^{2 \times 2} \hspace{2 cm} T(A) = \frac{1}{2}(A + A\transpose). \]
+    \begin{parts}
+        \part Find the $\mathcal{E}$-matrix $[T]_\mathcal{E}$ of $T$, where 
+            \[\mathcal E = \left(\begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}, \begin{bmatrix*} 0 & 1 \\ 0 & 0 \end{bmatrix*}, \begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}, \begin{bmatrix*} 0 & 1 \\ -1 & 0 \end{bmatrix*}\right) \]
+            \begin{solution}
+                Plugging in each basis vector into T gives 
+                \begin{align*}
+                    T\left(\begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\\
+                    T\left(\begin{bmatrix*} 0 & 1 \\ 0 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & \frac{1}{2} \\ \frac{1}{2} & 0 \end{bmatrix*}\\
+                    T\left(\begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}\\
+                    T\left(\begin{bmatrix*} 0 & 1 \\ -1 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & 0 \\ 0 & 0 \end{bmatrix*}\\
+                \end{align*}
+                Using these results, we can find the $\mathcal E$-matrix of $T$
+                \begin{align*}
+                    \left[T\right]_\mathcal E \left(\begin{bmatrix}
+                        1 \\ 0 \\ 0 \\ 0
+                    \end{bmatrix}\right) = \left[\begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}
+                \end{align*}
+            \end{solution}
+        \part Find the $\mathcal C$-matrix of $T$, where $\mathcal C$ is the ordered basis
+            \[\mathcal C = \left(\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}, \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}, \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} \right) \]
+        \part Compute the kernel of $[T]_\mathcal E$ . This will be a subspace of the $\mathcal E$-coordinate space $\reals^4$ for $\reals^{2 \times 2}$.
+        \part Find a basis for the corresponding subspace of $\reals^{2\times2}$-that is, for the image of ker[$T$]$_\mathcal E$ under
+        the coordinate isomorphism $L^{-1}_\mathcal E : \reals^4 \rightarrow \reals{2\times2}.$
+        \part Compute the kernel of the $\mathcal C$-matrix. This will be a subspace of the $\mathcal C$-coordinate space $\reals^4$ for $\reals^{2 \times 2}$.
+        \part Compute the image of the subspace ker[$T]_\mathcal C$ under the coordinate isomorphism $L^{-1} _\mathcal C : \reals^4 \rightarrow \reals{2\times2}.$
+        \part Compare your answers in (d) and (f). How are they related to ker $T$?
+        \part Find a basis for the image of $T$ using \textbf{either} $\mathcal E$-coordinates or $\mathcal C$-coordinates (which seems easier?) Don't forget to reinterpret vectors in the coordinate space as elements in $\reals{2\times2}$!
+    \end{parts}
+\end{questions}
+
+\end{document}
