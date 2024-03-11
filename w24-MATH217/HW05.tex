@@ -67,12 +67,126 @@
 		\end{solution}
 		\part If Y is linearly independent, then X is also linearly independent.
 			\begin{solution}
-				True. We show the contrapositive. Let $X$ be a linearly dependent set of vectors in $V$. Then there exist nonzero scalars $c_1, c_2, \dots, c_k$ such that $c_1 \vec x_1 + \cdots c_n \vec x_n = 0$. Then we know: 
+				True. We show the contrapositive. Let $X$ be a linearly dependent set of vectors in $V$. Then by definition there exist nonzero scalars $c_1, c_2, \dots, c_k$ such that $c_1 \vec x_1 + \cdots c_n \vec x_n = 0$. Then we know: 
 				\begin{align*}
 					T(c_1 \vec x_1 + \cdots + c_n \vec x_n) &= T(0) \\
-					T(c_1 \vec x_1) + \cdots + T(c_n \vec x_n) &= 0_V  \tag{linearity}\\
-					c_1T(\vec x_1) + \cdots + c_nT(\vec x_n) &= 0_V \tag{linearity} \\
+					T(c_1 \vec x_1) + \cdots + T(c_n \vec x_n) &= 0_W  \tag{linearity}\\
+					c_1T(\vec x_1) + \cdots + c_nT(\vec x_n) &= 0_W \tag{linearity}
 				\end{align*}
+				So $Y$ has a nontrivial relation, and hence is linearly dependent when $X$ is linearly dependent. Thus the contrapositive is true, and the original statement is also true.
+			\end{solution}
+	\end{parts}
+	\clearpage
+%2
+\question \begin{parts}
+	\part Find a linear transformation $T : \reals^5 \rightarrow \reals^3$ such that
+	\par ker($T$) = \{$\vec x \in \reals^5 : x_1 = 5x_2$ and $x_3 = 7x_4$\} \hfill and \hfill im($T$) = \{$\vec x \in \reals^3 : x_1 = x_3$\}.
+		\begin{solution}
+			This can be satisfied by a linear transformation with standard matrix 
+			\[ A = \begin{bmatrix}
+				1 & -5 & 0 & 0 & 0 \\
+				0 & 0 & 1 & -7 & 0 \\
+				1 & -5 & 0 & 0 & 0
+			\end{bmatrix} \]
+		\end{solution}
+	\part Is the linear transformation you found in part (a) unique? Justify your claim.
+		\begin{solution}
+			No. As we know from class, elementary row operations do not change the solutions to the system, so performing any elementary row operations on $A$ will maintain its properties with relation to kernel. As for image, scaling the entire matrix maintains the directions of the span, so it will have the same image. So, scalar multiples of $A$ will have the same properties.
+		\end{solution}
+\end{parts}
+\clearpage
+%3
+\question Let $X$ and $Y$ be vector spaces.
+	\begin{parts}
+		\part Consider a basis $\mathcal B = {\vec x_1, \dots , \vec x_n}$ of $X$. Let $\vec y_1, \dots , \vec y_n$ be any vectors (not necessarily a basis, or even distinct) in $Y$. Prove that there exists a unique linear transformation $T : X \rightarrow Y$ such that $T (\vec x_i) = \vec y_i$ for all $1 \leq i \leq n$.
+		\begin{solution}
+			By problem 1(a), the set of $y_i$ need not be linearly independent although $\mathcal B$ is. So there is nothing contradictory about defining a $T$ by the given qualifications.
+			\par Let $T_1, T_2$ be linear transformations which satisfy $T_1 (\vec x_i) = T_2(\vec x_i) = \vec y_i$ for all $1 \leq i \leq n$. Then, since $\mathcal B$ spans $X$, all $\vec v \in X$ can be expressed as a linear combination \[\vec v = c_1 \vec x_1 + \cdots + c_n \vec x_n,\] where $c_1, \dots, c_n \in \reals$. So \[T_1(\vec v) = c_1 T_1(\vec x_1) + \cdots + c_n T_1(\vec x_n) = c_1 T_2(\vec x_1) + \cdots + c_n T_2(\vec x_n) = T_2(\vec v)\] by linearity. Thus $T_1 = T_2$, and such a linear transformation is unique.
+		\end{solution}
+		\part Let $U$ and $V$ be subspaces of $X$ and $Y$ respectively such that dim($U $) + dim($V $) = dim($X$). Prove that there exists a linear transformation $T_{U,V} : X \rightarrow Y$ such that ker($T_{U,V}$) = $U$ and im($T_{U,V} $) = $V$ . (Hint: use part (a). You might also want to try to generalize the method you used to solve Problem 2.)
+			\begin{solution}
+				Using basis $\mathcal B$ and $\vec y_1, \dots, \vec y_n$ from part (a), let $y_1, y_2, \dots, y_k$ be a basis for $U$, where $k = dim(U)$. Additionally, let $y_{k+1} = y_{k+2} = \dots = y_n = 0_Y$. Also, let $x_{k+1}, \dots, x_n$ be the basis of $U$. 
+				\par Then by part (a), there exists a unique linear transformation from $\mathcal B$ to $y_1, \dots, y_n$. Additionally, since $x_{k+1}, \dots, x_n$ all map to $0_V$, the kernel of $T$ has dimension equal to  dim(span($\{x_{k+1}, \dots, x_n\}$)) = dim($U) = n - k$.
+				\par  Meanwhile, the image is span($\{y_1, y_2, \dots, y_k\}) = V$, which has dimension \\ dim(span($\{y_1, y_2, \dots, y_k\}$)) = dim($V$) = $k$. So $T$ is a linear transformation with image $V$, kernel $U$, and satisfies dim($U $) + dim($V $) = dim($X$). 
+			\end{solution}
+		\part Is the map $T_{U,V}$ that you found in part (b) unique? Justify your answer.
+			\begin{solution}
+				No. Similarly to problem 2(b), a scalar multiple of $T$ would have the same image and kernel.
+			\end{solution}
+	\end{parts}
+	\clearpage
+%4
+\question Let $U$, $V$, and $W$ be finite-dimensional vector spaces, and let $T : U \rightarrow V$ and $S : V \rightarrow W$ be linear transformations. Determine whether the following statements are true or false, and provide a proof of your claim. 
+\begin{parts}
+	\part rank($S \circ T$) $\leq$ rank($S$).
+		\begin{solution}
+			True. The image of any $\vec v \in V$ under $S$ cannot lie outside the image, of $S$ itself, so neither can $S(T(\vec u))$ for $T(\vec u)\in V$ with any $\vec u \in U$. Thus the image of $S$ contains the image of $S \circ T$, and $S \circ T$ has rank at most the rank of $S$.
+		\end{solution}
+	\part rank($S \circ T$) $\leq$ rank($T$).
+		\begin{solution}
+			True. Let the basis of the image of $T$ be $\mathcal T = \{\vec t_1, \dots, \vec t_n\}$, where $n$ is rank($T$). Then any vector $\vec {v}\in$ im($T$) $\subseteq V$ can be represented as a linear combination $ \vec v = c_1 \vec t_1 + \cdots +  c_n \vec t_n$. Applying $S$ to this: \begin{align*}
+				S(\vec v) &= S(c_1 \vec t_1 + \cdots +  c_n \vec t_n) \\
+				&= c_1 S(\vec t_1) + \cdots +c_n S(\vec t_n) \tag{linearity}
+			\end{align*}
+			So any vector in the image of $S \circ T$ can be represented as a linear combination of at most $n$ vectors. This means the rank of $S \circ T$ is at most rank($T$), and the statement is true.
+		\end{solution}
+	\part nullity($S \circ T$) $\geq$ nullity($T$).
+		\begin{solution}
+			True. Anything in the kernel of $T$ is already mapped to $0_V$, which is, by the property of linear transformations, then mapped to $0_W$ by $S$. So the kernel of $S \circ T$ contains at least the kernel of $T$, meaning its nullity is greater than or equal to nullity($T$).
+		\end{solution}
+	\part nullity($S \circ T$) $\geq$ nullity($S$).
+		\begin{solution}
+			False. Take $T : \reals \rightarrow \reals ^ 2$ with standard matrix $\begin{bmatrix}
+				0 \\ 0
+			\end{bmatrix}$, and $S : \reals^2 \rightarrow \reals ^3$ with standard matrix $\begin{bmatrix}
+				0 & 0 \\ 0 & 0 \\ 0 & 0
+			\end{bmatrix}$ and nullity($S$) = 2.
+			Then $S \circ T$ can be represented $\begin{bmatrix}
+				0 \\ 0 \\ 0
+			\end{bmatrix}$, which has a nullity of 1 $<$ nullity($S$).
+		\end{solution}
+\end{parts}
+\clearpage
+%5
+\question A matrix $A \in \reals^{n\times n}$ is said to be symmetric if $A\transpose = A$, and skew-symmetric if $A\transpose = -A$. Let Sym$_n$ and Skew$_n$ denote the set of all symmetric matrices and the set of all skew-symmetric matrices in $\reals^{n\times n}$, respectively.
+	\begin{parts}
+		\part Let $T : \reals^{n\times n} \rightarrow \reals^{n\times n}$ be the map defined by $T (A) = A + A\transpose$. Prove that $T$ is linear.
+			\begin{solution}
+				Let $A, B \in \reals^{n\times n}$, and $c \in \reals$.
+				We know that tranpose respects scalar multiplication, since the \par scalar multiplication applies to every element of the matrix, regardless of the tranpose or not. Likewise with addition, $(A + B)\transpose = A\transpose + B\transpose$ since the addition occurs between elements with the same index. So
+				\begin{align*}
+					T(A + B) &= A + B + (A + B)\transpose \\
+					&= A + A\transpose + B + B\transpose \\
+					&= T(A) + T(B) \\\\
+					T(cA) &= cA + (cA)\transpose \\
+					&= cA + c(A\transpose) \\
+					&= c(A + A\transpose) \\
+					&= cT(A)
+				\end{align*}
+				Thus $T$ is linear.
+			\end{solution}
+		\part Prove that ker($T $) = Skew$_n$ and im($T $) = Sym$_n$.
+			\begin{solution}
+				First we show ker($T $) = Skew$_n$. Let $A \in$ ker($T$) $\subseteq \reals^{n\times n}$. Then by definition, $A + A\transpose = 0_{\reals^{n\times n}} $. Subtracting by $A$ on both sides, $A \transpose = -A$. So $A \in$ Skew$_n$, and ker($T) \subseteq $ Skew$_n$.
+				\par Next, let $A \in $ Skew$_n \subset \reals^{n\times n}$. Then by definition, $A \transpose = -A$. Adding $A$ to both sides grants $A + A\transpose = 0_{\reals^{n\times n}} $. So $A$ is within the kernel of $T$, and Skew$_n \subseteq$ ker($T$). Since ker($T$) and Skew$_n$ are mutual subsets, they are equal.\\
+
+				\par To show im($T $) = Sym$_n$, let $A \in$ im($T$) $\subseteq \reals^{n\times n}$. Then $A$ can be expressed $A = B + B\transpose$ for some $B \in \reals^{n\times n}$. Taking the transpose, $A\transpose = (B + B\transpose)\transpose = B\transpose + B = A$. So $A \in$ Sym$_n$, and im($T$) $\subseteq$ Sym$_n$.
+				\par Next let $A \in$ Sym$_n$ $\subseteq \reals^{n\times n}$, and let $B \in \reals^{n\times n}$ be $\frac{1}{2}A$. Then $A$ can be expressed $A = B + B\transpose$, since $B$ is also symmetrical. So $A \in$ im($T$), im($T$) $\subseteq$ Sym$_n$. Since im($T$) and Sym$_n$ are mutual subsets, they are equal.
+			\end{solution}
+		\part Prove that Sym$_n$ and Skew$_n$ are subspaces of $\reals^{n\times n}$.
+			\begin{solution}
+				Zero: Since $0_{\reals^{n\times n}}$ is a matrix with all elements equal to 0, it is both symmetric and skew-symmetric.
+				\par \textbf{Symmetric:} Let $A, B \in \reals^{n\times n}$ be symmetric. That is, $A = A\transpose$ and $B = B\transpose$. Let $c$ be an arbitrary scalar.
+				\par Additive closure: $(A+B)\transpose = A\transpose + B\transpose = A + B$. So $A+B$ fulfills the definition of symmetric.
+				\par Closure under scalar multiplication: $(cA)\transpose = cA\transpose = cA$. So $cA$ fulfills the definition of symmetric.
+				\par \textbf{Skew-symmetric:} Let $A, B \in \reals^{n\times n}$ be skew-symmetric. That is, $-A = A\transpose$ and $-B = B\transpose$. Let $c$ be an arbitrary scalar.
+				\par Additive closure: $(A+B)\transpose = A\transpose + B\transpose = -A - B = -(A+B)$. So $A+B$ fulfills the definition of skew-symmetric.
+				\par Closure under scalar multiplication: $(cA)\transpose = cA\transpose = c(-A) = -(cA)$. So $cA$ fulfills the definition of skew-symmetric.
+			\end{solution}
+		\part Find dim(Sym$_n$) and dim(Skew$_n$).
+			\begin{solution}
+				Symmetric matrices can be created by "reflecting" an upper triangular matrix across its diagonal. Similarly, a skew-symmetric matrix would be a strictly upper triangular matrix "reflected" across its diagonal, except with the negatives of the upper elements. So, the dimension is simply the number of upper triangular or strictly upper triangular elements of a $\reals^{n \times n}$ matrix.
+				\par Upper triangular and symmetric matrices would have a dimension of $\frac{n(n+1)}{2}$ (sum of 1 + ... + $n$). Meanwhile, strictly upper triangular and skew-symmetric matrices would have $\frac{n(n-1)}{2}$ (sum of 1 + ... + $n - 1$).
 			\end{solution}
 	\end{parts}
 \end{questions}

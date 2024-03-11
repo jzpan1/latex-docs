@@ -100,21 +100,57 @@ Consider the linear transformation
             \begin{solution}
                 Plugging in each basis vector into T gives 
                 \begin{align*}
-                    T\left(\begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\\
-                    T\left(\begin{bmatrix*} 0 & 1 \\ 0 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & \frac{1}{2} \\ \frac{1}{2} & 0 \end{bmatrix*}\\
-                    T\left(\begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}\\
-                    T\left(\begin{bmatrix*} 0 & 1 \\ -1 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & 0 \\ 0 & 0 \end{bmatrix*}\\
+                    T\left(\begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}
+                    \\
+                    T\left(\begin{bmatrix*} 0 & 1 \\ 0 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & \frac{1}{2} \\ \frac{1}{2} & 0 \end{bmatrix*}
+                    \\
+                    T\left(\begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}
+                    \\
+                    T\left(\begin{bmatrix*} 0 & 1 \\ -1 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & 0 \\ 0 & 0 \end{bmatrix*}
+                    \\
                 \end{align*}
                 Using these results, we can find the $\mathcal E$-matrix of $T$
                 \begin{align*}
-                    \left[T\right]_\mathcal E \left(\begin{bmatrix}
-                        1 \\ 0 \\ 0 \\ 0
-                    \end{bmatrix}\right) = \left[\begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}
+                    \left[T\right]_\mathcal E \left(\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}\right) &= \left[\begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} 
+                    \\
+                    \left[T\right]_\mathcal E \left(\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}\right) &= \left[\begin{bmatrix*} 0 & \frac{1}{2} \\ \frac{1}{2} & 0 \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} 0 \\ 1 \\ 0 \\ -\frac{1}{2}\end{bmatrix} 
+                    \\
+                    \left[T\right]_\mathcal E \left(\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}\right) &= \left[\begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix} 
+                    \\
+                    \left[T\right]_\mathcal E \left(\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}\right) &= \left[ \begin{bmatrix*} 0 & 0 \\ 0 & 0 \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 0 \end{bmatrix} 
+                    \\
                 \end{align*}
             \end{solution}
         \part Find the $\mathcal C$-matrix of $T$, where $\mathcal C$ is the ordered basis
             \[\mathcal C = \left(\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}, \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}, \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} \right) \]
+            \begin{solution}
+                Plugging in each basis vector into T gives 
+                \begin{align*}
+                    T\left(\begin{bmatrix*} 0 & 1 \\ 1 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & 1 \\ 1 & 0 \end{bmatrix*}
+                    \\
+                    T\left(\begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}
+                    \\
+                    T\left(\begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}
+                    \\
+                    T\left(\begin{bmatrix*} 0 & 1 \\ -1 & 0 \end{bmatrix*}\right) &= \begin{bmatrix*} 0 & -1 \\ 1 & 0 \end{bmatrix*}
+                    \\
+                \end{align*}
+                Using these results, we can find the $\mathcal C$-matrix of $T$
+                \begin{align*}
+                    \left[T\right]_\mathcal C \left(\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}\right) &= \left[\begin{bmatrix*} 0 & 1 \\ 1 & 0 \end{bmatrix*}\right]_\mathcal C = \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} 
+                    \\
+                    \left[T\right]_\mathcal C \left(\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}\right) &= \left[\begin{bmatrix*} 1 & 0 \\ 0 & 0 \end{bmatrix*}\right]_\mathcal C = \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0\end{bmatrix} 
+                    \\
+                    \left[T\right]_\mathcal C \left(\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}\right) &= \left[\begin{bmatrix*} 0 & 0 \\ 0 & 1 \end{bmatrix*}\right]_\mathcal C = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix} 
+                    \\
+                    \left[T\right]_\mathcal C \left(\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}\right) &= \left[\begin{bmatrix*} 0 & -1 \\ 1 & 0 \end{bmatrix*}\right]_\mathcal C = \begin{bmatrix} 0 \\ 0 \\ 0 \\ -1 \end{bmatrix} 
+                    \\
+                \end{align*}
+            \end{solution}
         \part Compute the kernel of $[T]_\mathcal E$ . This will be a subspace of the $\mathcal E$-coordinate space $\reals^4$ for $\reals^{2 \times 2}$.
+            \begin{solution}
+                
+            \end{solution}
         \part Find a basis for the corresponding subspace of $\reals^{2\times2}$-that is, for the image of ker[$T$]$_\mathcal E$ under
         the coordinate isomorphism $L^{-1}_\mathcal E : \reals^4 \rightarrow \reals{2\times2}.$
         \part Compute the kernel of the $\mathcal C$-matrix. This will be a subspace of the $\mathcal C$-coordinate space $\reals^4$ for $\reals^{2 \times 2}$.
