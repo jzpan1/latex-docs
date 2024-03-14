@@ -1,0 +1,233 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{tikz-cd}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set 7 Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\instructor{Dr. Paul Kessenich}
+\def\email{jzpan@umich.edu}
+\def\dueDate{Thursday, March 14}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\bf
+\begin{center}
+	MATH 217 W24 - LINEAR ALGEBRA, Section 001 ({\instructor}) \\
+	{\hwName} due {\dueDate} at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+\question Let $W$ be an $n$-dimensional vector space with ordered bases $\mathcal A, \mathcal B,$ and $\mathcal C$.
+	\begin{parts}
+		\part Prove that $S_{C\to A} = S_{B\to A} S_{C\to B}$.
+			\begin{solution}
+				Let $w$ be an arbitrary vector in $W$, and let $[w]_\mathcal C$ be its representation in the $\mathcal C$-coordinate space $\reals^n$. Then $S_{C\to B}[w]_\mathcal C = [w]_\mathcal B$ by definition of $S_{C\to B}$. 
+				\par So $S_{B\to A} S_{C\to B} [w]_\mathcal C = [w]_\mathcal A$ by definition. 
+				\par Additionally, $S_{C\to A}[w]_\mathcal C = [w]_\mathcal A$ by definition. 
+				\par These two matrices have the same dimensions ($n \times n$), and right-multiplying by the standard unit vectors would have the same results with either matrix, so their columns are identical by the Key Theorem. Thus, $S_{C\to A} = S_{B\to A} S_{C\to B}$. 
+			\end{solution}
+		\part Show that $S_{C\to A} S_{B\to C} S_{A\to B} = I_n$
+			\begin{solution}
+				Let $w$ be an arbitrary vector in $W$, and let $[w]_\mathcal A$ be its representation in the $\mathcal A$-coordinate space $\reals^n$. Then $S_{C\to B}[w]_\mathcal A = [w]_\mathcal B$ by definition of $S_{A\to B}$. 
+				\par So $S_{B\to A} S_{C\to B} [w]_\mathcal A = [w]_\mathcal A$ by definition. 
+				\par Similarly, $S_{B\to C}S_{B\to A} S_{C\to B}[w]_\mathcal A = [w]_\mathcal A$ by definition. 
+				\par So $S_{B\to C}S_{B\to A} S_{C\to B} \vec e_1 = e_1; S_{B\to C}S_{B\to A} S_{C\to B} \vec e_2 = e_2; ... S_{B\to C}S_{B\to A} S_{C\to B} \vec e_n = e_n$. Thus by the Key Theorem, $S_{B\to C}S_{B\to A} S_{C\to B} = I_n$.
+			\end{solution}
+	\end{parts}
+\clearpage
+%2
+\question Let $f_1$, $f_2, f_3$ be the smooth functions defined by
+	\[f_1(x)=\sin 2x, f_2(x) = \cos 2x, f_3(x) = e^{3x} \]
+	and consider the subspace $V \subseteq C^\infty(\reals)$ spanned by the basis $\mathcal B = (f_1, f_2, f_3)$. (You may assume without proof that these three functions are linearly independent.) Now consider the linear transformation $D : V \to V$ defined by differentiation, i.e. for any function $g \in V , D(g)(x) = \frac{dg}{dx}.$
+	\begin{parts}
+		\part Find $[D]_\mathcal B$.
+			\begin{solution}
+				\begin{align*}
+					[D]_B &= \begin{bmatrix}
+						| & | & | \\
+						[D(f_1)]_\mathcal B & [D(f_2)]_\mathcal B & [D(f_3)]_\mathcal B \\
+						| & | & |
+					\end{bmatrix} \\
+					&= \begin{bmatrix}
+						| & | & | \\
+						[2\cos 2x]_\mathcal B & [-2\sin 2x]_\mathcal B & [3e^3x]_\mathcal B \\
+						| & | & |
+					\end{bmatrix} \\
+					&= \begin{bmatrix}
+						0 & -2 & 0 \\
+						2 & 0 & 0 \\
+						0 & 0 & 3 
+					\end{bmatrix}
+				\end{align*}
+			\end{solution}
+		\part Give a geometric interpretation of the matrix $[D]_\mathcal B$. That is, how does it act on $\reals^3$?
+			\begin{solution}
+				The matrix $[D]_\mathcal B$ will dilate vectors by 2 in the $x$ and $y$-directions, and 3 in the $z$-direction. Then, it will flip the vectors over the $yz$-plane (making the x-coordinate negative). Finally, it will flip the result over the $x=y$ plane, switching the $x$ and $y$-coordinates of the vector.
+			\end{solution}
+	\end{parts}
+\clearpage
+
+%3
+\question Let $V$ be a vector space with ordered bases $\mathcal B = (b_1, . . . , b_n)$ and $\mathcal C = (c_1, . . . , c_n)$. Let $T : V \to V$ be a linear transformation, with $B = [T ]_\mathcal B$ and $C = [T ]_\mathcal C $. Give a proof or counterexample for each of the following statements:
+	\begin{parts}
+		\part For all integers $k \geq 1,$ $B^k$ and $C^k$ are similar.
+			\begin{solution}
+				This statement is true. By the Change of Basis Theorem, we know that $B = S^{-1}CS$, where $S$ is the change-of-coordinates transformation from $\mathcal B$ coordinates to $\mathcal C$ coordinates, which is an isomorphism. Then \begin{align*}
+					B^k &= (S^{-1}CS)^k = S^{-1}CSS^{-1}CSS^{-1}CS...S^{-1}CS \\
+					&= S^{-1}CI_nCI_nCS...I_nCS \\
+					&= S^{-1}C^kS
+				\end{align*} by trivial induction, when $k \geq 1$. So there exists invertible matrix $S$ such that $B^k = S^{-1}C^kS$. Thus $B^k$ and $C^k$ are similar by definition.
+			\end{solution}
+		\part ker($B$) = ker($C$).
+			\begin{solution}
+				This statement is false. Consider transformation $T : \reals^2 \to \reals^2$, $T(x, y) = \begin{bmatrix} x - y \\ 0 \end{bmatrix}$, and bases $\mathcal B = \left\{\begin{bmatrix} 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \end{bmatrix}\right\}$, $\mathcal C = \left\{\begin{bmatrix} 1 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \end{bmatrix}\right\}$. Then ker($C$) includes $\begin{bmatrix}1 \\ 0\end{bmatrix} = \left[\begin{bmatrix}1 \\ 1\end{bmatrix} \right]_\mathcal C$, but $\begin{bmatrix}1 \\ 0\end{bmatrix}$ is not within the kernel of $B$; $B\begin{bmatrix}1 \\ 0\end{bmatrix} = \begin{bmatrix}1 \\ 0\end{bmatrix}$. Thus ker($B$) $\neq$ ker($C$).
+			\end{solution}
+		\part dim(ker($B$)) = dim(ker($C$)).
+			\begin{solution}
+				This statement is true. Let $S$ be the change-of-coordinates matrix from $\mathcal B$ to $\mathcal C$ coordinates. 
+				\par Let basis $K_B = \{k_{B1}, \dots k_{Bm}\}$ be a basis of the kernel of $B$ with dimension $m$. Then let $K_C = \{Sk_{B1}, \dots Sk_{Bm}\}$. Note that since $S$ is an isomorphism, the span of $K_C$ has the same dimension as the kernel of $B$. We know by the Change of Basis Theorem that $C = SBS^{-1}$. So $CSk_{Bj} = SBS^{-1}Sk_{Bj} = S\vec 0 = \vec 0$. Because $CSk_{Bj} = 0$ for all vectors $Sk_{Bj} \in K_C$, the span of $K_C$ is within the kernel of $C$ by linearity, and dim(ker($B$)) $\leq$ dim(ker($C$)).
+				\par Let basis $K_C = \{k_{C1}, \dots k_{Cm}\}$ be a basis of the kernel of $C$ with dimension $m$. Then let $K_B = \{S^{-1}k_{C1}, \dots S^{-1}k_{Cm}\}$. Note that since $S^{-1}$ is an isomorphism, the span of $K_B$ has the same dimension as the kernel of $C$. We know by the Change of Basis Theorem that $B = S^{-1}CS$. So $BS^{-1}k_{Cj} = S^{-1}BSS^{-1}k_{Cj} = S^{-1}\vec 0 = \vec 0$. Because $BS^{-1}k_{Cj} = 0$ for all vectors $Sk_{Cj} \in K_B$, the span of $K_B$ is within the kernel of $B$ by linearity, and dim(ker($C$)) $\leq$ dim(ker($B$)).
+				\par Because dim(ker($B$)) $\leq$ dim(ker($C$)) and dim(ker($C$)) $\leq$ dim(ker($B$)), then \\dim(ker($C$)) = dim(ker($B$)).
+			\end{solution}
+	\end{parts}
+\clearpage
+%4
+\question Let $T : U \to W$ be a linear transformation between vector spaces $U$ and $W$. Suppose that $\mathcal B = (u_1, u_2, . . . , u_k)$ is a basis for the source $U$ and $\mathcal C = (w_1, w_2, . . . , w_d)$ is a basis for the target $W$. As usual, let $L_\mathcal B$ denote the coordinate isomorphism $U \to \reals^k$ and let $L_\mathcal C$ denote the coordinate isomorphism $W \to \reals^d$.
+	\begin{parts}
+		\part Show that there exists a linear transformation $T' : \reals^k \to \reals^d$ such that $T' \circ L_\mathcal B = L_\mathcal C \circ T$.
+		[Hint: A diagram showing four vector spaces and four maps between them, similar to those immediately before and after Definition 4.3.1 in the textbook, might be useful.]
+			\begin{solution}
+				Let $T'$ be the composition of transformations $L_\mathcal C \circ T \circ L_\mathcal B ^{-1}$. We know that this transformation exists since the domains and codomains of $L_\mathcal C, T,$ and $L_\mathcal B^{-1}$ match by definition of the coordinate isomorphisms. \\
+				\[
+					\begin{tikzcd}
+						T': \reals^k \arrow[r, "L_\mathcal B ^{-1}"] & U \arrow[r, "T"] & W \arrow[r, "L_\mathcal C"] & \reals^d
+					\end{tikzcd}
+				\]
+				Additionally, we know this composition is linear since all the component transformations are linear. Then, $T'$ satisfies
+				\begin{align*}
+					T' \circ L_\mathcal B &= L_\mathcal C \circ T \\
+					L_\mathcal C \circ T \circ L_\mathcal B ^{-1} \circ L_\mathcal B &= L_\mathcal C \circ T \\
+					L_\mathcal C \circ T \circ I &= L_\mathcal C \circ T\\
+					L_\mathcal C \circ T  &= L_\mathcal C \circ T\\
+				\end{align*}
+			\end{solution}
+		\part Let $[T ]_{(\mathcal {B,C})}$ denote the standard matrix of the transformation $T'$ you described in (a). Prove that for all $u \in U$,
+		\[[T(u)]_\mathcal C = [T]_{(\mathcal {B,C})}[u]_\mathcal B. \]
+			\begin{solution}
+				$[T(u)]_\mathcal C$ is equivalent to $L_\mathcal C(T(u)) = (L_\mathcal C \circ T)(u)$. Additionally, $[T]_{(\mathcal {B,C})}[u]_\mathcal B$ is equivalent to $T'(L_\mathcal B(u)) = (T' \circ L_\mathcal B)(u)$. Since we have shown in part (a) that $T' \circ L_\mathcal B = L_\mathcal C \circ T$, then $(T' \circ L_\mathcal B)(u) = (L_\mathcal C \circ T)(u)$. So the given statement is true for all $u \in U$.
+			\end{solution}
+		\part Describe, with explanation, the columns of matrix $[T]_{(\mathcal {B,C})}$ in terms of the bases $\mathcal B$ and $\mathcal C$.
+			\begin{solution}
+				Column $i$ of matrix $[T]_{(\mathcal{B, C})}$ will be $[T(u_i)]_\mathcal C$. This is the representation of the [result of basis element $u_i$ of $\mathcal B$ after undergoing transformation $T$] as a $\mathcal C$-coordinate. This is very similar to the Key Theorem, except with differing dimensions between domain and codomain. Using the same strategy as the Key Theorem, plugging in a standard vector of $\reals^k$ is like plugging in basis element $u_i$ into $T$. Then, since the output is in $W$, we use $\mathcal C$-coordinates to represent it in $\reals^d$.
+			\end{solution}
+	\end{parts}
+\clearpage
+
+%5
+\question Let $f_1, f_2, f_3$ be the functions defined by
+	\[f_1(x) = \sin x, f_2(x) = \cos x, f_3(x) = e^x, \]
+	which you may assume without proof are linearly independent. Consider the subspace $V$ of $C^\infty$ spanned by the set $\{f_1, f_2, f_3\}$. Recall from Calculus that every function in $V$ may be expressed as a Taylor series that converges for all real numbers. \par Let $T : V \to \mathcal P^3$ be the linear transformation that assigns to each function $f \in V$ the third-degree Taylor polynomial $f (0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!} x^3$ for $f$, a polynomial approximation to $f$.
+	\begin{parts}
+		\part Find a basis $\mathcal C$ for $\mathcal P^3$ such that 
+		\[[T(f_1)]_\mathcal C = \begin{bmatrix} 0 \\ 1 \\ 0 \\ -1 \end{bmatrix}, [T(f_2)]_\mathcal C = \begin{bmatrix} 1 \\ 0 \\ -1 \\ 0 \end{bmatrix}, [T(f_3)]_\mathcal C = \begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix}.\]
+			\begin{solution}
+				$\mathcal C = \left\{1, x, \frac{x^2}{2}, \frac{x^3}{3!}\right\}$.
+			\end{solution}
+		\part Let $C$ be as in (a), and let $B = (f_1 + f_2, f_1 - f_2, f_3 + f_1)$. Find $[T]_{(\mathcal {B,C})}$ (see Problem 4).
+			\begin{solution}
+				As we saw in problem 4, column $i$ of matrix $[T]_{(\mathcal{B, C})}$ will be $[T(f_i)]_\mathcal C$. We were already given these in part (a), so finding the standard matrix is simple:
+				$[T]_{(\mathcal{B, C})} = \begin{bmatrix}
+					0 & 1 & 1 \\
+					1 & 0 & 1 \\
+					0 & -1 & 1 \\
+					-1 & 0 & 1
+				\end{bmatrix}$
+			\end{solution}
+	\end{parts}
+\clearpage
+
+%6
+\question Let $A = \begin{bmatrix} -6 & -30 \\ -30 & 19 \end{bmatrix} $ and let $V =$ span$\left(\begin{bmatrix} 3 \\ 2\end{bmatrix}\right)$.
+	\begin{parts}
+		\part Show that for all $\vec v \in V, A\vec v \in V$.
+			\begin{solution}
+				Let arbitrary $\vec v \in V$. Then since $\vec v$ is in the span of $\begin{bmatrix} 3 \\ 2\end{bmatrix}$, it can be expressed $v = a\begin{bmatrix} 3 \\ 2\end{bmatrix}$ for some $a \in \reals$. Then 
+				\begin{align*}
+					A\vec v &= \begin{bmatrix} -6 & -30 \\ -30 & 19 \end{bmatrix}\left(a\begin{bmatrix} 3 \\ 2\end{bmatrix}\right) \\
+					&= 3a\begin{bmatrix} -6 \\ -30\end{bmatrix} + 2a\begin{bmatrix} -30 \\ 19 \end{bmatrix} \\
+					&= a\begin{bmatrix} 3 \cdot (-6) + 2 \cdot (-30) \\ 3 \cdot (-30) + 2 \cdot 19\end{bmatrix} \\
+					&= a\begin{bmatrix} -78 \\ -52 \end{bmatrix} \\
+					&= -\frac{a}{26}\begin{bmatrix} 3 \\ 2 \end{bmatrix} 
+				\end{align*}
+				We know $-\frac{a}{26} \in \reals$ by closure of nonzero real division, so $A\vec v = -\frac{a}{26}\begin{bmatrix} 3 \\ 2 \end{bmatrix} \in V$.
+			\end{solution}
+		\part Find a basis for $V^\perp$, and show that for all $\vec w \in V^\perp, A\vec w \in V^\perp$. 
+			\begin{solution}
+				Let the basis for $V^\perp$ be $\{\begin{bmatrix} 2 \\ -3 \end{bmatrix} \}$. Let arbitrary $\vec w \in V^\perp$. Then since $\vec w$ is in the span of $\begin{bmatrix} 2 \\ -3\end{bmatrix}$, it can be expressed $\vec w = a\begin{bmatrix} 2 \\ -3\end{bmatrix}$ for some $a \in \reals$. Then 
+				\begin{align*}
+					A\vec w &= \begin{bmatrix} -6 & -30 \\ -30 & 19 \end{bmatrix}\left(a\begin{bmatrix} 2 \\ -3\end{bmatrix}\right) \\
+					&= 2a\begin{bmatrix} -6 \\ -30\end{bmatrix} - 3a\begin{bmatrix} -30 \\ 19 \end{bmatrix} \\
+					&= a\begin{bmatrix} 2 \cdot (-6) - 3 \cdot (-30) \\ 2 \cdot (-30) - 3 \cdot 19\end{bmatrix} \\
+					&= a\begin{bmatrix} 78 \\ -117 \end{bmatrix} \\
+					&= \frac{a}{39}\begin{bmatrix} 2 \\ -3 \end{bmatrix} 
+				\end{align*}
+				We know $\frac{a}{39} \in \reals$ by closure of nonzero real division, so $A\vec w = \frac{a}{39}\begin{bmatrix} 2 \\ -3 \end{bmatrix} \in V$.
+			\end{solution}
+		\part Let $T : \reals^2 \to \reals^2$ be the linear transformation defined by $T(\vec x ) = A\vec x$ for all $\vec x \in \reals^2$. Find a basis $\mathcal B$ of $\reals^2$ such that $[T]_\mathcal B$ is diagonal, and write the matrix $[T]_\mathcal B$ explicitly.
+			\begin{solution}
+				Let $\mathcal B = \left\{\begin{bmatrix} 3 \\ 2\end{bmatrix}, \begin{bmatrix} 2 \\ -3\end{bmatrix}\right\}$. Then by the Key Theorem, $[T]_\mathcal B = \begin{bmatrix} [T(b_1)]_\mathcal B & [T(b_2)]_\mathcal B \end{bmatrix} =  \begin{bmatrix}-\frac{1}{26} & 0 \\ 0 & \frac{1}{39}\end{bmatrix}$
+			\end{solution}
+		\part Calculate $[T^{10}]_\mathcal B$. [Hint: Leave numbers like $7^{13}$ in that form; do not attempt to multiply them out.]
+			\begin{solution}
+				$[T^{10}]_\mathcal B = [T]_\mathcal B^10$ since the matrix identifies the transformation. So 
+				\[[T^{10}]_\mathcal B = \begin{bmatrix}-\frac{1}{26} & 0 \\ 0 & \frac{1}{39}\end{bmatrix}^{10} = \begin{bmatrix}\frac{1}{26^{10}} & 0 \\ 0 & \frac{1}{39^{10}}\end{bmatrix}\]
+			\end{solution}
+		\part Calculate $[T^{10}]_\mathcal E$. [Hint: Leave the entries as numerical expressions; do not attempt to simplify.]
+			\begin{solution}
+				We use the change of basis theorem for transformations, which tells us that $[T^{10}]_\mathcal E = S^{-1}[T^{10}]_\mathcal BS$, where $S$ is the change of coordinates transformation from $\mathcal E$ to $\mathcal B$ coordinates. We find that $S = \begin{bmatrix}3 & 2 \\ 2 & -3\end{bmatrix}$ and $S^{-1} = \begin{bmatrix} \frac{3}{13} & \frac{2}{13} \\ \frac{2}{13} & \frac{-3}{13} \end{bmatrix}$. So 
+				\begin{align*}
+					[T^{10}]_\mathcal E &= \begin{bmatrix} \frac{3}{13} & \frac{2}{13} \\ \frac{2}{13} & \frac{-3}{13} \end{bmatrix}\begin{bmatrix}\frac{1}{26^{10}} & 0 \\ 0 & \frac{1}{39^{10}}\end{bmatrix}\begin{bmatrix}3 & 2 \\ 2 & -3\end{bmatrix} \\
+					&= \begin{bmatrix} \frac{3}{13} & \frac{2}{13} \\ \frac{2}{13} & \frac{-3}{13} \end{bmatrix} \begin{bmatrix}\frac{3}{26^{10}} & \frac{2}{26^{10}} \\  \frac{2}{39^{10}} & -\frac{3}{39^{10}}\end{bmatrix} \\
+					&= \frac{1}{13}\begin{bmatrix}
+						\frac{9}{26^{10}} + \frac{4}{39^{10}} & \frac{6}{26^{10}} - \frac{6}{39^{10}} \\
+						\frac{9}{26^{10}} - \frac{6}{39^{10}} & \frac{4}{26^{10}} + \frac{9}{39^{10}}
+					\end{bmatrix}
+				\end{align*}
+			\end{solution}
+	\end{parts}
+
+\end{questions}
+
+\end{document}
