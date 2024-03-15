@@ -60,10 +60,10 @@
 			\end{solution}
 		\part Show that $S_{C\to A} S_{B\to C} S_{A\to B} = I_n$
 			\begin{solution}
-				Let $w$ be an arbitrary vector in $W$, and let $[w]_\mathcal A$ be its representation in the $\mathcal A$-coordinate space $\reals^n$. Then $S_{C\to B}[w]_\mathcal A = [w]_\mathcal B$ by definition of $S_{A\to B}$. 
-				\par So $S_{B\to A} S_{C\to B} [w]_\mathcal A = [w]_\mathcal A$ by definition. 
-				\par Similarly, $S_{B\to C}S_{B\to A} S_{C\to B}[w]_\mathcal A = [w]_\mathcal A$ by definition. 
-				\par So $S_{B\to C}S_{B\to A} S_{C\to B} \vec e_1 = e_1; S_{B\to C}S_{B\to A} S_{C\to B} \vec e_2 = e_2; ... S_{B\to C}S_{B\to A} S_{C\to B} \vec e_n = e_n$. Thus by the Key Theorem, $S_{B\to C}S_{B\to A} S_{C\to B} = I_n$.
+				Let $w$ be an arbitrary vector in $W$, and let $[w]_\mathcal A$ be its representation in the $\mathcal A$-coordinate space $\reals^n$. Then $S_{A\to B}[w]_\mathcal A = [w]_\mathcal B$ by definition of $S_{A\to B}$. 
+				\par Left-multiplying $S_{B\to C}$, we find $S_{B\to C} S_{A\to B} [w]_\mathcal A = [w]_\mathcal C$ by definition. 
+				\par Similarly, left-multiplying $S_{C\to A}$, we find $S_{C\to A}S_{B\to C} S_{A\to B}[w]_\mathcal A = [w]_\mathcal A$ by definition. 
+				\par So $S_{C\to A}S_{B\to C} S_{A\to B} \vec e_1 = e_1; S_{C\to A}S_{B\to C} S_{A\to B} \vec e_2 = e_2; ... S_{C\to A}S_{B\to C} S_{A\to B} \vec e_n = e_n$. Thus by the Key Theorem, $S_{C\to A}S_{B\to C} S_{A\to B} = I_n$.
 			\end{solution}
 	\end{parts}
 \clearpage
