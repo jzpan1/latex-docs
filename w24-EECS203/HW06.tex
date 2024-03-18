@@ -21,6 +21,11 @@
 \setlength{\parskip}{6pt}
 \setlength{\parindent}{0cm}
 
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
 % newline after Solution:
 \renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
 
@@ -108,7 +113,7 @@ Show your intermediate steps or briefly explain your process to justify your wor
         \item $a = 115$. $6 \cdot 21 - 11 = 126 - 11 = 115$.
         \end{qparts}
 \end{solution}
-
+\clearpage
 \subsection*{\probnum Multiple Modular Madness [14 points]}
 For each of the questions below, answer ``always," ``sometimes," or ``never," then explain your answer. Your explanation should justify why you chose the answer you did, but does not have to be a rigorous proof.
 
@@ -128,7 +133,7 @@ For each of the questions below, answer ``always," ``sometimes," or ``never," th
         \item Sometimes. Let $d = 3 + 21k$. If $k$ is even, then $d = 3 + 21 + 6 \cdot \frac{7k}{2} = 6(4 + \frac{7k}{2})$, which is divisible by 6. If not, then it is not true.
     \end{qparts}
 \end{solution}
-
+\clearpage
 \subsection*{\probnum How Low Can You Go? [12 points]}
 Suppose $a\equiv 3\pmod{10}$ and $b\equiv 8\pmod{10}$. In each part, find $c$ such that $0\leq c\leq 9$ and
 \begin{qparts}
@@ -188,7 +193,7 @@ Prove that if $n$ is an odd integer, then $n^2 \equiv 1 \pmod 8.$
     If $n$ is odd, then it can be expressed as $n = 2m + 1$, where $m$ is an integer. Then $n^2 = (2m + 1)^2 = 4m^2 + 4m + 1 = 4(m^2 + m) + 1$. We know by previous homeworks that an integer has the same parity as its square, and the sum of two numbers with the same parity is even. So $m^2 + m$ is even, and can be expressed $m^2 + m = 2k$, where $k$ is an integer. So $n^2 = 8k + 1$, and its remainder when divided by 8 is 1. Thus $n^2 \equiv 1 \pmod{8}$.
 \end{solution}
 
-
+\clearpage
 \subsection*{\probnum Functions and Fakers [16 points]}
 Determine if each of the examples below are functions or not.
 \begin{itemize}
@@ -211,10 +216,15 @@ For example, $h(\text{EECS 203}) = \text{EECS}$ and $k(\text{EECS 203}) = 203.$
 \textbf{Note:} For the purpose of parts (c) and (d), two courses are considered ``equal" if and only if they have the same department and course number. In particular, cross-listed courses are treated as distinct elements of $\textbf{U-M Courses}.$
 
 \begin{solution}
-
+    \begin{qparts}
+        \item Yes, the multiplicative inverse is defined for all real numbers other than 0. The source of this function is exactly that set, so the map is defined for the whole domain. Additionally, every nonzero real number has a unique multiplicative inverse. So, this function is bijective.
+        \item No, this results in more than 1 output for each input. For instance, take $x=1$. Then $y = 0$ and $y = 0.5$ both satisfy the map.
+        \item No, U-M courses which are not EECS or MATH classes will not have a defined output. So, the map is not defined for the whole domain, meaning it is not a function.
+        \item Yes, this is a function, assuming there don't exist any classes with multiple course numbers. However, this would not be bijective since not all elements of $\naturals$ are outputs of the function. For instance, 0 is not an output, since (as far as I know) there is no class with course number 0.
+    \end{qparts}
 \end{solution}
 
-
+\clearpage
 \subsection*{\probnum Fantastic Functions [18 points]}
 For each of the functions below, determine whether it is (i) one-to-one, (ii) onto. Prove your answers.
 \begin{qparts}
@@ -227,10 +237,33 @@ For each of the functions below, determine whether it is (i) one-to-one, (ii) on
 
 
 \begin{solution}
-
+    \begin{qparts}
+        \item (i) Yes. Let $f(x) = f(y) = z$ for $x, y \in \reals$, $z \in \mathbb R - \mathbb R^-$. Then \begin{align*}
+            z &= e^{2x+1} \\
+            x &= \frac{\ln z - 1}{2} \\
+            z &= e^{2y+1} \\
+            y &= \frac{\ln z - 1}{2} \\
+            x = y
+        \end{align*}
+        Since $x = y$, $f$ is injective.
+        \par (ii) No. $0 \in \mathbb R - \mathbb R^-$ is not a possible output for $e^x$, so it is impossible for it to be an output for $f$.
+    
+        \item (i) Yes. Let $g(x) = g(y) = z$ for $x, y \in \mathbb{R} - \left\{-\frac{2}{5}\right\}$, $z \in \mathbb R - \left\{\frac{3}{5}\right\}$. Then \begin{align*}
+            z &= \frac{3x - 1}{5x + 2} \\
+            x &= \frac{2z+1}{3-5z} \\
+            z &= \frac{3y - 1}{5y + 2} \\
+            y &= \frac{2z+1}{3-5z} \\
+            x = y
+        \end{align*}
+        Since $x = y$, $g$ is injective.
+        \par (ii) Yes. For any $y \in \reals - \left\{\frac{3}{5}\right\}$, a there exists $x = \frac{2y+1}{3-5y}$ such that $g(x) = y$. Thus, the function is surjective.
+    
+        \item (i) No, this function is not injective. For instance, $1 = h(2, 1) = h(3, 2)$.
+        \par (ii) Yes, this function is onto. For any $y \in \ints$, there exists $m = |n| + y$, $n \in \ints$ which satisfy $h(m, n) = y$.
+    \end{qparts}
 \end{solution}
 
-
+\clearpage
 \subsection*{\probnum Comp$\circ$sition$($Functions$)$ [12 points]}
 For each of the following pairs of functions $f$ and $g$, find $f \circ g$ and $g \circ f$. Make sure to include the domain and codomain of each composed function you give. If either can't be computed, explain why.
 \begin{qparts}
@@ -247,7 +280,14 @@ For each of the following pairs of functions $f$ and $g$, find $f \circ g$ and $
 
 
 \begin{solution}
-
+    \begin{qparts}
+        \item $f \circ g$ and $g \circ f$ are both defined because the domains and codomains match. $f(g(x)) = (x^2 - 1) + 1 = x^2$, and $g(f(x)) = (x+ 1)^2 - 1 = x^2 + 2x$. So 
+        \[f \circ g : \ints^+ \to \ints^+, (f \circ g)(x) = x^2 \]
+        \[g \circ f : \naturals \to \naturals, (g \circ f)(x) = x^2 + 2x\]
+        
+        \item The codomain of $f$ is the same as $g$'s domain, but not the other way around. So $g \circ f$ will be defined, but $f \circ g$ will not be. $g(f(x)) = \left|(\frac{3}{2}x + 3)^3\right|$.
+        \[f \circ g : \ints \to \reals_{\geq 0}, g(f(x)) = \left|\frac{3}{2}x + 3\right|^3\]
+    \end{qparts}
 \end{solution}
 
 \end{document}
