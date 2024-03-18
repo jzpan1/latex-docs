@@ -25,6 +25,7 @@
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\naturals}{\mathbb{N}}
 \newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rationals}{\mathbb{Q}}
 \newcommand{\transpose}{^\top}
 
 % newline after Solution:
@@ -210,8 +211,8 @@ Your proof or disproof should use the Pigeonhole Principle. Make sure to state w
 
 \begin{solution}
   Sort the set of natural numbers less than 100 by their remainder when divided by 7, creating 7 groups: $0, 1, 2, 3, 4, 5, 6 \pmod{7}$. These are holes for the 52 integers, the pigeons. Since the number of pigeons is greater than 7 times the number of pigeons, there will be 1 hole with at least 8 pigeons. 
-  \par Since $98 = 14 * 7$, we know there are either 13 or 14 integers to choose in each ``remainder hole.'' In the case of 14 integers, pair these 14 integers into 7 ``difference holes,'' each with two consecutive integers with a difference of 7 between them (e.g. 4 and 11). Then, using the 8 pigeons we know will enter the ``remainder hole,'' we know one of these ``difference holes'' must contain 2 pigeons. 
-  \par In the case of 13 integers, one 
+  \par Since $99 = 14 * 7 + 1$, we know there are either 13 or 14 integers to choose in each ``remainder hole.'' Pair these 14 integers into 7 (disjoint) ``difference holes,'' each with two consecutive integers with a difference of 7 between them (e.g. 4 and 11). Then, using the 8 pigeons we know will enter the ``remainder hole,'' we know one of these 7 ``difference holes'' must contain 2 pigeons by the pigeonhole principle. Thus there must be 2 chosen integers with a difference of 7 between them. Note that when there are 13 integers in the ``remainder hole," this logic still applies, as the ``difference hole'' with only one integer cannot have more than 1 chosen integer occupying it. So a ``difference hole'' with 2 spaces must have been filled.
+  Thus there must be 2 chosen integers with a difference of 7 between them.
 \end{solution}
 
 
@@ -228,7 +229,14 @@ Let $A$ be the set of prime numbers less than $203$. The universe of discourse i
 \end{qparts}
 
 \begin{solution}
-
+  \begin{qparts}
+    \item Countably infinite: they can be shown to have a one-to-one correspondence with $\naturals$ in an analogous way to the rational numbers, except with zero as a possible denominator.
+    \item Empty. Every integer is rational, so the difference will be the empty set.
+    \item Uncountable. Subtracting rational numbers still leaves infinitesimal gaps where real numbers can exist uncountably.
+    \item Empty. Every rational number is a real number.
+    \item Finite but nonempty. Every number in $A$ is rational, so the result of the intersection is just $A$.
+    \item Uncountable. By DeMorgan's, this is equivalent to $\overline {A \cup \rationals} = \overline{\rationals} = \reals - \rationals$, so equivalent to part (d).
+\end{qparts}
 \end{solution}
 
 
@@ -242,7 +250,12 @@ For each part, give \textit{uncountable} sets $A$ and $B$ such that $A - B$ is
 \end{qparts}
 
 \begin{solution}
-
+  \begin{qparts}
+    \item $A = \reals$ and $B$ is the set of reals with first nonzero digit 6.
+    \item $A = \reals$ and $B = \reals - \ints$.
+    \item $A = \reals$ and $B = \reals - \{1\}$.
+    \item $A = \reals$ and $B = \reals$.
+  \end{qparts}
 \end{solution}
 
 
@@ -250,7 +263,7 @@ For each part, give \textit{uncountable} sets $A$ and $B$ such that $A - B$ is
 Prove that $|[0,3]| = |(2, 5)\cup (6,7)|$. If you construct functions in your solution with certain properties, you may assert that they have those properties without proof.
 
 \begin{solution}
-
+  Let $A = [0,3]$ and $B = (2, 5)\cup (6,7)$. Let $f: A \to B; a \mapsto \frac{a}{3} + 3$ and $g: B \to A; b \mapsto \frac{b}{3}$. Then both $f$ and $g$ are injective. So the cardinality of $A$ and $B$ are equal.
 \end{solution}
 
 \end{document}
