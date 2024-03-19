@@ -21,6 +21,9 @@
 \def\dueDate{???}
 
 \newcommand{\reals}{\mathbb{R}}
+\newcommand{\realsn}{\reals^{n}}
+\newcommand{\nxn}{n\times n}
+\newcommand{\realsnxn}{\reals^{\nxn}}
 \newcommand{\naturals}{\mathbb{N}}
 \newcommand{\ints}{\mathbb{Z}}
 \newcommand{\transpose}{^\top}
@@ -48,13 +51,39 @@
 }
 
 \begin{questions}
-\question Question
+
+%1
+\question Let $W$ be a subspace of $\reals^n$ and let $\mathcal B = (\vec v_1, . . . , \vec v_d)$ be a basis for $W$. Consider the transformation $\reals^n \xrightarrow{\pi} \reals^n$ defined by
+\[\pi(\vec v) = \sum_{i=1}^d \frac{\vec v \cdot \vec v_i}{\vec v_i \cdot \vec v_i}\vec v_i.\]
 	\begin{parts}
-		\part Part
-		\begin{solution}
-			Solution
-		\end{solution}
+		\part Show that if $\vec v_i \cdot \vec v_j = 0$ for all $1 \leq i \neq j \leq d$, then the transformation $\pi$ is the orthogonal projection onto $W$. (Note: this is almost, but not quite, the way we defined orthogonal projection. Make sure you understand how our definition is different from this before you start trying to prove it!)
+			\begin{solution}
+			\end{solution}
+		\part Give a counterexample to show that if the basis vectors in $\mathcal B$ are not perpendicular to each other, then the linear transformation $\pi$ defined above $\pi$ is not orthogonal projection onto $W$.
+			\begin{solution}
+				
+			\end{solution}
 	\end{parts}
+\clearpage
+
+%2
+\question Let $\mathcal O_n \subseteq \realsnxn$ denote the set of orthogonal $\nxn$ matrices. Determine whether each of the following statements is True or False, and provide a short proof (or a counter-example) of your claim.
+	\begin{parts}
+		\part $\mathcal O_n$ is a subspace of $\realsnxn$.
+		\part If $A, B \in \mathcal O_n$, then $AB \in \mathcal O_n$.
+		\part If $A \in \mathcal O_n$, then $A^2 \in \mathcal O_n$.
+		\part If $A^2 \in \mathcal O_n$, then $A \in \mathcal O_n$.
+		\part If $A \in \mathcal O_n$ and $A^2$ is the identity matrix, then $A$ is symmetric.
+	\end{parts} 
+\clearpage
+
+%3
+\question \begin{parts}
+	\part Suppose that $\mathcal B = (\vec b_1, . . . , \vec b_r)$ is an orthonormal basis of a subspace $V$ of $\realsn$.
+	Prove that for all $\vec v, \vec w \in V, [\vec v]_\mathcal B \cdot [\vec w]_\mathcal B = \vec v \cdot \vec w$
+	\part Prove that if $\mathcal B = (\vec b_1, . . . , \vec b_r)$ and $\mathcal C = (\vec c_1, . . . , \vec c_r)$ are two orthonormal bases of $V $, then
+	$S_{\mathcal B \to \mathcal C}$ is an orthogonal $r \times r$ matrix.
+\end{parts}
 \end{questions}
 
 \end{document}
