@@ -1,0 +1,60 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\instructor{Dr. Paul Kessenich}
+\def\email{jzpan@umich.edu}
+\def\dueDate{???}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\bf
+\begin{center}
+	MATH 217 W24 - LINEAR ALGEBRA, Section 001 ({\instructor}) \\
+	{\hwName} due {\dueDate} at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+\question Question
+	\begin{parts}
+		\part Part
+		\begin{solution}
+			Solution
+		\end{solution}
+	\end{parts}
+\end{questions}
+
+\end{document}
