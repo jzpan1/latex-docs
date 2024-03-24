@@ -234,13 +234,24 @@
 					&= |\vec w_k| + 0 \\
 					&= |\vec w_k| \\
 				\end{align*}
-				So then the $k$th column of $S_{\mathcal A \to \mathcal U}$ is \[ [a_k]_\mathcal U = \begin{bmatrix}0 \\ \vdots \\ 0 \\ a_k \cdot \vec u_k \\ a_k \cdot \vec u_{k+1} \\ \vdots \\ \vec a_k \cdot \vec u_{m-1} \\ \vec a_k \cdot \vec u_m\end{bmatrix} \]
+				So then the $k$th column of $S_{\mathcal A \to \mathcal U}$ is \[ [a_k]_\mathcal U = \begin{bmatrix}0 \\ \vdots \\ 0 \\ a_k \cdot \vec u_k \\ \vdots \\ \vec a_k \cdot \vec u_m\end{bmatrix} \]
 				Since $\vec u_k \cdot \vec a_k = |\vec w_k|$, we know the diagonal elements of $L = S_{\mathcal A \to \mathcal U}$ are always positive, since $\vec w_k$ is nonzero. Additionally, every element above the diagonal of $L$ is zero, so it is lower triangular. Thus we have found $A = QL$ which satisfy the conditions.
 			\end{solution}
 		\part Prove that if rank($A$) $< m$, it is still possible to obtain such a decomposition if we allow some diagonal entries to be zero.
 			\begin{solution}
-				
+				Let $r = $ rank($A$). Let $\mathcal A$ be a basis for im($A$) containing the first $r$ linearly independent columns of $A$ starting from the rightmost. That is, if a column $\vec a_i$ can be written as a linear combination $\vec a_i = c_{i+1} \vec a_{i+1} + ... + c_m \vec a_m, c_j \in \reals$ of the columns to the right of it, it will not be in the basis. Otherwise, it will be in the basis.
+				\par Then, let $\mathcal U = \{\vec v_1, \vec u_2, ... \vec v_r\} = \{\vec u_1, ... \vec u_m\}$\footnotemark  be an orthonormal basis
+				derived from $\mathcal A$ in the same Gram-Schmidt process described in (a).  That is, beginning from the rightmost column of $A$, and not utilizing columns which were omitted from $\mathcal A$. Then, let $\mathcal U^\perp$ be an orthonormal basis of Span($U)^\perp$. Populate the columns of $Q$ with elements of $\mathcal U$ corresponding to the positions of their counterparts in $A$. For instance, the $k$th column of $Q$ would be $u_k$. Then, in the remaining columns, populate $Q$ with elements of $\mathcal U^\perp$. This ensures that $Q$ is orthonormal, since $\mathcal U$ and $\mathcal U^\perp$ are orthogonal, and also individually orthonormal.
+				\par With this $Q$, our $L$ can be very similar to the change-of-basis matrix from part (a).However, if column $i$ of $Q$ is a vector from $\mathcal U^\perp$, then row $i$ of $L$ will completely be filled with 0s, as no column of $A$ is in Span($\mathcal U^\perp$). Then every column of $L$ will be the corresponding column in $A$ converted to $\mathcal U$-coordinates, except with zeros in the spaces corresponding to the column of a $\mathcal U^\perp$ vector in $Q$.
+				So column $k$ of $L$, where $a_k \in \mathcal A$, will be 
+				\[ [a_k]_\mathcal U = \begin{bmatrix}0 \\ \vdots \\ 0 \\ a_k \cdot \vec u_k \\ \vdots \\ \vec a_k \cdot \vec u_m\end{bmatrix}, \]
+				with all zeros above the diagonal, and also in every row corresponding to the column of a $\mathcal U^\perp$ vector in $Q$.
+				\par For a column of $A$ which was omitted from $\mathcal A$, $\vec a_i = c_{i+1} \vec a_{i+1} + ... + c_m \vec a_m, c_j \in \reals$,
+				\[ [a_i]_\mathcal U = c_{i+1} \vec [a_{i+1}]_\mathcal U + ... + c_m \vec [a_m]_\mathcal U. \]
+				Since $[a_{i+1}]_\mathcal U,  ... [a_m]_\mathcal U$ are columns to the right of $[a_i]_U$ in $L$, there will not be any nonzero elements above the diagonal for column $i$. Additionally, since column $i$ of $Q$ will be a $\mathcal U^\perp$ vector, the diagonal element of column $i$ of $L$ will also be 0. However, since we have allowed this, $L$ satisfies the conditions.
+				\par Thus, we have found $QL$ which satisfy the conditions.
 			\end{solution}
+			\footnotetext{Note the two indexing schemes; The index of $\vec v_1 ... \vec v_r$ includes every integer from 1 to $r$, while $\vec v_1 ... \vec u_m$ corresponds to the columns of $A$, and does not include indexes of columns which were omitted from $\mathcal A$.}
 	\end{parts}
 \end{questions}
 
