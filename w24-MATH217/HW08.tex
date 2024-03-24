@@ -58,10 +58,28 @@
 	\begin{parts}
 		\part Show that if $\vec v_i \cdot \vec v_j = 0$ for all $1 \leq i \neq j \leq d$, then the transformation $\pi$ is the orthogonal projection onto $W$. (Note: this is almost, but not quite, the way we defined orthogonal projection. Make sure you understand how our definition is different from this before you start trying to prove it!)
 			\begin{solution}
+				\textbf{Definition of Orthogonal Projection (from Definitions handout).} If $W$ is a subspace of an inner product space $V$ and if $\vec v \in V$, the orthogonal projection of $\vec v$ onto $W$ is the unique vector $\vec w \in W$ such that $\vec v - \vec w \in W^{\perp}$. The orthogonal projection of $\vec v$ onto $W$ is sometimes denoted proj$_W (\vec v)$.
+				\par Assume $\vec v_i \cdot \vec v_j = 0$ for all $1 \leq i \neq j \leq d$. Then 
+				\[ v - \pi(v) = v - \sum_{i=1}^d \frac{\vec v \cdot \vec v_i}{\vec v_i \cdot \vec v_i}\vec v_i. \]
+				So then for any $\vec v_n \in \mathcal B$,
+				\begin{align*}
+					(\vec v - \pi(\vec v)) \cdot \vec v_n &= \left(\vec v - \sum_{i=1}^d \frac{\vec v \cdot \vec v_i}{\vec v_i \cdot \vec v_i}\vec v_i\right) \cdot \vec v_n \\
+					&= \vec v\cdot \vec v_n - \sum_{i=1}^d \frac{\vec v \cdot \vec v_i}{\vec v_i \cdot \vec v_i}(\vec v_i \cdot \vec v_n) \\
+					&= \vec v\cdot \vec v_n - \sum_{i=1}^d \frac{\vec v \cdot \vec v_i}{\vec v_i \cdot \vec v_i}(\vec v_i \cdot \vec v_n)
+				\end{align*}
+				Since we know $\vec v_i \cdot \vec v_j = 0$, this simplifies to 
+				\[(\vec v - \pi(\vec v)) \cdot \vec v_n = \vec v\cdot \vec v_n - \frac{\vec v \cdot \vec v_n}{\vec v_n \cdot \vec v_n}(\vec v_n \cdot \vec v_n) = \vec v\cdot \vec v_n - \vec v\cdot \vec v_n = 0. \]
+				An arbitrary vector $\vec w$ in $W$ can be represented as a linear combination of the vectors in $\mathcal B$, $w = c_1\vec v_1 + ... + c_d \vec v_d$. So by distributivity of the dot product, \[(\vec v - \pi(\vec v))\cdot w = c_1(\vec v - \pi(\vec v)) \cdot \vec v_1 + ... + c_d(\vec v - \pi(\vec v)) \cdot \vec v_d = 0.\]
+				Thus $\vec v - \pi(\vec v) \in W^\perp$ for all $\vec v \in \realsn$. So the transformation $\pi(\vec v)$ always outputs the orthogonal projection of $\vec v$ on $W$.
 			\end{solution}
 		\part Give a counterexample to show that if the basis vectors in $\mathcal B$ are not perpendicular to each other, then the linear transformation $\pi$ defined above $\pi$ is not orthogonal projection onto $W$.
 			\begin{solution}
-				\textbf{HELPER DEFINITION: Orthogonal Projection.} If $W$ is a subspace of an inner product space $V$ and if $\vec v \in V$, the orthogonal projection of $\vec v$ onto $W$ is the unique vector $\vec w \in W$ such that $\vec v - \vec w \in W^{\perp}$. The orthogonal projection of $\vec v$ onto $W$ is sometimes denoted proj$_W (\vec v)$.
+				Let $n=3$, $\mathcal B = \left\{\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix}, \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix}\right\}$ (not perpendicular), $W = $ span($\mathcal B$). Let $\vec v = \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix}$. Then since $\vec v \in W$, proj$_W(\vec v) = \vec v$. But 
+				\begin{align*}
+					\pi(\vec v) &= \frac{\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} \cdot \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix}}{\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} \cdot \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix}}\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} + \frac{\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} \cdot \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix}}{\begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} \cdot \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix}}\begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} \\
+					&= \frac{1}{1}\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} + \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix} = \begin{bmatrix}1 + \frac{1}{\sqrt2} \\ \frac{1}{\sqrt2} \\ 0\end{bmatrix} \neq \vec v.
+				\end{align*}
+				So when $\mathcal B$ is not pairwise perpendicular, $\pi(\vec v)$ is not necessarily the orthogonal projection.
 			\end{solution}
 	\end{parts}
 \clearpage
@@ -70,10 +88,25 @@
 \question Let $\mathcal O_n \subseteq \realsnxn$ denote the set of orthogonal $\nxn$ matrices. Determine whether each of the following statements is True or False, and provide a short proof (or a counter-example) of your claim.
 	\begin{parts}
 		\part $\mathcal O_n$ is a subspace of $\realsnxn$.
+			\begin{solution}
+				False, $\mathcal O_n$ does not include the zero matrix, since the zero matrix is not orthonormal.
+			\end{solution}
 		\part If $A, B \in \mathcal O_n$, then $AB \in \mathcal O_n$.
+			\begin{solution}
+				True, by Problem 5 of WS 18.
+			\end{solution}
 		\part If $A \in \mathcal O_n$, then $A^2 \in \mathcal O_n$.
+			\begin{solution}
+				True, by part (b).
+			\end{solution}
 		\part If $A^2 \in \mathcal O_n$, then $A \in \mathcal O_n$.
+			\begin{solution}
+				False. Consider $A = \begin{bmatrix} 1 & 0 \\ -2 & -1\end{bmatrix}$.
+			\end{solution}
 		\part If $A \in \mathcal O_n$ and $A^2$ is the identity matrix, then $A$ is symmetric.
+			\begin{solution}
+				True. $A = AI_n= AAA\transpose = A^2A\transpose = A\transpose$.
+			\end{solution}
 	\end{parts} 
 \clearpage
 
@@ -81,9 +114,134 @@
 \question \begin{parts}
 	\part Suppose that $\mathcal B = (\vec b_1, . . . , \vec b_r)$ is an orthonormal basis of a subspace $V$ of $\realsn$.
 	Prove that for all $\vec v, \vec w \in V, [\vec v]_\mathcal B \cdot [\vec w]_\mathcal B = \vec v \cdot \vec w$
-	\part Prove that if $\mathcal B = (\vec b_1, . . . , \vec b_r)$ and $\mathcal C = (\vec c_1, . . . , \vec c_r)$ are two orthonormal bases of $V $, then
-	$S_{\mathcal B \to \mathcal C}$ is an orthogonal $r \times r$ matrix.
+		\begin{solution}
+			By the key theorem, the matrix $S^{-1}$ which converts from  $\mathcal B$-coordinates to standard coordinates is equal to $\begin{bmatrix} \vec b_1 & \cdots & \vec b_r \end{bmatrix}$. Since $\vec b_1, . . . , \vec b_r$ are orthonormal, then $S^{-1}$ is orthogonal (By WS18 Problem 4c). So $S = (S^{-1})^{-1}$, the change of basis matrix from standard to $\mathcal B$-coordinates, is also orthogonal, since it is the inverse (and transpose) of an orthogonal matrix. Thus the change of coordinates transformation $T_S$ which $S$ represents is also orthogonal (by WS18 Theorem B). Then by the definition of orthogonal, dot product is preserved. So $[\vec v]_\mathcal B \cdot [\vec w]_\mathcal B = T_S(\vec v) T_S(\vec w) =\vec v \cdot \vec w$.
+		\end{solution}
+	\part Prove that if $\mathcal B = (\vec b_1, . . . , \vec b_r)$ and $\mathcal C = (\vec c_1, . . . , \vec c_r)$ are two orthonormal bases of $V $, then $S_{\mathcal B \to \mathcal C}$ is an orthogonal $r \times r$ matrix.
+		\begin{solution}
+			In the previous part, we showed that the change-of-coordinates matrices and transformations between an orthonormal basis and the standard basis are orthogonal. We also know that $S_{\mathcal B \to \mathcal C} = S_{\mathcal B \to \mathcal S}S_{\mathcal S \to \mathcal C}$, where $\mathcal S$ is the standard basis. The matrix product $S_{\mathcal B \to \mathcal S}S_{\mathcal S \to \mathcal C}$ represents the composition of two orthogonal change-of-coordinates transformations: from $\mathcal B$-coordinates to standard coordinates, then from standard coordinates to $\mathcal C$-coordinates. Since the composition of two orthogonal transformations is orthogonal, then $S_{\mathcal B \to \mathcal C}$ is orthogonal.
+		\end{solution}
 \end{parts}
+\clearpage
+%4
+\question Let $A$ be an $n \times m$ matrix. Prove or disprove each of the following statements:
+	\begin{parts}
+		\part (ker $A$)$^\perp = $ im $A\transpose$.
+			\begin{solution}
+				True by WS19 Problem 4a.
+			\end{solution}
+		\part Rank($A$) = Rank($A\transpose A$).
+			\begin{solution}
+				By rank nullity on $A$, $n = $ Rank $A + $ nullity $A$.
+				By rank nullity on $A\transpose A$, $n = $ Rank $A\transpose A + $ nullity $A\transpose A$.
+				\par For $\vec x \in $ker($A$), 
+				\[A\transpose A \vec x = A\transpose \vec 0 = \vec 0.\]
+				So ker($A$) $\subseteq$ ker($A\transpose A$).
+				\par For $\vec x \in $ker($A\transpose A$):
+				\begin{align*}
+					A\transpose A \vec x &= 0 \\
+					x\transpose A\transpose A \vec x &= 0 \\
+					(A\vec x)\transpose (A \vec x) &= 0 \\
+					|Ax|^2 &= 0
+				\end{align*}
+				So ker($A\transpose A$) $\subseteq$ ker($A$), and ker ($A$) = ker ($A\transpose A$). Then by the rank nullity equations, Rank($A$) = Rank($A\transpose A$).
+			\end{solution}
+		\part Rank($A$) = Rank($A\transpose$).
+			\begin{solution}
+				True by WS19 Problem 4b.
+				\par (below is reproving for practice, no need to grade this) \\
+				dim(source) = rank + nullity\\
+				For subspace $W$ of $V$, dim(V) = dim(W) + dim(W$^\perp$) \\
+				source of $A = R^m$ \\
+				source of $A^T = R^n$ \\
+				m = dim(im(A)) + dim(ker(A)) \\
+				$n = dim(im(A^T)) + dim(ker(A^T))$ \\
+				$n = dim(im(A^T)) + dim(im(A)^\perp)$ \\
+				$n = dim(im(A^T)) + dim(target of A) - dim(im(A))$ \\
+				$n = dim(im(A^T)) + n - dim(im(A))$ \\
+				$dim(im(A)) = dim(im(A^T))$ \\
+				Rank $A = $ Rank $A^T$
+			\end{solution}
+		\part Rank($A\transpose A$) = Rank ($A A\transpose$).
+			\begin{solution}
+				By part (b), Rank($A\transpose$) = Rank($AA\transpose$) and Rank($A$) = Rank($A\transpose A$). By part (c), Rank($A$) = Rank($A\transpose$). So Rank($A\transpose A$) = Rank ($A A\transpose$) is true by transitivity.
+			\end{solution}
+		\part ker $A$ = ker $AA\transpose$.
+			\begin{solution}
+				False. The dimensions of $A$ and $AA\transpose$ have different width, so their kernels will not even occupy the same space.
+			\end{solution}
+	\end{parts}
+\clearpage
+
+\fbox{\begin{minipage}{\textwidth}
+	\textbf{Definition.} If $A$ and $B$ are two subsets of $\realsn$, then we say $A \perp B$ if for all $\vec x \in A$ and for all $\vec y \in B$, $\vec x \cdot \vec y = 0$. (Note that in this definition that $A$ and $B$ do not need to be subspaces, just subsets.)
+\end{minipage} } \\
+\fbox{\begin{minipage}{\textwidth}
+	\textbf{Definition.} A subset $A \subseteq \realsn$ is called pairwise orthogonal if any two elements $\vec x, \vec y \in A$ are
+	orthogonal. Such a pairwise orthogonal subset $A \subseteq \realsn$ is called maximally pairwise orthogonal if it is not possible to enlarge set $A$ to obtain a pairwise orthogonal subset $A' \subseteq \realsn$ that strictly contains $A$.
+\end{minipage} }
+%5
+\question Let $n \in \naturals$. We consider the vector space $\realsn$.
+	\begin{parts}
+		\part Prove that for all $X, Y \subseteq \realsn$, if $X \perp Y$ then Span($X$) $\perp$ Span($Y$).
+			\begin{solution}
+				Let $X = \{\vec x_1, \vec x_2, ... \}$ and $Y = \{\vec y_1, \vec y_2, ... \}$. Then let  $x = c_1\vec x_1 + c_2\vec x_2  + ... $ and $y = d_1\vec y_1 + d_2\vec y_2 + ... $ be arbitrary vectors in $X$ and $Y$ respectively, where $c_i, d_i \in \reals$. Then 
+				\begin{align*}
+					\vec x \cdot \vec y &= (c_1\vec x_1 + c_2\vec x_2  + ...) \cdot (d_1\vec y_1 + d_2\vec y_2 + ... ) \\
+					&= (c_1\vec x_1) \cdot (d_1\vec y_1 + d_2\vec y_2 + ... )  + (c_2\vec x_2) \cdot (d_1\vec y_1 + d_2\vec y_2 + ... )  + ... \tag{distribute} \\
+					&= (c_1\vec x_1) \cdot (d_1\vec y_1) + (c_1\vec x_1) \cdot (d_2\vec y_2) + ...  + (c_2\vec x_2) \cdot (d_1\vec y_1) + (c_2\vec x_2) \cdot (d_2\vec y_2)  + ...\\
+					&= c_1d_1 \vec x_1 \cdot \vec y_1 + c_1d_2 \vec x_1 \cdot \vec y_2 + ...  + c_2d_1 \vec x_2 \cdot \vec y_1 + c_2d_1 \vec x_2 \cdot \vec y_2  + ... \\
+					&= 0 + 0 + ... + 0 + 0 + ... \tag{$x \cdot y=0$}\\
+					&= 0
+				\end{align*}
+				So if $X \perp Y$, then also Span($X$) $\perp$ Span($Y$).
+			\end{solution}
+		\part Let $X$ and $Y$ each be a linearly independent subset of $\realsn$. Prove that if $X \perp Y$, then $X \cup Y$ is linearly independent.
+			\begin{solution}
+				Assume $X \perp Y$, and $X$ and $Y$ are both linearly independent. We know that no vector in $X$ or $Y$ is $\vec 0$, since that would create a nontrivial relation. Then let a vector in Span($X \cup Y$) be $\vec v = c_1\vec x_1 + c_2\vec x_2  + ... + d_1\vec y_1 + d_2\vec y_2 + ... = \vec 0$, where $c_i, d_i \in \reals$. Note that $\vec v$ can also be expressed as the sum of a vector $\vec x = c_1\vec x_1 + c_2\vec x_2  + ...$ in Span($X$) and $\vec y = d_1\vec y_1 + d_2\vec y_2 + ...$ in Span($Y$). We want $\vec v$ to represent a relation on $X \cup Y$, so we set $\vec v = \vec 0$. Then also $|\vec v|^2 = 0$. But 
+				\begin{align*}
+					\vec v \cdot \vec v &= (\vec x + \vec y) \cdot (\vec x + \vec y) \\
+					&= |\vec x|^2 + 2(\vec x \cdot \vec y) + |\vec y|^2 \\
+					&= |\vec x|^2 + 2 \cdot 0 + |\vec y|^2
+				\end{align*}
+				So a relation only exists when the components of $v$ in Span($X$) and Span($Y$) are both $\vec 0$. But this only occurs when all of $c_i, d_i$ are 0, since $X$ and $Y$ are linearly independent. So $X \cup Y$ is linearly independent.
+			\end{solution}
+		\part Prove that every maximally pairwise orthogonal set of vectors in $\realsn$ has $n + 1$ elements.
+			\begin{solution}
+				\par \textbf{Lemma.} The elements of a pairwise orthogonal set of vectors must be linearly independent with the exception of $\vec 0$. That is, only the trivial relation can exist on the nonzero vectors of a pairwise orthogonal subset of vectors in $\realsn$. 
+				\par \textit{Proof.} Let $X$ be an orthogonal set of vectors $\{x_1, x_2, ... \}$ in $\realsn$. Assume a nontrivial relation $c_1 x_1 + c_2 x_2 + ... = \vec 0$ exists, where . Then $\vec x_i \cdot \vec 0 = \vec x_i \cdot( c_1 x_1 + c_2 x_2 + ...) = \vec x_i \cdot(c_i x_i) + 0 + 0 + ... = c_i |x_i|^2$ reveals a contradiction: $x_i = \vec 0$. So only the trivial relation can exist on the nonzero vectors of a pairwise orthogonal subset of vectors in $\realsn$.
+				\par We already know that bases of $\realsn$ are the maximal linearly independent sets in $\realsn$, and have $n$ elements. If a pairwise orthogonal set $X$ does not include a basis, it is not maximal since there exist nonzero vectors in the orthogonal complement of Span($X$), which could be added to $X$ and maintain its pairwise orthogonality. So any maximally pairwise orthogonal subset of $\realsn$ must include a basis of $\realsn$.
+				\par Since $\vec 0$ has a dot product of $0$ with any vector, it will be pairwise orthogonal with any set of vectors. \par Thus any maximally pairwise orthogonal set of vectors in $\realsn$ is $\{\vec 0\} \cup \mathcal B$, where $\mathcal B$ is an orthogonal basis of $\realsn$. No other vectors can be added, since they will be in the span of $\mathcal B$, and break the linear independence if added. Since $\mathcal B$ has $n$ elements, a maximally pairwise orthogonal set of vectors in $\realsn$ will have $n + 1$ elements.
+			\end{solution}
+	\end{parts}
+\clearpage
+
+%6
+\question Let $A$ be an $n \times m$ matrix, with $m \leq n$.
+	\begin{parts}
+		\part If rank($A$) $= m$, prove that it is always possible to write $A = QL$, where $Q$ is an $n \times m$ matrix with orthonormal columns and $L$ is a lower triangular $m \times m$ matrix with positive diagonal entries.
+			\begin{solution}
+				Let $\mathcal U = \{\vec u_1, ... \vec u_m\}$ be an orthonormal basis of im($A$) derived by descending Gram-Schmidt from the columns $\vec a_i$ of $A$ (which we know are a basis $\mathcal A$ of im($A$) since rank($A$) = $m$). That is, set $u_m = \frac{\vec a_m}{|\vec a_m|}$, and for each $1 \leq k < m$ let
+				\[ \vec u_k = \frac{\vec w_k}{|\vec w_k|}\text{  where  }\vec w_k = \vec a_k - \sum_{i=m}^{k+1}(\vec a_k \cdot \vec u_i)\vec u_i \]
+				Note that this summation descends from $a_m$ to $a_1$. Then let $Q = \begin{bmatrix} u_1 & \cdots & u_m \end{bmatrix}$. So $Q$ has dimension $n\times m$ and has orthonormal columns.
+				\par We know that for any two bases $\mathcal A$ and $\mathcal B$ for $W$, $B = AS_{\mathcal B \to \mathcal A}$, where $A$ and $B$ are matrices with the basis vectors as columns by WS17 Problem 6c. This applies to $\mathcal A$ and $\mathcal U$ as bases of im($A$): $A = QS_{\mathcal A \to \mathcal U}$. So, we just need to show that $S_{\mathcal A \to \mathcal U}$ is lower triangular.
+				\[ S_{\mathcal A \to \mathcal U} = \begin{bmatrix} [a_1]_\mathcal U & \cdots & [a_m]_\mathcal U\end{bmatrix}\]
+				By our definition of the Gram-Schmidt process to find $\mathcal U$, 
+				\begin{align*}
+					\vec a_k &= \vec w_k + \sum_{i=m}^{k+1}(\vec a_k \cdot \vec u_i)\vec u_i \\
+					\vec u_k \cdot \vec a_k &= \vec u_k \cdot (\vec w_k + \sum_{i=m}^{k+1}(\vec a_k \cdot \vec u_i)\vec u_i) \\
+					&= \frac{\vec w_k \cdot \vec w_k}{|w_k|} + \sum_{i=m}^{k+1}(\vec a_k \cdot \vec u_i)\vec u_i \cdot \vec u_k \\
+					&= |\vec w_k| + 0 \\
+					&= |\vec w_k| \\
+				\end{align*}
+				So then the $k$th column of $S_{\mathcal A \to \mathcal U}$ is \[ [a_k]_\mathcal U = \begin{bmatrix}0 \\ \vdots \\ 0 \\ a_k \cdot \vec u_k \\ a_k \cdot \vec u_{k+1} \\ \vdots \\ \vec a_k \cdot \vec u_{m-1} \\ \vec a_k \cdot \vec u_m\end{bmatrix} \]
+				Since $\vec u_k \cdot \vec a_k = |\vec w_k|$, we know the diagonal elements of $L = S_{\mathcal A \to \mathcal U}$ are always positive, since $\vec w_k$ is nonzero. Additionally, every element above the diagonal of $L$ is zero, so it is lower triangular. Thus we have found $A = QL$ which satisfy the conditions.
+			\end{solution}
+		\part Prove that if rank($A$) $< m$, it is still possible to obtain such a decomposition if we allow some diagonal entries to be zero.
+			\begin{solution}
+				
+			\end{solution}
+	\end{parts}
 \end{questions}
 
 \end{document}
