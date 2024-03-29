@@ -1,0 +1,84 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\instructor{Dr. Paul Kessenich}
+\def\email{jzpan@umich.edu}
+\def\dueDate{SUNDAY, MARCH 31}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\realsn}{\reals^{n}}
+\newcommand{\nxn}{n\times n}
+\newcommand{\realsnxn}{\reals^{\nxn}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\bf
+\begin{center}
+	MATH 217 W24 - LINEAR ALGEBRA, Section 001 ({\instructor}) \\
+	{\hwName} due {\dueDate} at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+\question Consider the four points (2, 4, 6), (1, 3, 2), (1, 1, 0) and (1, 2, 3) in $\reals^3$.
+	\begin{parts}
+		\part Write a matrix equation that, if it were consistent, could be used to find the coefficients $A, B, C$ in the equation of a plane of the form $z = Ax + By + C$ that contains all four
+        points.
+		\begin{solution}
+			Solution
+		\end{solution}
+        \part Show that the matrix equation from (a) is, in fact, inconsistent.
+        \part Now write a matrix equation that can be used to find the least-squares solution to the equation you wrote in (a). Fully simplify any matrix products that occur in your equation, but do not (yet) attempt to solve the equation.
+        \part Now, solve your equation using methods taught in this course. (You can use a matrix
+        calculator to check your answer, but you must be able to solve this problem by hand.)
+	\end{parts}
+\clearpage
+
+%2
+\question \begin{parts}
+    \part Which of the following is an inner product in P2? Explain.
+        \begin{subparts}
+            \subpart $\langle f, g \rangle = f(1)g(2) + f (2)g(1) + f (3)g(3)$
+            \subpart $\langle f, g \rangle = f (1)g(1) + f (2)g(2) + f (3)g(3)$
+        \end{subparts}
+    \part Let $V = C^\infty[-1, 1]$, the vector space of smooth functions on the interval $[-1, 1]$. Which of
+    the following is an inner product in $V$? Explain.
+        \begin{subparts}
+            \subpart $\langle f, g \rangle = \int_{-1}^{1}xf(x)g(x)dx$
+            \subpart $\langle f, g \rangle = \int_{-1}^{1}x^2f(x)g(x)dx$
+        \end{subparts}
+\end{parts}
+\end{questions}
+
+\end{document}
