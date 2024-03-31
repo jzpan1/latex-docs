@@ -225,13 +225,36 @@
                 \subpart $||x||$
                     \begin{solution}
                         \begin{align*}
-                            \langle 1, 1\rangle &= \int_{-\pi/2}^{\pi/2} x \cdot x \sin^2(x) dx \\
+                            \langle x, x\rangle &= \int_{-\pi/2}^{\pi/2} x \cdot x \sin^2(x) dx \\
                             &= \int_{-\pi/2}^{\pi/2} x^2 \sin^2(x) dx \\
                             &= \dfrac{{\pi}^3+6{\pi}}{24} \approx 2.077326358409941 \tag{calculator}\\
                         \end{align*}
                     \end{solution}
             \end{subparts}
         \part Find a basis $\mathcal U$ for the subspace $W$ that is orthonormal relative to the given inner product.
+            \begin{solution}
+                We utilize the Gram-Schmidt process on the given basis of W, $\{1, x, x^2\}$. We know already that $1$ and $x$ are orthogonal; First, we normalize.
+                    \begin{align*}
+                        \langle 1, 1 \rangle &= \pi / 2\\
+                        u_1 &= \sqrt{\frac{2}{\pi}} \\\\
+                        \langle x, x \rangle &= \dfrac{{\pi}^3+6{\pi}}{24} \\
+                        u_2 &= \sqrt{\dfrac{24}{{\pi}^3+6{\pi}}}x \approx 0.4813880091x \\
+                    \end{align*}
+                Then, we find the component of $x^2$ which is orthogonal to both of these.
+                \begin{align*}
+                    \langle 1, x^2 \rangle &= \int_{-\pi/2}^{\pi/2} x^2 \sin^2(x) dx \\
+                    &= \dfrac{{\pi}^3+6{\pi}}{24} \approx 2.077326358409941 \tag{calculator}\\
+                    \text{proj}_1 x^2 =& \frac{2\left(\dfrac{{\pi}^3+6{\pi}}{24}\right)}{\pi}\\
+                    &= \frac{\pi^2 + 6}{12} \\
+                \end{align*}
+                \begin{align*}
+                    \langle x, x^2 \rangle &= \int_{-\pi/2}^{\pi/2} x^3 \sin^2(x) dx \\
+                    &= 0 \tag{odd integrand}\\
+                    \text{proj}_x x^2 &= 0
+                    \\\\
+                    x^2\perp = x^2 - \frac{\pi^2 + 6}{12}
+                \end{align*}
+            \end{solution}
         \part Let $h \in C^\infty \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$ be the function defined by $h(x) = e^x$ for all $x \in \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$. Compute proj$_W h$.
     \end{parts}
 \end{questions}
