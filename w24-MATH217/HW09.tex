@@ -189,8 +189,8 @@
         \end{solution}
     \part Let $V = C^\infty[-1, 1]$, the vector space of smooth functions on the interval $[-1, 1]$. Which of the following is an inner product in $V$? Explain.
         \begin{subparts}
-            \subpart $\langle f, g \rangle = \int_{-1}^{1}xf(x)g(x)dx$
-            \subpart $\langle f, g \rangle = \int_{-1}^{1}x^2f(x)g(x)dx$
+            \subpart $\langle f, g \rangle = \int_{-1}^{1}xf(x)g(x)\, dx$
+            \subpart $\langle f, g \rangle = \int_{-1}^{1}x^2f(x)g(x)\, dx$
         \end{subparts}
     \begin{solution}
         Function (i) is not an inner product: Consider $f(x) = 1$. Then $\langle f, f \rangle_(i) = \int_{-1}^{1}x\, dx = 0$. But $f$ is not 0. So (i) is not positive definite.
@@ -200,7 +200,7 @@
 \end{parts}
 \clearpage
 
-\question Let $V = C^\infty \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$, the vector space of smooth functions on the interval $\left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$, and consider the inner product defined by $\langle f, g\rangle = \int_{-\pi/2}^{\pi/2} f (x)g(x) \sin^2(x) dx$. (You do not need to show that this is an inner product, but make sure that you would be able to do so if it were an exam question!) Let $W = $ span$(1, x, x^2)$.
+\question Let $V = C^\infty \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$, the vector space of smooth functions on the interval $\left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$, and consider the inner product defined by $\langle f, g\rangle = \int_{-\pi/2}^{\pi/2} f (x)g(x) \sin^2(x) \, dx$. (You do not need to show that this is an inner product, but make sure that you would be able to do so if it were an exam question!) Let $W = $ span$(1, x, x^2)$.
 \par In what follows, you may feel free to use an online integral calculator (e.g. Wolfram Alpha) to evaluate any difficult integrals, but make sure that your work shows clearly what integrals you are computing, and how you are making use of the results. Results may be expressed using either exact expressions (e.g., $\pi/\sqrt2$) or decimal approximations (e.g., 2.2214), but if you use decimal approximations, please retain at least four digits' worth of precision.
     \begin{parts}
         \part Compute each of the following.
@@ -208,8 +208,8 @@
                 \subpart $\langle 1, x \rangle $
                     \begin{solution}
                         \begin{align*}
-                            \langle 1, x\rangle &= \int_{-\pi/2}^{\pi/2} 1 \cdot x \sin^2(x) dx \\
-                            &= \int_{-\pi/2}^{\pi/2} x \sin^2(x) dx \\
+                            \langle 1, x\rangle &= \int_{-\pi/2}^{\pi/2} 1 \cdot x \sin^2(x) \, dx \\
+                            &= \int_{-\pi/2}^{\pi/2} x \sin^2(x) \, dx \\
                             &= \left[ -\dfrac{2x\sin\left(2x\right)+\cos\left(2x\right)-2x^2}{8} \right]_{-\pi/2}^{\pi/2} \tag{calculator} \\
                             &= 0 \tag{calculator} \\
                         \end{align*}
@@ -217,16 +217,16 @@
                 \subpart $||1||$
                     \begin{solution}
                         \begin{align*}
-                            \langle 1, 1\rangle &= \int_{-\pi/2}^{\pi/2} 1 \sin^2(x) dx \\
-                            &= \int_{-\pi/2}^{\pi/2} \sin^2(x) dx \\
+                            \langle 1, 1\rangle &= \int_{-\pi/2}^{\pi/2} 1 \sin^2(x) \, dx \\
+                            &= \int_{-\pi/2}^{\pi/2} \sin^2(x) \, dx \\
                             &= \frac{\pi}{2} \tag{calculator}\\
                         \end{align*}
                     \end{solution}
                 \subpart $||x||$
                     \begin{solution}
                         \begin{align*}
-                            \langle x, x\rangle &= \int_{-\pi/2}^{\pi/2} x \cdot x \sin^2(x) dx \\
-                            &= \int_{-\pi/2}^{\pi/2} x^2 \sin^2(x) dx \\
+                            \langle x, x\rangle &= \int_{-\pi/2}^{\pi/2} x \cdot x \sin^2(x) \, dx \\
+                            &= \int_{-\pi/2}^{\pi/2} x^2 \sin^2(x) \, dx \\
                             &= \dfrac{{\pi}^3+6{\pi}}{24} \approx 2.077326358409941 \tag{calculator}\\
                         \end{align*}
                     \end{solution}
@@ -236,26 +236,46 @@
                 We utilize the Gram-Schmidt process on the given basis of W, $\{1, x, x^2\}$. We know already that $1$ and $x$ are orthogonal; First, we normalize.
                     \begin{align*}
                         \langle 1, 1 \rangle &= \pi / 2\\
-                        u_1 &= \sqrt{\frac{2}{\pi}} \\\\
+                        u_1 &= \sqrt{\frac{2}{\pi}} \approx 0.7978845608 \\\\
                         \langle x, x \rangle &= \dfrac{{\pi}^3+6{\pi}}{24} \\
-                        u_2 &= \sqrt{\dfrac{24}{{\pi}^3+6{\pi}}}x \approx 0.4813880091x \\
+                        u_2 &= \sqrt{\dfrac{24}{{\pi}^3+6{\pi}}}x \approx 0.4813880091x \tag{calculator}\\
                     \end{align*}
                 Then, we find the component of $x^2$ which is orthogonal to both of these.
                 \begin{align*}
-                    \langle 1, x^2 \rangle &= \int_{-\pi/2}^{\pi/2} x^2 \sin^2(x) dx \\
+                    \langle 1, x^2 \rangle &= \int_{-\pi/2}^{\pi/2} x^2 \sin^2(x)\, dx \\
                     &= \dfrac{{\pi}^3+6{\pi}}{24} \approx 2.077326358409941 \tag{calculator}\\
-                    \text{proj}_1 x^2 =& \frac{2\left(\dfrac{{\pi}^3+6{\pi}}{24}\right)}{\pi}\\
+                    \text{proj}_1 x^2 =& \frac{\langle 1, x^2 \rangle}{|1|^2} = \frac{2\left(\dfrac{{\pi}^3+6{\pi}}{24}\right)}{\pi}\\
                     &= \frac{\pi^2 + 6}{12} \\
                 \end{align*}
                 \begin{align*}
-                    \langle x, x^2 \rangle &= \int_{-\pi/2}^{\pi/2} x^3 \sin^2(x) dx \\
+                    \langle x, x^2 \rangle &= \int_{-\pi/2}^{\pi/2} x^3 \sin^2(x)\, dx \\
                     &= 0 \tag{odd integrand}\\
-                    \text{proj}_x x^2 &= 0
+                    \text{proj}_x x^2 &= \frac{\langle x, x^2 \rangle}{|x|^2} x = 0
                     \\\\
-                    x^{2\perp} = x^2 - \frac{\pi^2 + 6}{12}
+                    (x^2)^\perp &= x^2 - \frac{\pi^2 + 6}{12} \\
+                    |(x^2)^\perp| &= \sqrt{\int_{-\pi/2}^{\pi/2} \left(x^2 - \frac{\pi^2 + 6}{12}\right)^2 \sin^2(x)\, dx} \\
+                    &= \sqrt{0.6850174980930311}  \tag{calculator}\\
+                    &= 0.8276578388  \tag{calculator}\\
+                    \vec u_3 &= \frac{x^2 - \frac{\pi^2 + 6}{12}}{0.8276578388} = 1.208228755x^2 - 1.597842697 \\
+                    \mathcal U &= \{0.7978845608, 0.4813880091x, 1.208228755x^2 - 1.597842697\}
                 \end{align*}
             \end{solution}
         \part Let $h \in C^\infty \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$ be the function defined by $h(x) = e^x$ for all $x \in \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$. Compute proj$_W h$.
+            \begin{solution}
+                \begin{align*}
+                    \text{proj}_W h &= \langle h, u_1 \rangle u_1 + \langle h, u_2 \rangle u_3 + \langle h, u_3 \rangle u_3 \\\\
+                    \langle h, u_1 \rangle &= \int_{-\pi/2}^{\pi/2} e^x \sqrt{\frac{2}{\pi}} \sin^2(x)\, dx \\
+                    &\approx 2.203405036732287 \tag{calculator}\\\\
+                    \langle h, u_2 \rangle &= \int_{-\pi/2}^{\pi/2} e^x \sqrt{\dfrac{24}{{\pi}^3+6{\pi}}}x \sin^2(x)\, dx \\
+                    &\approx 1.876472320301213 \tag{calculator} \\\\
+                    \langle h, u_3 \rangle &= \int_{-\pi/2}^{\pi/2} e^x \left(\frac{x^2 - \frac{\pi^2 + 6}{12}}{0.8276578388} \right) \sin^2(x)\, dx \\
+                    &\approx 0.5104683571142095 \tag{calculator} \\\\
+                    \text{proj}_W h &= 2.203405036732287 u_1 + 1.876472320301213 u_3 + 0.5104683571142095 u_3 \\
+                    &= 2.203405036732287 \cdot 0.7978845608  + 1.876472320301213 \cdot 0.4813880091x \\&\ \ \ + 0.5104683571142095 \cdot (1.208228755x^2 - 1.597842697) \\
+                    &= 1.75806286 + 0.9033112744x + 0.6167625476x^2 - 0.8156481365 \\
+                    &= \boxed{0.9424147235 + 0.9033112744x + 0.6167625476x^2}
+                \end{align*}
+            \end{solution}
     \end{parts}
 \end{questions}
 
