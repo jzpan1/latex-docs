@@ -133,8 +133,8 @@ Determine which of the following graphs is/are a tree. Additionally, determine w
         \item This is not a tree since it contains a cycle subgraph. However, it is bipartite since it doesn't have a odd cycle.
         \item This is not a tree since it contains cycle subgraphs (e.g. the cycle of nodes 1-2-4). Additionally, it is not bipartite since it contains odd cycles. (e.g. the cycle of nodes 1-2-4).
         \item This is not a tree since it contains many cycle subgraphs. It is also not bipartite since it contains odd cycles. (Since it is complete, there is a cycle between any set of vertices, e.g. vertices 1, 2, 3)
-        \item This is a tree because it contains no cycles. Additionally, 
-        \item ~\\\includegraphics[scale = 0.8]{images/08-2e.png}
+        \item This is a tree because it contains no cycles. Additionally, since it does not contain any cycles, it does not contain odd cycles, and so is not bipartite.
+        \item This is a tree because it contains no cycles. Additionally, since it does not contain any cycles, it does not contain odd cycles, and so is not bipartite.
     \end{qparts}
 \end{solution}
 
@@ -154,6 +154,28 @@ For each pair of cities below, (i) find the shortest path in distance, and (ii) 
 \end{qparts}
 
 \begin{solution}
+    \begin{qparts}
+        \item \begin{qsubparts}
+            \item Must take Newark to Woodbridge: +20 \\
+            \par Next, we compare routes from Woodbridge to Camden. Camden is connected to Trenton, Woodbridge, and Atlantic City. Cape May is not an option since its path from Woodbridge is very clearly longer than the others. \\
+            Direct Woodbridge-Camden: +60 \\
+            Woodb.-Trenton-Camden: $>60$ \\
+            Woodb.-Asbury-Trenton(-Camden): $>60$ \\
+            Woodb.-Asbury-Atlantic(-Camden): $>60$ \\
+            \par So Newark-Woodbridge-Camden is the shortest path by distance, with a length of $60+20 = 80$.
+            \item Again, must take Newark to Woodbridge: +\$0.60. Also, direct Woodbridge to Cambridge is free, so it is the cheapest from Woodbridge to Cambridge. So the cheapest path is Newark-Woodbridge-Camden, for a total of \$0.60.
+        \end{qsubparts}
+        \item \begin{qsubparts}
+            \item Must take Newark to Woodbridge: +20 \\
+            \par Next, we compare routes from Woodbridge to Camden. Camden is connected to Trenton, Woodbridge, and Atlantic City. Cape May is not an option since its path from Woodbridge is very clearly longer than the others. \\
+            Direct Woodbridge-Camden: +60 \\
+            Woodb.-Trenton-Camden: $>60$ \\
+            Woodb.-Asbury-Trenton(-Camden): $>60$ \\
+            Woodb.-Asbury-Atlantic(-Camden): $>60$ \\
+            \par So Newark-Woodbridge-Camden is the shortest path by distance, with a length of $60+20 = 80$.
+            \item Again, must take Newark to Woodbridge: +\$0.60. Also, direct Woodbridge to Cambridge is free, so it is the cheapest from Woodbridge to Cambridge. So the cheapest path is Newark-Woodbridge-Camden, for a total of \$0.60.
+        \end{qsubparts}
+    \end{qparts}
 \end{solution}
 
 \newpage
