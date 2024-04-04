@@ -166,14 +166,8 @@ For each pair of cities below, (i) find the shortest path in distance, and (ii) 
             \item Again, must take Newark to Woodbridge: +\$0.60. Also, direct Woodbridge to Cambridge is free, so it is the cheapest from Woodbridge to Cambridge. So the cheapest path is Newark-Woodbridge-Camden, for a total of \$0.60.
         \end{qsubparts}
         \item \begin{qsubparts}
-            \item Must take Newark to Woodbridge: +20 \\
-            \par Next, we compare routes from Woodbridge to Camden. Camden is connected to Trenton, Woodbridge, and Atlantic City. Cape May is not an option since its path from Woodbridge is very clearly longer than the others. \\
-            Direct Woodbridge-Camden: +60 \\
-            Woodb.-Trenton-Camden: $>60$ \\
-            Woodb.-Asbury-Trenton(-Camden): $>60$ \\
-            Woodb.-Asbury-Atlantic(-Camden): $>60$ \\
-            \par So Newark-Woodbridge-Camden is the shortest path by distance, with a length of $60+20 = 80$.
-            \item Again, must take Newark to Woodbridge: +\$0.60. Also, direct Woodbridge to Cambridge is free, so it is the cheapest from Woodbridge to Cambridge. So the cheapest path is Newark-Woodbridge-Camden, for a total of \$0.60.
+            \item Trenton - Camden - Atlantic City: $30 + 55 = 85$
+            \item Trenton - Ashbury Park - Atlantic City: $0.00 + 1.25 = \$ 1.25$.
         \end{qsubparts}
     \end{qparts}
 \end{solution}
@@ -187,6 +181,18 @@ Determine whether or not each of the following pairs of graphs are isomorphic. I
 \end{qparts}
 
 \begin{solution}
+    \begin{qparts}
+        \item Yes. The isomorphism $f$ which maps
+        \begin{align*}
+            f(1) &= b \\
+            f(2) &= e \\
+            f(3) &= d \\
+            f(4) &= c \\
+            f(5) &= a
+        \end{align*}
+        \item No. On the left side, there is a single node with a degree of 5, vertex 7. However, on the right side, there are two such vertices: a and d.
+        \par However, the left side could be made isomorphic to the right side by adding an edge from vertex 6 to vertex 3.
+    \end{qparts}
 \end{solution}
 
 \newpage
@@ -201,6 +207,12 @@ State whether each of the following contains, or is guaranteed to contain a Hami
 \end{qparts}
 
 \begin{solution}
+    \begin{qparts}
+        \item Yes. The path from a-b-d-c-e-a.
+        \item No. There is no way to return to a node on either side because the c-f edge can only be traveled once.
+        \item Yes. The graph must contain an even cycle since it is bipartite. Also, because it is simple, there cannot be a 2-cycle. So the cycle must be a 4-cycle, which would contain all the vertices, and be a path for a Hamiltonian cycle.
+        \item No. The graph can be disconnected, since 0 is even.
+    \end{qparts}
 \end{solution}
 
 \newpage
@@ -221,6 +233,12 @@ Let $G=(V,E)$ be a graph of the continental U.S. where $V$ is the set of the fir
 \end{qparts}
 
 \begin{solution}
+    \begin{qparts}
+        \item No. More than 2 states have an odd number of borders: California, Utah, and Maine all have an odd number of borders. 
+        \item No. Notice that Utah and its bordering states form an odd wheel with 5 spokes. We show that such a subgraph cannot be 3-colorable.
+        \par Label the vertices on the "spokes" as nodes 1, 2, 3, 4, 5. Name the middle one 6. Then 1, 2, 3, 4, 5 form an odd cycle. We know that this is not 2-colorable, so WLOG assume it can be colored by 3 colors. But then node 6 shares an edge with all the other nodes in the wheel. So it cannot have the same color as the 3 colors of the other nodes. This means the wheel is not 3-colorable. (This reasoning applies for any $n$-coloring we had chosen for the 5-cycle, since we know $n$ is at least 3, and the wheel is $n+1$ colorable.)
+        \par Since this subgraph of $G$ is not 3-colorable, then $G$ is not 3-colorable.
+    \end{qparts}
 \end{solution}
 
 \newpage
@@ -230,6 +248,7 @@ A Hamiltonian cycle is a cycle that traverses through every vertex in a graph ex
 \textbf{Note:} Two cycles are the same as long as the have the same vertices, and each vertex has the same left and right neighbors in the cycle. For instance the cycles $(a,b,c,a),$ $(b,c,a,b),$ and $(a,c,b,a)$ are all equivalent.
 
 \begin{solution}
+    Any simple cycle between $n$ vertices will result in a Hamiltonian cycle. So we see how many ways we can order the $n$ nodes in a sequence. This would be $n!$. However, different orders will not necessarily be different cycles: the sequence can be rotated and reversed and still result in the same cycle. So there are $2n$ ways to create the same cycle with the sequence model. Thus, the number of cycles can be calculated by $\frac{n!}{2n}=\frac{(n-1)!}{2}$. This formula will give fractional answers for $K_1$ and $K_2$, since there are 0 cycles for these graphs. So we can add a floor to the formula, if desired. However, this formula works for all $K_n$ with $n \geq 3$.
 \end{solution}
 
 \subsection*{\probnum Captivating Counts [14 points]}
@@ -242,57 +261,19 @@ How many positive integers between $1000$ and $9999$ inclusive
 Justify \textbf{and simplify} your answers. You may use a calculator to simplify.
 
 \begin{solution}
-\end{solution}
-
-\pagebreak
-\section*{Grading of Groupwork \prevhwnum{}}
-Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
-\begin{itemize}
-    \item Use the table below to grade your past groupwork submission and calculate scores.
-    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
-    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
-    \item For extra credit, write positive comment(s) about your work.
-    \item You don't have to redo problems correctly, but it is recommended!
-    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
-\end{itemize}
-
-\begin{center}
-\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
-\hline
- & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
-\hline
-Problem 1 & & & & & & &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/10\\
-\hline 
-Problem 2 & & & & & & &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/8\\
-\Xhline{1.25pt}
-Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/18\\
-\hline
-\end{tabular}}
-\end{center}
-
-\pagebreak
-\setcounter{probnumcount}{1}
-\section*{Groupwork \hwnum{} Problems}
-
-\subsection*{\probnum Commit Tea Party [15 points]} 
-Two committees are having a meeting. If there are 12 people in each committee, how many different ways can they sit around a table given the following restrictions? Note that two orderings are considered equal if each person has the same two neighbors (without distinguishing their left and right neighbors).
-
-\begin{qparts}
-    \item There are no restrictions on seating.
-    \item Two people in the same committee cannot be neighbors.
-    \item Everybody must have exactly two neighbors from their committee.
-    \item Everybody must have exactly one neighbor from their committee.
-\end{qparts}
-
-\begin{solution}
-\end{solution}
-
-\subsection*{\probnum Hiking Extravaganza [15 points]}
-Prove that every complete $n$-node weighted graph (with all possible edges) with $n \ge 1$ and all distinct edge weights has a (possibly non-simple) path of $n-1$ edges along which the edge weights are strictly increasing.
-
-\textbf{Hint:} Start by placing a hiker on each node. Try to show that the hikers can walk paths of \emph{total} length $n(n-1)$, each along increasing-weight paths.
-
-\begin{solution}
+    \begin{qparts}
+        \item 9 choices for first digit (1 to 9), 9 choices for 2nd digit (0 to 10 but different from first), 8 choices for 3rd digit (0 to 10 but different from first and second), 7 choices for 4th digit (0 to 10 but different from first 3 digits).
+        $9 \cdot 9 \cdot 8 \cdot 7 = \boxed{4536}$
+        \item We can see that the intersection of these two sets is the numbers divisible by 35. So by inclusion-exclusion, this is equal to 
+        \[ \#\ divisible\ by\ 5 + \#\ divisible\ by\ 7 - \#\ divisible\ by\ 35. \]
+        \par The number divisible by 5: $1000 = 200\cdot 5$ to $9995 = 1999\cdot 5$ is $1999 - 200 = 1799$ integers.
+        \par The number divisible by 7: $1001 = 143\cdot 7$ to $9996 = 1428\cdot 7$ is $1428 - 143 = 1285$ integers.
+        \par The number divisible by 35: $1015 = 29\cdot 35$ to $9975 = 285\cdot 5$ is $285 - 29 = 256$ integers.
+        \[ 1799 + 1285 - 256 = \boxed{2828} \]
+        \item The intersection of these two sets is the numbers divisible by 7. So the calculation will just be 
+        \[ \#\ divisible\ by\ 5  - \#\ divisible\ by\ 35. \]
+        So the number of integers between 1000 and 9999 inclusive divisible by 5 but not 7 is $1799 - 256 = \boxed{1543}$.
+    \end{qparts}
 \end{solution}
 
 \end{document}
