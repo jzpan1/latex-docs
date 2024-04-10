@@ -70,10 +70,50 @@
 				Express $\vec u$ and $\vec v$ as linear combinations of $e_1, e_2:$
 				\[ \vec u = u_1 \vec e_1 + u_2 \vec e_2 \text{   and   } \vec v = v_1 \vec e_1 + v_2 \vec e_2 \]
 				Then \begin{align*}
-					F(\vec u, \vec v) &= F(u_1 \vec e_1 + u_2 \vec e_2, \vec v = v_1 \vec e_1 + v_2 \vec e_2) \\
+					F(\vec u, \vec v) &= F(u_1 \vec e_1 + u_2 \vec e_2, v_1 \vec e_1 + v_2 \vec e_2) \\
+                    &= F(u_1 \vec e_1, v_1 \vec e_1 + v_2 \vec e_2) + F(u_2 \vec e_2, v_1 \vec e_1 + v_2 \vec e_2) \tag{bilinearity} \\
+                    &= F(u_1 \vec e_1, v_1 \vec e_1) + F(u_1 \vec e_1, v_2 \vec e_2) + F(u_2 \vec e_2, v_1 \vec e_1 ) + F(u_2 \vec e_2, v_2 \vec e_2)\\
+                    &= u_1 v_1 F( \vec e_1, \vec e_1) + u_1 v_2 F(\vec e_1, \vec e_2) + u_2 v_1 F(\vec e_2, \vec e_1 ) + u_2 v_2 F(\vec e_2, \vec e_2)\\
+                    &= u_1 v_1 (0) + u_1 v_2 (1) + u_2 v_1 (-1) + u_2 v_2 (0) \tag{alternating} \\
+                    &= u_1 v_2 - u_2 v_1\\
+                    &= \text{det}\begin{bmatrix*}
+                        u_1 & v_1 \\ u_2 & v_2
+                    \end{bmatrix*} \\
+                    &= \text{det}[\vec u\  \vec v]
 				\end{align*}
 			\end{solution}
 	\end{parts}
+
+\clearpage
+
+
+\question \begin{parts}
+    \part Prove that $T$ is a linear transformation.
+        \begin{solution}
+            Let $A, B \in \reals^{2 \times 2}$, and $c \in \reals$. \\
+            $T$ respects addition:
+            \[ T(A+B) = (A+B)M = AM + BM = T(A) + T(B) \]
+            by distributivity of matrix multiplication.\\
+            $T$ respects scalar multiplication:
+            \[ T(cA) = (cA)M = c(AM) = cT(A) \]
+            by properties of matrix multiplication.
+            \par Since $T$ respects addition and scalar multiplication, it is linear.
+        \end{solution}
+    \part Find the $\mathcal E$-matrix $[T ]_\mathcal E$ of $T$, where $\mathcal E$ is the ordered basis
+    \[ \mathcal E = \left(E_{11}, E_{12}, E_{21}, E_{22}\right) = \left( \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix} \right) \]
+    of $\reals^{2 \times 2}$. Your answer should be in terms of the entries of $M$.
+        \begin{solution}
+            \begin{align*}
+                [T]_\mathcal E &= \begin{bmatrix} | & | & | & | \\ [T(E_{11})]_\mathcal E & [T(E_{12})]_\mathcal E & [T(E_{21})]_\mathcal E & [T(E_{22})]_\mathcal E \\ | & | & | & | \end{bmatrix}\\\\
+                [T(E_{11})]_\mathcal E &= \left[\begin{bmatrix*} a & b \\ 0 & 0 \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} a \\ b \\ 0 \\ 0 \end{bmatrix} \\
+                [T(E_{12})]_\mathcal E &= \left[\begin{bmatrix*} c & d \\ 0 & 0 \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} c \\ d \\ 0 \\ 0 \end{bmatrix} \\
+                [T(E_{21})]_\mathcal E &= \left[\begin{bmatrix*} 0 & 0 \\ a & b \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} 0 \\ 0 \\ a \\ b \end{bmatrix} \\
+                [T(E_{22})]_\mathcal E &= \left[\begin{bmatrix*} 0 & 0 \\ c & d \end{bmatrix*}\right]_\mathcal E = \begin{bmatrix} 0 \\ 0 \\ c \\ d \end{bmatrix} \\\\
+                [T]_\mathcal E = \begin{bmatrix} a & c & 0 & 0 \\ b & d & 0 & 0 \\ 0 & 0 & a & c \\ 0 & 0 & b & d \end{bmatrix}
+            \end{align*}
+        \end{solution}
+    \part 
+\end{parts}
 \end{questions}
 
 \end{document}
