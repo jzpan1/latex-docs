@@ -1,0 +1,71 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\instructor{Dr. Paul Kessenich}
+\def\email{jzpan@umich.edu}
+\def\dueDate{???}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\realsn}{\reals^{n}}
+\newcommand{\nxn}{n\times n}
+\newcommand{\realsnxn}{\reals^{\nxn}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\bf
+\begin{center}
+	MATH 217 W24 - LINEAR ALGEBRA, Section 001 ({\instructor}) \\
+	{\hwName} due {\dueDate} at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+\begin{questions}
+\question Question
+	\begin{parts}
+		\part Prove that $F$ is alternating if and only if $F (\vec u, \vec v) = -F (\vec v, \vec u)$ for all $\vec u, \vec v \in \reals^2$.
+		\begin{solution}
+			By bilinearity, we know 
+            \begin{align*}
+                F(u + v, v + u) &= 0 \\
+                F(u, v + u) + F(v, v + u) &= 0 \\
+                F(u, v) + F(u, u) + F(v, v) + F(v, u) &= 0 \\
+                F(u, v) + 0 + 0 + F(v, u) &= 0 \\
+                F(u, v) + F(v, u) &= 0 \\
+                F(u, v) &= -F(v, u)
+            \end{align*}
+		\end{solution}
+	\end{parts}
+\end{questions}
+
+\end{document}
