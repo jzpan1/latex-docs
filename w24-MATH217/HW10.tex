@@ -112,7 +112,27 @@
                 [T]_\mathcal E = \begin{bmatrix} a & c & 0 & 0 \\ b & d & 0 & 0 \\ 0 & 0 & a & c \\ 0 & 0 & b & d \end{bmatrix}
             \end{align*}
         \end{solution}
-    \part 
+    \part Compute det$[T ]_\mathcal E$.
+		\begin{solution}
+			Using the Laplace expansion on our result from (b), \
+				\begin{align*}
+					\text{det}[T]_\mathcal E &= \begin{vmatrix} a & c & 0 & 0 \\ b & d & 0 & 0 \\ 0 & 0 & a & c \\ 0 & 0 & b & d \end{vmatrix} \\
+					&= a\begin{vmatrix} d & 0 & 0 \\  0 & a & c \\ 0 & b & d \end{vmatrix}  - c\begin{vmatrix} b & 0 & 0 \\ 0 &  a & c \\ 0 & b & d \end{vmatrix}\\\
+					&= ad\begin{vmatrix}  a & c \\ b & d \end{vmatrix} - bc\begin{vmatrix}  a & c \\ b & d \end{vmatrix}\\
+					&= (ad - bc)^2 \\
+					&= a^2 d^2 - 2abcd + b^2 c^2 \\
+				\end{align*}
+		\end{solution}
+	\part Compute det$[T ]_\mathcal B$.
+		\begin{solution}
+			The determinant of a transformation is the same in any basis. So it will be the same as part (c), or $(ad - bc)^2 = a^2 d^2 - 2abcd + b^2 c^2$.
+		\end{solution}
+	\part 
+\end{parts}
+
+\question \begin{parts}
+	Prove that there exists a unique vector ~z ∈ R4 such that T (~x) = ~z ·~x for all ~x ∈ R4, and find
+the components of ~z in terms of the vectors ~u, ~v, and ~w. (Hint: ~x = x1~e1 +x2~e2 +x3~e3 +x4~e4.)
 \end{parts}
 \end{questions}
 
