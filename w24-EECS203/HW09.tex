@@ -211,8 +211,9 @@ Suppose you put two dice in a bag: one of the dice has a 6 on every face, and th
 
 \begin{solution}
     \begin{qparts}
-        \item The probability is $\dfrac{1}{6}$.
-        \item Yes. Their joint probability is $\dfrac{1}{36}$, and their individual properties are each $\dfrac{1}{6}$. Since $\dfrac{1}{36} = \left(\dfrac{1}{6}\right)^2$, their joint probability is equal to the product of their individual probabilities, and they are independent.
+        \item We use Bayes' Theorem. There are 7 ways, out of 12 possible outcomes, you could have rolled a 6 on the previous roll: all 6 faces of the nonstandard die, and the 6 face on the standard die. So the probability of the previous roll being a 6 is $\dfrac{7}{12}$. The joint probability is $ \frac{1}{2} \cdot 1 \cdot 1 + \frac{1}{2} \cdot \frac{1}{6} \cdot \frac{1}{6} = \frac{37}{72} $. Using Bayes' Theorem, the conditional probability is 
+        \[ \frac{\frac{37}{72}}{\frac{7}{12}} = \boxed{\frac{37}{42}}. \]
+        \item No. Their joint probability is $\dfrac{37}{42}$, and their individual properties are each $\dfrac{7}{12}$. Since $\dfrac{37}{42} \neq \left(\dfrac{7}{12}\right)^2$, their joint probability is not equal to the product of their individual probabilities, and they are not independent.
     \end{qparts}
 \end{solution}
 
