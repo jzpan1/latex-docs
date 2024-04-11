@@ -127,12 +127,56 @@
 		\begin{solution}
 			The determinant of a transformation is the same in any basis. So it will be the same as part (c), or $(ad - bc)^2 = a^2 d^2 - 2abcd + b^2 c^2$.
 		\end{solution}
-	\part 
+	\part Either prove that T is always diagonalizable no matter what $M$ is, or provide an explicit example of a matrix $M$ for which $T$ is not diagonalizable and brieﬂy explain why your example works.
+        \begin{solution}
+            %FINISHHHHHHADSHFOAHFOHEIFHBIKFJBODJ
+        \end{solution}
 \end{parts}
 
 \question \begin{parts}
-	Prove that there exists a unique vector ~z ∈ R4 such that T (~x) = ~z ·~x for all ~x ∈ R4, and find
-the components of ~z in terms of the vectors ~u, ~v, and ~w. (Hint: ~x = x1~e1 +x2~e2 +x3~e3 +x4~e4.)
+	\part Prove that there exists a unique vector $\vec z \in \reals^4$ such that $T (\vec x) = \vec z \cdot \vec x$ for all $\vec x \in \reals^4$, and find the components of $\vec z$ in terms of the vectors $\vec u, \vec v$, and $\vec w$. (Hint: $\vec x = x_1 \vec e_1 + x_2 \vec e_2 + x_3 \vec e_3 + x_4 \vec e_4$.)
+        \begin{solution}
+            We calculate the determinant by by expanding the column of $\vec x$. 
+            \begin{align*}
+                \begin{vmatrix} \vec x & \vec u & \vec v & \vec w \end{vmatrix} &= x_1 \begin{vmatrix} u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3 \\ u_4 & v_4 & w_4 \end{vmatrix} - x_2 \begin{vmatrix} u_1 & v_1 & w_1 \\ u_3 & v_3 & w_3 \\ u_4 & v_4 & w_4 \end{vmatrix} + x_3 \begin{vmatrix} u_1 & v_1 & w_1 \\ u_2 & v_2 & w_2 \\ u_4 & v_4 & w_4 \end{vmatrix} - x_4 \begin{vmatrix} u_1 & v_1 & w_1 \\ u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3 \end{vmatrix} \\ \\
+                \vec z &= \begin{bmatrix}
+                    \begin{vmatrix} u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3 \\ u_4 & v_4 & w_4 \end{vmatrix} \\ - \begin{vmatrix} u_1 & v_1 & w_1 \\ u_3 & v_3 & w_3 \\ u_4 & v_4 & w_4 \end{vmatrix} \\ \begin{vmatrix} u_1 & v_1 & w_1 \\ u_2 & v_2 & w_2 \\ u_4 & v_4 & w_4 \end{vmatrix} \\ 
+                    - \begin{vmatrix} u_1 & v_1 & w_1 \\ u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3 \end{vmatrix}
+                \end{bmatrix}
+            \end{align*}
+        \end{solution}
+    \part Find the vector $\vec z$ (as in part (a)) when $\vec u = \vec e_1, \vec v = \vec e_2$, and $\vec w = \vec e_3$ are the ﬁrst three
+    standard basis vectors in $\reals^4$.
+        \begin{solution}
+            When $u, v, w$ are such, only the last element of $\vec z$ is nonzero. So, $\vec z$ is $\begin{bmatrix*} 0 \\ 0 \\ 0 \\ -1 \end{bmatrix*}$.
+        \end{solution}
+    \part When is $\vec z = \vec 0$? (Your answer should be in terms of $\vec u, \vec v$, and $\vec w$.)
+        \begin{solution}
+            The determinant of a set of vectors is zero if and only if it is linearly dependent. When $\vec z$ is 0, this is an equivalent statement to the determinant $| \vec x \ \vec u \ \vec v \ \vec w |$ being 0 for all $\vec x$. This can only happen when $\vec u, \vec v, \vec w$ are linearly dependent.
+            \par Alternatively, we can realize that $\vec z = 0$ means that $\vec u, \vec v, \vec w$ are linearly dependent since their corresponding vectors with one element removed are linearly dependent (e.g. $\begin{bmatrix}
+                u_1 \\ u_2 \\ u_3
+            \end{bmatrix}, \begin{bmatrix}
+                v_1 \\ v_2 \\ v_3
+            \end{bmatrix}, \begin{bmatrix}
+                w_1 \\ w_2 \\ w_3
+            \end{bmatrix}$ are linearly dependent since the last element of $\vec z$, the determinant of these three vectors, is 0).
+        \end{solution}
+    \part Prove that $\vec z$ is orthogonal to each of $\vec u, \vec v$ and $\vec w$, and ﬁnd det($[\vec z \ \vec u \ \vec v \ \vec w]$) in terms of $||\vec z||$.
+        \begin{solution}
+            We use $\vec u$ to represent any of $\vec u, \vec v, \vec w$ without loss of generality. The dot product $\vec u \cdot \vec z =$ det$([\vec u \ \vec u \ \vec v \ \vec w])$ by our definition of $\vec z$. Since this matrix has two columns of $\vec u$, it is linearly dependent. So its determinant is 0, and the dot product $\vec u \cdot \vec v = 0$. So $\vec z$ is orthogonal to $\vec u, \vec v, \vec w$.
+            \par By our definition of $\vec z$, det($[\vec z \ \vec u \ \vec v \ \vec w]) = \vec z \cdot \vec z = ||\vec z||^2$.
+        \end{solution}
+\end{parts}
+
+\question \begin{parts}
+    \part Prove that for every $n \times n$ matrix $A$ and for every eigenvalue $\lambda$ of $A$, the real number $p(\lambda)$
+    is an eigenvalue of the $n \times n$ matrix $p(A)$.
+        \begin{solution}
+            Let $\vec v$ be a eigenvector corresponding to $\lambda$ of $A$. Let $p(A) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots$. Then 
+                \begin{align*}
+                    p(A) \vec v = a_0 \vec v + a_1 A \vec v + a_2 A^2 \vec v +
+                \end{align*}
+        \end{solution}
 \end{parts}
 \end{questions}
 
