@@ -172,11 +172,35 @@
     \part Prove that for every $n \times n$ matrix $A$ and for every eigenvalue $\lambda$ of $A$, the real number $p(\lambda)$
     is an eigenvalue of the $n \times n$ matrix $p(A)$.
         \begin{solution}
-            Let $\vec v$ be a eigenvector corresponding to $\lambda$ of $A$. Let $p(A) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots$. Then 
+            Let $\vec v$ be a eigenvector corresponding to $\lambda$ of $A$. Let $p(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots$, where $a_i \in \reals$. Then 
                 \begin{align*}
-                    p(A) \vec v = a_0 \vec v + a_1 A \vec v + a_2 A^2 \vec v +
+                    p(A) \vec v &= a_0 \vec v + a_1 A \vec v + a_2 A^2 \vec v + a_3 A^3 \vec v + \cdots \\
+                    &= a_0 \vec v + a_1 \lambda \vec v + a_2 \lambda^2 \vec v + a_3 \lambda^3 \vec v + \cdots \tag{definition of eigenvector}\\
+                    &= \left( a_0  + a_1 \lambda  + a_2 \lambda^2  + a_3 \lambda^3  + \cdots\right)\vec v \\
+                    &= p(\lambda) \vec v
                 \end{align*}
+            So $p(\lambda)$ is an eigenvalue of $p(A)$.
         \end{solution}
+    \part Let $p$ be a polynomial and let $n \in N$. Prove that if $S$ is an invertible $n \times n$ matrix, then for every $A \in \realsnxn$ we have $p(S^{-1}AS) = S^{-1}p(A)S$.
+        \begin{solution}
+            Let $p(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots$, where $a_i \in \reals$. Then 
+            \begin{align*}
+                p(S^{-1}AS) &= a_0 I_n + a_1 (S^{-1}AS) + a_2 (S^{-1}AS)^2 + a_3 (S^{-1}AS)^3 + \cdots \\
+                &= a_0 I_n + a_1 (S^{-1}AS) + a_2 S^{-1}A^2S + a_3 S^{-1}A^3S + \cdots \tag{since $(S^{-1}AS)^n = S^{-1} A^n S \  \forall n \in \naturals$}\\
+                &= a_0 S^{-1}I_n S + a_1 (S^{-1}AS) + a_2 S^{-1}A^2S + a_3 S^{-1}A^3S + \cdots \\
+                &= S^{-1} \left(a_0 I_n  + a_1 A + a_2 A^2 + a_3 A^3 + \cdots\right) S \\
+                &= S^{-1} p(A) S \\
+            \end{align*}
+        \end{solution}
+    \part Let $p$ be a polynomial and let $A$ be an $n \times n$ matrix. Prove that if $A$ is diagonalizable, then every eigenvalue of $p(A)$ is of the form $p(\lambda)$ for some eigenvalue $\lambda$ of $A$.
+        \begin{solution}
+            
+        \end{solution}
+\end{parts}
+
+\question \begin{parts}
+    \part Let $A \in \reals^{2 \times 2}$ be a $2 \times 2$ matrix such that $A^2 = I_2$. Prove that $A$ is diagonalizable. (Hint: try factoring $A^2 - I_2$, and consider the possible ranks of the factors.)
+    \part Does the same result hold for larger matrices? That is, if $A \in \realsnxn$ is an $\nxn$ matrix for which $A^2 = I_n$, must $A$ be diagonalizable? Either prove this or give a counterexample.
 \end{parts}
 \end{questions}
 
