@@ -230,7 +230,15 @@ You roll a fair six-sided die 12 times. Find:
 You \textbf{do not} need to simplify your answers.
 
 \begin{solution}
-
+    \begin{qparts}
+        \item This is a Binomial experiment with success probability of $\frac{1}{6}$, and 12 trials. So this probability is equal to the probability of rolling a 6, squared; multiplied by the probability of not rolling a 6, to the power of 10; multiplied by the number of ways to choose 2 items from 12. 
+        \[ \boxed{ \left(\frac 16\right)^2 \left( \frac 56 \right)^{10} {12 \choose 2} }\]
+        \item The last 8 rolls are independent of the first 4, so we can model this as a Binomial experiment with $p= \frac{1}{6}$ and 8 trials. So the probability is 
+        \[ \boxed{ \left(\frac 16\right)^2 \left( \frac 56 \right)^{6} {8 \choose 2} }\]
+        \item We can find this with the same model as part (a), using complementary counting. That is, subtract the probability that less than two rolls come up as 6 from 1. This is 
+        \[ \boxed{ 1 - \left(\frac 16\right) \left( \frac 56 \right)^{11} {12 \choose 1} - \left( \frac 56 \right)^{12} {12 \choose 0} } \]
+        \item As a Binomial experiment, the expected value of rolls that come up as 6 is $12 \cdot \frac 16$ by linearity. This is equal to $\boxed{2}$.
+    \end{qparts}
 \end{solution}
 
 \subsection*{\probnum Fastest Draw in the Midwest [12 points]}
@@ -242,81 +250,10 @@ Suppose Grace has a standard deck of 52 cards. Grace expects she can draw all 52
 \textbf{Note:} The cards do not have to be selected consecutively. For example, \underline{A$\clubsuit$}, $3\diamondsuit,$ J$\spadesuit,$ \underline{2$\clubsuit$} is a valid start, and there would only be 50 cards left in the deck at this point.
 
 \begin{solution}
-
+    By linearity, this is equal to the expected number of draws for each card in the sequence. For each card in the sequence, the probability of drawing the card can be modeled as a geometric distribution. For instance, for A$\clubsuit$, there is always a $\frac{1}{52}$ chance that the card is the next one drawn, since there will be 52 cards in the deck at that point. As a geometric distribution, there will be an expected value of 52 draws before the A$\clubsuit$. Then, the 2$\clubsuit$ has a probability of $\frac{1}{51}$, and thus an expected value of 51 draws. This pattern continues to the last card in the deck, which has an expected value of 1 draw.
+    \par The sum of the expected values is equal to an arithmetic series 1 + 2 + 3 + ... + 52. This is equal to 
+    \[ \frac{52 \cdot 51}{2} = 1326. \]
+    So the expected value of draws is 1326, which makes Grace's guess closer than Yunsoo's.
 \end{solution}
-
-\pagebreak
-\section*{Grading of Groupwork \prevhwnum{}}
-Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
-\begin{itemize}
-    \item Use the table below to grade your past groupwork submission and calculate scores.
-    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
-    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
-    \item For extra credit, write positive comment(s) about your work.
-    \item You don't have to redo problems correctly, but it is recommended!
-    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
-\end{itemize}
-
-\begin{center}
-\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
-\hline
- & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
-\hline
-Problem 1 & & & & & &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/15\\
-\hline 
-Problem 2 & & & & & & & & &\filcl & \filcl& \filcl& \hspace{1cm}/15\\
-\Xhline{1.25pt}
-Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/30\\
-\hline
-\end{tabular}}
-\end{center}
-
-\pagebreak
-\setcounter{probnumcount}{1}
-\section*{Groupwork \hwnum{} Problems}
-
-\subsection*{\probnum Circular Reasoning [15 points]}
-
-Suppose we select $2n$ distinct points independently and uniformly at random on the border of a circle, and label them $p_1$ through $p_{2n}$ counter-clockwise (i.e. point $p_2$ is counter-clockwise from point $p_1$).
-
-\begin{qparts}
-    \item In the case where $n=2$, we have four distinct points on the circle. If we select two of these points uniformly at random and draw a line segment between them, then draw a line segment between the remaining two points, what is the probability that these line segments intersect?
-    
-    \textbf{Hint:} Consider the different cases corresponding to the point $p_1$ is paired with.
-    
-    \item Suppose we repeat the procedure in (a) where we select two points at random and draw a line segment between them. We'll call this line segment $\ell_1.$ We repeat this again with the $2n-2$ remaining points, creating a line segment $\ell_2$, etc., until we have drawn $n$ line segments: $\ell_1,\dots,\ell_n.$ After this procedure is completed, what is the expected number of intersections? Your answer should be in terms of $n.$
-    
-    \textbf{Hint:} Create an indicator random variable for each possible intersection and apply linearity of expectation.
-    
-    \textit{Note:} The number of intersections is the number of pairs $(\ell_i,\ell_j)$ of distinct line segments where $\ell_i$ and $\ell_j$ intersect.
-\end{qparts}
-\begin{solution}
-
-\end{solution}
-
-\subsection*{\probnum Open or Closed [20 points]}
-
-\textit{Online Bayseian Inference} is a process where we repeatedly apply Bayes
-rule to update our beliefs over time. Suppose we have a sensor that determines
-whether a door is open or closed. 
-If the door is open, the sensor reads it as open with probability 0.9. 
-If the door is closed, the sensor reads it as closed with probability 0.7. Suppose the door starts in an unknown position, and has equal probability of being open or closed.
-
-\begin{qparts}
-    \item After one reading that the door is closed, what is the probability that the  door is actually closed?
-    \item Before the second reading, we believe that the door is closed with the 
-    probability found in part (a) (that is, we consider the probability that the door
-    is closed to be the probability that we found the door is closed given our first reading). 
-    Suppose we make another reading that the door  is closed. Now what is 
-    the probability that the door is closed?
-    \item On the third reading, the sensor reads that the door is open. What is 
-    the probability that the door is actually closed, using the answer from part (b)
-    as our initial probability for the door being closed?
-\end{qparts}
-
-\begin{solution}
-
-\end{solution}
-
 
 \end{document}
