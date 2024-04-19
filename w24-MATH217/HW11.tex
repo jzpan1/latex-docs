@@ -1,0 +1,117 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{mathrsfs}
+
+\usepackage{bm} %bold symbols
+\usepackage{hyperref} %add links
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 	Define vars here 	%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\hwName{Homework Set Part B}
+\author{Zhengyu James Pan} %use like \@author
+\def\instructor{Dr. Paul Kessenich}
+\def\email{jzpan@umich.edu}
+\def\dueDate{SUNDAY, April 21}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\realsn}{\reals^{n}}
+\newcommand{\nxn}{n\times n}
+\newcommand{\realsnxn}{\reals^{\nxn}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\transpose}{^\top}
+
+\makeatletter
+
+\begin{document}
+%Header
+\pagestyle{head}
+\firstpageheader{}{}{}
+\header{MATH 217}{\hwName}{\thepage}
+
+%Solution formatting
+\printanswers
+\unframedsolutions
+
+%Top matter
+{\parindent0in
+\bf
+\begin{center}
+	MATH 217 W24 - LINEAR ALGEBRA, Section 001 ({\instructor}) \\
+	{\hwName} due {\dueDate} at 11:59pm \\
+	\@author\ (\href{mailto:\email}{\email})
+\end{center}
+}
+
+%1
+\begin{questions}
+\question 
+	\begin{parts}
+		\part Let $E_0$ denote the 0-eigenspace of $T$. Explicitly describe $E_0$ (as a set).
+            \begin{solution}
+                \[ E_0 = \left\{ (x_1, 0, x_2, 0, x_3, 0, ...) \mid x_i \in \reals \right\} \]
+            \end{solution}
+        \part Prove that every real number $\lambda$ is an eigenvalue of $T$. (Hint: explicitly construct an eigenvector $(x_1, x_2, x_3, . . . ) \in V$ . First consider $x_i$ when $i$ is a power of 2.)
+            \begin{solution}
+                Let $\lambda \in \reals$. Then let \[ s = (1,\  \lambda, \lambda,\  \lambda^2, \lambda^2, \lambda^2, \lambda^2,\  \lambda^3, \lambda^3, \lambda^3, \lambda^3, \lambda^3, \lambda^3, \lambda^3, \lambda^3,\  ...) \]
+                be an infinite sequence such that each consecutive power $\lambda^n$ is repeated $n$ times in the sequence, starting from $n=0$. Then
+                \begin{align*}
+                    T(s) &= (\lambda,\ \lambda^2, \lambda^2,\ \lambda^3, \lambda^3, \lambda^3, \lambda^3, \ \lambda^4, \lambda^4, \lambda^4, \lambda^4, \lambda^4, \lambda^4, \lambda^4, \lambda^4, ...  )\\
+                    &= \lambda(s).
+                \end{align*}
+                So any real number is an eigenvalue of $T$.
+            \end{solution}
+	\end{parts}
+
+%2
+\question 
+    \begin{parts}
+        \part Let $\mathscr{D}$ be a diagonal $\nxn$ matrix with distinct entries along the diagonal, and let $\mathscr D$ be the subset of $\realsnxn$ consisting of all diagonal matrices. Prove $\mathscr C (D) = \mathscr D$.
+            \begin{solution}
+                Let the diagonal entries of $D$ be $d_1, ..., d_n$. Let $A \in \mathscr D$, with diagonal entries $a_1, ... a_n$. Then the product \[AD = \begin{bmatrix}
+                    a_1 d_1 & 0 & \dots & 0\\
+                    0 & a_2 d_2 & 0 & \vdots \\
+                    \vdots & 0 & \ddots & 0  \\
+                    0 & \dots & 0 & a_n d_n
+                \end{bmatrix} = DA. \]
+                So $\mathscr D \subset \mathscr C$. \\
+                \par Let $B \in \mathscr C(D)$ with columns $\vec b_1, ..., \vec b_n$, rows $\vec c_1, ..., \vec c_n$, and element of $i$th row and $j$th column $b_{ij}$. Then
+                    \begin{align*}
+                        BD &= \begin{bmatrix}
+                            \mid &  & \mid \\
+                            B (d_1 \vec e_1) & \cdots & B (d_n \vec e_n) \\
+                            \mid &  & \mid
+                        \end{bmatrix} \\
+                        &= \begin{bmatrix}
+                            \mid &  & \mid \\
+                            d_1 \vec b_1  & \cdots & d_n \vec b_n \\
+                            \mid &  & \mid
+                        \end{bmatrix} \\\\
+                        DB &=\left((DB)\transpose\right)\transpose \\
+                        &= \left(B\transpose D\right)\transpose \\
+                        &= \begin{bmatrix}
+                            \mid &  & \mid \\
+                            d_1 \vec c_1\transpose  & \cdots & d_n \vec c_n\transpose \\
+                            \mid &  & \mid
+                        \end{bmatrix}\transpose \\
+                        &= \begin{bmatrix}
+                            \rule[3pt]{0.45cm}{0.5pt} & d_1 \vec c_1 & \rule[3pt]{0.45cm}{0.5pt} \\
+                             & \vdots & \\
+                            \rule[3pt]{0.45cm}{0.5pt} & d_n \vec c_n & \rule[3pt]{0.45cm}{0.5pt}
+                        \end{bmatrix}
+                    \end{align*}
+                where $\vec e_i$ is the $i$th standard basis vector. Since $B \in \mathscr C(D), BD = DB$. Considering arbitrary $b_{ij}$:
+                If $i = j$ then $d_i 
+            \end{solution}
+    \end{parts}
+\end{questions}
+
+\end{document}
