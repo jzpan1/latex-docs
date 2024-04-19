@@ -81,8 +81,13 @@
                     0 & a_2 d_2 & 0 & \vdots \\
                     \vdots & 0 & \ddots & 0  \\
                     0 & \dots & 0 & a_n d_n
+                \end{bmatrix} = \begin{bmatrix}
+                    d_1 a_1 & 0 & \dots & 0\\
+                    0 & d_2 a_2 & 0 & \vdots \\
+                    \vdots & 0 & \ddots & 0  \\
+                    0 & \dots & 0 & d_n a_n
                 \end{bmatrix} = DA. \]
-                So $\mathscr D \subset \mathscr C$. \\
+                So $\mathscr D \subset \mathscr C (D)$. \\
                 \par Let $B \in \mathscr C(D)$ with columns $\vec b_1, ..., \vec b_n$, rows $\vec c_1, ..., \vec c_n$, and element of $i$th row and $j$th column $b_{ij}$. Then
                     \begin{align*}
                         BD &= \begin{bmatrix}
@@ -109,9 +114,39 @@
                         \end{bmatrix}
                     \end{align*}
                 where $\vec e_i$ is the $i$th standard basis vector. Since $B \in \mathscr C(D), BD = DB$. Considering arbitrary $b_{ij}$, this means that $d_i b_{ij} = d_j b_{ij}$. 
-                When $i=j$, 
+                \par When $i=j$, then $d_i = d_j$, so $b_{ij}$, a diagonal element of $B$, can be anything.
+                \par When $i \neq j$, then $d_i \neq d_j$ since $D$ has distinct diagonal elements. But $d_i b_{ij} = d_j b_{ij}$. So $b_ij = 0$. Note that in this case, $b_ij$ is any non-diagonal element.
+                Since only diagonal elements of $B$ can be nonzero, $B$ is diagonal, and $B \in \mathscr D$. So $\mathscr C(D) \subset \mathscr D$.
+                \par Thus $\mathscr D = \mathscr C(D).$ 
+            \end{solution}
+        \part Prove that if $A$ and $B$ are simultaneously diagonalizable $\nxn$ matrices, then $B \in \mathscr C (A)$. 
+            \begin{solution}
+                We know that $\mathscr D \subset \mathscr C(D)$ for any diagonal matrix $D$ by part (a). (The $\mathscr D \subset \mathscr C (D)$ direction did not depend on the fact that $D$ had distinct diagonal elements.) So then
+                \begin{align*}
+                    S^{-1} B S S^{-1} A S &= S^{-1} A S S^{-1} B S \\
+                    S^{-1} B A S &= S^{-1} A B S \\
+                    B A &= A B
+                \end{align*}
+                Thus $B \in \mathscr C(A)$.
+            \end{solution}
+        \part Prove that if $A$ and $B$ are $\nxn$ matrices such that $A$ has $n$ distinct eigenvalues and $B \in \mathscr C (A)$, then $A$ and $B$ are simultaneously diagonalizable.
+            \begin{solution}
+                Let $S$ be an eigenbasis of $A$. Then $S^{-1} A S$, the diagonalized matrix of $A$, has distinct diagonal elements. We know that 
+                \begin{align*}
+                    B A &= A B \\
+                    S^{-1} B A S &= S^{-1} A B S \\
+                    S^{-1} B S S^{-1} A S &= S^{-1} A S S^{-1} B S
+                \end{align*}
+                So $S^{-1} B S \in \mathscr C(S^{-1} A S)$. Then by part (a), since $S^{-1} A S$ is diagonal with distinct entries, $S^{-1} B S$ is diagonal. So $S$ diagonalizes both $B$ and $A$. So $A$ and $B$ are simultaneously diagonalizable.
             \end{solution}
     \end{parts}
+
+\question \begin{parts}
+    \part Suppose that $A$ has eigenvalue 0 but is not diagonalizable. Prove that im($A) = E_0$, and conclude from this that $A^2 = 0$.
+        \begin{solution}
+            The givens imply that det($A - 0I_1) = 0$. So det($A) = 0$. But since it is not diagonalizable, there must be one eigenvalue $\lambda$ of $A$ which does not satisfy almu($\lambda) = $ gemu($\lambda$). Since both almu and gemu are always at least 1, almu $\geq$ gemu, and the sum of almus = $n$; we know almu(0) = 2, and gemu(0) = 1. \\So nullity($A - 0I_2) = $ nullity($A) = 1$.
+        \end{solution}
+\end{parts}
 \end{questions}
 
 \end{document}
