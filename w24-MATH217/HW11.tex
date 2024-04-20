@@ -144,8 +144,11 @@
 \question \begin{parts}
     \part Suppose that $A$ has eigenvalue 0 but is not diagonalizable. Prove that im($A) = E_0$, and conclude from this that $A^2 = 0$.
         \begin{solution}
-            The givens imply that det($A - 0I_1) = 0$. So det($A) = 0$. But since it is not diagonalizable, there must be one eigenvalue $\lambda$ of $A$ which does not satisfy almu($\lambda) = $ gemu($\lambda$). Since both almu and gemu are always at least 1, almu $\geq$ gemu, and the sum of almus = $n$; we know almu(0) = 2, and gemu(0) = 1. \\So nullity($A - 0I_2) = $ nullity($A) = 1$.
+            The givens imply that det($A - 0I_1) = 0$. So det($A) = 0$. But since it is not diagonalizable, there must be one eigenvalue $\lambda$ of $A$ which does not satisfy almu($\lambda) = $ gemu($\lambda$). Since both almu and gemu are always at least 1, almu $\geq$ gemu, and the sum of almus = $n$; we know almu(0) = 2, and gemu(0) = 1. \\
+            So nullity($A - 0I_2) = $ nullity($A) = 1$. 
         \end{solution}
+    \part Let $\lambda \in \reals$ and suppose that $A$ has eigenvalue $\lambda$ but is not diagonalizable. Prove that we have $(A - \lambda I_2)^2$ = 0, and deduce from this that $A \vec v - \lambda \vec v \in E_\lambda$ for every $\vec v \in \reals^2$.
+    [Hint: apply part (a) to the matrix $A - \lambda I_2$].
 \end{parts}
 \end{questions}
 
