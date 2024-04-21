@@ -239,6 +239,33 @@
                 \end{bmatrix*}\right)
             \end{align*}
         \end{solution}
+    \part Find an invertible (real or complex) matrix $P$ such that $A = P DP^{-1}$ where $D$ is a diagonal matrix.
+        \begin{solution}
+            \[ P = \begin{bmatrix}
+                1 & 1 \\ 2 + 3i & 2 - 3i
+            \end{bmatrix} \]
+        \end{solution}
+    \part First give an explicit formula for $D_n$, and then use this to give an explicit formula for $A_n$.
+        \begin{solution}
+            $D = \begin{bmatrix}
+                2 + 3i & 0 \\ 0  & 2 - 3i
+            \end{bmatrix}$, so 
+            \[D^n = \begin{bmatrix}
+                (2 + 3i)^n & 0 \\ 0  & (2 - 3i)^n
+            \end{bmatrix} \]
+            So then 
+            \[ A^n = P^{-1} D^n P = \begin{bmatrix}
+                1 & 1 \\ 2 + 3i & 2 - 3i
+            \end{bmatrix}^{-1} \begin{bmatrix}
+                (2 + 3i)^n & 0 \\ 0  & (2 - 3i)^n
+            \end{bmatrix} \begin{bmatrix}
+                1 & 1 \\ 2 + 3i & 2 - 3i
+            \end{bmatrix}. \]
+        \end{solution}
+    \part Using parts (b) and (e), give an explicit formula for $x_n$, the $n$th term in the sequence. (Your formula may involve complex numbers, and need not be fully simplified.)
+        \begin{solution}
+            
+        \end{solution}
 \end{parts}
 \end{questions}
 
