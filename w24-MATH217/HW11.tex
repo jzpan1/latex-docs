@@ -156,12 +156,88 @@
             \end{bmatrix} \]
             which has nullspace spanned by $\begin{bmatrix} a \\ b \end{bmatrix}$. But this is also the image of $A$, since both columns of $A$ are scalar multiples of $\begin{bmatrix} a \\ b \end{bmatrix}$. So the image and nullity of $A$ are the same. Thus 
                 \[ A^2\vec x = A(A\vec x) = 0 \]
-            Since $A \vec x$ is in ker($A$). So $A^2 = 0$.
+            for any $\vec x \in \reals^2$. Since $A \vec x$ is in ker($A$). So $A^2 = 0$.
         \end{solution}
     \part Let $\lambda \in \reals$ and suppose that $A$ has eigenvalue $\lambda$ but is not diagonalizable. Prove that we have $(A - \lambda I_2)^2$ = 0, and deduce from this that $A \vec v - \lambda \vec v \in E_\lambda$ for every $\vec v \in \reals^2$.
     [Hint: apply part (a) to the matrix $A - \lambda I_2$].
         \begin{solution}
-            
+            Since both almu and gemu are always at least 1, almu $\geq$ gemu, and the sum of almus = $n$; we know almu($\lambda$) = 2, and gemu($\lambda) = 1$. So the matrix $A - \lambda I_2$ has an eigenvalue of 0, and nullity 1. So $A - \lambda I_2$ has an eigenvalue of 0 and is not diagonalizable. 
+            \par Then by (a), $(A - \lambda I_2)^2 = 0$, and the image of $A - \lambda I_2$ is equal to its 0-eigenspace. The 0-eigenspace of $A - \lambda I_2$ is in turn equal to its own kernel. We know ker($A - \lambda I_2$) is also the $\lambda$-eigenspace of $A$. So for all $\vec v \in \reals^2$, $(A - \lambda I_n) \vec v = A \vec v - \lambda \vec v \in E_\lambda$.
+        \end{solution}
+    \part Prove that if $A$ has eigenvalue $\lambda$ but is not diagonalizable, then $A$ is similar to $\begin{bmatrix}
+        \lambda & 1 \\ 0 & \lambda
+    \end{bmatrix}$.
+        \begin{solution}
+            By (b), we know that $A \vec v - \lambda \vec v \in E_\lambda$ for any vector $\vec v \in \reals^2$. Let $\mathcal B = \{\vec b_1, \vec b_2\},$ where $\vec b_2 \in E_\lambda^\perp$ and $\vec b_1 = A \vec b_2 - \lambda \vec b_2$, which is in $E_\lambda$ by (b). We know that these are linearly independent since they are orthogonal.
+            \par Note that this definition of $\mathcal B$ ensures that $A \vec b_1 = \lambda \vec b_1$ and $A \vec b_2 = \vec b_1 + \lambda \vec b_2$.
+            \par Then 
+                \begin{align*}
+                    [A]_\mathcal B &= \begin{bmatrix*} [A\vec b_1]_\mathcal B & [A\vec b_2]_\mathcal B
+                    \end{bmatrix*} \\
+                    &= \begin{bmatrix}
+                        \lambda & 1 \\ 0 & \lambda
+                    \end{bmatrix}
+                \end{align*}
+            So $A$ is similar to $\begin{bmatrix}
+                \lambda & 1 \\ 0 & \lambda
+            \end{bmatrix}$ by the Change-of-basis of Theorem.
+        \end{solution}
+    \part Prove that if $A$ does not have any real eigenvalues, then $A$ is similar to a matrix of the form $\lambda Q$ where $Q$ is an orthogonal matrix and $\lambda > 0$.
+        \begin{solution}
+            We know $A$ has a pair of complex eigenvalues of the form $a \pm bi$. By Worksheet 26 problem 9, $A$ is then similar to the matrix $B = \begin{bmatrix}
+                a & b \\ -b & a
+            \end{bmatrix}$. Since the columns are already orthogonal, we simply need to normalize them to make the matrix orthogonal, which can be done by dividing by $\lambda = \sqrt{a^2 + b^2}$, which is a positive number. So $Q = \frac{1}{\lambda} B$, and the statement is true.
+        \end{solution}
+\end{parts}
+
+\question \begin{parts}
+    \part Find a matrix $A \in \reals ^{2 \times 2}$ such that $A \begin{bmatrix*} x_n \\ x_{n+1} \end{bmatrix*} = \begin{bmatrix*} x_{n+1} \\ x_{n+2} \end{bmatrix*}$ for every integer $n \geq 0$.
+        \begin{solution}
+            \[\boxed{A = \begin{bmatrix}
+                0 & 1 \\ -13 & 4
+            \end{bmatrix} }\]
+            \[ A \begin{bmatrix*} x_n \\ x_{n+1} \end{bmatrix*} = \begin{bmatrix*} 0x_n + x_{n+1} \\ -13x_n + 4x_{n+1} \end{bmatrix*} = \begin{bmatrix*} x_{n+1} \\ x_{n+2} \end{bmatrix*} \]
+        \end{solution}
+    \part Use part (a) to prove by induction that your matrix $A$ satisfies $A^n \begin{bmatrix} 0 \\ 2 \end{bmatrix} = \begin{bmatrix} x_n \\ x_{n+1} \end{bmatrix}$ for every $n \geq 0$.
+        \begin{solution}
+            Base case: $A^0 \begin{bmatrix} 0 \\ 2 \end{bmatrix} = I_2 \begin{bmatrix} 0 \\ 2 \end{bmatrix}$
+            \par \textbf{Inductive step:} Assume that for some integer $n \geq 0$, \[A^n \begin{bmatrix} 0 \\ 2 \end{bmatrix} = \begin{bmatrix} x_n \\ x_{n+1} \end{bmatrix}.\]
+            Then by part (a),
+            \begin{align*}
+                A A^n \begin{bmatrix} 0 \\ 2 \end{bmatrix} &= A^{n+1} \begin{bmatrix} 0 \\ 2 \end{bmatrix} \\
+                &= A \begin{bmatrix} x_n \\ x_{n+1} \end{bmatrix} \\
+                &= \begin{bmatrix} x_{n+1} \\ x_{n+2} \end{bmatrix}
+            \end{align*}
+            So if $n$ satisfies the statement, then $n+1$ satisfies the statement.
+            Since $n = 0$ satisfies the statement, the statement is true for all $n \geq 0$.
+        \end{solution}
+    \part Find all (real or complex) eigenvalues and corresponding eigenvectors for $A$.
+        \begin{solution}
+            \begin{align*}
+                \begin{vmatrix}
+                    0 - \lambda & 1 \\ -13 & 4 - \lambda 
+                \end{vmatrix} &= (- \lambda) ( 4 - \lambda) + 13 \\
+                &= \lambda^2 - 4\lambda + 13 \\\\
+                \lambda = \frac{4 \pm \sqrt{16 - 52}}{2} &= 2 \pm 3i
+                \\\\
+                2+3i:\\
+                \begin{bmatrix*}
+                    - 2 - 3i & 1 \\ -13 & 2 - 3i
+                \end{bmatrix*} & \rightarrow \begin{bmatrix*}
+                    - 2 - 3i & 1 \\ 0 & 0
+                \end{bmatrix*} \\
+                E_{2 + 3i} &= \text{span}\left(\begin{bmatrix*}1 \\ 2 + 3i
+                \end{bmatrix*}\right)
+                \\\\
+                2-3i:\\
+                \begin{bmatrix*}
+                    - 2 + 3i & 1 \\ -13 & 2 + 3i
+                \end{bmatrix*} & \rightarrow \begin{bmatrix*}
+                    - 2 + 3i & 1 \\ 0 & 0
+                \end{bmatrix*} \\
+                E_{2 + 3i} &= \text{span}\left(\begin{bmatrix*}1 \\ 2 - 3i
+                \end{bmatrix*}\right)
+            \end{align*}
         \end{solution}
 \end{parts}
 \end{questions}
