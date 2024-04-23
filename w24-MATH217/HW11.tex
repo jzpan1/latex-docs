@@ -27,6 +27,7 @@
 \newcommand{\realsnxn}{\reals^{\nxn}}
 \newcommand{\naturals}{\mathbb{N}}
 \newcommand{\ints}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
 \newcommand{\transpose}{^\top}
 
 \makeatletter
@@ -71,6 +72,7 @@
             \end{solution}
 	\end{parts}
 
+    \clearpage
 %2
 \question 
     \begin{parts}
@@ -141,6 +143,8 @@
             \end{solution}
     \end{parts}
 
+    \clearpage
+
 \question \begin{parts}
     \part Suppose that $A$ has eigenvalue 0 but is not diagonalizable. Prove that im($A) = E_0$, and conclude from this that $A^2 = 0$.
         \begin{solution}
@@ -189,7 +193,7 @@
             \end{bmatrix}$. Since the columns are already orthogonal, we simply need to normalize them to make the matrix orthogonal, which can be done by dividing by $\lambda = \sqrt{a^2 + b^2}$, which is a positive number. So $Q = \frac{1}{\lambda} B$, and the statement is true.
         \end{solution}
 \end{parts}
-
+\clearpage
 \question \begin{parts}
     \part Find a matrix $A \in \reals ^{2 \times 2}$ such that $A \begin{bmatrix*} x_n \\ x_{n+1} \end{bmatrix*} = \begin{bmatrix*} x_{n+1} \\ x_{n+2} \end{bmatrix*}$ for every integer $n \geq 0$.
         \begin{solution}
@@ -264,9 +268,133 @@
         \end{solution}
     \part Using parts (b) and (e), give an explicit formula for $x_n$, the $n$th term in the sequence. (Your formula may involve complex numbers, and need not be fully simplified.)
         \begin{solution}
-            
+            \begin{align*}
+                \begin{bmatrix}
+                    x_n \\ x_{n+1}
+                \end{bmatrix} &= A^n\begin{bmatrix}
+                    0 \\ 2
+                \end{bmatrix} \\
+                &= \begin{bmatrix}
+                    1 & 1 \\ 2 + 3i & 2 - 3i
+                \end{bmatrix}^{-1} \begin{bmatrix}
+                    (2 + 3i)^n & 0 \\ 0  & (2 - 3i)^n
+                \end{bmatrix} \begin{bmatrix}
+                    1 & 1 \\ 2 + 3i & 2 - 3i
+                \end{bmatrix} \begin{bmatrix}
+                    0 \\ 2
+                \end{bmatrix} \\
+                &= \begin{bmatrix}
+                    1 & 1 \\ 2 + 3i & 2 - 3i
+                \end{bmatrix}^{-1} \begin{bmatrix}
+                    (2 + 3i)^n & 0 \\ 0  & (2 - 3i)^n
+                \end{bmatrix} \begin{bmatrix}
+                    2 \\ 4 - 3i
+                \end{bmatrix} \\
+                &= \begin{bmatrix}
+                    1 & 1 \\ 2 + 3i & 2 - 3i
+                \end{bmatrix}^{-1} \begin{bmatrix}
+                    2(2 + 3i)^n \\ (4 - 3i) (2 - 3i)^n
+                \end{bmatrix} \\
+                &= \begin{bmatrix}
+                    \frac{3 + 2i}{6} & \frac{-i}{6} \\ \frac{3 - 2i}{6} & \frac i6
+                \end{bmatrix} \begin{bmatrix}
+                    2(2 + 3i)^n \\ (4 - 3i) (2 - 3i)^n
+                \end{bmatrix} \\\\
+                x_n &= \frac{3 + 2i }{6} \cdot 2(2 + 3i )^n -\frac{i}{6} (4 - 3i) (2 - 3i)^n
+            \end{align*}
         \end{solution}
 \end{parts}
+
+
+\clearpage
+%5
+\question \begin{parts}
+    \part Find $[T]_\mathcal A$.
+        \begin{solution}
+            \begin{align*}
+                [T]_\mathcal A &= \begin{bmatrix}
+                    [T(e^{3x})]_\mathcal A & [T(\cos 2x)]_\mathcal A & [T(\sin 2x)]_\mathcal A
+                \end{bmatrix} \\
+                [T(e^{3x})]_\mathcal A &= [3e^{3x}]_\mathcal A = \begin{bmatrix}
+                    3 \\ 0 \\ 0
+                \end{bmatrix} \\
+                [T(\cos 2x)]_\mathcal A &= [-2\sin 2x]_\mathcal A = \begin{bmatrix}
+                    0 \\ 0 \\ -2
+                \end{bmatrix}\\
+                [T(\sin 2x)]_\mathcal A &= [2\cos 2x]_\mathcal A = \begin{bmatrix}
+                    0 \\ 2 \\ 0
+                \end{bmatrix}\\\\
+                [T]_\mathcal A &= \begin{bmatrix}
+                    3 & 0 & 0 \\ 0 & 0 & 2 \\ 0 & -2 & 0
+                \end{bmatrix}
+            \end{align*}
+        \end{solution}
+    \part Find all (real or complex) eigenvalues of the matrix $[T]_\mathcal A$.
+        \begin{solution}
+            We find the characteristic polynomial.
+            \begin{align*}
+                \begin{vmatrix}
+                    3 - \lambda & 0 & 0 \\ 0 & 0 - \lambda & 2 \\ 0 & -2 & 0-\lambda
+                \end{vmatrix} &= (3 - \lambda)(- \lambda)^2 + 4(3 - \lambda) \\\\
+                (3 - \lambda)(\lambda^2 + 4)  &= 0 \\
+                \boxed{\lambda = 3, \pm 2i}
+            \end{align*}
+        \end{solution}
+    \part Viewing the matrix $[T]_\mathcal A$ as a linear transformation of the complex vector space $\mathbb C^3$, find a complex eigenvector for $[T]_\mathcal A$ for each of the eigenvalues you found in (b).
+        \begin{solution}
+            \begin{align*}
+                [T]_\mathcal A\begin{bmatrix}
+                    1 \\ 0 \\ 0
+                \end{bmatrix} &= 3 \begin{bmatrix}
+                    1 \\ 0 \\ 0
+                \end{bmatrix} \\
+                [T]_\mathcal A\begin{bmatrix}
+                    0 \\ -i \\ 1
+                \end{bmatrix} &= (2i) \begin{bmatrix}
+                    0 \\ -i \\ 1
+                \end{bmatrix} \\
+                [T]_\mathcal A\begin{bmatrix}
+                    0 \\ i \\ 1
+                \end{bmatrix} &= (-2i) \begin{bmatrix}
+                    0 \\ i \\ 1
+                \end{bmatrix} \\
+            \end{align*}
+        \end{solution}
+    \part Interpret the eigenvectors you found in (c) as a set of three complex-valued functions
+     \[ \mathcal B = (f_1(x), f_2(x), f_3(x)) \]
+    with the property that any complex linear combination of the vectors in $A$ (that is, a linear combination with coefficients in $\complex$) can be written as a complex linear combination of the vectors in $\mathcal B$, and vice versa. 
+        \begin{solution}
+            \[ \boxed{\mathcal B = \left( e^{3x}, \sin(2x) - i \cos(2x), i \cos (2x) + \sin(2x)\right)} \]
+        \end{solution}
+\end{parts}
+
+\clearpage
+
+\question \begin{parts}
+    \part Show that if $I$ has a real eigenvalue $\lambda$ than there exists an axis around which the solid object can rotate without wobbling. 
+        \begin{solution}
+            Assume $I$ has a real eigenvalue $\lambda$. Then let $\vec \omega$ be in the $\lambda$-eigenspace of $I$. Then $L = I \vec \omega = \lambda \vec \omega$. So $L$ and $\vec \omega$ point in the same direction, since they are scalar multiples. Thus along the axis of rotation of the $\lambda$-eigenspace of $I$, the solid object will not wobble.
+        \end{solution}
+    \part Show that $I$ always has at least one real eigenvalue $\lambda$ (and hence by (a) there always exists an axis around which a solid object can rotate without wobbling).
+        \begin{solution}
+            By the intermediate value theorem, an odd polynomial must always pass through the origin. Thus, it always has one real root. We know that the characteristic polynomial of $I$ has degree 3 by Theorem 7.2.5. So $I$ always has at least one real root, and thus one non-wobbling axis of rotation. 
+        \end{solution}
+    \part Show that if gemu($\lambda$) = 3 then the solid object can rotate around any axis without wobbling.
+        \begin{solution}
+            If gemu($\lambda$) = 3, then $I - \lambda I_3$ has nullity 3, so $I - \lambda I_3 = 0$. Thus $I = \lambda I_3$. So for any $\vec \omega \in \reals^3$, $L = \lambda I_3 \vec \omega = \lambda \omega$. So for any axis of angular velocity, the angular momentum will be in the same direction, and no wobbling will occur.
+        \end{solution}
+    \part Show that if $I$ has three distinct real eigenvalues then there exist three axes around which the solid object can rotate without wobbling.
+        \begin{solution}
+            Let $I$ have distinct eigenvalues $\lambda_1, \lambda_2, \lambda_3$. Then the eigenspaces corresponding to these eigenvalues are all axes about which the solid object can rotate without wobbling. WLOG (between $\lambda_1, \lambda_2, \lambda_3$) let  $\vec \omega_1 \in E_{\lambda_1}$. Then $L = I \vec \omega_1 = \lambda \vec \omega_1$. So the object will not wobble about the axis of the $\lambda_1$-eigenspace. 
+            \par Similarly for the $\lambda_2$- and $\lambda_3$-eigenspaces. So there exist 3 axes about which the solid object does not wobble.
+        \end{solution}
+    \part Prove that for any solid object, there exist three perpendicular axes of rotation around which the object will not wobble.
+        \begin{solution}
+            From the formula for the $(i, j)$-component, the $(i,j)$ component is the same as the $(j, i)$ component (by commutativity of multiplication). So $I$ is symmetric. Then by the Spectral Theorem, there exists an orthogonal $S$ such that $S^{-1}IS$ is diagonal. Then $S$ is an orthogonal eigenbasis of $I$. 
+            \par By part (d) we know that the eigenspaces of $I$ correspond to the axes around which the object will not wobble. From the characteristics of $S$, we know that the eigenspaces are orthogonal. So the axes of rotation around which the object will not wobble are orthogonal.
+        \end{solution}
+\end{parts}
+
 \end{questions}
 
 \end{document}
