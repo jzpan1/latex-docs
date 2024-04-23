@@ -219,10 +219,7 @@ Find the following, simplify your answer as much as possible.
         For $\Omega$, we compute using the $\Omega$ portions of the respective functions. 
         \[ f(x)(g(x))^2 = \Omega(3^x\log x) \cdot \Omega(4^x) = \Omega(12^x \log x) \]
         \item Since this is addition, we simply select the dominating parts between each added function. This will be $O\left(\dfrac{x!}{2^x}\right)$ and $\Omega(4^x)$.
-        \item We know that there exists $k, c_1, c_2 \in \mathbb R$ such that for all $x \in \mathbb R \geq k$, \[c_1 4^x \leq g(x) \leq c_2\frac{x!}{2^x}\]
-        So then taking the negative, 
-            \[-c_1 4^x \geq -g(x) \geq -c_2\frac{x!}{2^x}\]
-        So we cannot infer anything about $4^x$ being a lower bound of 
+        \item By the rule of scalar multiplication, the scalar multiplication by $-1$ does not change the $\Omega$ of $g(x)$. Then, by the addition rule, we take the dominating $\Omega$ of $f$ and $g$, which is $4^x$. So by big-$\Omega$ properties, $h(x) = \Omega(4^x)$.
     \end{qparts}
 \end{solution}
 
@@ -235,7 +232,10 @@ Prove or disprove the following:
 Note that in these proofs you do not need to use the definition of big-O, but can use the properties for combining mathematical functions covered in lecture.
 
 \begin{solution}
-
+    \begin{qparts}
+        \item This is true. Assume $f(x) = O(g(x))$. By the definition of big-O, there exists $c_1, k \in \mathbb R$ such that for all $x \geq k$, $f(x) \leq c_1g(x)$. If $f(x) \leq c_1 g(x)$, then \[2^{f(x)} \leq 2^{c_1g(x)} = 2^{c_1}2^{g(x)}\] So $2^{f(x)} = O(2^{g(x)})$ with $c = 2^{c_1}$ and $k = k$.
+        \item By the product property for big-O, $(f_1 \cdot f_2)(x) =  O(g_1(x) \cdot g_2(x))$ for $f_1(x) = O(g_1(x))$ and $f_2(x) = O(g_2(x))$. So the statement is true if we take $f_1(x) = f_2(x) = f(x)$, $g_1(x) = g_2(x) = g(x)$ in the product property.
+    \end{qparts}
 \end{solution}
 
 
@@ -250,7 +250,23 @@ Suppose $f$ satisfies $f(n) = 2f(\sqrt{n}) + \log_2 n$, whenever $n$ is a perfec
 \end{qparts}
 
 \begin{solution}
-
+    \begin{qparts}
+        \item \begin{align*}
+            f(16) &= 2f(4) + \log_2 16 \\
+            &= 4f(2) + 2\log_2 4 + 4 \\
+            &= 4 + 4 + 4 \\
+            &= 12
+        \end{align*}
+        \item Substituting $\log_2 n = m$, 
+            \begin{align*}
+                g(m) &= f(2^m) \\
+                &= 2f(2^{m/2}) + m \\
+                &= 2g\left(\frac m2 \right) + m \\
+            \end{align*}
+            By the Master Theorem, this recursive relation is $O(m \log m)$.
+        \item Using the previous part and substituting $m = \log_2 n$, we find 
+            \[ f(n) = O\left(\log_2 (n) \log (\log_2 n) \right) \]
+    \end{qparts}
 \end{solution}
 
 
@@ -272,7 +288,9 @@ What is the tightest big-O bound on the runtime complexity of the following algo
 \end{algorithmic}
 
 \begin{solution}
-
+    This function does not run any commands if $n$ is greater than 1. If it is greater than 1, then it will run itself with $n/3$ twice, and also run the middle loops, which run a total of $n^2 / 2$ commands at most. So we have the recursive relation $B(n)$ for the number of commands which the function executes:
+        \[B(n) = 2B\left(\frac{n}3 \right) + \frac{n^2}2 \]
+    Then by the Master Theorem, this function is $\boxed{O(n^2)}$, since $2 < 3^2$.
 \end{solution}
 
 
