@@ -217,7 +217,7 @@ Find the following, simplify your answer as much as possible.
         \item For big-O, we find the parts which will dominate the function. This will be 
         \[ f(x)(g(x))^2 = O(203^xx^2) \cdot O\left(\frac{x!}{2^x}\right)^2 = O\left( \left(\frac{203}{4}\right)^x (x!)^2x^2\right)\]
         For $\Omega$, we compute using the $\Omega$ portions of the respective functions. 
-        \[ f(x)(g(x))^2 = \Omega(3^x\log x) \cdot \Omega(4^x) = \Omega(12^x \log x) \]
+        \[ f(x)(g(x))^2 = \Omega(3^x\log x) \cdot \Omega(4^{2x}) = \Omega(48^x \log x) \]
         \item Since this is addition, we simply select the dominating parts between each added function. This will be $O\left(\dfrac{x!}{2^x}\right)$ and $\Omega(4^x)$.
         \item By the rule of scalar multiplication, the scalar multiplication by $-1$ does not change the $\Omega$ of $g(x)$. Then, by the addition rule, we take the dominating $\Omega$ of $f$ and $g$, which is $4^x$. So by big-$\Omega$ properties, $h(x) = \Omega(4^x)$.
     \end{qparts}
@@ -233,7 +233,7 @@ Note that in these proofs you do not need to use the definition of big-O, but ca
 
 \begin{solution}
     \begin{qparts}
-        \item This is true. Assume $f(x) = O(g(x))$. By the definition of big-O, there exists $c_1, k \in \mathbb R$ such that for all $x \geq k$, $f(x) \leq c_1g(x)$. If $f(x) \leq c_1 g(x)$, then \[2^{f(x)} \leq 2^{c_1g(x)} = 2^{c_1}2^{g(x)}\] So $2^{f(x)} = O(2^{g(x)})$ with $c = 2^{c_1}$ and $k = k$.
+        \item False. For instance, take $f(x) = 3x$, $g(x) = x$. Then $f(x) = O(g(x))$, but $2^{f (x)} = 8^x$ is not $O(2^{g(x)}) = O(2^x)$.
         \item By the product property for big-O, $(f_1 \cdot f_2)(x) =  O(g_1(x) \cdot g_2(x))$ for $f_1(x) = O(g_1(x))$ and $f_2(x) = O(g_2(x))$. So the statement is true if we take $f_1(x) = f_2(x) = f(x)$, $g_1(x) = g_2(x) = g(x)$ in the product property.
     \end{qparts}
 \end{solution}
